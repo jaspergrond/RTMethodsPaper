@@ -1,0 +1,88 @@
+\begin{thebibliography}{}
+\makeatletter
+\relax
+\def\mn@urlcharsother{\let\do\@makeother \do\$\do\&\do\#\do\^\do\_\do\%\do\~}
+\def\mn@doi{\begingroup\mn@urlcharsother \@ifnextchar [ {\mn@doi@}
+  {\mn@doi@[]}}
+\def\mn@doi@[#1]#2{\def\@tempa{#1}\ifx\@tempa\@empty \href
+  {http://dx.doi.org/#2} {doi:#2}\else \href {http://dx.doi.org/#2} {#1}\fi
+  \endgroup}
+\def\mn@eprint#1#2{\mn@eprint@#1:#2::\@nil}
+\def\mn@eprint@arXiv#1{\href {http://arxiv.org/abs/#1} {{\tt arXiv:#1}}}
+\def\mn@eprint@dblp#1{\href {http://dblp.uni-trier.de/rec/bibtex/#1.xml}
+  {dblp:#1}}
+\def\mn@eprint@#1:#2:#3:#4\@nil{\def\@tempa {#1}\def\@tempb {#2}\def\@tempc
+  {#3}\ifx \@tempc \@empty \let \@tempc \@tempb \let \@tempb \@tempa \fi \ifx
+  \@tempb \@empty \def\@tempb {arXiv}\fi \@ifundefined
+  {mn@eprint@\@tempb}{\@tempb:\@tempc}{\expandafter \expandafter \csname
+  mn@eprint@\@tempb\endcsname \expandafter{\@tempc}}}
+
+\bibitem[\protect\citeauthoryear{{Altay} \& {Theuns}}{{Altay} \&
+  {Theuns}}{2013}]{altayTheuns13}
+{Altay} G.,  {Theuns} T.,  2013, \mn@doi [\mnras] {10.1093/mnras/stt1067},
+  \href {http://esoads.eso.org/abs/2013MNRAS.434..748A} {434, 748}
+
+\bibitem[\protect\citeauthoryear{{Altay}, {Croft}  \& {Pelupessy}}{{Altay}
+  et~al.}{2008}]{altayEt08}
+{Altay} G.,  {Croft} R.~A.~C.,   {Pelupessy} I.,  2008, \mn@doi [\mnras]
+  {10.1111/j.1365-2966.2008.13212.x}, \href
+  {http://adsabs.harvard.edu/abs/2008MNRAS.386.1931A} {386, 1931}
+
+\bibitem[\protect\citeauthoryear{{Barnes} \& {Hut}}{{Barnes} \&
+  {Hut}}{1986}]{barnesHut86}
+{Barnes} J.,  {Hut} P.,  1986, \mn@doi [\nat] {10.1038/324446a0}, \href
+  {http://adsabs.harvard.edu/abs/1986Natur.324..446B} {324, 446}
+
+\bibitem[\protect\citeauthoryear{{Benz}}{{Benz}}{1988}]{benz88}
+{Benz} W.,  1988, \mn@doi [Computer Physics Communications]
+  {10.1016/0010-4655(88)90027-6}, \href
+  {http://adsabs.harvard.edu/abs/1988CoPhC..48...97B} {48, 97}
+
+\bibitem[\protect\citeauthoryear{{Hegmann} \& {Kegel}}{{Hegmann} \&
+  {Kegel}}{2003}]{hegmanKegel03}
+{Hegmann} M.,  {Kegel} W.~H.,  2003, \mn@doi [\mnras]
+  {10.1046/j.1365-8711.2003.06543.x}, \href
+  {http://adsabs.harvard.edu/abs/2003MNRAS.342..453H} {342, 453}
+
+\bibitem[\protect\citeauthoryear{{Hubber}, {Batty}, {McLeod}  \&
+  {Whitworth}}{{Hubber} et~al.}{2011}]{hubberEt11}
+{Hubber} D.~A.,  {Batty} C.~P.,  {McLeod} A.,   {Whitworth} A.~P.,  2011,
+  \mn@doi [\aap] {10.1051/0004-6361/201014949}, \href
+  {http://adsabs.harvard.edu/abs/2011A%26A...529A..27H} {529, A27}
+
+\bibitem[\protect\citeauthoryear{{Kannan} et~al.,}{{Kannan}
+  et~al.}{2014}]{kannanEt14}
+{Kannan} R.,  et~al., 2014, \mn@doi [\mnras] {10.1093/mnras/stt2098}, \href
+  {http://adsabs.harvard.edu/abs/2014MNRAS.437.2882K} {437, 2882}
+
+\bibitem[\protect\citeauthoryear{{Pawlik} \& {Schaye}}{{Pawlik} \&
+  {Schaye}}{2008}]{pawlikSchaye08}
+{Pawlik} A.~H.,  {Schaye} J.,  2008, \mn@doi [\mnras]
+  {10.1111/j.1365-2966.2008.13601.x}, \href
+  {http://esoads.eso.org/abs/2008MNRAS.389..651P} {389, 651}
+
+\bibitem[\protect\citeauthoryear{{Springel}, {Yoshida}  \& {White}}{{Springel}
+  et~al.}{2001}]{springelEt01}
+{Springel} V.,  {Yoshida} N.,   {White} S.~D.~M.,  2001, \mn@doi [\na]
+  {10.1016/S1384-1076(01)00042-2}, \href
+  {http://adsabs.harvard.edu/abs/2001NewA....6...79S} {6, 79}
+
+\bibitem[\protect\citeauthoryear{{V{\'a}rosi} \& {Dwek}}{{V{\'a}rosi} \&
+  {Dwek}}{1999}]{varosiDwek99}
+{V{\'a}rosi} F.,  {Dwek} E.,  1999, \mn@doi [\apj] {10.1086/307729}, \href
+  {http://adsabs.harvard.edu/abs/1999ApJ...523..265V} {523, 265}
+
+\bibitem[\protect\citeauthoryear{{Vine} \& {Sigurdsson}}{{Vine} \&
+  {Sigurdsson}}{1998}]{vineSigurdsson98}
+{Vine} S.,  {Sigurdsson} S.,  1998, \mn@doi [\mnras]
+  {10.1046/j.1365-8711.1998.01325.x}, \href
+  {http://adsabs.harvard.edu/abs/1998MNRAS.295..475V} {295, 475}
+
+\bibitem[\protect\citeauthoryear{{Wadsley}, {Stadel}  \& {Quinn}}{{Wadsley}
+  et~al.}{2004}]{wadsleyEt03}
+{Wadsley} J.~W.,  {Stadel} J.,   {Quinn} T.,  2004, \mn@doi [\na]
+  {10.1016/j.newast.2003.08.004}, \href
+  {http://esoads.eso.org/abs/2004NewA....9..137W} {9, 137}
+
+\makeatother
+\end{thebibliography}
