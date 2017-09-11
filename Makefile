@@ -1,5 +1,5 @@
 #LaTeX Makefile
-FILE=FAHRT
+FILE=RTMethodsPaper
 all: $(FILE).pdf
 .PHONY: clean
 clean:
