@@ -1,0 +1,100 @@
+\begin{thebibliography}{}
+\makeatletter
+\relax
+\def\mn@urlcharsother{\let\do\@makeother \do\$\do\&\do\#\do\^\do\_\do\%\do\~}
+\def\mn@doi{\begingroup\mn@urlcharsother \@ifnextchar [ {\mn@doi@}
+  {\mn@doi@[]}}
+\def\mn@doi@[#1]#2{\def\@tempa{#1}\ifx\@tempa\@empty \href
+  {http://dx.doi.org/#2} {doi:#2}\else \href {http://dx.doi.org/#2} {#1}\fi
+  \endgroup}
+\def\mn@eprint#1#2{\mn@eprint@#1:#2::\@nil}
+\def\mn@eprint@arXiv#1{\href {http://arxiv.org/abs/#1} {{\tt arXiv:#1}}}
+\def\mn@eprint@dblp#1{\href {http://dblp.uni-trier.de/rec/bibtex/#1.xml}
+  {dblp:#1}}
+\def\mn@eprint@#1:#2:#3:#4\@nil{\def\@tempa {#1}\def\@tempb {#2}\def\@tempc
+  {#3}\ifx \@tempc \@empty \let \@tempc \@tempb \let \@tempb \@tempa \fi \ifx
+  \@tempb \@empty \def\@tempb {arXiv}\fi \@ifundefined
+  {mn@eprint@\@tempb}{\@tempb:\@tempc}{\expandafter \expandafter \csname
+  mn@eprint@\@tempb\endcsname \expandafter{\@tempc}}}
+
+\bibitem[\protect\citeauthoryear{{Altay} \& {Theuns}}{{Altay} \&
+  {Theuns}}{2013}]{altayTheuns13}
+{Altay} G.,  {Theuns} T.,  2013, \mn@doi [\mnras] {10.1093/mnras/stt1067},
+  \href {http://esoads.eso.org/abs/2013MNRAS.434..748A} {434, 748}
+
+\bibitem[\protect\citeauthoryear{{Altay}, {Croft}  \& {Pelupessy}}{{Altay}
+  et~al.}{2008}]{altayEt08}
+{Altay} G.,  {Croft} R.~A.~C.,   {Pelupessy} I.,  2008, \mn@doi [\mnras]
+  {10.1111/j.1365-2966.2008.13212.x}, \href
+  {http://adsabs.harvard.edu/abs/2008MNRAS.386.1931A} {386, 1931}
+
+\bibitem[\protect\citeauthoryear{{Baczynski}, {Glover}  \&
+  {Klessen}}{{Baczynski} et~al.}{2015}]{baczynskiEt15}
+{Baczynski} C.,  {Glover} S.~C.~O.,   {Klessen} R.~S.,  2015, \mn@doi [\mnras]
+  {10.1093/mnras/stv1906}, \href
+  {http://adsabs.harvard.edu/abs/2015MNRAS.454..380B} {454, 380}
+
+\bibitem[\protect\citeauthoryear{{Barnes} \& {Hut}}{{Barnes} \&
+  {Hut}}{1986}]{barnesHut86}
+{Barnes} J.,  {Hut} P.,  1986, \mn@doi [\nat] {10.1038/324446a0}, \href
+  {http://adsabs.harvard.edu/abs/1986Natur.324..446B} {324, 446}
+
+\bibitem[\protect\citeauthoryear{{Clark}, {Glover}  \& {Klessen}}{{Clark}
+  et~al.}{2012}]{clarkEt12}
+{Clark} P.~C.,  {Glover} S.~C.~O.,   {Klessen} R.~S.,  2012, \mn@doi [\mnras]
+  {10.1111/j.1365-2966.2011.20087.x}, \href
+  {http://esoads.eso.org/abs/2012MNRAS.420..745C} {420, 745}
+
+\bibitem[\protect\citeauthoryear{{Gnedin} \& {Abel}}{{Gnedin} \&
+  {Abel}}{2001}]{gnedinAbel01}
+{Gnedin} N.~Y.,  {Abel} T.,  2001, \mn@doi [\na]
+  {10.1016/S1384-1076(01)00068-9}, \href
+  {http://adsabs.harvard.edu/abs/2001NewA....6..437G} {6, 437}
+
+\bibitem[\protect\citeauthoryear{{Iliev} et~al.,}{{Iliev}
+  et~al.}{2006}]{ilievEt06}
+{Iliev} I.~T.,  et~al., 2006, \mn@doi [\mnras]
+  {10.1111/j.1365-2966.2006.10775.x}, \href
+  {http://adsabs.harvard.edu/abs/2006MNRAS.371.1057I} {371, 1057}
+
+\bibitem[\protect\citeauthoryear{{Mellema}, {Iliev}, {Alvarez}  \&
+  {Shapiro}}{{Mellema} et~al.}{2006}]{mellemaEt06a}
+{Mellema} G.,  {Iliev} I.~T.,  {Alvarez} M.~A.,   {Shapiro} P.~R.,  2006,
+  \mn@doi [\na] {10.1016/j.newast.2005.09.004}, \href
+  {http://adsabs.harvard.edu/abs/2006NewA...11..374M} {11, 374}
+
+\bibitem[\protect\citeauthoryear{{Mihalas} \& {Mihalas}}{{Mihalas} \&
+  {Mihalas}}{1984}]{mihalasMihalas84}
+{Mihalas} D.,  {Mihalas} B.~W.,  1984, {Foundations of radiation hydrodynamics}
+
+\bibitem[\protect\citeauthoryear{{Paardekooper}, {Kruip}  \&
+  {Icke}}{{Paardekooper} et~al.}{2010}]{paardekooperEt10}
+{Paardekooper} J.-P.,  {Kruip} C.~J.~H.,   {Icke} V.,  2010, \mn@doi [\aap]
+  {10.1051/0004-6361/200913821}, \href
+  {http://adsabs.harvard.edu/abs/2010A%26A...515A..79P} {515, A79}
+
+\bibitem[\protect\citeauthoryear{{Pawlik} \& {Schaye}}{{Pawlik} \&
+  {Schaye}}{2008}]{pawlikSchaye08}
+{Pawlik} A.~H.,  {Schaye} J.,  2008, \mn@doi [\mnras]
+  {10.1111/j.1365-2966.2008.13601.x}, \href
+  {http://esoads.eso.org/abs/2008MNRAS.389..651P} {389, 651}
+
+\bibitem[\protect\citeauthoryear{{Rosdahl} \& {Teyssier}}{{Rosdahl} \&
+  {Teyssier}}{2015}]{rosdahlTeyssier15}
+{Rosdahl} J.,  {Teyssier} R.,  2015, \mn@doi [\mnras] {10.1093/mnras/stv567},
+  \href {http://esoads.eso.org/abs/2015MNRAS.449.4380R} {449, 4380}
+
+\bibitem[\protect\citeauthoryear{{Wadsley}, {Stadel}  \& {Quinn}}{{Wadsley}
+  et~al.}{2004}]{wadsleyEt03}
+{Wadsley} J.~W.,  {Stadel} J.,   {Quinn} T.,  2004, \mn@doi [\na]
+  {10.1016/j.newast.2003.08.004}, \href
+  {http://esoads.eso.org/abs/2004NewA....9..137W} {9, 137}
+
+\bibitem[\protect\citeauthoryear{{Wise} \& {Abel}}{{Wise} \&
+  {Abel}}{2011}]{wiseAbel11}
+{Wise} J.~H.,  {Abel} T.,  2011, \mn@doi [\mnras]
+  {10.1111/j.1365-2966.2011.18646.x}, \href
+  {http://adsabs.harvard.edu/abs/2011MNRAS.414.3458W} {414, 3458}
+
+\makeatother
+\end{thebibliography}
