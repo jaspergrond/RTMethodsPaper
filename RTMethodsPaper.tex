@@ -80,9 +80,11 @@ radiative transfer -- methods: numerical -- galaxies
 
 \section{INTRODUCTION}\label{sec:intro}
 
-Radiation is arguably the most important physical phenomena to the field of
-astrophysics. Almost all of the information we receive from outer space comes 
-in the form of photons we detect on or around earth. Understanding the process 
+{\bf JW: This focusses a lot on observing but our primary interest is astrophysics.  Just adjust the balance to the paragraph more to physics.}
+{\bf Does any other paper shorten Radiative Transfer to RT? To me it feels wrong to do that.}
+Radiation is arguably the most important physical phenomenon in 
+astrophysics. Almost all of the information we receive from space comes 
+in the form of photons we detect on or around earth.  Understanding the process 
 of radiative transfer (RT) is key in interpreting this information, as the 
 photons are affected by the medium they travel through on the way to our 
 telescopes and detectors. Interactions between photons and the medium along
@@ -92,21 +94,22 @@ telescopes and detectors. Interactions between photons and the medium along
 chemical and thermodynamic properties of the matter. This in turn makes 
 radiation a driving factor in many of the physical processes we study.
 
-It may then come as a surprise to some that RT is treated rather poorly in most
- astrophysical simulations, usually as some imposed uniform background. This is
- not because of carelessness or lack of effort, but because RT is inherently a 
-complicated problem. The full RT problem depends on 3 spatial dimensions, 2 
+Despite its importance, RT is treated rather poorly in many
+ astrophysical simulations, usually as some imposed uniform background. This oversight 
+is because RT is inherently a difficult problem. 
+The full RT problem depends on 3 spatial dimensions, 2 
 angular dimensions, frequency and time, and has a characteristic speed of $c$, 
-the speed of light. Also, unlike a force at a distance problem such as gravity,
- RT depends on the intervening material. Because of this complexity, a naive 
+the speed of light.  Gravity is also long range but RT is more complex because
+ it depends on the intervening material.  A brute-force
 numerical solution for RT would scale with the number resolution elements $N$ 
-like $\mathcal{O}(N^2)$. This makes it impractical to run such an RT method 
-alongside modern gravity and hydrodynamics codes that scale like 
-$\mathcal{O}(NlogN)$.
+like $\mathcal{O}(N^{7/3})$.  Ideally, the scaling would be similar to current gravity and hydrodynamics
+solvers ($\mathcal{O}(NlogN)$ or better).
 
-When it comes to solving RT problem, we can separate methods into two different
+We can separate numerical methods into two different
 categories by looking at the classical RT equation 
-\citep{mihalasMihalas84}
+\citep{mihalasMihalas84},
+
+{\bf JW: I don't think we gain anything with all the arguments for every variable}
 \begin{equation} \label{classicrt}
 \left[ \frac{1}{c} \frac{\partial}{\partial t} + \mathbf{\hat{n} \cdot \nabla}
  \right] I\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right) = 
@@ -130,12 +133,12 @@ infinite, the partial time derivative in equation \ref{classicrt} goes to zero
 and the radiation field can be computed instantaneously. Methods that solve the
  RT equation in this way, which we will refer to as instantaneous methods, 
 include forward ray tracers such as $\rm C^2Ray$ \citep{mellemaEt06a}, Moray 
-\citep{wiseAbel11} and Fervent \citep{baczynskiEt15} as well as reverse ray 
+\citep{wiseAbel11} and Fervent \citep{baczynskiEt15} as well as the limited reverse ray 
 tracers such as TreeCol \citep{clarkEt12} and URCHIN \citep{altayTheuns13}.
 
 All of these methods require simplifications to the full RT problem to make 
-them feasible, thus they will all have areas of strength and weakness. These
-strengths and weaknesses define what types of problems they can solve. This 
+them feasible. These simplifications determine 
+what types of problems they can solve. This 
 makes comparing these methods on an equal footing somewhat confusing, as some 
 authors state how their method scales with resolution elements in the context 
 of the problem their RT method is meant to solve. For example, \cite{clarkEt12}
@@ -222,6 +225,8 @@ paragraph. \acro{} is a reverse ray tracer based on the \cite{barnesHut86} tree
  SPH or Gasoline specific, \acro{} only requires that the simulation volume be 
 divided hierarchically in space. 
 
+{\bf none of this below belong in an intro -- it is method }
+
 A main feature of \acro{} is that sources can be merged via an opening  angle 
 criteria similarly to the Barnes and Hut gravity method. This means that 
 \acro{} scales with sources like $\mathcal{O}(\log N_{\rm source})$, 
@@ -233,7 +238,7 @@ the first time source merging has been implemented in a reverse ray tracer, and
  on all sources in a simulation and not just a small, fixed amount of 
 background sources as in TreeCol and URCHIN.
 
-\acro{} traces rays per each sink beacuase it is a reverse ray tracer, this 
+\acro{} traces rays per each sink because it is a reverse ray tracer, this 
 adds a linear dependence on the number of sinks. This coupled with source 
 merging means \acro{} can solve the optically thin case 
 $\mathcal{O}(N_{\rm sink} \log N_{\rm source})$ operations. The fact that
