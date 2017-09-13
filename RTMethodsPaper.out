@@ -1,5 +1,9 @@
 \BOOKMARK [1][-]{section.1}{INTRODUCTION}{}% 1
 \BOOKMARK [1][-]{section.2}{METHOD}{}% 2
 \BOOKMARK [1][-]{section.3}{Implementation}{}% 3
-\BOOKMARK [1][-]{section.4}{CODE TESTS}{}% 4
-\BOOKMARK [1][-]{section.5}{DISCUSSION AND CONCLUSION}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{The Optically Thin Regime}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{The Optically Thick Regime}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Refinement}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.4}{Cosmological Background Radiation}{section.3}% 7
+\BOOKMARK [1][-]{section.4}{CODE TESTS}{}% 8
+\BOOKMARK [1][-]{section.5}{DISCUSSION AND CONCLUSION}{}% 9

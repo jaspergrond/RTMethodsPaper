@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.9.11)  12 SEP 2017 12:33
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.9.11)  13 SEP 2017 16:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -817,116 +817,172 @@ Underfull \hbox (badness 10000) in paragraph at lines 44--68
  []
 
 LaTeX Font Info:    Font shape `T1/ntxrx/m/n' will be
-(Font)              scaled to size 9.0pt on input line 99.
+(Font)              scaled to size 9.0pt on input line 100.
 LaTeX Font Info:    Font shape `T1/ntxrx/m/n' will be
-(Font)              scaled to size 7.3pt on input line 99.
+(Font)              scaled to size 7.3pt on input line 100.
 LaTeX Font Info:    Font shape `T1/ntxrx/m/n' will be
-(Font)              scaled to size 5.5pt on input line 99.
+(Font)              scaled to size 5.5pt on input line 100.
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
-(Font)              size <5> substituted on input line 99.
+(Font)              size <5> substituted on input line 100.
 
 LaTeX Font Info:    Font shape `T1/ntxrx/b/n' in size <9> not available
-(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 112.
+(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 113.
 
 LaTeX Font Info:    Font shape `T1/ntxrx/bx/n' will be
-(Font)              scaled to size 9.0pt on input line 112.
+(Font)              scaled to size 9.0pt on input line 113.
 LaTeX Font Info:    Font shape `T1/ntxrx/b/n' in size <7.3> not available
-(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 112.
+(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 113.
 
 LaTeX Font Info:    Font shape `T1/ntxrx/bx/n' will be
-(Font)              scaled to size 7.3pt on input line 112.
+(Font)              scaled to size 7.3pt on input line 113.
 LaTeX Font Info:    Font shape `T1/ntxrx/b/n' in size <5.5> not available
-(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 112.
+(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 113.
 
 LaTeX Font Info:    Font shape `T1/ntxrx/bx/n' will be
-(Font)              scaled to size 5.5pt on input line 112.
+(Font)              scaled to size 5.5pt on input line 113.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `T1/ntxrx/m/n' will be
-(Font)              scaled to size 8.0pt on input line 166.
+(Font)              scaled to size 8.0pt on input line 167.
 LaTeX Font Info:    Font shape `T1/ntxrx/m/n' will be
-(Font)              scaled to size 6.2pt on input line 166.
+(Font)              scaled to size 6.2pt on input line 167.
 LaTeX Font Info:    Font shape `T1/ntxrx/b/n' in size <8> not available
-(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 166.
+(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 167.
 
 LaTeX Font Info:    Font shape `T1/ntxrx/bx/n' will be
-(Font)              scaled to size 8.0pt on input line 166.
+(Font)              scaled to size 8.0pt on input line 167.
 LaTeX Font Info:    Font shape `T1/ntxrx/b/n' in size <6.2> not available
-(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 166.
+(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 167.
 
 LaTeX Font Info:    Font shape `T1/ntxrx/bx/n' will be
-(Font)              scaled to size 6.2pt on input line 166.
-LaTeX Font Info:    Try loading font information for OMS+aer on input line 166.
+(Font)              scaled to size 6.2pt on input line 167.
+LaTeX Font Info:    Try loading font information for OMS+aer on input line 167.
 
 
 (/usr/share/texmf/tex/latex/R/tex/latex/omsaer.fd
 File: omsaer.fd 1999/12/27
 )
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 166.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 167.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Underfull \hbox (badness 7291) in paragraph at lines 194--209
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 7291) in paragraph at lines 222--237
 []\T1/aer/m/n/9 Photon packet prop-a-ga-tion meth-ods, specif-i-cally
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 6380) has occurred while \output is active []
 
+ [2]
+[3] <Figures/algorithm.png, id=183, 1995.455pt x 583.781pt>
+File: Figures/algorithm.png Graphic file (type png)
 
-(./RTMethodsPaper.bbl [2])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 516.
- [3
+<use Figures/algorithm.png>
+Package pdftex.def Info: Figures/algorithm.png used on input line 431.
+(pdftex.def)             Requested size: 504.0pt x 147.44139pt.
+
+<Figures/refine.png, id=190, 357.335pt x 308.352pt>
+File: Figures/refine.png Graphic file (type png)
+ <use Figures/refine.png>
+Package pdftex.def Info: Figures/refine.png used on input line 447.
+(pdftex.def)             Requested size: 226.79846pt x 195.71194pt.
+
+Underfull \hbox (badness 2990) in paragraph at lines 489--496
+[]\T1/aer/m/n/9 Instead, we have im-ple-mented a method in-volv-
+ []
+
+<Figures/cosmofield.png, id=198, 462.528pt x 346.896pt>
+File: Figures/cosmofield.png Graphic file (type png)
+
+<use Figures/cosmofield.png>
+Package pdftex.def Info: Figures/cosmofield.png used on input line 504.
+(pdftex.def)             Requested size: 252.0pt x 189.00427pt.
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 504--511
+[][]
+ []
+
+[4] (./RTMethodsPaper.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 548.
+ [5pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.548 \end{document}
+                    pdfTeX warning (ext4): destination with the same identifier
+ (name{figure.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.548 \end{document}
+                    pdfTeX warning (ext4): destination with the same identifier
+ (name{figure.3}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.548 \end{document}
+                     <./Figures/algorithm.png> <./Figures/refine.png> <./Figure
+s/cosmofield.png>] [6
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 516.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 548.
  (./RTMethodsPaper.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 516.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 516.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 548.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 548.
 Package rerunfilecheck Info: File `RTMethodsPaper.out' has not changed.
-(rerunfilecheck)             Checksum: BCD152D52DAE30FD1229CC989D9B0E44;242.
+(rerunfilecheck)             Checksum: 401F958F881CFED34D75C381D167D9EC;532.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 516.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 548.
  ) 
 Here is how much of TeX's memory you used:
- 8612 strings out of 493304
- 119587 string characters out of 6139871
- 215425 words of memory out of 5000000
- 11819 multiletter control sequences out of 15000+600000
- 97926 words of font info for 188 fonts, out of 8000000 for 9000
+ 8722 strings out of 493304
+ 121057 string characters out of 6139871
+ 217400 words of memory out of 5000000
+ 11871 multiletter control sequences out of 15000+600000
+ 109268 words of font info for 214 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 36i,9n,35p,279b,478s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,9n,35p,602b,383s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/newtx/rntxmi.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/tx
-ex-bar.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/urw/times/utmri8a.pfb>
-Output written on RTMethodsPaper.pdf (3 pages, 196540 bytes).
+ublic/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/newtx/rntxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newt
+x/rntxmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxmi.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/rtxmi5.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/newtx/rtxmi7.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/newtx/txex-bar.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfon
+ts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on RTMethodsPaper.pdf (6 pages, 358312 bytes).
 PDF statistics:
- 226 PDF objects out of 1000 (max. 8388607)
- 199 compressed objects within 2 object streams
- 24 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 379 PDF objects out of 1000 (max. 8388607)
+ 334 compressed objects within 4 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 88 words of extra memory for PDF output out of 10000 (max. 10000000)
 
