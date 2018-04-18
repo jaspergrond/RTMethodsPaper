@@ -14,7 +14,7 @@ i128_010 = pyn.load(i128_path + 'strom128.00020')
 i064_010 = pyn.load(i064_path + 'strom64.00020')
 i128_100 = pyn.load(i128_path + 'strom128.00200')
 i064_100 = pyn.load(i064_path + 'strom64.00200')
-#i128_500 = pyn.load(i128_path + 'strom128.01000')
+i128_500 = pyn.load(i128_path + 'strom128.01000')
 i064_500 = pyn.load(i064_path + 'strom64.01000')
 
 f, (ax1, ax2, ax3) = plt.subplots(1,3, sharey=True, figsize = (13+6.5,6.3))
@@ -98,10 +98,10 @@ counts_128, bins_128 = np.histogram(i128_010.g['r'], bins = nbins)
 bins_128 = (bins_128[:-1]+bins_128[1:])/2
 HI_128 /= counts_128
 
-ax1.plot(bins_064/L, HI_064, c='k', ls='-') 
-ax1.plot(bins_128/L, HI_128, c='k', ls='-.')
-ax1.plot(bins_064/L, 1-HI_064, c='k', ls='-') 
-ax1.plot(bins_128/L, 1-HI_128, c='k', ls='-.')
+ax1.plot(bins_064/L, HI_064, c='k', ls='-.') 
+ax1.plot(bins_128/L, HI_128, c='k', ls='-')
+ax1.plot(bins_064/L, 1-HI_064, c='k', ls='-.') 
+ax1.plot(bins_128/L, 1-HI_128, c='k', ls='-')
 
 HI_064, bins_064 = np.histogram(i064_100.g['r'], weights = i064_100.g['HI'],
     bins = nbins)
@@ -115,10 +115,10 @@ counts_128, bins_128 = np.histogram(i128_100.g['r'], bins = nbins)
 bins_128 = (bins_128[:-1]+bins_128[1:])/2
 HI_128 /= counts_128
 
-ax2.plot(bins_064/L, HI_064, c='k', ls='-')
-ax2.plot(bins_128/L, HI_128, c='k', ls='-.')
-ax2.plot(bins_064/L, 1-HI_064, c='k', ls='-')
-ax2.plot(bins_128/L, 1-HI_128, c='k', ls='-.')
+ax2.plot(bins_064/L, HI_064, c='k', ls='-.')
+ax2.plot(bins_128/L, HI_128, c='k', ls='-')
+ax2.plot(bins_064/L, 1-HI_064, c='k', ls='-.')
+ax2.plot(bins_128/L, 1-HI_128, c='k', ls='-')
 
 HI_064, bins_064 = np.histogram(i064_500.g['r'], weights = i064_500.g['HI'],
     bins = nbins)
@@ -126,17 +126,16 @@ counts_064, bins_064 = np.histogram(i064_500.g['r'], bins = nbins)
 bins_064 = (bins_064[:-1]+bins_064[1:])/2
 HI_064 /= counts_064
 
-#HI_128, bins_128 = np.histogram(i128_500.g['r'], weights = i128_500.g['HI'],
-#    bins = nbins)
-#counts_128, bins_128 = np.histogram(i128_500.g['r'], bins = nbins)
-#bins_128 = (bins_128[:-1]+bins_128[1:])/2
-#HI_128 /= counts_128
+HI_128, bins_128 = np.histogram(i128_500.g['r'], weights = i128_500.g['HI'],
+    bins = nbins)
+counts_128, bins_128 = np.histogram(i128_500.g['r'], bins = nbins)
+bins_128 = (bins_128[:-1]+bins_128[1:])/2
+HI_128 /= counts_128
 
-ax3.plot(bins_064/L, HI_064, c='k', ls='-', label = acro+' $64^3$')
-ax3.plot(bins_064/L, HI_064, c='k', ls='-.', label = acro+' $128^3$')
-#ax3.plot(bins_128/L, HI_128, c='k', ls='-.', label = acro+' $128^3$')
-ax3.plot(bins_064/L, 1-HI_064, c='k', ls='-')
-#ax3.plot(bins_128/L, 1-HI_128, c='k', ls='-.')
+ax3.plot(bins_128/L, HI_128, c='k', ls='-', label = acro)
+ax3.plot(bins_064/L, HI_064, c='k', ls='-.', label = acro+' $32^3$')
+ax3.plot(bins_064/L, 1-HI_064, c='k', ls='-.')
+ax3.plot(bins_128/L, 1-HI_128, c='k', ls='-')
 
 ax1.text(0.83,5,"010 Myr", fontsize = 20)
 ax2.text(0.83,5,"100 Myr", fontsize = 20)

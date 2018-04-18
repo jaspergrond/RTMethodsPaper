@@ -12,7 +12,7 @@ i064_path = '/home/grondjj/Data/RadTransfer/Stromgren/tau_0.01/strom64_iso/'
 
 i128_030 = pyn.load(i128_path + 'strom128_iso.00060')
 i064_030 = pyn.load(i064_path + 'strom64_iso.00060')
-#i128_500 = pyn.load(i128_path + 'strom128_iso.01000')
+i128_500 = pyn.load(i128_path + 'strom128_iso.01000')
 i064_500 = pyn.load(i064_path + 'strom64_iso.01000')
 
 f, (ax1, ax2) = plt.subplots(1,2, sharey=True, figsize = (13,6.3))
@@ -95,10 +95,10 @@ bins_128 = (bins_128[:-1]+bins_128[1:])/2
 HI_128 /= counts_128
 HII_128 = 1-HI_128
 
-ax1.plot(bins_064/L, HI_064, c='k', ls='-') 
-ax1.plot(bins_128/L, HI_128, c='k', ls='-.')
-ax1.plot(bins_064/L, 1-HI_064, c='k', ls='-') 
-ax1.plot(bins_128/L, 1-HI_128, c='k', ls='-.')
+ax1.plot(bins_064/L, HI_064, c='k', ls='-.') 
+ax1.plot(bins_128/L, HI_128, c='k', ls='-')
+ax1.plot(bins_064/L, 1-HI_064, c='k', ls='-.') 
+ax1.plot(bins_128/L, 1-HI_128, c='k', ls='-')
 
 HI_064, bins_064 = np.histogram(i064_500.g['r'], weights = i064_500.g['HI'],
     bins = nbins)
@@ -107,18 +107,17 @@ bins_064 = (bins_064[:-1]+bins_064[1:])/2
 HI_064 /= counts_064
 HII_064 = 1-HI_064
 
-#HI_128, bins_128 = np.histogram(i128_500.g['r'], weights = i128_500.g['HI'],
-#    bins = nbins)
-#counts_128, bins_128 = np.histogram(i128_500.g['r'], bins = nbins)
-#bins_128 = (bins_128[:-1]+bins_128[1:])/2
-#HI_128 /= counts_128
-#HII_128 = 1-HI_128
+HI_128, bins_128 = np.histogram(i128_500.g['r'], weights = i128_500.g['HI'],
+    bins = nbins)
+counts_128, bins_128 = np.histogram(i128_500.g['r'], bins = nbins)
+bins_128 = (bins_128[:-1]+bins_128[1:])/2
+HI_128 /= counts_128
+HII_128 = 1-HI_128
 
-ax2.plot(bins_064/L, HI_064, c='k', ls='-', label = acro + " $64^3$")
-ax2.plot(bins_064/L, HI_064, c='k', ls='-.', label = acro + " $128^3$")
-#ax2.plot(bins_128/L, HI_128, c='k', ls='-.')
-ax2.plot(bins_064/L, 1-HI_064, c='k', ls='-')
-#ax2.plot(bins_128/L, 1-HI_128, c='k', ls='-.')
+ax2.plot(bins_128/L, HI_128, c='k', ls='-', label = acro )
+ax2.plot(bins_064/L, HI_064, c='k', ls='-.', label = acro + " $32^3$")
+ax2.plot(bins_064/L, 1-HI_064, c='k', ls='-.')
+ax2.plot(bins_128/L, 1-HI_128, c='k', ls='-')
 
 rs = 5.38
 trecomb = 125

@@ -306,7 +306,7 @@ moments of the intensity to obtain useful quantities such as radiation flux
 \end{equation}
 and radiation pressure
 \begin{equation}
-\label{eq:flux}
+\label{eq:pressure}
 \mathbf{p} = \frac{1}{c}\int I cos^2\theta d\Omega \mathbf{\hat{n}}.
 \end{equation}
 Because we assume our sources of radiation to be true point sources, 
@@ -595,10 +595,6 @@ methods section, and only have to add temporary background star particles as
 the source of the background radiation. This way, there is no need to create 
 periodic copies of the simulation volume (talk to James, explain <-this here).
 
-
-
-
-
 \section{CODE TESTS}\label{sec:tsts}
 \subsection{Scaling with number of resolution elements}
 \begin{figure}
@@ -606,6 +602,34 @@ periodic copies of the simulation volume (talk to James, explain <-this here).
 \caption{}
 \label{fig:pscale}
 \end{figure}
+To test the scaling claims made in the previous section, a particle 
+distribution that both our source merging and adaptive refinement procedures 
+can latch onto is necessary. We have opted to use a sinusoidally perturbed 
+glass as the initial condition (IC) for tests benchmarking \acro{}'s scaling, 
+opening angle and refinement criteria. This IC began life as a unit cube glass 
+of particles with an average density and opacity of 1. The glass was then 
+perturbed by applying 24 sinusoidal modes resulting in a smoothly varying 
+density distribution where 49\% of particles have a density between 0 \& 1, 
+43\% between 1 \& 2, 5\% between 2 \& 3, 1\% between 3 \& 4 and the remaining 
+2\% of particles are between densities of 4 \& 24. Exact details on this IC 
+can be found in Appendix \ref{sec:icnd}.
+
+Fig. \ref{fig:pscale} is a plot of the number of ray segments computed per 
+resolution element as a function of the number of resolution elements in the 
+previously described test. The number of resolution elements making up the IC 
+is increased along the x-axis from $32^3$ to $128^3$ in steps of $16^3$ in two 
+different ways. Firstly, we increase the particle number while keeping the box 
+size constant. This represents a case similar to increasing the resolution of 
+an isolated galaxy or the like and is denoted by the x marker. Secondly, we 
+increase the box size while keeping the \textit{particle} density constant. 
+This represents a case similar to increasing the simulation volume of a 
+cosmological simulation and is denoted by the diamond marker. 
+
+Four different levels of refinement are also shown in this plot. Green plot 
+markers represent not refining, red markers 
+
+
+
 \subsection{Opening Angle Testing}
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/opening_angle.pdf}
