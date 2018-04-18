@@ -1,0 +1,341 @@
+%%%%%%%%%% PREAMBLE %%%%%%%%%%
+
+%MNRAS style
+\documentclass[fleqn,usenatbib]{mnras}
+%default MNRAS packages
+\usepackage{newtxtext,newtxmath}
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+% user packages
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{dsfont}
+%user commands
+\newcommand{\acro}{TREVR}
+\providecommand{\e}[1]{\ensuremath{\times10^{#1}}}
+\newcommand{\bigO}[1]{\mathcal{O}(#1)}
+\newcommand{\NS}{N_{\rm source}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% TITLE PAGE %%%%%%%%%%
+
+\title[]{\acro{}: A general $\bigO{N\log^2N}$ radiative transfer algorithm}
+
+\author[J. J. Grond et al.]{
+J. J. Grond,
+R. M. Woods,
+J. Wadsley \thanks{E-mail:  wadsley@mcmaster.ca}
+and H. M. P. Couchman
+\\
+Department of Physics and Astronomy, McMaster University, Hamilton, Ontario L8S
+ 4M1, Canada}
+
+\date{Accepted XXX. Received YYY; in original form ZZZ}
+
+\pubyear{2018}
+
+\begin{document}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
+
+% abstract of the paper
+\begin{abstract}
+We present \acro{} (Tree-based Reverse Ray Tracing), a general algorithm for 
+computing the radiation field in astrophysical simulations. \acro{} 
+prioritizes the ability to handle large numbers of sources and computational 
+speed whilst maintaining a specified level of accuracy via adaptive 
+refinement. \acro{} is based on a \emph{tree} data structure similar to many 
+gravity and hydrodynamics solvers. This allows for computation of the 
+radiation field in $\mathcal{O}(N_{\rm} \log N_{\rm source})$ time without 
+absorption and $\mathcal{O}(N_{\rm sink} \log \NS \log{N})$ time with 
+absorption. This impressive  scaling is made possible by merging sources of 
+radiation according to an opening angle criteria and walking the tree 
+structure to trace a ray. The computational complexity we quote accounts for 
+the use of adaptive refinement, a main feature that is unique to \acro{} among 
+other radiative transfer methods. We provide a suite of tests demonstrating 
+the algorithm's ability to accurately compute fluxes, ionization fronts and 
+shadows. We also analyze the algorithm's computational complexity, in how it 
+scales with the number of sources and sinks. We also examine how the 
+aforementioned refinement criterion's value affects computational cost and 
+accuracy. Finally, we discuss strengths and shortcomings of this algorithm, 
+how they constrain the types of problems \acro{} can handle and how these 
+shortcomings can be remedied if possible.
+
+\end{abstract}
+
+% Select between one and six entries from the list of approved keywords.
+% Don't make up new ones.
+\begin{keywords}
+radiative transfer -- methods: numerical
+\end{keywords}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% BODY OF PAPER %%%%%%%%%%
+
+\section{INTRODUCTION}\label{sec:intr}
+\subsection{Motivation}\label{sec:motv}
+Radiation is arguably the most important physical phenomena to the field of
+astrophysics. Almost all of the information we receive from outer space comes 
+in the form of photons we detect on or around earth. Understanding the process 
+of radiative transfer (RT) is key in interpreting this information, as the 
+photons are affected by the medium they travel through on their way to our 
+telescopes and detectors. Interactions between photons and the medium do not 
+only affect the photons themselves but the matter as well. Photons and baryons 
+exchange energy and momentum, affect the excitation and ionization states of 
+said baryons and thus determine the chemical and thermodynamic properties of 
+the bulk medium. This in turn makes radiation a driving factor in many of the 
+physical processes we study.
+
+On galaxy scales, the question of how feedback mechanisms affect star and 
+galaxy formation is one of these physical processes we can study. Stellar 
+feedback comes in the form of photoionization by ultraviolet (UV) radiation, 
+stellar winds and supernovae (cite here), the latter of which has been 
+a main focus in simulations in previous years (cite a bunch of SN feedback 
+papers?). It is important to note that even though supernovae might be 
+spectacularly powerful events, ionizing radiative output from stellar 
+populations in the UV regime contribute two orders of magnitude more power at 
+early times and about 50 times more energy over the course of a stellar 
+population's lifetime. This is made evident in Figure \ref{fig:uvsn}, a 
+plot of luminosity output per solar mass as a function of time from stellar 
+populations created via output from the stellar evolution code Starburst99 
+\citep{leithererEt99}. 
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/uvsn.pdf}
+\caption{Luminosity per solar mass as a function of time for a stellar 
+population having a Chabrier initial mass function \citep{chabrier03}.}
+\label{fig:uvsn}
+\end{figure}
+However, the way in which this massive output of UV radiation is deposited 
+and consequently affects the interstellar medium (ISM) is still unclear 
+(cite... from fervent paper - conflicting results from Murray 2011, Dale 
+et al. 2012, Faucher-Gigu`ere et al. 2013, Hopkins et al. 2014).
+
+With such a large amount of energy input from stellar sources and questions 
+still left open about how it affects the ISM, it may then come as a surprise 
+that RT has historically been treated rather poorly in most large scale 
+astrophysical simulations, usually as some imposed uniform background. This is 
+not because of carelessness or lack of effort, but because RT is intrinsically 
+a complicated problem. The complexity of this problem is evident in the 
+classical RT equation \citep[e.g.][]{mihalasMihalas84},
+\begin{equation} \label{eqn:classicrt}
+\left[ \frac{1}{c} \frac{\partial}{\partial t} + \mathbf{\hat{n} \cdot \nabla}
+ \right] I\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right) = 
+\epsilon\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right) - 
+\alpha\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right) 
+I\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right),
+\end{equation} 
+where $I$, $\epsilon$ and $\alpha$ are the intensity, emissivity and 
+extinction coefficient respectively and all depend on position $\mathbf{x}$, 
+unit direction of light propagation $\mathbf{\hat{n}}$, time $t$ and frequency 
+$\nu$. Apart from being a seven dimensional problem, RT has a high 
+characteristic speed of $c$, the speed of light. Also, unlike a force at a 
+distance problem such as gravity, RT depends on the properties of the 
+intervening material which is handled by the extinction coefficient $\alpha$.
+
+Because of this complexity, a naive numerical solution to the RT problem 
+scales with the number of resolution elements like $\bigO{N^{7/3}}$. This 
+costly scaling is simply a result of the three major steps needed to compute 
+the radiation field in a simulation. Firstly, a radiation field is represented 
+by a simulation's $N$ resolution elements, so the field intensity needs to be 
+computed at $N$ points in the simulation volume. Secondly, each resolution 
+element's intensity value is made up of contributions from $\NS$ sources of 
+radiation. This can also be thought of as $\NS$ rays of light being computed 
+per resolution element. This leads to an already nasty scaling for the total 
+number of rays computed in a simulation going as $N_{\rm rays} = N \times 
+\NS$, which is like $\bigO{N^2}$ assuming the $\NS = N$. This fact alone 
+limits rudimentary RT methods to only small scale problems (such as...?), 
+where the number of sources is only a handful, to avoid $\bigO{N^2}$ scaling. 
+Finally, each ray of light interacts with the medium along its path as 
+mentioned earlier. Since the medium is represented by the simulation's $N$ 
+resolution elements and $N$ is proportional to the simulation volume, a one 
+dimensional ray intersects with $\bigO{N^{1/3}}$ resolution elements. Using 
+the total number of resolution elements interacted with as a measure of 
+computational cost we get that the computational cost is proportional to $N 
+\times \NS \times N^{1/3}$, which is like $\bigO{N^{7/3}}$, again assuming 
+$N_{\rm rays} = N \times \NS$. This poor scaling with resolution elements 
+makes it unfeasible to simulate RT along with gravity and hydrodynamics 
+methods that scale like $\bigO{N\log N}$. After breaking down the source of 
+computational complexity in the RT problem it is evident that something needs 
+to be done about the strong dependence on $\NS$ and the $N^{1/3}$ cost of 
+computing each ray to attain a feasible RT method.
+
+\subsection{Overview of RT methods}\label{sec:ortm}
+
+To avoid the intrinsic complexity of the RT problem, a feasible method would 
+have to solve a simplified RT problem. The first one of these simplifications 
+divides RT methods into two different categories based on how they treat $c$ 
+in Equation \ref{eqn:classicrt}. For methods that use a finite $c$, which is 
+often a reduced speed of light, the partial time derivative remains in 
+equation \ref{eqn:classicrt} and the radiation field is advected or 
+``evolved''. Methods that solve the RT equation in this way, which we will 
+call evolutionary methods, include moment methods like OTVET 
+\citep{gnedinAbel01} and  RAMESE-RT \citep{rosdahlTeyssier15} as well as 
+photon packet propagation methods like TRAPHIC \citep{pawlikSchaye08}, SPHRAY 
+\citep{altayEt08} and SimpleX2 \citep{paardekooperEt10}. On the other hand, in 
+limit where $c$ is taken to be infinite, the partial time derivative in 
+equation \ref{eqn:classicrt} goes to zero and the radiation field can be 
+computed instantaneously. Methods that solve the RT equation in this way, 
+which we will refer to as instantaneous methods, include forward ray tracers 
+such as $\rm C^2Ray$ \citep{mellemaEt06a}, Moray \citep{wiseAbel11} and 
+Fervent \citep{baczynskiEt15} as well as reverse ray tracers such as TreeCol 
+\citep{clarkEt12} and URCHIN \citep{altayTheuns13}. 
+
+// talk about methods in the above categories, strengths and weaknesses, 
+scaling  //
+
+// finish with a summary of what instantaneous methods lack, and needs to be 
+done //
+
+\subsection{Introduction to \acro{}}\label{sec:itrv}
+
+// what is trevr and how do we remedy the above issues with instantaneous 
+methods? //
+
+// summary of where the rest of the paper is going //
+
+\section{METHOD}\label{sec:mthd}
+Before describing our implementation of \acro{}, let's first define the 
+simplified version of the classical RT equation that \acro{} solves. Since 
+\acro{} is an instantaneous method, $c$ is set to infinity eliminating the 
+partial time derivative in \ref{eqn:classicrt} leaving us with the 
+instantaneous RT equation,
+\begin{equation} \label{infcrt}
+\mathbf{\hat{n} \cdot \nabla} I\left(\mathbf{x}, \mathbf{\hat{n}}, t, 
+\nu\right) = \epsilon\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right) - 
+\alpha\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right) 
+I\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right).
+\end{equation}
+The emissivity term in the above equation describes a continuous emitting 
+medium. \acro{} is a numerical method that assumes sources of radiation are 
+discrete point sources. In this case the emissivity term can be dropped and 
+the solution to the RT equation becomes a linear combination of contributions 
+from all sources. Also, since we are considering sources one by one we can 
+start using the path length $s$ between a source and resolution element as our 
+integration element
+\begin{equation}
+\label{eqn:combtransfer}
+\frac{dI}{ds} = -\alpha I.
+\end{equation}
+In this paper we only consider the extinction contributions from absorption. 
+We can then combine the path length and absorption coefficient to solve for 
+intensity by integrating 
+\begin{equation}
+\label{eqn:dtau}
+d\tau = \kappa \rho ds, 
+\end{equation}
+the optical depth due to absorption, where $\kappa$ is the opacity due to 
+absorption and $\rho$ is density. This leaves us with
+\begin{equation}
+\label{eqn:absorbtransfer}
+\frac{dI}{d\tau} = -I,
+\end{equation}
+the final version of the RT problem this method solves. The solution to this 
+equation is 
+\begin{equation}
+\label{eqn:ient}
+I\nu(s) = I_\nu(s_0)e^{-\tau_\nu(s)},
+\end{equation}
+where $I(s_0)$ is the intensity of the source and $\tau_\nu(s)$ is the main
+quantity to be integrated in our method.
+\begin{equation}
+\label{eqn:tauint}
+\tau_\nu(s) = \int_{s_0}^s \kappa_\nu(s) \rho(s) ds
+\end{equation}
+
+One important quantity to compute from the radiation intensity is 
+$\vec{F_\nu}$, specific radiation flux. Radiation flux is used in  
+heating and cooling functions as well as computing the radiation force. 
+Radiation flux is defined as 
+\begin{equation}
+\label{eqn:fluxangle}
+\vec{F_\nu} = \int I_\nu \hat{n} d\Omega.
+\end{equation}
+ince we assume our sources are point sources and the radiation 
+from a source to a resolution element travels along a ``pencil beam''
+
+\section{IMPLEMENTATION}\label{sec:impl}
+\begin{figure*}
+\includegraphics[width=1\linewidth]{Figures/algorithm.pdf}
+\caption{}
+\label{fig:algorithm}
+\end{figure*}
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/refine.pdf}
+\caption{}
+\label{fig:refine}
+\end{figure}
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/cosmofield.pdf}
+\caption{}
+\label{fig:cosmof}
+\end{figure}
+
+
+\section{CODE TESTS}\label{sec:tsts}
+\subsection{Scaling with number of resolution elements}
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/particle_scaling.pdf}
+\caption{}
+\label{fig:pscale}
+\end{figure}
+\subsection{Opening Angle Testing}
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/opening_angle.pdf}
+\caption{}
+\label{fig:openangle}
+\end{figure}
+\subsection{Refinement Criteria Testing}
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/refinement_criteria.pdf}
+\caption{}
+\label{fig:refcrit}
+\end{figure}
+\subsection{Isothermal Spheres}
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/isothermal_spheres.pdf}
+\caption{}
+\label{fig:isosph}
+\end{figure}
+\subsection{Str\"{o}mgren Sphere Test}
+\begin{figure*}
+\includegraphics[width=1\linewidth]{Figures/strom_iso_fraction.pdf}
+\caption{}
+\label{fig:stromiso}
+\end{figure*}
+\begin{figure*}
+\includegraphics[width=1\linewidth]{Figures/strom_fraction.pdf}
+\caption{}
+\label{fig:stromtherm}
+\end{figure*}
+\begin{figure*}
+\includegraphics[width=1\linewidth]{Figures/strom_temp.pdf}
+\caption{}
+\label{fig:stromtemp}
+\end{figure*}
+\section{DISCUSSION AND CONCLUSION}\label{sec:disc}
+
+\section*{Acknowledgements}\label{sec:ackn}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% REFERENCES %%%%%%%%%%
+
+\bibliographystyle{mnras}
+\bibliography{references}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% APPENDICES %%%%%%%%%%
+
+\appendix
+\section{Test Initial Conditions}\label{sec:icnd}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bsp
+\label{lastpage}
+\end{document}
+
+%%%%%%%%%% FIN %%%%%%%%%%

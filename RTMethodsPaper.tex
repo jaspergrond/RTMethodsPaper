@@ -1,11 +1,12 @@
 %%%%%%%%%% PREAMBLE %%%%%%%%%%
 
 %MNRAS style
-\documentclass[fleqn,usenatbib]{mnras}
+\documentclass[fleq,usenatbib]{mnras}
 %default MNRAS packages
 \usepackage{newtxtext,newtxmath}
 \usepackage[T1]{fontenc}
 \usepackage{ae,aecompl}
+\usepackage{color,soul}
 % user packages
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -14,18 +15,19 @@
 %user commands
 \newcommand{\acro}{TREVR}
 \providecommand{\e}[1]{\ensuremath{\times10^{#1}}}
-
+\newcommand{\bigO}[1]{\mathcal{O}\left(#1\right)}
+\newcommand{\NS}{N_{\rm source}}
+\newcommand{\NR}{N_{\rm ray}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%% TITLE PAGE %%%%%%%%%%
 
-\title[]{\acro{}: Tree-based Reverse Ray Tracing 
-in Gasoline}
+\title[]{\acro{}: A general $\bigO{N\log^2N}$ radiative transfer algorithm}
 
-\author[R. M. Woods et al.]{
+\author[J. J. Grond et al.]{
+J. J. Grond,
 R. M. Woods,
-J. J. Grond, %\thanks{E-mail: grondjj@mcmaster.ca},
-J. Wadsley %\thanks{E-mail:  wadsley@mcmaster.ca}
+J. Wadsley \thanks{E-mail:  wadsley@mcmaster.ca}
 and H. M. P. Couchman
 \\
 Department of Physics and Astronomy, McMaster University, Hamilton, Ontario L8S
@@ -33,122 +35,152 @@ Department of Physics and Astronomy, McMaster University, Hamilton, Ontario L8S
 
 \date{Accepted XXX. Received YYY; in original form ZZZ}
 
-\pubyear{2017}
+\pubyear{2018}
 
 \begin{document}
 \label{firstpage}
 \pagerange{\pageref{firstpage}--\pageref{lastpage}}
 \maketitle
 
-% Abstract of the paper
+% abstract of the paper
 \begin{abstract}
-%Temporarily commented out
-%We present \acro{} (Fast Adaptive Hierarchical Radiative Transfer), a novel 
-%algorithm for computing the radiation field in astrophysical simulations. 
-%\acro{} prioritizes the ability to deal with a large number of sources and 
-%computational speed over accuracy, while keeping equilibrium behaviour correct.
-% The algorithm is based on a \emph{tree} data structure similar to many gravity
-% solvers. This allows for computation of radiative transfer in 
-%$\mathcal{O}(N_{\rm sink} \log N_{\rm source})$ time without absorption and 
-%$\mathcal{O}(N_{\rm sink} \log N_{\rm source} \log{N})$ time with absorption. 
-%Its tree based nature also allows it to scale well with number of processors 
-%and be highly tunable in both speed and accuracy. A main feature of \acro{} is 
-%the implementation of a refinement criteria based on the worst case optical 
-%depth of a tree cell, allowing us to save cost whilst being confident in the 
-%accuracy of our solution. The algorithm is also weakly dependent on the energy 
-%band of radiation and the number of bands used, allowing for the radiation 
-%fields of multiple bands to be computed on the fly with a negligible increase 
-%in computational cost. We provide a suite of tests demonstrating the 
-%algorithm's ability to accurately compute fluxes, ionization fronts and 
-%shadows. We also analyze the algorithm's computational complexity, in how it 
-%scales with the number of sources (star particles) and sinks (gas particles). 
-%We also examine how the aforementioned refinement criterion's value affects 
-%speed and accuracy. Finally, we will discuss strengths and shortcomings of this
-% algorithm and how they constrain the niche of problems it can handle.
+We present \acro{} (Tree-based Reverse Ray Tracing), a general algorithm for 
+computing the radiation field in astrophysical simulations. \acro{} 
+prioritizes the ability to handle large numbers of sources and computational 
+speed whilst maintaining a specified level of accuracy via adaptive 
+refinement. \acro{} is based on a \emph{tree} data structure similar to many 
+gravity and hydrodynamics solvers. This allows for computation of the 
+radiation field in $\mathcal{O}(N \log \NS)$ time without 
+absorption and $\mathcal{O}(N \log \NS \log{N})$ time with 
+absorption. This impressive  scaling is made possible by merging sources of 
+radiation according to an opening angle criteria and walking the tree 
+structure to trace a ray. The computational complexity we quote accounts for 
+the use of adaptive refinement, a main feature that is unique to \acro{} among 
+other radiative transfer methods. We provide a suite of tests demonstrating 
+the algorithm's ability to accurately compute fluxes, ionization fronts and 
+shadows. We also analyze the algorithm's computational complexity, in how it 
+scales with the number of sources and sinks. Further examinations of how the 
+aforementioned refinement criterion's value affects computational cost and 
+accuracy are presented. Finally, we discuss strengths and shortcomings of this 
+algorithm, how they constrain the types of problems \acro{} can handle and how 
+these shortcomings can be remedied if possible.
+
 \end{abstract}
 
 % Select between one and six entries from the list of approved keywords.
 % Don't make up new ones.
 \begin{keywords}
-radiative transfer -- methods: numerical -- galaxies
+radiative transfer -- methods: numerical
 \end{keywords}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%% BODY OF PAPER %%%%%%%%%%
 
-\section{INTRODUCTION}\label{sec:intro}
-
+\section{INTRODUCTION}\label{sec:intr}
 Radiation is arguably the most important physical phenomena to the field of
 astrophysics. Almost all of the information we receive from outer space comes 
 in the form of photons we detect on or around earth. Understanding the process 
 of radiative transfer (RT) is key in interpreting this information, as the 
-photons are affected by the medium they travel through on the way to our 
-telescopes and detectors. Interactions between photons and the medium along
- their paths do not only affect the photons themselves, but the matter as well.
- These interactions with baryons exchange energy and momentum, and also affect
- the excitation and ionization states of said baryons, thus determining the 
-chemical and thermodynamic properties of the matter. This in turn makes 
-radiation a driving factor in many of the physical processes we study.
+photons are affected by the medium they travel through on their way to our 
+telescopes and detectors. Interactions between photons and the medium do not 
+only affect the photons themselves but the matter as well. Photons and baryons 
+exchange energy and momentum, affect the excitation and ionization states of 
+said baryons and thus determine the chemical and thermodynamic properties of 
+the bulk medium. This in turn makes radiation a driving factor in many of the 
+physical processes we study.
 
-It may then come as a surprise to some that RT is treated rather poorly in most
- astrophysical simulations, usually as some imposed uniform background. This is
- not because of carelessness or lack of effort, but because RT is inherently a 
-complicated problem. The full RT problem depends on 3 spatial dimensions, 2 
-angular dimensions, frequency and time, and has a characteristic speed of $c$, 
-the speed of light. Also, unlike a force at a distance problem such as gravity,
- RT depends on the intervening material. Because of this complexity, a naive 
-numerical solution for RT would scale with the number resolution elements $N$ 
-like $\mathcal{O}(N^2)$. This makes it impractical to run such an RT method 
-alongside modern gravity and hydrodynamics codes that scale like 
-$\mathcal{O}(NlogN)$.
+On galaxy scales, the question of how feedback mechanisms affect star and 
+galaxy formation is one of these physical processes we can study. Stellar 
+feedback comes in the form of photoionization by ultraviolet (UV) radiation, 
+stellar winds and supernovae (cite here), the latter of which has been 
+a main focus in simulations in previous years (cite a bunch of SN feedback 
+papers?). It is important to note that even though supernovae might be 
+spectacularly powerful events, ionizing radiative output from stellar 
+populations in the UV regime contribute two orders of magnitude more power at 
+early times and about 50 times more energy over the course of a stellar 
+population's lifetime. This is made evident in Fig. \ref{fig:uvsn}, a 
+plot of luminosity output per solar mass as a function of time from stellar 
+populations created via output from the stellar evolution code Starburst99 
+\citep{leithererEt99}. 
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/uvsn.pdf}
+\caption{Luminosity per solar mass as a function of time for a stellar 
+population having a Chabrier initial mass function \citep{chabrier03}.}
+\label{fig:uvsn}
+\end{figure}
+However, the way in which this massive output of UV radiation is deposited 
+and consequently affects the interstellar medium (ISM) is still unclear 
+(cite... from fervent paper - conflicting results from Murray 2011, Dale 
+et al. 2012, Faucher-Gigu`ere et al. 2013, Hopkins et al. 2014).
 
-When it comes to solving RT problem, we can separate methods into two different
-categories by looking at the classical RT equation 
-\citep{mihalasMihalas84}
-\begin{equation} \label{classicrt}
+With such a large amount of energy input from stellar sources and questions 
+still left open about how it affects the ISM, it may then come as a surprise 
+that RT has historically been treated rather poorly in most large scale 
+astrophysical simulations, usually as some imposed uniform background. This is 
+not because of carelessness or lack of effort, but because RT is intrinsically 
+a complicated problem. The complexity of this problem is evident in the 
+classical RT equation \citep[e.g.][]{mihalasMihalas84},
+\begin{equation} \label{eq:classicrt}
 \left[ \frac{1}{c} \frac{\partial}{\partial t} + \mathbf{\hat{n} \cdot \nabla}
  \right] I\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right) = 
 \epsilon\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right) - 
 \alpha\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right) 
 I\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right),
-\end{equation}
-where $I$, $\epsilon$ and $\alpha$ are the intensity, emissivity and extinction
- coefficient respectively which all depend on position $\mathbf{x}$, 
+\end{equation} 
+where $I$, $\epsilon$ and $\alpha$ are the intensity, emissivity and 
+extinction coefficients respectively and all depend on position $\mathbf{x}$, 
 unit direction of light propagation $\mathbf{\hat{n}}$, time $t$ and frequency 
-$\nu$. The difference comes from how different methods treat the speed of 
-light $c$. For methods that use a finite $c$, which is often a 
-reduced speed of light, the partial time derivative remains in equation 
-\ref{classicrt} and the radiation field is advected or ``evolved''. Methods 
-that solve the RT equation in this way, which we will call evolutionary 
-methods, include moment methods like OTVET \citep{gnedinAbel01} and  RAMESE-RT 
-\citep{rosdahlTeyssier15} as well as photon packet propagation methods like 
-TRAPHIC \citep{pawlikSchaye08}, SPHRAY \citep{altayEt08} and SimpleX2 
-\citep{paardekooperEt10}. On the other hand, in limit where $c$ is taken to be 
-infinite, the partial time derivative in equation \ref{classicrt} goes to zero 
-and the radiation field can be computed instantaneously. Methods that solve the
- RT equation in this way, which we will refer to as instantaneous methods, 
-include forward ray tracers such as $\rm C^2Ray$ \citep{mellemaEt06a}, Moray 
-\citep{wiseAbel11} and Fervent \citep{baczynskiEt15} as well as reverse ray 
-tracers such as TreeCol \citep{clarkEt12} and URCHIN \citep{altayTheuns13}.
+$\nu$. Apart from being a seven dimensional problem, RT has a high 
+characteristic speed of $c$, the speed of light. Also, unlike a force at a 
+distance problem such as gravity, RT depends on the properties of the 
+intervening material which is handled by the extinction coefficient $\alpha$.
 
-All of these methods require simplifications to the full RT problem to make 
-them feasible, thus they will all have areas of strength and weakness. These
-strengths and weaknesses define what types of problems they can solve. This 
-makes comparing these methods on an equal footing somewhat confusing, as some 
-authors state how their method scales with resolution elements in the context 
-of the problem their RT method is meant to solve. For example, \cite{clarkEt12}
- state that their reverse ray tracer TreeCol scales with resolution elements 
-like $\mathcal{O}(N\log{N})$. The specific problem they are trying to solve is 
-the calculation of column densities via RT from background radiation, and thus
-the number of sources of radiation they simulate is some small fixed number. 
-They treat the number of sources as a constant factor in their scaling 
-function, and so what is an $\mathcal{O}(N^2)$ method in the general case 
-looks like a much more feasible method at first glance. For this reason we will
-be very careful with scaling statements, using the number of radiation sources 
-$N_{\rm source}$ and sinks $N_{\rm sink}$ where appropriate to make the 
-limitations and possible uses of a given method clear.
+Because of this complexity, a naive numerical solution to the RT problem 
+scales with the number of resolution elements like $\bigO{N^{7/3}}$. This 
+costly scaling is simply a result of the three major parts that go into 
+computing the radiation field in a simulation. Firstly, a radiation field is 
+represented by a simulation's $N$ resolution elements, so the field intensity 
+needs to be computed at $N$ points in the simulation volume. Secondly, each 
+resolution element's intensity value is made up of contributions from $\NS$ 
+sources of radiation. This can also be thought of as $\NS$ rays of light being 
+computed per resolution element. This leads to an already nasty scaling for 
+the total number of rays computed in a simulation going as $\NR = N 
+\times \NS$, which is like $\bigO{N^2}$ assuming the $\NS = N$. This fact 
+alone limits rudimentary RT methods to only small scale problems 
+(such as...?), where the number of sources is only a handful, to avoid 
+$\bigO{N^2}$ scaling. Finally, each ray of light interacts with the medium 
+along its path as mentioned earlier. Since the medium is represented by the 
+simulation's $N$ resolution elements and $N$ is proportional to the simulation 
+volume, a one dimensional ray intersects with $\bigO{N^{1/3}}$ resolution 
+elements. Using the total number of resolution elements interacted with as a 
+measure of computational cost we get that the computational cost is 
+proportional to $N \times \NS \times N^{1/3}$, which is like $\bigO{N^{7/3}}$. 
+This poor scaling with resolution elements makes it unfeasible to simulate RT 
+along with gravity and hydrodynamics methods that scale like $\bigO{N\log N}$. 
+After breaking down the source of computational complexity in the RT problem 
+it is evident that something needs to be done about the strong dependence on 
+$\NS$ and the $N^{1/3}$ cost of computing each ray to attain a feasible RT 
+method.
+
+To avoid the intrinsic complexity of the RT problem, a feasible method would 
+have to solve a simplified RT problem. The first one of these simplifications 
+divides RT methods into two different categories based on how they treat $c$ 
+in Eq. \ref{eq:classicrt}. For methods that use a finite $c$, which is 
+often a reduced speed of light, the partial time derivative remains in 
+Eq. \ref{eq:classicrt} and the radiation field is advected or 
+``evolved''. Methods that solve the RT equation in this way, which we will 
+call evolutionary methods, include moment methods like OTVET 
+\citep{gnedinAbel01} and  RAMESE-RT \citep{rosdahlTeyssier15} as well as 
+photon packet propagation methods like TRAPHIC \citep{pawlikSchaye08}, SPHRAY 
+\citep{altayEt08} and SimpleX2 \citep{paardekooperEt10}. On the other hand, in 
+limit where $c$ is taken to be infinite, the partial time derivative in 
+Eq. \ref{eq:classicrt} goes to zero and the radiation field can be 
+computed instantaneously. Methods that solve the RT equation in this way, 
+which we will refer to as instantaneous methods, include forward ray tracers 
+such as $\rm C^2Ray$ \citep{mellemaEt06a}, Moray \citep{wiseAbel11} and 
+Fervent \citep{baczynskiEt15} as well as reverse ray tracers such as TreeCol 
+\citep{clarkEt12} and URCHIN \citep{altayTheuns13}. 
 
 Instantaneous methods come in the form of ray tracers. Ray tracers are the most
  simple, natural way to go about solving the RT problem. Forward ray tracers 
@@ -157,7 +189,7 @@ phenomena, in hope that they will intersect resolution elements for which the
 radiation field will be computed. Each source needs to compute a number of rays
  comparable to the number of resolution elements to ensure accuracy, 
 meaning forward ray tracers scale with number of resolution elements like 
-$\mathcal{O}(N_{\rm source} N_{\rm sink})$. This scaling limits forward ray 
+$\bigO{\NS N N^{1/3}}$. This scaling limits forward ray 
 tracers to problems with few sources to avoid $\mathcal{O}(N^2)$ like scaling. 
 This also rules out the inclusion of scattering in the method as scatterings 
 are treated as re-emission events and thus all sinks would have to be treated 
@@ -167,17 +199,17 @@ Recently there has been some focus on reverse ray tracing methods
 \citep{clarkEt12, altayTheuns13}. Reverse ray tracers trace rays from the sink 
 particle directly to the sources. This way of tracing the rays has a couple of 
 benefits over forward ray tracing. Firstly, tracing from the sinks guarantees 
-the density distribution is well sampled as apposed to forward ray tracing 
-where one would have to increase the number of rays per sink to guarantee 
-accuracy. Put simply, radiation is computed exactly where it is needed. This 
-is especially advantageous in smoothed particle hydrodynamics (SPH) 
-simulations, as low density regions are represented by few SPH particles, and 
-thus extra work is not done to resolve said regions. Another benefit is that 
-sub time steps can be used. However, just performing a naive reverse ray trace 
-does not negate $\mathcal{O}(N_{\rm source} N_{\rm sink})$ scaling with 
-resolution elements, and so the inability to model many sources remains the 
-most significant barrier current instantaneous methods face when trying to 
-solve the general RT problem.
+the density distribution is well sampled near the resolution element as 
+apposed to forward ray tracing where one would have to increase the number of 
+rays per sink to guarantee accuracy. Put simply, radiation is computed exactly 
+where it is needed. This is especially advantageous in smoothed particle 
+hydrodynamics (SPH) simulations, as low density regions are represented by 
+few SPH particles, and thus extra work is not done to resolve said regions. 
+Another benefit is that sub time steps can be used. 
+However, just performing a naive reverse ray trace does not negate 
+$\bigO{\NS N N^{1/3}}$ scaling with resolution elements, and so the inability 
+to model many sources remains the most significant barrier current 
+instantaneous methods face when trying to solve the general RT problem.
 
 Evolutionary methods do not suffer from the linear dependence on number of 
 sources. The main benefit of evolutionary methods is that they have no 
@@ -190,310 +222,427 @@ partitioning of space into uniform grids. If implemented in a smooth particle
 hydrodynamics (SPH) like scheme, the lack of resolution elements in less dense 
 regions would only exacerbate the directionality problem. 
 
-Photon packet propagation methods, specifically TRAPHIC \citep{pawlikSchaye08},
- perform better in the optically thin regime. TRAPHIC introduces virtual 
-particles (ViPs) to propagate their photon packets in less dense, optically 
-thin regions lacking in SPH particles. They also preserve directionality quite 
-well, however Monte Carlo aspects of how they propagate their photon packets 
-introduce significant noise into their computed radiation field. Monte Carlo
- resampling is shown to reduce this noise but is quite expensive and 
-deteriorates the initially sharp shadows. Both of these methods scale linearly 
-with resolution elements as mentioned before, but are also forced to operate on
- every resolution element. In moment methods the radiation field for every 
-grid cell needs to be computed, and in photon packet propagation methods the 
-photon packets hop particle to particle. In the case of TRAPHIC, their $N$ is 
-even greater than the number of SPH particles including the addition of ViPs. 
-Regardless, TRAPHIC is arguably the best general RT method due to its ability 
-to handle both the optically thick and thin regimes with feasible scaling.
+Photon packet propagation methods, specifically TRAPHIC 
+\citep{pawlikSchaye08}, perform better in the optically thin regime. TRAPHIC 
+introduces virtual particles (ViPs) to propagate their photon packets in less 
+dense, optically thin regions lacking in SPH particles. They also preserve 
+directionality quite well, however Monte Carlo aspects of how they propagate 
+their photon packets introduce significant noise into their computed radiation 
+field. Monte Carlo resampling is shown to reduce this noise but is quite 
+expensive and deteriorates the initially sharp shadows. Both of these methods 
+scale linearly with resolution elements as mentioned before, but are also 
+forced to operate on every resolution element. In moment methods the radiation 
+field for every grid cell needs to be computed, and in photon packet 
+propagation methods the photon packets hop particle to particle. In the case 
+of TRAPHIC, their $N$ is even greater than the number of SPH particles 
+including the addition of ViPs. Regardless, TRAPHIC is arguably the best 
+general RT method due to its ability to handle both the optically thick and 
+thin regimes with feasible scaling.
 
 We hope from this introduction to the state of the art in RT methods it is 
 apparent that there is room for improvement. Although promising work has been 
-done with reverse ray tracers like TreeCol, a general implementation of one has
- yet to be published. There is also the problem of scaling with sources in 
-instantaneous methods. If this could be solved, instantaneous ray tracers could
- compete with the feasibility and improve upon the accuracy of evolutionary
- codes like TRAPHIC.
+done with reverse ray tracers like TreeCol, a general implementation of one 
+has yet to be published. There is also the problem of scaling with sources in 
+instantaneous methods. If this could be solved, instantaneous ray tracers 
+could compete with the feasibility and improve upon the accuracy of 
+evolutionary codes like TRAPHIC.
 
-In this paper we introduce \acro{} (Tree-based Reverse Ray Tracing), a novel 
-method that hopes to address all of the issues presented in the previous 
-paragraph. \acro{} is a reverse ray tracer based on the \cite{barnesHut86} tree
- gravity solver. \acro{} is implemented in the SPH code Gasoline 
-\citep{wadsleyEt03}, but we would like to note that the basic algorithm is not
- SPH or Gasoline specific, \acro{} only requires that the simulation volume be 
-divided hierarchically in space. 
+\section{METHOD}\label{sec:mthd}
+\subsection{Simplifications to the full RT problem}
+Before describing \acro{}, let's first define the 
+simplified version of the classical RT equation the method solves. Since 
+\acro{} is an instantaneous method, $c$ is set to infinity eliminating the 
+partial time derivative in \ref{eq:classicrt} leaving us with the 
+instantaneous RT equation,
+\begin{equation} \label{infcrt}
+\mathbf{\hat{n} \cdot \nabla} I\left(\mathbf{x}, \mathbf{\hat{n}}, t, 
+\nu\right) = \epsilon\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right) - 
+\alpha\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right) 
+I\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right).
+\end{equation}
+The emissivity term in the above equation describes a continuous emitting 
+medium. \acro{} is a numerical method that assumes sources of radiation are 
+discrete point sources. In this case the emissivity term can be dropped and 
+the solution to the RT equation becomes a linear combination of contributions 
+from all sources. Also, since we are considering sources one by one we can 
+start using the path length $s$ between a source and resolution element as our 
+integration element
+\begin{equation}
+\label{eq:combtransfer}
+\frac{dI}{ds} = -\alpha I.
+\end{equation}
 
-A main feature of \acro{} is that sources can be merged via an opening  angle 
-criteria similarly to the Barnes and Hut gravity method. This means that 
-\acro{} scales with sources like $\mathcal{O}(\log N_{\rm source})$, 
-alleviating the linear scaling with sources characteristic of other 
-instantaneous RT methods. Being a reverse ray tracer enables us to easily merge
- sources, as sources interact with a single sink at a time. This is 
-the first time source merging has been implemented in a reverse ray tracer, and
- thus \acro{} is the first general reverse ray tracer that can feasibly operate
- on all sources in a simulation and not just a small, fixed amount of 
-background sources as in TreeCol and URCHIN.
+In this paper we only consider the extinction contributions from 
+absorption. We can then combine the path length and absorption coefficient to 
+solve for intensity by integrating 
+\begin{equation}
+\label{eq:dtau}
+d\tau = \kappa \rho ds, 
+\end{equation}
+the optical depth due to absorption, where $\kappa$ is the opacity due to 
+absorption and $\rho$ is density. This leaves us with
+\begin{equation}
+\label{eq:absorbtransfer}
+\frac{dI}{d\tau} = -I,
+\end{equation}
+the final version of the RT problem this method solves. The solution to this 
+equation is 
+\begin{equation}
+\label{eq:ient}
+I(s) = I(s_0)e^{-\tau(s)},
+\end{equation}
+where $I(s_0)$ is the intensity of the source and $\tau(s)$ is the only
+quantity to be integrated in our method
+\begin{equation}
+\label{eq:tauint}
+\tau(s) = \int_{s_0}^s \kappa(s) \rho(s) ds.
+\end{equation}
 
-\acro{} traces rays per each sink beacuase it is a reverse ray tracer, this 
-adds a linear dependence on the number of sinks. This coupled with source 
-merging means \acro{} can solve the optically thin case 
-$\mathcal{O}(N_{\rm sink} \log N_{\rm source})$ operations. The fact that
- \acro{} depends on a tree-data structure allows it to trace rays through an 
-optically thick medium by traversing the sub-tree between the sink and source 
-which is at most $\log N$ tree cells. This results in scaling with resolution
- elements in the optically thick case that goes like 
-$\mathcal{O}(N_{\rm sink} \log N_{\rm source} \log N)$. This scaling in both 
-the optically thin and thick case makes \acro{} a feasible method as it scales 
-similarly to modern Gravity and Hydro solvers.
+We can use the radiation intensity directly in cooling functions and then take 
+moments of the intensity to obtain useful quantities such as radiation flux 
+\begin{equation}
+\label{eq:flux}
+\mathbf{F} = \int I cos\theta d\Omega \mathbf{\hat{n}},
+\end{equation}
+and radiation pressure
+\begin{equation}
+\label{eq:flux}
+\mathbf{p} = \frac{1}{c}\int I cos^2\theta d\Omega \mathbf{\hat{n}}.
+\end{equation}
+Because we assume our sources of radiation to be true point sources, 
+$cos\theta = 1$. If the angular size of a resolution element relative to the 
+source of radiation is small enough such that the small angle approximation 
+holds true, it should also hold that there is a one to one correspondence 
+between intensity and flux. Thus, flux can be written simply as 
+\begin{equation}
+\label{eq:simpflux}
+\mathbf{F} = I(s_0)e^{-\tau(s)} \mathbf{\hat{n}} = \frac{L}{4\pi s^2}
+e^{-\tau(s)} \mathbf{\hat{n}},
+\end{equation}
+where $L$ is the luminosity of the source of radiation. For the remainder of 
+paper we represent the radiation field as flux values computed via the above 
+expression. 
 
-In the coming sections we will further explain the general method in section 
-\ref{sec:method} and its implementation in section \ref{sec:implement}. Tests 
-of scaling with resolution elements and the method's accuracy as a function of 
-opening angle and refinement criteria will be presented in section 
-\ref{sec:tests}. At the end of section \ref{sec:tests} we will do our best to 
-compare \acro{} to other methods in common RT tests such as the Str\"{o}mgren
- sphere test and dense clump tests used in the \cite{ilievEt06} RT method 
-comparison project. Finally, in section \ref{sec:dandc} we will discuss the 
-method's merits and drawbacks to conclude where \acro{} fits in with other RT 
-methods and what scientific problems it can solve.
+\subsection{Algorithm}\label{sec:algo}
+Please note that although \acro{} has been initially implemented in the 
+Smoothed Particle Hydrodynamics (SPH) code \textsc{Gasoline} 
+\citep{wadsleyEt03}, \acro{} is not specific to \textsc{Gasoline} or SPH. The 
+method only requires that the simulation volume is hierarchically partitioned 
+in space.
+ 
+\begin{figure*}
+\includegraphics[width=1\linewidth]{Figures/algorithm.pdf}
+\caption{}
+\label{fig:algorithm}
+\end{figure*}
+The \acro{} algorithm is based around a tree data structure which partitions 
+the simulation volume hierarchically in space. The smallest resolution 
+elements, SPH gas particles in our case, live in the leaf nodes of the tree
+data structure. The maximum number of resolution elements per leaf node or 
+``bucket'' is a fixed parameter that is set to 10 for all runs in this 
+paper. $N$ resolution elements hold radiation intensity values and 
+represent the radiation field \acro{} computes. 
+
+\subsubsection{Source Merging}
+As mentioned in the introduction, a naive algorithm would compute interactions 
+between a resolution element and  all sources of radiation (SPH star particles 
+in our case). If we assume the number of resolution elements is equal to the 
+number of sources, an infeasible number of interactions would need to be 
+computed, scaling like $\bigO{N^2}$. To mitigate this $N^2$ scaling \acro{} 
+employs source merging similar to particle merging in the \cite{barnesHut86} 
+tree-based gravity solver which has remained common place in astrophysical 
+simulations \citep{benz88,vineSigurdsson98,springelEt01,wadsleyEt03,
+hubberEt11}. Sources of radiation are merged together at their centre of 
+luminosity if they meet an ``opening angle'' criteria. This criteria is 
+defined as 
+\begin{equation}
+\label{eq:openangle}
+\theta_{\rm open} > l/s,
+\end{equation}
+where $l$ is the side length of a tree cell, $r$ is the distance between the 
+centre of luminosity of a source and centre of mass of a resolution element 
+and $\theta_{\rm open}$ is the opening angle, a fixed accuracy parameter. If a 
+group of sources occupy the biggest tree cell that meets this criteria, all 
+sources in that cell are merged into one, considerably reducing the number of 
+interactions \acro{} computes. This is illustrated in the left panel of Fig. 
+\ref{fig:algorithm}, where the grey angle represents a cell whose angular size 
+meets the opening angle criterion.
+
+The cost savings of source merging can be quantified by integrating to compute 
+the number of tree cells that are ``opened'' according to the opening angle 
+criteria. These opened cells will have their sources merged making them a 
+count of $\NS$. We can do this by integrating spherical shells 
+of thickness $dr$ along the distance from a resolution element $r$, and then 
+dividing the sphere volume by the volume of an opened cell, $V_{\rm cell}(r)$.
+\begin{equation}
+\label{eq:nsint}
+\NS = \int_{R_0}^R \frac{4\pi r^2}{V_{\rm cell}(r)} dr
+\end{equation}
+The bounds of the above integral go from $R_0$, the length of a bucket 
+cell, to $R$, the length of the simulation volume. Because the number of 
+particles in a simulation is proportional to the simulation volume, the 
+lower integration limit can be expressed using particle numbers via 
+\begin{equation}
+\label{eq:ratio}
+\frac{R_0}{R} = \sqrt[3]{\frac{N_B}{N}},
+\end{equation} 
+the cubed root of the ratio of the average number of particles per bucket, 
+$N_B$, to the total number of simulation particles. The opened cell volume can 
+also be rewritten by cubing the opening angle criteria
+\begin{equation}
+\label{eq:vcell}
+V_{\rm cell}(r) = l^3 = \theta_{\rm open}^3 r^3.
+\end{equation}
+Substituting gives us the following integral and its solution,
+\begin{equation}
+\label{eq:nssoln}
+\NS = \int_{\left(\frac{N}{N_B}\right)^{-\frac{1}{3}}}^R 
+\frac{4\pi r^2}{\theta_{\rm open}^3} dr
+\propto \log{N/N_B}.
+\end{equation}
+This results means that the number of interactions scales like 
+$\bigO{N \log N}$. This is also the total cost scaling in the optically 
+thin regime, which is unsurprising given the RT problem is almost identical to 
+the gravity problem in the absence of intervening material. That brings up the 
+next part of the algorithm, what to do about tracing a ray in the optically 
+thick regime.
+
+\subsubsection{Tracing Rays}
+In the presence of absorbing material along a ray, the optical depth needs to 
+be computed along said ray by computing the optical depth integral introduced 
+in Eq. \ref{eq:tauint}. To solve this integral numerically, we traverse the 
+tree between the interacting source and resolution element to build up the 
+optical depth. This is possible because the tree is partitioned in and fills 
+space, thus all the intervening material should be contained in the sub-tree 
+we traverse. Making use of properties computed during the tree build, we can 
+compute the optical depth of a piece of the ray using the geometry of the cell 
+and ray as well as the average density and opacity in the cell
+\begin{equation}
+\label{eq:taui}
+\tau_i = \bar{\rho}_i \bar{\kappa}_i s_i.
+\end{equation}
+The total optical depth is then summed up during the tree walk,
+\begin{equation}
+\label{eq:tausum}
+\tau = \sum_i \tau_i,
+\end{equation}
+giving us everything needed to evaluate Eq. \ref{eq:simpflux}. This process 
+is also illustrated in the left panel of Fig. \ref{fig:algorithm}, where there 
+are two important things to note. Firstly, since we are performing a reverse 
+ray trace similar to that of URCHIN \citep{altayTheuns13}, the resolution 
+element denoted by the black circle is intrinsically well resolved at the 
+bucket cell (denoted by the blue cell) level. However, the second point is 
+that as the tree is walked upwards space becomes less resolved. In Fig. 
+\ref{fig:algorithm} the colour of highlighted cells corresponds to which 
+pieces of the ray their properties are used to compute. It should be apparent 
+that the central parts of the ray are less resolved (the green cell) and as 
+you move towards the source or resolution element the ray becomes more 
+resolved (the red and orange cells). This can be looked at in two ways. 
+If the medium is uniform, the algorithm can be extremely efficient 
+while still being able to resolve a sharp feature in the radiation field such 
+as an ionization front. However, if the medium is highly irregular along the 
+ray the algorithm will not be to resolve sharp density distributions which 
+could significantly alter the optical depth. Adaptive refinement is needed 
+during the tree walk to accurately resolve the medium along the ray.
+
+\subsubsection{Adaptive Refinement}
+Consider the right panel in Fig. \ref{fig:algorithm}. A dense blob of gas 
+to be resolved resides in the orange highlighted cell. At the point in the 
+tree walk where we reach the orange highlighted cell in the left panel, a 
+decision needs to be made on whether the current cell sufficiently represents 
+the media. This decision is made by a refinement criteria. If the cell passes 
+the criteria to refine, rather than using its average properties we 
+recursively check the cell's children until the criteria fails. Thus building 
+a better resolved section of the ray. 
+
+Difficulty comes in choosing a refinement criteria that is both accurate and 
+efficient. Ideally, the criteria should be true when an average optical depth 
+in a region may not be accurate to the true distribution, such as a clumpy 
+medium where the average density and opacity is much higher than the 
+``effective'' density and opacity \citep{varosiDwek99, hegmanKegel03}. For 
+this reason we have chosen optical depth to be the basis of our refinement 
+criteria.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/refine.pdf}
+\caption{}
+\label{fig:refine}
+\end{figure}
+Our optical depth based refinement criteria is unique to \acro. Consider two 
+rays through through a large cell as in Fig. \ref{fig:refine} (note that his 
+description is simplified to 2D). These rays represent what the case would be 
+if properties of the children were used instead of the parent cell. We can 
+compute the minimum and maximum absorption coefficients $\alpha_{\rm min}$ and 
+$\alpha_{\rm max}$, via their average density and opacity values computed 
+during the tree build. This multiplied by the intersection length $l$ gives us 
+the minimum and maximum optical depths, $\tau_{\rm min}$ and $\tau_{\rm max}$. 
+We can then test the following refinement criteria
+\begin{equation}
+\label{eq:refcrit}
+\tau_{\rm refine} < \tau_{\rm max} - \tau_{\rm min},
+\end{equation}
+and refine if it is true. The fractional error in flux for a chosen value of 
+$\tau_{\rm refine}$ is
+\begin{equation}
+\label{eq:reffrac}
+\frac{F_1 - F_2}{F_1} \leq 1 - e^{-\tau_{\rm max}-\tau_{\rm max}} 
+< \tau_{\rm refine},
+\end{equation}
+for small $tau$, making the refinement criteria a convenient choice of 
+parameter for guaranteeing accuracy.
+
+If the refinement criteria passes at the bucket level, individual particles 
+within a bucket are considered. An straight forward $N^2$ ray tracing scheme 
+similar to SPHRay \citep{altayEt08} can be performed. This should contribute 
+negligible cost to the algorithm as the number of particles in a bucket is 
+less than 10.
+
+Fully characterizing the computational cost of the algorithm including the 
+addition of adaptive refinement follows the same method as used earlier. 
+However, now instead of integrating the number of sources we integrate the 
+total number of ray segments computed. We will look at two cases, not refining 
+at all and fully refining down to the bucket level. This will give us upper 
+and lower bound for the algorithms scaling as characterizing the refinement 
+between these extremes depends on the specific density and opacity 
+distributions being operated on.
+
+First let's consider the case where the refinement criteria always passes and 
+all rays are resolved down to the bucket level. The number of segments per ray 
+is then just the length of a ray divided by the size of a bucket. We can 
+express this as
+\begin{equation}
+\label{eq:nseg}
+N_{\rm seg} = \frac{r}{R_0} = \frac{r}{R}\left(\frac{N}{N_B}\right)^\frac{1}{3}
+\end{equation}
+after substituting Eq. \ref{eq:ratio} in for $R_0$. Since $\NS$ is also the 
+number of rays computed, the total number of ray segments computed is just Eq. 
+\ref{eq:nsint} multiplied by the number of ray segments
+\begin{equation}
+\label{eq:nsegint}
+N_{\rm seg} = \int_{\left(\frac{N}{N_B}\right)^{-\frac{1}{3}}}^R 
+\frac{4\pi r^2}{\theta_{\rm open}^3}
+\frac{r}{R}\left(\frac{N}{N_B}\right)^\frac{1}{3} dr
+\propto N(2N/N_B)^\frac{1}{3}.
+\end{equation}
+This results means that the total cost of the algorithm scales like 
+$\bigO{N^{4/3}}$ in the worst case.
+
+In the case were the refinement criteria never passes, the ray is split into 
+segments made up of the cells traversed in the tree walk of the sub-tree going 
+from source to resolution element. The number of cells traversed in a tree walk
+is equal to the logarithm of the number of leaf nodes contained within the 
+sub-tree. The number of leaf nodes in the sub-tree is also given by Eq. 
+\ref{eq:nseg}, so by taking the logarithm of Eq.\ref{eq:nseg} and adding two 
+for the two buckets on eiter side of the sub-tree we come to
+\begin{equation}
+\label{eq:nseg2}
+N_{\rm seg} = \log_2\left[\frac{r}{R}\left(
+\frac{N}{N_B}\right)^\frac{1}{3}\right],
+\end{equation}
+where the logarithm is base two as \acro{} is implemented with a binary tree. 
+Like before we multiply Eq. \ref{eq:nsint} by the number of ray segments and 
+integrate the following
+\begin{equation}
+\label{eq:nsegint2}
+N_{\rm seg} = \int_{\left(\frac{N}{N_B}\right)^{-\frac{1}{3}}}^R 
+\frac{4\pi r^2}{\theta_{\rm open}^3}
+\log_2\left[\frac{r}{R}\left(
+\frac{N}{N_B}\right)^\frac{1}{3}\right] dr
+\propto N\log^2(128 N/N_B).
+\end{equation}
+This results means that the total cost of the algorithm scales like 
+$\bigO{N\log^2N}$ in the best case.
+
+\subsection{Cosmological Background Radiation}
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/cosmofield.pdf}
+\caption{}
+\label{fig:cosmof}
+\end{figure}
+In order to treat cosmological simulations properly we must account for the 
+radiation coming from the rest of the universe outside of the simulation 
+volume. Most current codes apply a constant UV field to the entire box, 
+essentially the lowest order approximation possible. Some specialized codes 
+like URCHIN {altayTheuns13} do a reverse ray trace to the edge of the 
+box, where the background flux is assumed to be coming from. Others, such as 
+TRAPHIC {pawlikSchaye08} allow their ray trace to be periodic. We believe
+that this periodic treatment is problematic for reasons we will explain at the
+end of this subsection (well... we haven't figured it out yet). 
+
+Instead, we have implemented a method involving ``background sources''. 
+``Background'' particles are distributed in a spiral pattern on the surface of 
+a sphere at the very edge of the simulation volume (or at a large distance if 
+required) and the number of sources can be varied to match the required 
+angular resolution  of the background. Finding the flux at the centre of a 
+sphere of sources is a problem akin to Newton's Shell Theorem. However, 
+because the intensity does not cancel like force, the solution differs and is 
+as follows:
+\begin{equation}
+\label{eq:cosmof}
+F(r) = \frac{L}{8\pi R} \ln \left(\frac{R+r}{R-r}\right),
+\end{equation}
+where $L$ is the total luminosity of the emitting shell, $R$ is the radius of 
+the sphere and $r$ is the radius the flux is being computed at. The shape of 
+the function can be seen in Figure \ref{fig:cosmof} where we have plotted the 
+flux as a function of radius for a homogeneous, optically thin test volume.
+
+Note that due to the logarithm in equation \ref{eq:cosmof}, the flux is nearly 
+constant at small radii. Since most cosmological zoom in simulations only 
+consider gas at a fairly small radius, this setup of background sources is an 
+acceptable method to provide a cosmological background flux. A benefit of this 
+method is that we can use all of the existing machinery described in the 
+methods section, and only have to add temporary background star particles as 
+the source of the background radiation. This way, there is no need to create 
+periodic copies of the simulation volume (talk to James, explain <-this here).
 
 
 
-\section{METHOD}\label{sec:method}
-\section{Implementation}\label{sec:implement}
-Temporarily commented out
-%We now present the \acro{} algorithm. \acro{} prioritizes the ability to deal 
-%with a large number of sources over high accuracy, though we still insist 
-%equilibrium behaviour be correct. In order to accomplish this, we start by 
-%making some simplifying assumptions to the radiative transfer equation
-%\begin{equation}
-%\label{eq:combtransfer}
-%\frac{dI_\nu}{ds} = -\left(\alpha_\nu + \sigma_\nu)(I_\nu - S_\nu\right),
-%\end{equation}
-%where $\alpha_\nu$ and $\sigma_\nu$ are the specific absorption and scattering 
-%coefficients respectively, $S_\nu$ is the combined source function for 
-%absorption and scattering, and $I_\nu$ is the specific intensity.
-%
-%We can simplify \acro{} to only include absorption. This still allows us
-%to treat scattering, as it can be expressed as an absorption followed by an 
-%emission. For now though, we only account for absorption by treating star 
-%particles as emitters and gas particles as absorbers. In the future one could 
-%implement scattering by simply treating gas particles as emitters \textit{and}
-%absorbers (more discussion on this in section \ref{sec:dandc}). This reduces 
-%equation \ref{eq:combtransfer} to
-%\begin{equation}
-%\label{eq:absorbtransfer}
-%\frac{dI_\nu}{d\tau_\nu} = -I_\nu + S_\nu,
-%\end{equation}
-%where $\tau_\nu$ is absorption-only optical depth and is defined as
-%\begin{equation}
-%\label{eq:tau}
-%d\tau_\nu = \alpha_\nu ds = \rho \kappa_\nu ds,
-%\end{equation}
-%where $\rho$ is density and $\kappa_\nu$ is specific opacity due to absorption.
-%
-%It is useful to consider only absorption, as many astrophysical simulations 
-%only model a single or few sources. This causes the emission coefficient to be 
-%zero at most points. In our case we only consider star particles to be emitters,
-% meaning we have a non emitting medium along a ray. This reduces equation 
-%\ref{eq:absorbtransfer} by setting the source function to 0 and setting 
-%$I_\nu$ to be the initial intensity from a single star particle $I_\nu(0)$ 
-%\begin{equation}
-%\label{eq:absorbsoln}
-%I_\nu(\tau_\nu) = I_\nu(0)e^{-\tau_\nu}.
-%\end{equation}
-%This now allows us to turn the initial integral over all sources to a sum of
-%diminished contributions from each star particle.
-%
-%We compute the radiation field as a flux magnitude, as this is the quantity most
-% useful to applications of our algorithm. When expressed as a flux 
-%\ref{eq:absorbsoln} becomes,
-%\begin{equation}
-%\label{eq:flux}
-%F_\nu = \frac{L_\nu}{4\pi s^2} e^{-\tau_\nu},
-%\end{equation}
-%where $L_\nu$ is the specific luminosity of the star particle and $s$ is the 
-%distance between the star particle and the absorbing gas particle. We can then 
-%sum this equation over all contributing star particles to find the flux at 
-%the gas particle in question. This summation is what \acro{} computes for all 
-%gas-type SPH particles in a simulation, thus approximating the radiation field.
-%
-%Please note that \acro{} has been implemented in the Smoothed Particle 
-%Hydrodynamics (SPH) code \textsc{Gasoline} \citep{wadsleyEt03}. However, 
-%\acro{} is \emph{not} specific to \textsc{Gasoline} or SPH. We only require 
-%that the simulation volume can be hierarchically partitioned in space.
-%
-%\subsection{The Optically Thin Regime}
-%In the absence of absorbing material, the optical depth is zero and equation 
-%\ref{eq:flux} becomes just $L/4\pi s^2$. This problem is almost identical to 
-%gravity, and so we use the same tree-based technique as gravity to solve it. 
-%The tree-based gravity solver of \citet{barnesHut86} has become commonplace in 
-%astrophysical simulations 
-%\citep{hubberEt11,wadsleyEt03,springelEt01,vineSigurdsson98,benz88}. Like the 
-%Barnes \& Hut algorithm our optically thin method should scale with resolution
-% elements like $\mathcal{O}(N\log{N})$. In our case the $N$ factor represents 
-%the number of gas particles ($N_{\rm sink}$), and the $\log{N}$ factor 
-%represents the number of emitting particles ($N_{\rm source}$). This means that
-%for the optically thin case we should see scaling with number of sinks and 
-%sources go as $\mathcal{O}(N_{\rm sink} \log{N_{\rm source}})$. 
-%
-%In our \textsc{Gasoline} implementation we use a binary tree. During the tree 
-%build process we can compute useful average properties of tree cells such as 
-%total luminosity, centre of luminosity, average density and average opacity 
-%(the latter two are used in the optically thick regime). Computing the 
-%radiation field is accomplished by traversing the tree structure. Receiving gas
-% particles which live in the leaf nodes of the tree are looped over. An opening
-% angle criterion, just as in gravity, is used to decide on how the gas 
-%particles interact with the emitters.
-%
-%Note that we already have used early versions of this algorithm to
-% investigate the effects of ionizing feedback on gas cooling in galaxies
-%\citep{kannanEt14}.
-%
-%\subsection{The Optically Thick Regime}
-%In the presence of absorbing material along the ray, we need to compute the 
-%optical depth along said ray. To do this we traverse the tree from the 
-%interacting nodes to their common parent node to build up the optical depth 
-%along the ray. This is possible because the tree is partitioned in space, thus
-%all intervening material should be contained in the sub-tree we traverse. Using
-%the average properties computed in the tree build we can compute the optical 
-%depth of a piece of the ray using the geometry of the cell and ray, and the 
-%average density and opacity
-%\begin{equation}
-%\label{eq:taui}
-%\tau_i = \bar{\rho_i} \bar{\kappa_i} s_i.
-%\end{equation}
-%The total optical depth is then summed up during the tree walk,
-%\begin{equation}
-%\label{eq:tausum}
-%\tau = \sum_i \tau_i,
-%\end{equation}
-%giving us everything needed to evaluate equation \ref{eq:flux}. Because of this
-% extra tree walk another $\log N$ factor can be added to the scaling equation 
-%and so we would expect the scaling with resolution elements to now look like
-%$\mathcal{O} (N_{\rm sink} \log N_{\rm source} \log N)$. This algorithm is 
-%depicted in the left half of figure \ref{fig:tree}
-%
-%Since we are calculating the radiation field at the receiving cell we are doing
-% a process similar to a reverse ray trace, like URCHIN \citep{altayTheuns13}. 
-%One advantage of reverse ray tracing is that rays are associated with with 
-%sinks rather than the source. Dense regions near the sink and source are 
-%therefore automatically well sampled and radiative transfer is computed 
-%exactly where it needs to be. Another benefit is that the simulation can make 
-%use of sub time steps. The problem with this simple method is that as the 
-%tree is traversed upwards the volume elements become larger and accuracy can be
-% lost. That makes this algorithm very efficient at computing the radiation 
-%field for uniform density and opacity distributions, but highly inaccurate when
-% dealing with sharp density and opacity gradients along the ray. To handle 
-%these situations a method of refinement is needed.
-%
-%\subsection{Refinement}
-%Refinement is a straightforward addition to the algorithm. At a point in the 
-%tree walk where the average properties of the cell would be considered, we 
-%check to see if the current cell passes some refinement criteria. If the cell 
-%passes the criteria to refine, rather than using the average properties we 
-%recursively check the cell's children until the criteria fails building a 
-%better resolved  section of the ray. This addition to the algorithm is depicted
-% in the right half of figure \ref{fig:tree}
-%\begin{figure*}
-%\includegraphics[width=1\linewidth]{Figures/algorithm.png}
-%\caption{Depiction of the \acro{} algorithm with and without the need for 
-%refinement (left and right respectively.)}
-%\label{fig:tree}
-%\end{figure*}
-%
-%Difficulty comes in choosing a refinement criteria that is both accurate and 
-%efficient. Ideally, the criteria should be true when an average optical depth 
-%in a region may not be accurate to the true distribution, such as a clumpy 
-%medium where the average opacity is much higher than the ``effective'' opacity
-% \citep{hegmanKegel03,varosiDwek99}.
-%
-%Our choice of refinement criteria is based on optical depth, and is unique to 
-%the \acro{} algorithm. Consider two rays through a large cell (see figure 
-%\ref{fig:refine}, note that this description is simplified to 2D).
-%\begin{figure}
-%\includegraphics[width=0.45\textwidth]{Figures/refine.png}
-%\caption{refine.pdf}
-%\label{fig:refine}
-%\end{figure}
-%These rays represent what the case would be if the properties of the children 
-%were used instead of the parent cell. We can calculate the minimum and maximum 
-%absorption coefficients $\alpha_{\rm min}$ and $\alpha_{\rm max}$, via their 
-%average density and opacity values computed during the tree build. This 
-%multiplied by the intersection $l$, gives us the minimum and maximum optical 
-%depths, $\tau_{\rm min}$ and $\tau_{\rm max}$. We can then test the following 
-%refinement criteria
-%\begin{equation}
-%\tau_{\rm refine} < \tau_{\rm max} - \tau_{\rm min},
-%\end{equation}
-%and refine if it is true. The fractional error in flux for a chosen value of 
-%$\tau_{\rm refine}$ is 
-%\begin{equation}
-%{\rm Fractional Error} = \frac{F_1-F_2}{F_1} \leq 1 - e^{(-\tau_{\rm max} - 
-%\tau_{\rm min})} < \tau_{\rm refine},
-%\end{equation}
-%for small $\tau$, making the refinement criteria a convenient choice of 
-%parameter for guaranteeing accuracy.  This criteria is conservative, as it 
-%assumes the worst case difference in optical depth. We suspect there is room 
-%for improvement in terms of efficiency.
-%
-%If very high accuracy is required, sub-leaf node refinement is possible. If a 
-%leaf was reached during refinement and still passes the refinement criteria, 
-%the individual particles in the leaf can be considered. A ray tracing scheme 
-%through the cell similar to SPHRay \citep{altayEt08} can be performed. 
-%The machinery to do this is implemented in \acro{}.
-%
-%\subsection{Cosmological Background Radiation}
-%In order to treat cosmological simulations properly we must account for the 
-%radiation coming from the rest of the universe outside of the simulation 
-%volume. Most current codes apply a constant UV field to the entire box, 
-%essentially the lowest order approximation possible. Some specialized codes 
-%like URCHIN \citep{altayTheuns13} do a reverse ray trace to the edge of the 
-%box, where the background flux is assumed to be coming from. Others, such as 
-%TRAPHIC \citep{pawlikSchaye08} allow their ray trace to be periodic. We believe
-% that this periodic treatment is problematic for reasons we will explain at the
-% end of this subsection. 
-%
-%Instead, we have implemented a method involving ``background sources''. 
-%``Background'' particles are distributed in a spiral pattern on the surface of 
-%a sphere at the very edge of the simulation volume (or at a large distance if 
-%required) and the number of sources can be varied to match the required angular
-% resolution  of the background. Finding the flux at the centre of a sphere of 
-%sources is a problem akin to Newton's Shell Theorem. However, because the 
-%intensity does not cancel like force, the solution differs and is as follows:
-%\begin{equation}\label{eq:cosmofield}
-%F(r) = \frac{L}{8\pi R} \ln \left(\frac{R+r}{R-r}\right),
-%\end{equation}
-%where $L$ is the total luminosity of the emitting shell, $R$ is the radius of 
-%the sphere and $r$ is the radius the flux is being computed at. The shape of 
-%the function can be seen if Figure \ref{fig:cosmofield}
-%\begin{figure}
-%\label{fig:cosmofield}
-%\includegraphics[width=0.5\textwidth]{Figures/cosmofield.png}
-%\caption{The distribution of flux that particles receive due to the 
-%cosmological background sources when distributed in a spherical shell on at the
-% edge of the simulation box. Note that the value of the flux at the centre can
-% be easily scaled by simply scaling $L$, the luminosity of all sources on the 
-%sphere. The important property is the near constant flux at small radii. In
-% this example, we have used 1024 background sources. The number of sources 
-%determines the width of the peak.}
-%\end{figure}
-%where we have plotted the flux as a function of radius for a homogeneous,
-%optically thin test volume.
-%
-%We note that due to the logarithm in equation \ref{eq:cosmofield}, the flux is
-% nearly constant at small radii. Since most cosmological zoom in simulations 
-%only consider gas at a fairly small radius, this setup of background sources is
-% an acceptable method to provide a cosmological background flux. A benefit of
-% this method is that we can use all of the existing machinery described in the 
-%methods section, and only have to add temporary background star particles as 
-%the source of the background radiation. This way, there is no need to create 
-%periodic copies of the simulation volume. **explain <-this here**
-%
-\section{CODE TESTS}\label{sec:tests}
 
-\section{DISCUSSION AND CONCLUSION}\label{sec:dandc}
 
-\section*{Acknowledgements}
+\section{CODE TESTS}\label{sec:tsts}
+\subsection{Scaling with number of resolution elements}
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/particle_scaling.pdf}
+\caption{}
+\label{fig:pscale}
+\end{figure}
+\subsection{Opening Angle Testing}
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/opening_angle.pdf}
+\caption{}
+\label{fig:openangle}
+\end{figure}
+\subsection{Refinement Criteria Testing}
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/refinement_criteria.pdf}
+\caption{}
+\label{fig:refcrit}
+\end{figure}
+\subsection{Isothermal Spheres}
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/isothermal_spheres.pdf}
+\caption{}
+\label{fig:isosph}
+\end{figure}
+\subsection{Str\"{o}mgren Sphere Test}
+\begin{figure*}
+\includegraphics[width=1\linewidth]{Figures/strom_iso_fraction.pdf}
+\caption{}
+\label{fig:stromiso}
+\end{figure*}
+\begin{figure*}
+\includegraphics[width=1\linewidth]{Figures/strom_fraction.pdf}
+\caption{}
+\label{fig:stromtherm}
+\end{figure*}
+\begin{figure*}
+\includegraphics[width=1\linewidth]{Figures/strom_temp.pdf}
+\caption{}
+\label{fig:stromtemp}
+\end{figure*}
+\section{DISCUSSION AND CONCLUSION}\label{sec:disc}
+
+\section*{Acknowledgements}\label{sec:ackn}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -507,7 +656,7 @@ Temporarily commented out
 %%%%%%%%%% APPENDICES %%%%%%%%%%
 
 \appendix
-
+\section{Test Initial Conditions}\label{sec:icnd}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \bsp

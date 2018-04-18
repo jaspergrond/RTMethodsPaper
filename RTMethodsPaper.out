@@ -1,5 +1,13 @@
 \BOOKMARK [1][-]{section.1}{INTRODUCTION}{}% 1
 \BOOKMARK [1][-]{section.2}{METHOD}{}% 2
-\BOOKMARK [1][-]{section.3}{Implementation}{}% 3
-\BOOKMARK [1][-]{section.4}{CODE TESTS}{}% 4
-\BOOKMARK [1][-]{section.5}{DISCUSSION AND CONCLUSION}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Simplifications to the full RT problem}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Algorithm}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Cosmological Background Radiation}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{CODE TESTS}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Scaling with number of resolution elements}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Opening Angle Testing}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.3}{Refinement Criteria Testing}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.4}{Isothermal Spheres}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.5}{Str\366mgren Sphere Test}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{DISCUSSION AND CONCLUSION}{}% 12
+\BOOKMARK [1][-]{section.A1}{Test Initial Conditions}{}% 13

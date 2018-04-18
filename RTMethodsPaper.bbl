@@ -39,6 +39,15 @@
 {Barnes} J.,  {Hut} P.,  1986, \mn@doi [\nat] {10.1038/324446a0}, \href
   {http://adsabs.harvard.edu/abs/1986Natur.324..446B} {324, 446}
 
+\bibitem[\protect\citeauthoryear{{Benz}}{{Benz}}{1988}]{benz88}
+{Benz} W.,  1988, \mn@doi [Computer Physics Communications]
+  {10.1016/0010-4655(88)90027-6}, \href
+  {http://adsabs.harvard.edu/abs/1988CoPhC..48...97B} {48, 97}
+
+\bibitem[\protect\citeauthoryear{{Chabrier}}{{Chabrier}}{2003}]{chabrier03}
+{Chabrier} G.,  2003, \mn@doi [\pasp] {10.1086/376392}, \href
+  {http://adsabs.harvard.edu/abs/2003PASP..115..763C} {115, 763}
+
 \bibitem[\protect\citeauthoryear{{Clark}, {Glover}  \& {Klessen}}{{Clark}
   et~al.}{2012}]{clarkEt12}
 {Clark} P.~C.,  {Glover} S.~C.~O.,   {Klessen} R.~S.,  2012, \mn@doi [\mnras]
@@ -51,11 +60,22 @@
   {10.1016/S1384-1076(01)00068-9}, \href
   {http://adsabs.harvard.edu/abs/2001NewA....6..437G} {6, 437}
 
-\bibitem[\protect\citeauthoryear{{Iliev} et~al.,}{{Iliev}
-  et~al.}{2006}]{ilievEt06}
-{Iliev} I.~T.,  et~al., 2006, \mn@doi [\mnras]
-  {10.1111/j.1365-2966.2006.10775.x}, \href
-  {http://adsabs.harvard.edu/abs/2006MNRAS.371.1057I} {371, 1057}
+\bibitem[\protect\citeauthoryear{{Hegmann} \& {Kegel}}{{Hegmann} \&
+  {Kegel}}{2003}]{hegmanKegel03}
+{Hegmann} M.,  {Kegel} W.~H.,  2003, \mn@doi [\mnras]
+  {10.1046/j.1365-8711.2003.06543.x}, \href
+  {http://adsabs.harvard.edu/abs/2003MNRAS.342..453H} {342, 453}
+
+\bibitem[\protect\citeauthoryear{{Hubber}, {Batty}, {McLeod}  \&
+  {Whitworth}}{{Hubber} et~al.}{2011}]{hubberEt11}
+{Hubber} D.~A.,  {Batty} C.~P.,  {McLeod} A.,   {Whitworth} A.~P.,  2011,
+  \mn@doi [\aap] {10.1051/0004-6361/201014949}, \href
+  {http://adsabs.harvard.edu/abs/2011A%26A...529A..27H} {529, A27}
+
+\bibitem[\protect\citeauthoryear{{Leitherer} et~al.,}{{Leitherer}
+  et~al.}{1999}]{leithererEt99}
+{Leitherer} C.,  et~al., 1999, \mn@doi [\apjs] {10.1086/313233}, \href
+  {http://adsabs.harvard.edu/abs/1999ApJS..123....3L} {123, 3}
 
 \bibitem[\protect\citeauthoryear{{Mellema}, {Iliev}, {Alvarez}  \&
   {Shapiro}}{{Mellema} et~al.}{2006}]{mellemaEt06a}
@@ -65,7 +85,9 @@
 
 \bibitem[\protect\citeauthoryear{{Mihalas} \& {Mihalas}}{{Mihalas} \&
   {Mihalas}}{1984}]{mihalasMihalas84}
-{Mihalas} D.,  {Mihalas} B.~W.,  1984, {Foundations of radiation hydrodynamics}
+{Mihalas} D.,  {Mihalas} B.~W.,  1984, {Foundations of radiation
+  hydrodynamics}.
+Courier Corporation
 
 \bibitem[\protect\citeauthoryear{{Paardekooper}, {Kruip}  \&
   {Icke}}{{Paardekooper} et~al.}{2010}]{paardekooperEt10}
@@ -83,6 +105,23 @@
   {Teyssier}}{2015}]{rosdahlTeyssier15}
 {Rosdahl} J.,  {Teyssier} R.,  2015, \mn@doi [\mnras] {10.1093/mnras/stv567},
   \href {http://esoads.eso.org/abs/2015MNRAS.449.4380R} {449, 4380}
+
+\bibitem[\protect\citeauthoryear{{Springel}, {Yoshida}  \& {White}}{{Springel}
+  et~al.}{2001}]{springelEt01}
+{Springel} V.,  {Yoshida} N.,   {White} S.~D.~M.,  2001, \mn@doi [\na]
+  {10.1016/S1384-1076(01)00042-2}, \href
+  {http://adsabs.harvard.edu/abs/2001NewA....6...79S} {6, 79}
+
+\bibitem[\protect\citeauthoryear{{V{\'a}rosi} \& {Dwek}}{{V{\'a}rosi} \&
+  {Dwek}}{1999}]{varosiDwek99}
+{V{\'a}rosi} F.,  {Dwek} E.,  1999, \mn@doi [\apj] {10.1086/307729}, \href
+  {http://adsabs.harvard.edu/abs/1999ApJ...523..265V} {523, 265}
+
+\bibitem[\protect\citeauthoryear{{Vine} \& {Sigurdsson}}{{Vine} \&
+  {Sigurdsson}}{1998}]{vineSigurdsson98}
+{Vine} S.,  {Sigurdsson} S.,  1998, \mn@doi [\mnras]
+  {10.1046/j.1365-8711.1998.01325.x}, \href
+  {http://adsabs.harvard.edu/abs/1998MNRAS.295..475V} {295, 475}
 
 \bibitem[\protect\citeauthoryear{{Wadsley}, {Stadel}  \& {Quinn}}{{Wadsley}
   et~al.}{2004}]{wadsleyEt03}
