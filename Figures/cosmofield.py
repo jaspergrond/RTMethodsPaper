@@ -22,7 +22,7 @@ r = np.linspace(0.0001,1,10000)
 flux = F_r(r, 0.5)
 rSim = s.g['r']
 fluxSim = s.g['radFlux']
-plt.scatter(rSim,fluxSim, label = 'simulation', c = '#ff7f0e', rasterized = True)
+plt.scatter(rSim,fluxSim, label = 'simulation', c = '#ff7f0e')
 plt.plot(r, flux, label = 'solution', c = 'k')
 plt.plot([0.5,0.5], [1e-1,1e2], linestyle = ':', label = r'$\frac{1}{2}$box-width', c = 'k')
 plt.plot([0.5,0.5], [3.5e0,1e2], c = 'k')

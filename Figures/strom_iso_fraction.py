@@ -7,13 +7,16 @@ acro = "TREVR"
 
 path = "/home/grondjj/Data/RadTransfer/Stromgren/"
 
-i128_path = '/home/grondjj/Data/RadTransfer/Stromgren/tau_0.01/strom128_iso/'
-i064_path = '/home/grondjj/Data/RadTransfer/Stromgren/tau_0.01/strom64_iso/'
+i064_path = path + 'runs/bigboys/strom064_iso/'
+i128_path = path + 'runs/bigboys/strom128_iso/'
+i256_path = path + 'runs/bigboys/strom256_iso/'
 
-i128_030 = pyn.load(i128_path + 'strom128_iso.00060')
 i064_030 = pyn.load(i064_path + 'strom64_iso.00060')
-i128_500 = pyn.load(i128_path + 'strom128_iso.01000')
+i128_030 = pyn.load(i128_path + 'strom128_iso.00060')
+i256_030 = pyn.load(i256_path + 'strom256_iso.00060')
 i064_500 = pyn.load(i064_path + 'strom64_iso.01000')
+i128_500 = pyn.load(i128_path + 'strom128_iso.01000')
+i256_500 = pyn.load(i256_path + 'strom256_iso.01000')
 
 f, (ax1, ax2) = plt.subplots(1,2, sharey=True, figsize = (13,6.3))
 
@@ -95,10 +98,20 @@ bins_128 = (bins_128[:-1]+bins_128[1:])/2
 HI_128 /= counts_128
 HII_128 = 1-HI_128
 
+HI_256, bins_256 = np.histogram(i256_030.g['r'], weights = i256_030.g['HI'],
+    bins = nbins)
+counts_256, bins_256 = np.histogram(i256_030.g['r'], bins = nbins)
+bins_256 = (bins_256[:-1]+bins_256[1:])/2
+HI_256 /= counts_256
+HII_256 = 1-HI_256
+
+
 ax1.plot(bins_064/L, HI_064, c='k', ls='-.') 
-ax1.plot(bins_128/L, HI_128, c='k', ls='-')
+ax1.plot(bins_128/L, HI_128, c='k', ls='--')
+ax1.plot(bins_256/L, HI_256, c='k', ls='-')
 ax1.plot(bins_064/L, 1-HI_064, c='k', ls='-.') 
-ax1.plot(bins_128/L, 1-HI_128, c='k', ls='-')
+ax1.plot(bins_128/L, 1-HI_128, c='k', ls='--')
+ax1.plot(bins_256/L, 1-HI_256, c='k', ls='-')
 
 HI_064, bins_064 = np.histogram(i064_500.g['r'], weights = i064_500.g['HI'],
     bins = nbins)
@@ -114,10 +127,19 @@ bins_128 = (bins_128[:-1]+bins_128[1:])/2
 HI_128 /= counts_128
 HII_128 = 1-HI_128
 
-ax2.plot(bins_128/L, HI_128, c='k', ls='-', label = acro )
-ax2.plot(bins_064/L, HI_064, c='k', ls='-.', label = acro + " $32^3$")
+HI_256, bins_256 = np.histogram(i256_500.g['r'], weights = i256_500.g['HI'],
+    bins = nbins)
+counts_256, bins_256 = np.histogram(i256_500.g['r'], bins = nbins)
+bins_256 = (bins_256[:-1]+bins_256[1:])/2
+HI_256 /= counts_256
+HII_256 = 1-HI_256
+
+ax2.plot(bins_064/L, HI_064, c='k', ls='-.', label = acro + " $64^3$")
+ax2.plot(bins_128/L, HI_128, c='k', ls='--', label = acro + " $128^3$")
+ax2.plot(bins_256/L, HI_256, c='k', ls='-', label = acro + " $256^3$")
 ax2.plot(bins_064/L, 1-HI_064, c='k', ls='-.')
-ax2.plot(bins_128/L, 1-HI_128, c='k', ls='-')
+ax2.plot(bins_128/L, 1-HI_128, c='k', ls='--')
+ax2.plot(bins_256/L, 1-HI_256, c='k', ls='-')
 
 rs = 5.38
 trecomb = 125

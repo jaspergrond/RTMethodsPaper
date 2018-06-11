@@ -100,7 +100,7 @@ h = [
 plt.xticks(np.cbrt(particles), fontsize = 12)
 plt.yticks(fontsize = 12)
 plt.xlabel(r"$N_{\rm 1D}$",fontsize = 22)
-plt.ylabel(r"$N_{\rm cell}/N$",fontsize = 22)
+plt.ylabel(r"$N_{\rm seg}/N$",fontsize = 22)
 plt.legend(loc="upper left", fontsize = 13, frameon=False, handles = h)
 plt.xlim(32-5,128+5)
 plt.ylim(0,4250)

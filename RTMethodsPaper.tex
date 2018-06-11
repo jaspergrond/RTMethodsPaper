@@ -88,7 +88,7 @@ only affect the photons themselves but the matter as well. Photons and baryons
 exchange energy and momentum, affect the excitation and ionization states of 
 said baryons and thus determine the chemical and thermodynamic properties of 
 the bulk medium. This in turn makes radiation a driving factor in many of the 
-physical processes we study.
+astrophysical processes we study.
 
 On galaxy scales, the question of how feedback mechanisms affect star and 
 galaxy formation is one of these physical processes we can study. Stellar 
@@ -97,7 +97,7 @@ stellar winds and supernovae (cite here), the latter of which has been
 a main focus in simulations in previous years (cite a bunch of SN feedback 
 papers?). It is important to note that even though supernovae might be 
 spectacularly powerful events, ionizing radiative output from stellar 
-populations in the UV regime contribute two orders of magnitude more power at 
+populations in the UV regime contributes two orders of magnitude more power at 
 early times and about 50 times more energy over the course of a stellar 
 population's lifetime. This is made evident in Fig. \ref{fig:uvsn}, a 
 plot of luminosity output per solar mass as a function of time from stellar 
@@ -114,13 +114,12 @@ and consequently affects the interstellar medium (ISM) is still unclear
 (cite... from fervent paper - conflicting results from Murray 2011, Dale 
 et al. 2012, Faucher-Gigu`ere et al. 2013, Hopkins et al. 2014).
 
-With such a large amount of energy input from stellar sources and questions 
-still left open about how it affects the ISM, it may then come as a surprise 
-that RT has historically been treated rather poorly in most large scale 
-astrophysical simulations, usually as some imposed uniform background. This is 
-not because of carelessness or lack of effort, but because RT is intrinsically 
-a complicated problem. The complexity of this problem is evident in the 
-classical RT equation \citep[e.g.][]{mihalasMihalas84},
+With that in mind it may then come as a surprise that RT has historically been 
+treated rather poorly in most large scale astrophysical simulations, usually 
+as some imposed uniform background. This is not because of carelessness or 
+lack of effort, but because RT is an intrinsically complicated problem. The
+complexity of this problem is firstly evident in the classical RT equation 
+\citep[e.g.][]{mihalasMihalas84},
 \begin{equation} \label{eq:classicrt}
 \left[ \frac{1}{c} \frac{\partial}{\partial t} + \mathbf{\hat{n} \cdot \nabla}
  \right] I\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right) = 
@@ -131,10 +130,10 @@ I\left(\mathbf{x}, \mathbf{\hat{n}}, t, \nu\right),
 where $I$, $\epsilon$ and $\alpha$ are the intensity, emissivity and 
 extinction coefficients respectively and all depend on position $\mathbf{x}$, 
 unit direction of light propagation $\mathbf{\hat{n}}$, time $t$ and frequency 
-$\nu$. Apart from being a seven dimensional problem, RT has a high 
-characteristic speed of $c$, the speed of light. Also, unlike a force at a 
-distance problem such as gravity, RT depends on the properties of the 
-intervening material which is handled by the extinction coefficient $\alpha$.
+$\nu$. Apart from being a seven dimensional problem, RT has the highest 
+possible characteristic speed of $c$, the speed of light. Also, unlike a force 
+at a distance problem such as gravity, RT depends on the properties of the 
+intervening material which is handled by the extinction term, $\alpha$.
 
 Because of this complexity, a naive numerical solution to the RT problem 
 scales with the number of resolution elements like $\bigO{N^{7/3}}$. This 
@@ -596,37 +595,19 @@ the source of the background radiation. This way, there is no need to create
 periodic copies of the simulation volume (talk to James, explain <-this here).
 
 \section{CODE TESTS}\label{sec:tsts}
-\subsection{Scaling with number of resolution elements}
+\subsection{Sinusoidally Perturbed Box}
+\subsubsection{Initial Conditions}
 \begin{figure}
-\includegraphics[width=1\linewidth]{Figures/particle_scaling.pdf}
+\includegraphics[width=1\linewidth]{Figures/sine_rho.pdf}
 \caption{}
-\label{fig:pscale}
+\label{fig:sine_rho}
 \end{figure}
-To test the scaling claims made in the previous section, a particle 
-distribution that both our source merging and adaptive refinement procedures 
-can latch onto is necessary. We have opted to use a sinusoidally perturbed 
-glass as the initial condition (IC) for tests benchmarking \acro{}'s scaling, 
-opening angle and refinement criteria. This IC began life as a unit cube glass 
-of particles with an average density and opacity of 1. The glass was then 
-perturbed by applying 24 sinusoidal modes resulting in a smoothly varying 
-density distribution where 49\% of particles have a density between 0 \& 1, 
-43\% between 1 \& 2, 5\% between 2 \& 3, 1\% between 3 \& 4 and the remaining 
-2\% of particles are between densities of 4 \& 24. Exact details on this IC 
-can be found in Appendix \ref{sec:icnd}.
 
-Fig. \ref{fig:pscale} is a plot of the number of ray segments computed per 
-resolution element as a function of the number of resolution elements in the 
-previously described test. The number of resolution elements making up the IC 
-is increased along the x-axis from $32^3$ to $128^3$ in steps of $16^3$ in two 
-different ways. Firstly, we increase the particle number while keeping the box 
-size constant. This represents a case similar to increasing the resolution of 
-an isolated galaxy or the like and is denoted by the x marker. Secondly, we 
-increase the box size while keeping the \textit{particle} density constant. 
-This represents a case similar to increasing the simulation volume of a 
-cosmological simulation and is denoted by the diamond marker. 
 
-Four different levels of refinement are also shown in this plot. Green plot 
-markers represent not refining, red markers 
+
+
+
+
 
 
 
@@ -642,17 +623,43 @@ markers represent not refining, red markers
 \caption{}
 \label{fig:refcrit}
 \end{figure}
+\subsection{}
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/particle_scaling.pdf}
+\caption{}
+\label{fig:pscale}
+\end{figure}
+
+
+
 \subsection{Isothermal Spheres}
+\begin{figure*}
+\includegraphics[width=1\linewidth]{Figures/cellplot.pdf}
+\caption{}
+\label{fig:cellplot}
+\end{figure*}
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/isothermal_spheres.pdf}
 \caption{}
 \label{fig:isosph}
 \end{figure}
+
+
 \subsection{Str\"{o}mgren Sphere Test}
+\begin{figure*}
+\includegraphics[width=1\linewidth]{Figures/strom_slice_iso.pdf}
+\caption{}
+\label{fig:stromsliceiso}
+\end{figure*}
 \begin{figure*}
 \includegraphics[width=1\linewidth]{Figures/strom_iso_fraction.pdf}
 \caption{}
 \label{fig:stromiso}
+\end{figure*}
+\begin{figure*}
+\includegraphics[width=1\linewidth]{Figures/strom_slice.pdf}
+\caption{}
+\label{fig:stromslice}
 \end{figure*}
 \begin{figure*}
 \includegraphics[width=1\linewidth]{Figures/strom_fraction.pdf}
@@ -681,6 +688,60 @@ markers represent not refining, red markers
 
 \appendix
 \section{Test Initial Conditions}\label{sec:icnd}
+\subsection{Sinusoidally Perturbed Box}
+To create our gently varying density distribution for the sink/source scaling 
+tests, we modify positions of particles in a glass initial condition by adding 
+the sum of 24 sinusoidal modes as in equation \ref{eqn:manfft} below
+\begin{equation}\label{eqn:manfft}
+\vec{r} = \vec{r}_{\rm 0} + \sum_{i=1}^{24} \frac{1}{275} \sin 
+\left( k_{x,i} r_x + k_{y,i} r_y + k_{z,i} r_z + \phi_i\right),
+\end{equation}
+where $\vec{r_0}$ is the particles initial position in the glass and $\vec{r}$ 
+is its perturbed position in the final distribution. The $\vec{k_i}$ and 
+$\phi_i$ values are listed in table \ref{tab:modes} for if one wishes to 
+reproduce the scaling tests.  
+\begin{table}
+	\centering
+	\caption{Randomly generated $\vec{k}$ and $\phi$ values used in generating 
+             a gently varying density distribution.}
+	\label{tab:modes}
+	\begin{tabular}{llllllll} % four columns, alignment for each
+		\hline
+		$i$ & $k_{x,i}$ & $k_{y,i}$ & $k_{z,i}$ & $\phi_i$ \\
+01 & $-$3.918398 & $+$1.727743 & $-$4.476095 & 0.829776 \\
+02 & $-$3.681821 & $-$4.619688 & $+$4.865007 & 3.891157 \\
+03 & $-$4.831801 & $+$3.769470 & $+$0.567451 & 3.668730 \\
+04 & $-$2.298279 & $+$1.501757 & $+$4.716946 & 1.528348 \\
+05 & $-$0.289974 & $-$3.097958 & $+$1.270028 & 4.113001 \\
+06 & $+$1.262943 & $-$1.661726 & $-$2.600413 & 4.481799 \\
+07 & $+$1.588224 & $+$4.072259 & $+$0.616444 & 2.971965 \\
+08 & $-$2.253394 & $-$2.806478 & $+$2.749155 & 0.442241 \\
+09 & $-$1.432569 & $+$3.324710 & $+$4.842991 & 2.871989 \\
+10 & $+$1.287742 & $-$4.575517 & $-$4.001723 & 1.727810 \\
+11 & $+$4.769704 & $+$0.540096 & $-$4.203839 & 5.872117 \\
+12 & $-$3.013200 & $-$1.871251 & $-$2.514416 & 1.574008 \\
+13 & $-$4.588620 & $+$4.384224 & $+$1.246849 & 1.985715 \\
+14 & $-$0.372817 & $+$0.195243 & $+$4.074056 & 6.248739 \\
+15 & $-$1.842232 & $+$0.901598 & $-$4.453613 & 6.273336 \\
+16 & $+$1.986937 & $-$1.037650 & $+$1.958888 & 2.177783 \\
+17 & $-$1.748485 & $-$1.386029 & $+$3.755833 & 0.532604 \\
+18 & $+$4.852406 & $-$3.272506 & $+$0.826504 & 5.525470 \\
+19 & $+$3.663293 & $-$4.597598 & $-$0.890135 & 4.528870 \\
+20 & $-$1.720903 & $+$2.726011 & $+$3.192427 & 3.875610 \\
+21 & $+$4.973332 & $+$4.777182 & $-$2.515792 & 0.406737 \\
+22 & $+$0.057238 & $-$2.972427 & $-$1.828550 & 4.125258 \\
+23 & $+$0.938234 & $-$0.487023 & $-$2.755097 & 1.335299 \\
+24 & $+$1.943361 & $+$0.388178 & $-$3.783953 & 4.774938 \\
+		\hline
+	\end{tabular}
+\end{table}
+In tests with distributions of both gas and star particles the same density 
+distribution was used for both. However, the initial glass was flipped for the 
+star particles by just reassigning $x$,$y$ and $z$ coordinates via
+ \begin{equation}
+ x_{\rm star} = y_{\rm gas}, \hspace{5pt} y_{\rm star} = z_{\rm gas}, 
+ \hspace{5pt} z_{\rm star} = x_{\rm gas}.
+ \end{equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \bsp

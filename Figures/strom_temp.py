@@ -8,15 +8,19 @@ acro = "TREVR"
 
 path = "/home/grondjj/Data/RadTransfer/Stromgren/"
 
-i128_path = '/home/grondjj/Data/RadTransfer/Stromgren/tau_0.01/strom128/'
-i064_path = '/home/grondjj/Data/RadTransfer/Stromgren/tau_0.01/strom64/'
+i064_path = path + 'runs/bigboys/strom064/'
+i128_path = path + 'runs/bigboys/strom128/'
+i256_path = path + 'runs/bigboys/strom256/'
 
-i128_010 = pyn.load(i128_path + 'strom128.00020')
 i064_010 = pyn.load(i064_path + 'strom64.00020')
-i128_100 = pyn.load(i128_path + 'strom128.00200')
+i128_010 = pyn.load(i128_path + 'strom128.00020')
+i256_010 = pyn.load(i256_path + 'strom256.00020')
 i064_100 = pyn.load(i064_path + 'strom64.00200')
-i128_500 = pyn.load(i128_path + 'strom128.01000')
+i128_100 = pyn.load(i128_path + 'strom128.00200')
+i256_100 = pyn.load(i256_path + 'strom256.00200')
 i064_500 = pyn.load(i064_path + 'strom64.01000')
+i128_500 = pyn.load(i128_path + 'strom128.01000')
+i256_500 = pyn.load(i256_path + 'strom256.01000')
 
 f, (ax1, ax2, ax3) = plt.subplots(1,3, sharey=True, figsize = (20,6.3))
 
@@ -83,8 +87,12 @@ bins_064 = (bins_064[:-1]+bins_064[1:])/2
 T_128, bins_128, binN = stats.binned_statistic(i128_010.g['r'], i128_010.g['temp'], 'mean', bins=nbins)
 bins_128 = (bins_128[:-1]+bins_128[1:])/2
 
+T_256, bins_256, binN = stats.binned_statistic(i256_010.g['r'], i256_010.g['temp'], 'mean', bins=nbins)
+bins_256 = (bins_256[:-1]+bins_256[1:])/2
+
 ax1.plot(bins_064/L, T_064, c='k', ls='-.') 
-ax1.plot(bins_128/L, T_128, c='k', ls='-')
+ax1.plot(bins_128/L, T_128, c='k', ls='--')
+ax1.plot(bins_256/L, T_256, c='k', ls='-')
 
 T_064, bins_064, binN = stats.binned_statistic(i064_100.g['r'], i064_100.g['temp'], 'mean', bins=nbins)
 bins_064 = (bins_064[:-1]+bins_064[1:])/2
@@ -92,9 +100,12 @@ bins_064 = (bins_064[:-1]+bins_064[1:])/2
 T_128, bins_128, binN = stats.binned_statistic(i128_100.g['r'], i128_100.g['temp'], 'mean', bins=nbins)
 bins_128 = (bins_128[:-1]+bins_128[1:])/2
 
-ax2.plot(bins_064/L, T_064, c='k', ls='-.') 
-ax2.plot(bins_128/L, T_128, c='k', ls='-')
+T_256, bins_256, binN = stats.binned_statistic(i256_100.g['r'], i256_100.g['temp'], 'mean', bins=nbins)
+bins_256 = (bins_256[:-1]+bins_256[1:])/2
 
+ax2.plot(bins_064/L, T_064, c='k', ls='-.') 
+ax2.plot(bins_128/L, T_128, c='k', ls='--')
+ax2.plot(bins_256/L, T_256, c='k', ls='-')
 
 T_064, bins_064, binN = stats.binned_statistic(i064_500.g['r'], i064_500.g['temp'], 'mean', bins=nbins)
 bins_064 = (bins_064[:-1]+bins_064[1:])/2
@@ -102,8 +113,12 @@ bins_064 = (bins_064[:-1]+bins_064[1:])/2
 T_128, bins_128, binN = stats.binned_statistic(i128_500.g['r'], i128_500.g['temp'], 'mean', bins=nbins)
 bins_128 = (bins_128[:-1]+bins_128[1:])/2
 
-ax3.plot(bins_128/L, T_128, c='k', ls='-', label = acro)
-ax3.plot(bins_064/L, T_064, c='k', ls='-.', label = acro + ' $32^3$') 
+T_256, bins_256, binN = stats.binned_statistic(i256_500.g['r'], i256_500.g['temp'], 'mean', bins=nbins)
+bins_256 = (bins_256[:-1]+bins_256[1:])/2
+
+ax3.plot(bins_064/L, T_064, c='k', ls='-.', label = acro + ' $64^3$') 
+ax3.plot(bins_128/L, T_128, c='k', ls='-', label = acro + ' $128^3$')
+ax3.plot(bins_256/L, T_256, c='k', ls='-', label = acro + ' $256^3$')
 
 ax1.text(0.83,3.44e4,"010 Myr", fontsize = 20)
 ax2.text(0.83,3.44e4,"100 Myr", fontsize = 20)

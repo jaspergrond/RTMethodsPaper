@@ -16,6 +16,7 @@ m2A = 1e10
 A2m = 1e-10
 # bands of interest
 Band = ['Total','FUV', 'EUV'] # Filter Names
+LS = ['-', '-.', '--']
 BandW = [(91, 1600000), (1000,2000), (100,1000)] #filter bnds, Angstrom 1e-10m 
 
 for i in range(len(Band)):
@@ -50,21 +51,21 @@ for i in range(len(Band)):
         f.write("%14.11f\t%02.11f\n" % (t[j], intErg[j]))
     f.close()
 
-for i in Band:
+for i,j in zip(Band, LS):
     data = np.loadtxt(i+'.dat',skiprows = 1)
     dataTot = np.trapz(10**data[:,1], data[:,0]*365*24*60*60)
     plt.loglog(data[:,0], 10**data[:,1], label = r"$E_{\rm "+i+"} = " \
-    +str(dataTot)[0:4]+r"\times 10^{"+str(dataTot)[-2:]+r"}{\rm erg/M_\odot}$")
+    +str(dataTot)[0:4]+r"\times 10^{"+str(dataTot)[-2:]+r"}{\rm erg/M_\odot}$", ls = j)
 
 sn = np.loadtxt(path+'Chabrier.snr1', skiprows = 7)
 snTot = np.trapz(10**sn[:,2], sn[:,0]*365*24*60*60)
 plt.loglog(sn[:,0], 10**sn[:,2], label = r"$E_{\rm SN} = "+ \
-str(snTot)[0:4]+r"\times 10^{"+str(snTot)[-2:]+r"}{\rm erg/M_\odot}$")
+str(snTot)[0:4]+r"\times 10^{"+str(snTot)[-2:]+r"}{\rm erg/M_\odot}$", ls = ':')
 
 wind = np.loadtxt(path+'Chabrier.power1', skiprows = 7)
 windTot = np.trapz(10**wind[:,1], wind[:,0]*365*24*60*60)
 plt.loglog(wind[:,0], 10**wind[:,1], label = r"$E_{\rm Wind} = "+ \
-str(windTot)[0:4]+r"\times 10^{"+str(windTot)[-2:]+r"}{\rm erg/M_\odot}$")
+str(windTot)[0:4]+r"\times 10^{"+str(windTot)[-2:]+r"}{\rm erg/M_\odot}$", ls = '-')
 
 plt.xlabel(r"age $[\rm yrs]$")
 plt.ylabel(r"luminosity $[\rm erg/ s /{M_\odot}]$")
