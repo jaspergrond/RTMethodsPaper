@@ -106,11 +106,22 @@ Courier Corporation
 {Rosdahl} J.,  {Teyssier} R.,  2015, \mn@doi [\mnras] {10.1093/mnras/stv567},
   \href {http://esoads.eso.org/abs/2015MNRAS.449.4380R} {449, 4380}
 
+\bibitem[\protect\citeauthoryear{{Spitzer}}{{Spitzer}}{1978}]{spitzer78}
+{Spitzer} L.,  1978, {Physical processes in the interstellar medium}
+
 \bibitem[\protect\citeauthoryear{{Springel}, {Yoshida}  \& {White}}{{Springel}
   et~al.}{2001}]{springelEt01}
 {Springel} V.,  {Yoshida} N.,   {White} S.~D.~M.,  2001, \mn@doi [\na]
   {10.1016/S1384-1076(01)00042-2}, \href
   {http://adsabs.harvard.edu/abs/2001NewA....6...79S} {6, 79}
+
+\bibitem[\protect\citeauthoryear{{Str{\"o}mgren}}{{Str{\"o}mgren}}{1939}]{stromgren39}
+{Str{\"o}mgren} B.,  1939, \mn@doi [\apj] {10.1086/144074}, \href
+  {http://adsabs.harvard.edu/abs/1939ApJ....89..526S} {89, 526}
+
+\bibitem[\protect\citeauthoryear{{Tielens}}{{Tielens}}{2005}]{tielens05}
+{Tielens} A.~G.~G.~M.,  2005, {The Physics and Chemistry of the Interstellar
+  Medium}
 
 \bibitem[\protect\citeauthoryear{{V{\'a}rosi} \& {Dwek}}{{V{\'a}rosi} \&
   {Dwek}}{1999}]{varosiDwek99}
@@ -128,6 +139,10 @@ Courier Corporation
 {Wadsley} J.~W.,  {Stadel} J.,   {Quinn} T.,  2004, \mn@doi [\na]
   {10.1016/j.newast.2003.08.004}, \href
   {http://esoads.eso.org/abs/2004NewA....9..137W} {9, 137}
+
+\bibitem[\protect\citeauthoryear{{White}}{{White}}{1996}]{white1996}
+{White} S.~D.~M.,  1996, in {Schaeffer} R.,  {Silk} J.,  {Spiro} M.,
+  {Zinn-Justin} J.,  eds, Cosmology and Large Scale Structure. p.~349
 
 \bibitem[\protect\citeauthoryear{{Wise} \& {Abel}}{{Wise} \&
   {Abel}}{2011}]{wiseAbel11}

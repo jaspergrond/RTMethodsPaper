@@ -3,7 +3,7 @@ import pynbody as pyn
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
-path = "/home/grondjj/Data/RadTransfer/Isothemal_Spheres/CellPlot/"
+path = "/home/grondjj/Data/RadTransfer/Isothemal_Spheres/CellPlot_0.10/"
 data = pyn.load(path + "balls.00001")
 data_sl = data.g[np.where(np.fabs(data.g['z']) < data.g['smooth'])]
 xmin, xmax, ymin, ymax = np.loadtxt(path + "cell.dat",usecols=(3,4,5,6),unpack=True)
@@ -19,7 +19,7 @@ images = []
 
 fig, axs = plt.subplots(Nr,Nc,figsize = (12.5,6))
 
-axs[0].scatter(data_sl.g['x'], data_sl.g['y'], c = np.log10(np.fabs(data_sl.g['radFlux'])), s = 1, marker = '.', cmap = cm, vmin=vmin, vmax=vmax)
+axs[0].scatter(data_sl.g['x'], data_sl.g['y'], c = np.log10(np.fabs(data_sl.g['radFlux'])), s = 1, marker = '.', cmap = cm, vmin=vmin, vmax=vmax, rasterized = True)
 
 for xmi, xma, ymi, yma in zip(xmin, xmax, ymin, ymax):
     axs[0].plot([xmi,xmi],[ymi,yma],c='k')
@@ -42,7 +42,7 @@ axs[0].set_ylim(-0.5,0.5)
 axs[0].set_xlabel('x')
 axs[0].set_ylabel('y')
 
-axs[1].scatter(data_sl.g['x'], data_sl.g['y'], c = np.log10(np.fabs(data_sl.g['radFlux'])), s = 10, marker = '.', cmap = cm, vmin=vmin, vmax=vmax)
+axs[1].scatter(data_sl.g['x'], data_sl.g['y'], c = np.log10(np.fabs(data_sl.g['radFlux'])), s = 10, marker = '.', cmap = cm, vmin=vmin, vmax=vmax, rasterized = True)
 
 for xmi, xma, ymi, yma in zip(xmin, xmax, ymin, ymax):
     axs[1].plot([xmi,xmi],[ymi,yma],c='k')

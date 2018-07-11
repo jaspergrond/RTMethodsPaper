@@ -1,15 +1,12 @@
-\BOOKMARK [1][-]{section.1}{INTRODUCTION}{}% 1
-\BOOKMARK [1][-]{section.2}{METHOD}{}% 2
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Method}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{Simplifications to the full RT problem}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Algorithm}{section.2}% 4
 \BOOKMARK [2][-]{subsection.2.3}{Cosmological Background Radiation}{section.2}% 5
-\BOOKMARK [1][-]{section.3}{CODE TESTS}{}% 6
+\BOOKMARK [1][-]{section.3}{Code Tests}{}% 6
 \BOOKMARK [2][-]{subsection.3.1}{Sinusoidally Perturbed Box}{section.3}% 7
-\BOOKMARK [2][-]{subsection.3.2}{Opening Angle Testing}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.3}{Refinement Criteria Testing}{section.3}% 9
-\BOOKMARK [2][-]{subsection.3.4}{}{section.3}% 10
-\BOOKMARK [2][-]{subsection.3.5}{Isothermal Spheres}{section.3}% 11
-\BOOKMARK [2][-]{subsection.3.6}{Str\366mgren Sphere Test}{section.3}% 12
-\BOOKMARK [1][-]{section.4}{DISCUSSION AND CONCLUSION}{}% 13
-\BOOKMARK [1][-]{section.A1}{Test Initial Conditions}{}% 14
-\BOOKMARK [2][-]{subsection.A1.1}{Sinusoidally Perturbed Box}{section.A1}% 15
+\BOOKMARK [2][-]{subsection.3.2}{Isothermal Spheres}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.3}{Str\366mgren Sphere Test}{section.3}% 9
+\BOOKMARK [1][-]{section.4}{Discussion And Conclusions}{}% 10
+\BOOKMARK [1][-]{section.A1}{Test Initial Conditions}{}% 11
+\BOOKMARK [2][-]{subsection.A1.1}{Sinusoidally Perturbed Box}{section.A1}% 12

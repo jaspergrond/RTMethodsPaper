@@ -117,7 +117,7 @@ T_256, bins_256, binN = stats.binned_statistic(i256_500.g['r'], i256_500.g['temp
 bins_256 = (bins_256[:-1]+bins_256[1:])/2
 
 ax3.plot(bins_064/L, T_064, c='k', ls='-.', label = acro + ' $64^3$') 
-ax3.plot(bins_128/L, T_128, c='k', ls='-', label = acro + ' $128^3$')
+ax3.plot(bins_128/L, T_128, c='k', ls='--', label = acro + ' $128^3$')
 ax3.plot(bins_256/L, T_256, c='k', ls='-', label = acro + ' $256^3$')
 
 ax1.text(0.83,3.44e4,"010 Myr", fontsize = 20)
@@ -129,9 +129,9 @@ ax2.set_xlim(0,1.0)
 ax3.set_xlim(0,1.0)
 ax1.set_ylim(3e3,4e4)
 ax1.set_yscale("log")
-ax1.set_xlabel(r"$r/L_{\rm box}$")
-ax2.set_xlabel(r"$r/L_{\rm box}$")
-ax3.set_xlabel(r"$r/L_{\rm box}$")
+ax1.set_xlabel(r"$r/R_{\rm box}$")
+ax2.set_xlabel(r"$r/R_{\rm box}$")
+ax3.set_xlabel(r"$r/R_{\rm box}$")
 ax1.set_ylabel("T [K]")
 ax3.legend(loc = "lower center", fontsize = 17, ncol = 2)
 plt.tight_layout()
