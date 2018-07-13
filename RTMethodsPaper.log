@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.4.27)  11 JUL 2018 09:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.22)  13 JUL 2018 09:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1146,7 +1146,7 @@ l.799
 File: Figures/strom_slice_iso_030.pdf Graphic file (type pdf)
 
 <use Figures/strom_slice_iso_030.pdf>
-Package pdftex.def Info: Figures/strom_slice_iso_030.pdf used on input line 824
+Package pdftex.def Info: Figures/strom_slice_iso_030.pdf used on input line 825
 .
 (pdftex.def)             Requested size: 240.0pt x 78.85559pt.
 
@@ -1154,7 +1154,7 @@ Package pdftex.def Info: Figures/strom_slice_iso_030.pdf used on input line 824
 File: Figures/strom_slice_iso_500.pdf Graphic file (type pdf)
 
 <use Figures/strom_slice_iso_500.pdf>
-Package pdftex.def Info: Figures/strom_slice_iso_500.pdf used on input line 825
+Package pdftex.def Info: Figures/strom_slice_iso_500.pdf used on input line 826
 .
 (pdftex.def)             Requested size: 240.0pt x 78.85559pt.
  [9pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
@@ -1162,13 +1162,13 @@ Package pdftex.def Info: Figures/strom_slice_iso_500.pdf used on input line 825
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.830 \newpage
+l.831 \newpage
               pdfTeX warning (ext4): destination with the same identifier (name
 {figure.10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.830 \newpage
+l.831 \newpage
                <./Figures/cellplot.pdf> <./Figures/isothermal_spheres.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/isothermal_spheres.pdf): PDF inclusion
@@ -1177,7 +1177,7 @@ pdfTeX warning: pdflatex (file ./Figures/isothermal_spheres.pdf): PDF inclusion
 File: Figures/strom_iso_fraction.pdf Graphic file (type pdf)
 
 <use Figures/strom_iso_fraction.pdf>
-Package pdftex.def Info: Figures/strom_iso_fraction.pdf used on input line 832.
+Package pdftex.def Info: Figures/strom_iso_fraction.pdf used on input line 833.
 
 (pdftex.def)             Requested size: 478.79846pt x 232.0337pt.
 
@@ -1185,31 +1185,29 @@ Package pdftex.def Info: Figures/strom_iso_fraction.pdf used on input line 832.
 File: Figures/strom_fraction.pdf Graphic file (type pdf)
 
 <use Figures/strom_fraction.pdf>
-Package pdftex.def Info: Figures/strom_fraction.pdf used on input line 837.
+Package pdftex.def Info: Figures/strom_fraction.pdf used on input line 838.
 (pdftex.def)             Requested size: 478.79846pt x 154.68913pt.
 
 <Figures/strom_temp.pdf, id=553, 1445.4pt x 455.30101pt>
 File: Figures/strom_temp.pdf Graphic file (type pdf)
 
 <use Figures/strom_temp.pdf>
-Package pdftex.def Info: Figures/strom_temp.pdf used on input line 842.
+Package pdftex.def Info: Figures/strom_temp.pdf used on input line 843.
 (pdftex.def)             Requested size: 478.79846pt x 150.81947pt.
- (./RTMethodsPaper.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 923.
- [10pdfTeX warning (ext4): destination with the same identifier (name{figure.11
-}) has been already used, duplicate ignored
+ (./RTMethodsPaper.bbl) [10pdfTeX warning (ext4): destination with the same ide
+ntifier (name{figure.11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.923 \end{document}
-                    pdfTeX warning (ext4): destination with the same identifier
- (name{table.A1.1}) has been already used, duplicate ignored
+l.946  \end{equation}
+                     pdfTeX warning (ext4): destination with the same identifie
+r (name{table.A1.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.923 \end{document}
-                     <./Figures/strom_slice_iso_030.pdf> <./Figures/strom_slice
-_iso_500.pdf
+l.946  \end{equation}
+                      <./Figures/strom_slice_iso_030.pdf> <./Figures/strom_slic
+e_iso_500.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/strom_slice_iso_500.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
@@ -1221,21 +1219,21 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.923 \end{document}
-                    pdfTeX warning (ext4): destination with the same identifier
- (name{figure.13}) has been already used, duplicate ignored
+l.946  \end{equation}
+                     pdfTeX warning (ext4): destination with the same identifie
+r (name{figure.13}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.923 \end{document}
-                    pdfTeX warning (ext4): destination with the same identifier
- (name{figure.14}) has been already used, duplicate ignored
+l.946  \end{equation}
+                     pdfTeX warning (ext4): destination with the same identifie
+r (name{figure.14}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.923 \end{document}
-                     <./Figures/strom_iso_fraction.pdf> <./Figures/strom_fracti
-on.pdf
+l.946  \end{equation}
+                      <./Figures/strom_iso_fraction.pdf> <./Figures/strom_fract
+ion.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/strom_fraction.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
@@ -1244,10 +1242,14 @@ ltiple pdfs with page group included in a single page
 pdfTeX warning: pdflatex (file ./Figures/strom_temp.pdf): PDF inclusion: multip
 le pdfs with page group included in a single page
 >]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 923.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 952.
+ [12
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 952.
  (./RTMethodsPaper.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 923.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 923.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 952.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 952.
 Package rerunfilecheck Info: File `RTMethodsPaper.out' has not changed.
 (rerunfilecheck)             Checksum: 92A503FA266BEB8FF20BE124665A9D2A;775.
 
@@ -1258,16 +1260,16 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 923.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 952.
  ) 
 Here is how much of TeX's memory you used:
- 10105 strings out of 493029
- 140727 string characters out of 6136234
- 237318 words of memory out of 5000000
+ 10106 strings out of 493029
+ 140734 string characters out of 6136234
+ 239319 words of memory out of 5000000
  13191 multiletter control sequences out of 15000+600000
  135434 words of font info for 312 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,15n,35p,972b,387s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,15n,35p,972b,392s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1305,10 +1307,10 @@ dist/fonts/type1/public/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/txfonts/txmia.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /txfonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RTMethodsPaper.pdf (11 pages, 1920781 bytes).
+Output written on RTMethodsPaper.pdf (12 pages, 1922218 bytes).
 PDF statistics:
- 829 PDF objects out of 1000 (max. 8388607)
- 728 compressed objects within 8 object streams
- 105 named destinations out of 1000 (max. 500000)
+ 835 PDF objects out of 1000 (max. 8388607)
+ 733 compressed objects within 8 object streams
+ 106 named destinations out of 1000 (max. 500000)
  172 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -801,7 +801,7 @@ In the simplest case, the ionizing source is assumed to emit photons at
 exactly 13.6 eV, meaning the gas is ionized but not heated. The gas is not 
 allowed to cool, meaning the gas is isothermal. For this reason we will refer 
 to this case as the Isothermal \strom{} Sphere. The equilibrium radius or 
-\strom{} radius. $R_S$, is the radius at which the ionization and 
+\strom{} radius, $R_S$, is the radius at which the ionization and 
 recombination rates are equal. This radius can be solved for by setting the 
 two rates equal producing \citep[e.g.][]{tielens05}
 \begin{equation}
@@ -819,6 +819,7 @@ gas. The above derivation assumes a ``sharp'' ionization front, meaning the
 transition from ionized to neutral hydrogen is across an infinitesimally small 
 region. In practice, the transition region is small compared to the size of 
 the ionized region, but there is structure interior to the \strom{} radius 
+that is not accounted for by simply solving for the equilibrium radius. 
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/strom_slice_iso_030.pdf}
@@ -845,6 +846,34 @@ the ionized region, but there is structure interior to the \strom{} radius
 \end{figure*}
 
 \section{Discussion And Conclusions}\label{sec:disc}
+
+\noindent Best practices
+\begin{itemize}
+\item what parameters do we suggest based on testing? What one should be 
+careful about.
+\item specific things we will do wrong?
+\end{itemize}
+
+\noindent Our Niche
+\begin{itemize}
+\item why are isolated galaxy simulations best right now
+\item use in small scale, low source stuff?
+\item reionization is bad
+\item challenges for the cosmological box use case 
+\end{itemize}
+
+\noindent Future Work
+\begin{itemize}
+\item How to deal with periodicity
+\item How to deal with finite speed of light (look back)
+\item More optimizations (turning off sources, when to stop tracing a ray)
+\item Complex source problem, why it might not be so bad
+\end{itemize}
+
+\noindent General Wrap Up
+\begin{itemize}
+\item Hammer out main points we want to end on (maybe in a list)
+\end{itemize}
 
 \section*{Acknowledgements}\label{sec:ackn}
 
