@@ -54,24 +54,27 @@ for i in range(len(Band)):
 for i,j in zip(Band, LS):
     data = np.loadtxt(i+'.dat',skiprows = 1)
     dataTot = np.trapz(10**data[:,1], data[:,0]*365*24*60*60)
-    plt.loglog(data[:,0], 10**data[:,1], label = r"$E_{\rm "+i+"} = " \
-    +str(dataTot)[0:4]+r"\times 10^{"+str(dataTot)[-2:]+r"}{\rm erg/M_\odot}$", ls = j)
+    plt.loglog(data[:,0], 10**data[:,1], label = i + ', ' + '$E=' + \
+               str(dataTot)[0:4]+r"\times 10^{"+str(dataTot)[-2:] + \
+               r"}{\rm \frac{erg}{M_\odot}}$", ls = j)
 
 sn = np.loadtxt(path+'Chabrier.snr1', skiprows = 7)
 snTot = np.trapz(10**sn[:,2], sn[:,0]*365*24*60*60)
-plt.loglog(sn[:,0], 10**sn[:,2], label = r"$E_{\rm SN} = "+ \
-str(snTot)[0:4]+r"\times 10^{"+str(snTot)[-2:]+r"}{\rm erg/M_\odot}$", ls = ':')
+plt.loglog(sn[:,0], 10**sn[:,2], label = r"SN, " + '$E=' + str(snTot)[0:4] + \
+           r"\times 10^{"+str(snTot)[-2:] + \
+           r"}{\rm \frac{erg}{M_\odot}}$", ls = ':') 
 
 wind = np.loadtxt(path+'Chabrier.power1', skiprows = 7)
 windTot = np.trapz(10**wind[:,1], wind[:,0]*365*24*60*60)
-plt.loglog(wind[:,0], 10**wind[:,1], label = r"$E_{\rm Wind} = "+ \
-str(windTot)[0:4]+r"\times 10^{"+str(windTot)[-2:]+r"}{\rm erg/M_\odot}$", ls = '-')
+plt.loglog(wind[:,0], 10**wind[:,1], label = r"Wind, " + "$E="+ \
+           str(windTot)[0:4]+r"\times 10^{"+str(windTot)[-2:]+ \
+           r"}{\rm \frac{erg}{M_\odot}}$", ls = '-')
 
 plt.xlabel(r"age $[\rm yrs]$")
-plt.ylabel(r"luminosity $[\rm erg/ s /{M_\odot}]$")
+plt.ylabel(r"Luminosity $[\rm erg/ s /{M_\odot}]$")
 plt.xlim(1e5,1e10)
 plt.ylim(1e30,1e38)
-plt.legend(loc = 'upper right', frameon = 0, fontsize = 12)
+plt.legend(loc = 'upper right', frameon = 0, fontsize = 11)
 plt.tight_layout()
 plt.savefig('./uvsn.pdf')
 plt.savefig('./uvsn.png', dpi = 300)

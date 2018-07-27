@@ -54,11 +54,23 @@
   {10.1111/j.1365-2966.2011.20087.x}, \href
   {http://esoads.eso.org/abs/2012MNRAS.420..745C} {420, 745}
 
+\bibitem[\protect\citeauthoryear{{Dale}, {Ercolano}  \& {Bonnell}}{{Dale}
+  et~al.}{2012}]{daleEt12}
+{Dale} J.~E.,  {Ercolano} B.,   {Bonnell} I.~A.,  2012, \mn@doi [\mnras]
+  {10.1111/j.1365-2966.2012.21205.x}, \href
+  {https://ui.adsabs.harvard.edu/#abs/2012MNRAS.424..377D} {424, 377}
+
 \bibitem[\protect\citeauthoryear{{Gnedin} \& {Abel}}{{Gnedin} \&
   {Abel}}{2001}]{gnedinAbel01}
 {Gnedin} N.~Y.,  {Abel} T.,  2001, \mn@doi [\na]
   {10.1016/S1384-1076(01)00068-9}, \href
   {http://adsabs.harvard.edu/abs/2001NewA....6..437G} {6, 437}
+
+\bibitem[\protect\citeauthoryear{{Gritschneder}, {Naab}, {Walch}, {Burkert}  \&
+  {Heitsch}}{{Gritschneder} et~al.}{2009}]{gritschnederEt09}
+{Gritschneder} M.,  {Naab} T.,  {Walch} S.,  {Burkert} A.,   {Heitsch} F.,
+  2009, \mn@doi [\apj] {10.1088/0004-637X/694/1/L26}, \href
+  {https://ui.adsabs.harvard.edu/#abs/2009ApJ...694L..26G} {694, L26}
 
 \bibitem[\protect\citeauthoryear{{Hegmann} \& {Kegel}}{{Hegmann} \&
   {Kegel}}{2003}]{hegmanKegel03}
@@ -66,11 +78,28 @@
   {10.1046/j.1365-8711.2003.06543.x}, \href
   {http://adsabs.harvard.edu/abs/2003MNRAS.342..453H} {342, 453}
 
+\bibitem[\protect\citeauthoryear{{Howard}, {Pudritz}  \& {Harris}}{{Howard}
+  et~al.}{2016}]{howard16}
+{Howard} C.~S.,  {Pudritz} R.~E.,   {Harris} W.~E.,  2016, \mn@doi [\mnras]
+  {10.1093/mnras/stw1476}, \href
+  {https://ui.adsabs.harvard.edu/#abs/2016MNRAS.461.2953H} {461, 2953}
+
+\bibitem[\protect\citeauthoryear{{Howard}, {Pudritz}  \& {Harris}}{{Howard}
+  et~al.}{2017}]{howard17}
+{Howard} C.~S.,  {Pudritz} R.~E.,   {Harris} W.~E.,  2017, \mn@doi [\mnras]
+  {10.1093/mnras/stx1363}, \href
+  {https://ui.adsabs.harvard.edu/#abs/2017MNRAS.470.3346H} {470, 3346}
+
 \bibitem[\protect\citeauthoryear{{Hubber}, {Batty}, {McLeod}  \&
   {Whitworth}}{{Hubber} et~al.}{2011}]{hubberEt11}
 {Hubber} D.~A.,  {Batty} C.~P.,  {McLeod} A.,   {Whitworth} A.~P.,  2011,
   \mn@doi [\aap] {10.1051/0004-6361/201014949}, \href
   {http://adsabs.harvard.edu/abs/2011A%26A...529A..27H} {529, A27}
+
+\bibitem[\protect\citeauthoryear{{Kannan} et~al.,}{{Kannan}
+  et~al.}{2014}]{kannanEt14}
+{Kannan} R.,  et~al., 2014, \mn@doi [\mnras] {10.1093/mnras/stt2098}, \href
+  {http://adsabs.harvard.edu/abs/2014MNRAS.437.2882K} {437, 2882}
 
 \bibitem[\protect\citeauthoryear{{Leitherer} et~al.,}{{Leitherer}
   et~al.}{1999}]{leithererEt99}
@@ -140,9 +169,17 @@ Courier Corporation
   {10.1016/j.newast.2003.08.004}, \href
   {http://esoads.eso.org/abs/2004NewA....9..137W} {9, 137}
 
-\bibitem[\protect\citeauthoryear{{White}}{{White}}{1996}]{white1996}
-{White} S.~D.~M.,  1996, in {Schaeffer} R.,  {Silk} J.,  {Spiro} M.,
-  {Zinn-Justin} J.,  eds, Cosmology and Large Scale Structure. p.~349
+\bibitem[\protect\citeauthoryear{{Wadsley}, {Keller}  \& {Quinn}}{{Wadsley}
+  et~al.}{2017}]{wadsleyEt17}
+{Wadsley} J.~W.,  {Keller} B.~W.,   {Quinn} T.~R.,  2017, \mn@doi [\mnras]
+  {10.1093/mnras/stx1643}, \href
+  {https://ui.adsabs.harvard.edu/#abs/2017MNRAS.471.2357W} {471, 2357}
+
+\bibitem[\protect\citeauthoryear{{Walch}, {Whitworth}, {Bisbas}, {W{\"u}nsch}
+  \& {Hubber}}{{Walch} et~al.}{2012}]{walchEt12}
+{Walch} S.~K.,  {Whitworth} A.~P.,  {Bisbas} T.,  {W{\"u}nsch} R.,   {Hubber}
+  D.,  2012, \mn@doi [\mnras] {10.1111/j.1365-2966.2012.21767.x}, \href
+  {https://ui.adsabs.harvard.edu/#abs/2012MNRAS.427..625W} {427, 625}
 
 \bibitem[\protect\citeauthoryear{{Wise} \& {Abel}}{{Wise} \&
   {Abel}}{2011}]{wiseAbel11}
