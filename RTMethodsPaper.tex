@@ -42,12 +42,16 @@ Department of Physics and Astronomy, McMaster University, Hamilton, Ontario L8S
 
 \pubyear{2018}
 
+%%%%%%% avoid hyperlink spanning multiple pages error in draft %%%%%%%
+\hypersetup{draft}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 \label{firstpage}
 \pagerange{\pageref{firstpage}--\pageref{lastpage}}
 \maketitle
 
-% abstract of the paper
+% abstract of the paper %
 \begin{abstract}
 We present \acro{} (Tree-based Reverse Ray Tracing), a general algorithm for 
 computing the radiation field in astrophysical simulations. \acro{} 
@@ -661,7 +665,7 @@ to always be located on the sphere.
 
 \subsection{Implementation Specifics}\label{sec:specs}
 As mentioned earlier, \acro{} is not specific to either \textsc{Gasoline} or 
-SPH.  However, in this subsection we would like to take the time to briefly  
+SPH. However, in this subsection we would like to take the time to briefly  
 introduce \textsc{Gasoline} and the specifics of \acro{}'s implementation in 
 \textsc{Gasoline}.
 
@@ -671,13 +675,24 @@ employs a spatial binary tree that is built by recursively bisecting the
 longest axis of each cell. In the current version of \acro{}, a separate tree 
 is built for computing radiative transfer. For development this is a 
 convenient choice, but adds extra cost and in the future a ``one tree to rule 
-them all'' approach should be adopted. On of the main differences between 
-these treesis that the radiation tree is required to fill all space. The main 
+them all'' approach should be adopted. One of the main differences between 
+these trees is that the radiation tree is required to fill all space. The main 
 tree ``squeezes'' cell bounds to the furthest extents of a particle's 
 influence. This does not work in the context of RT as cell and ray 
-intersections need to be computed to sum up a correct optical depth.
+intersections need to be computed to sum up a correct optical depth along 
+the entire ray.
 
-\comment{Grond: stuck on opening angle stuff...}
+In the regular tree building phase \textsc{Gasoline} assigns an ``opening 
+radius'' about a cells centre of mass to each cell in the tree. The specific 
+definition of this radius is 
+%\begin{equation}
+%r_{\rm open} = \frac{2 B_{\rm max}}{\sqrt{3} \theta},
+%\end{equation}
+where $B_{\rm max}$ is the  distance from the centre of mass of particles 
+within the cell to the furthest particle from the centre of mass. However, 
+since we are using space filling cells for the radiation tree it is necessary 
+to define $B_{\rm max}$ as the distance to the furthest vertex of the cell 
+instead of particle.
 
 \section{Code Tests}\label{sec:tsts}
 \subsection{Sinusoidally Perturbed Glass}
@@ -1005,7 +1020,7 @@ It is interesting to not that the magnitude of over-ionization is related to
 resolution. We suspect the cause of over-ionization is \comment{Grond: What 
 exactly do we want to say here?}.
 
-\subsubsection{The Non-Isothermal \strom Sphere}
+\subsubsection{The Non-Isothermal \strom{} Sphere}
 The above test assumed the hydrogen gas was isothermal and that all incident 
 photons had the same energy. In reality, photons range across many wavelengths 
 with differing cross-sections at each wavelength. As well, absorption 
