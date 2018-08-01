@@ -145,8 +145,8 @@ rs = 5.38
 trecomb = 125
 r030 = rs*(1 - np.exp(-30./trecomb))**(1/3.)/L
 r500 = rs*(1 - np.exp(-500./trecomb))**(1/3.)/L
-ax1.text(r030+0.02,2, "$r_s$", color = 'r', fontsize = 20)
-ax2.text(r500+0.02,2, "$r_s$", color = 'r', fontsize = 20)
+ax1.text(r030+0.02,2, "$R_S$", color = 'r', fontsize = 20)
+ax2.text(r500+0.02,2, "$R_S$", color = 'r', fontsize = 20)
 ax1.plot( [r030,r030], [1e-5,1e1], linestyle = ":", c = 'r')
 ax2.plot( [r500,r500], [1e-5,1e1], linestyle = ":", c = 'r')
 

@@ -660,17 +660,24 @@ the sphere radius. This can be remedied by enforcing merged background sources
 to always be located on the sphere. 
 
 \subsection{Implementation Specifics}\label{sec:specs}
-\comment{
-Wadsley: Need a section here about SPH specific bits and also an overview of 
-Gasoline and what was added to it here. For example, the definition of 
-opening criterion is fiddly and should be explicitly stated. The key principle 
-is that someone should be able to start with basic knowledge of SPH and tree 
-codes and reproduce our results based on the info presented here and enough 
-detail needs to be given. Gasoline has adaptive time steps, already (factor of 
-2 hierarchy). Gasoline has multiple tree builds -- extra one for radiation. 
-Future work one tree to rule them all. Also -- discuss PP in detail. Need to 
-get particles to agree who is closer so we use radial distance for that.
-}
+As mentioned earlier, \acro{} is not specific to either \textsc{Gasoline} or 
+SPH.  However, in this subsection we would like to take the time to briefly  
+introduce \textsc{Gasoline} and the specifics of \acro{}'s implementation in 
+\textsc{Gasoline}.
+
+\textsc{Gasoline} is a parallel smoothed particle hydrodynamics code for 
+computing hydrodynamics and self-gravity in astrophysics simulations. It 
+employs a 
+
+In the current version of \acro{}, a separate tree is built for computing
+radiative transfer. For development this is a convenient choice, but adds
+extra cost and in the future a ``one tree to rule them all'' approach should
+be adopted. The radiation tree inherits it's binary cell splitting from the
+main tree in \textsc{Gasoline}. On of the main differences between these trees
+is that the radiation tree is required to fill all space to enable, whereas
+the main tree ``squeezes'' cell bounds to the furthest extents of an
+particle's influence. This does not work in the context of RT as cell and ray
+intersections need to be computed to sum up a correct optical depth.
 
 \section{Code Tests}\label{sec:tsts}
 \subsection{Sinusoidally Perturbed Glass}
@@ -873,30 +880,29 @@ believe \acro{} should perform better as Equation \ref{eqn:reffrac} is just a
 reliable upper bound.
 
 \comment{Wadsley: What about work we did for absolute errors? I'd like at 
-least a comment with quantitative error numbers and preferably a plot too.}
+least a comment with quantitative error numbers and preferably a plot too. 
+Grond: I'll make this for my thesis ASAP and put it here after.}
 
 \subsection{\strom{} Sphere Test}
-\comment{Wadsley: State precise numbers we used} \\
-\comment{Wadsley: ref Iliev+,  Petkova+, Springel etc...}
-\subsubsection{\strom{} Sphere Theory and Initial Conditions}
+\subsubsection{\strom{} Sphere Theory}
 The \strom{} sphere is a theoretical ionized sphere of gas first discussed by 
 Bengt \strom{} in 1938 \citep{stromgren39} as a model of regions around hot, 
-young stars. The theoretical initial conditions 
-consist of a cloud neutral hydrogen gas with an ionizing source of radiation 
-at its centre. As photons from the source ionize the hydrogen, the optical 
-depth of the gas decreases and so the ionizing photons are able to travel 
-further and further from the source creating an ionization front. As the front 
-moves radially outward from the source a radius is reached where the 
-ionization rate equals the recombination rate. At this point, the front 
-reaches equilibrium and stops creating a stable sphere of ionized hydrogen.
+young stars. The theoretical initial conditions consist of a cloud neutral 
+hydrogen gas with an ionizing source of radiation at its centre. As photons 
+from the source ionize the hydrogen, the optical depth of the gas decreases 
+and so the ionizing photons are able to travel further and further from the 
+source creating an ionization front. As the front moves radially outward from 
+the source a radius is reached where the ionization rate equals the 
+recombination rate. At this point, the front reaches equilibrium and stops 
+creating a stable sphere of ionized hydrogen. The \strom{} sphere test has 
+become a common code test in RT methods papers \citep{pawlikSchaye08,
+pawlikSchaye11, petkovaSpringel11} and comparison papers \citep{ilievEt06, 
+ilievEt09}, as it it is a simple test of a method's ability to resolve 
+ionization fronts and achieve equilibrium behaviour.
 
-In the simplest case, the ionizing source is assumed to emit photons at 
-exactly 13.6 eV, meaning the gas is ionized but not heated. The gas is not 
-allowed to cool, meaning the gas is isothermal. For this reason we will refer 
-to this case as the Isothermal \strom{} Sphere. The equilibrium radius or 
-\strom{} radius, $R_S$, is the radius at which the ionization and 
-recombination rates are equal. This radius can be solved for by setting the 
-two rates equal producing \citep[e.g.][]{tielens05}
+The equilibrium radius or \strom{} radius, $R_S$, is the radius at which the 
+ionization and recombination rates are equal. This radius can be solved for by 
+setting the two rates equal producing \citep[e.g.][]{tielens05}
 \begin{equation}
 R_S = \left(\frac{3}{4\pi}\frac{\dot{N}_\gamma}{\alpha n^2_{H}}\right)^{1/3},
 \end{equation}
@@ -905,28 +911,123 @@ $\alpha$ is the recombination rate and $n^2_H$ is the hydrogen number density.
 One can also solve for the radius as a function of time 
 \citep[e.g.][]{spitzer78},
 \begin{equation}
-R(t) = R_S\left[1-\exp\left(t/t_{\rm recomb}\right)\right]^{1/3}
+R(t) = R_S\left[1-\exp\left(t/t_{\rm rec}\right)\right]^{1/3}
 \end{equation}
-where $t_{\rm recomb = 1/{n_H \alpha}}$ is the recombination time of the 
+where $t_{\rm rec = 1/{n_H \alpha}}$ is the recombination time of the 
 gas. The above derivation assumes a ``sharp'' ionization front, meaning the 
 transition from ionized to neutral hydrogen is across an infinitesimally small 
 region. In practice, the transition region is small compared to the size of 
 the ionized region, but there is structure interior to the \strom{} radius 
-that is not accounted for by simply solving for the equilibrium radius. 
+that is not accounted for by simply solving for the equilibrium radius. In 
+order to solve for the non-sharp ionization front we must consider the 
+hydrogen ionization equation
+\begin{equation}\label{eqn:hion}
+\frac{\partial n_{\rm HII}}{\partial t} = c \sigma n_{\rm HI} n_{\gamma} - 
+\alpha n_{\rm e} n_{\rm HII},
+\end{equation}
+where $n_x$ is the number density of species $x$, HI and HII are neutral 
+and ionized hydrogen respectively, $\gamma$ is photons, $\sigma$ is the 
+ionization cross section, c is the speed of light and $\alpha$ is the 
+recombination rate. Note that we have omitted collisional ionization in 
+Equation \ref{eqn:hion} as it is not included in further testing, however it 
+should be included in general. By integrating the ionization equation and the 
+flux equation with absorption (Equation \ref{eqn:simpflux}), we get a solution 
+for HI/HII as a function of radius and as a function of time 
+\citep{osterbrockFerland2006}. In the following tests, we include both 
+theoretical sharp front solution and non-sharp front solutions from the 
+\cite{ilievEt06} comparison paper to compare to our results as well as 
+mimicking their initial conditions.
 
+\subsubsection{The Isothermal \strom{} Sphere}
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/strom_slice_iso_030.pdf}
 \includegraphics[width=1\linewidth]{Figures/strom_slice_iso_500.pdf}
 \caption{}
 \label{fig:stromslice}
 \end{figure}
+In the simplest case, the ionizing source is assumed to emit monochromatic 
+photons at 13.6 eV, meaning the gas is ionized but not heated. The gas is not 
+allowed to cool, meaning the gas is isothermal. For this reason we will refer 
+to this case as the Isothermal \strom{} Sphere. The medium is initially 
+neutral with a temperature of $T=10^4$ K and a density of $n_{\rm HI} = 
+10^{-3}$ $\rm cm^{-3}$. An ionizing source is turned on at $t=0$ and emits at 
+a rate of $\dot{N}_\gamma = 5 \times 10^{48}$ photons $s^{-1}$. We use an 
+ionization cross section of $\sigma = 6.3 \times 10^{-18}$ $\rm cm^{-2}$ and a 
+recombination rate of $\alpha = 2.59 \times 10^{-13}$ $\rm cm^{-3}$ $\rm 
+s^{-1}$, typical of $10^4$ K gas. These values yield a \strom{} radius of 
+$R_S = 5.38$ kpc and a recombination time of $t_{rec} \approx  125$ Myr. 
 
-\newpage
+We note that \cite{ilievEt06} uses a 6.6 kpc cube which only contains a single
+quadrant of the \strom sphere for their testing. We have opted to use an 16 
+kpc cube, increasing the maximum front radius to 8 kpc to avoid any edge 
+effects, as the sphere gets close to the edge of the box for some codes in 
+their paper. In order to aid comparison, we still normalize radius values to 
+6.6 kpc, as is done in \cite{ilievEt06}. As well, we have not imposed a floor 
+on the HII fraction of 0.001, as has been done in their paper. As the 
+resolution used in the \cite{ilievEt06} comparison paper was never 
+specifically given, we have opted to run the test with $N = 64^3$, $128^3$ and 
+$256^3$ particles to represent the \textit{entire} sphere. These resolutions 
+correspond to single quadrant resolutions of $N=32^3$, $64^3$ and $128^3$ in 
+\cite{ilievEt06}. Varying the number of particles also allows us to have a 
+look at how \acro{} converges with resolution. We have run our \strom{} sphere 
+tests with fixed accuracy parameters of $\theta_{\rm open} = 0.75$, 
+$\tau_{\rm ref} = 0.1$.
+
+Figure \ref{fig:stromslice} is a slice through the $z$-plane of the 
+simulation. The colour map corresponds to neutral fraction. The contour 
+levels and colour map have been chosen to closely mimick Figure 6 in both 
+\cite{pawlikSchaye08} and \cite{pawlikSchaye11}. We have done this to 
+highlight a main benefit ray tracers like \acro{} have over photon packet 
+propagation methods such as TRAPHIC - isotropy. At the same $N=64^3$ particle 
+resolution \acro{} is more isotropically symmetric than TRAPHIC, even with 
+their use of monte-carlo resampling. Furthermore, \acro{} outperforms TRAPHIC 
+in this aspect even at early times (top panels in Figure 
+\ref{fig:stromslice}). Here the interior of the \strom{} sphere is represented 
+by 3.3 times fewer particles than late time spheres in equilibrium plotted in 
+the TRAPHIC papers (in this paper these are in the top panels of Figure 
+\ref{fig:stromslice}).
+
 \begin{figure*}
 \includegraphics[width=0.95\linewidth]{Figures/strom_iso_fraction.pdf}
 \caption{}
 \label{fig:stromiso}
 \end{figure*}
+Figure \ref{fig:stromiso} is a plot of neutral/ionization fraction as a 
+function radius from the \strom{} sphere centre. The sharp \strom{} radius is 
+plotted as well as non-sharp solutions from all codes presented in Figure 8 
+of \cite{ilievEt06}. \acro{} tends to over-ionize at lower resolutions, but 
+recreates the ionization profile quite well overall. At 30 Myr we converge 
+with resolution to the sharp solution. At 500 Myr we converge to the non-sharp 
+numerical solutions, which also over-ionize relative to the sharp solution at 
+late times. Overall, the two higher resolution solutions are within the 
+scatter of the non-sharp solutions of the codes presented in \cite{ilievEt06}. 
+It is interesting to not that the magnitude of over-ionization is related to 
+resolution. We suspect the cause of over-ionization is \comment{Grond: What 
+exactly do we want to say here?}.
+
+\subsubsection{The Non-Isothermal \strom Sphere}
+The above test assumed the hydrogen gas was isothermal and that all incident 
+photons had the same energy. In reality, photons range across many wavelengths 
+with differing cross-sections at each wavelength. As well, absorption 
+typically causes heating, which effects among many gas properties, 
+recombination rate.
+
+We rerun the \strom sphere test, but this time the incident photons are 
+assumed to be from a black body with temperature $10^5$ K. The cross section 
+is now an integrated cross section, obtained by integrating the cross section 
+as a function of wavelength between 13.6 eV and 29.65 eV, which gives $\sigma 
+= 1.63 \times 10^{-18}$ $\rm cm^{-2}$. The gas has an initial temperature of 
+100 K and the recombination rate is a function of temperature set by
+\begin{equation}
+\alpha(T) = 2.59 \times 10^{-13} \left( \frac{T}{10^4 \hspace{5pt} K}\right)^
+{-0.7} \hspace{5pt} cm^{-3} \hspace{5pt} s^{-1}
+\end{equation}
+to match \cite{petkovaSpringel09}. This test includes heating due to 
+absorption and cooling due to recombination $\Delta_r$, collisional 
+ionization $\Delta_{ci}$, line cooling $\delta_l$ and Bremsstrahlung 
+radiation $\Delta_B$. The rates are taken from \cite{cen92} in order to
+match \cite{petkovaSpringel09}.
+
 \begin{figure*}
 \includegraphics[width=0.95\linewidth]{Figures/strom_fraction.pdf}
 \caption{}
@@ -937,6 +1038,20 @@ that is not accounted for by simply solving for the equilibrium radius.
 \caption{}
 \label{fig:stromtemp}
 \end{figure*}
+Figures \ref{fig:stromtherm} and \ref{fig:stromtemp} show the neutral/ionized 
+fraction and temperature respectively as a function of radius at $t=$ 10, 100
+and 500 Myr. These times represent the fast expansion stage, slowing down 
+stage and final \strom{} sphere respectively. We have plotted numerical 
+solutions from Figures 16 and 17 in \cite{ilievEt06} for comparison. Again, 
+\acro{} recreates these profiles quite well in a qualitative sense. However, 
+\acro{} over-ionizes relative to all other solutions at every resolution. We 
+believe this is not caused by the \acro{} algorithm specifically, as the 
+isothermal test converged with resolution. It could possibly be a result of 
+the ionization code and should be addressed in the future \comment{Grond:
+Again, exactly what do we want to say here?}. On the other hand, the 
+temperature profile lies in the middle of the scatter of the \cite{ilievEt06} 
+solutions.
+
 
 \section{Discussion And Conclusions}\label{sec:disc}
 \noindent Best practices

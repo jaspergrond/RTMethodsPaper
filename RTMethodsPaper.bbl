@@ -44,6 +44,10 @@
   {10.1016/0010-4655(88)90027-6}, \href
   {http://adsabs.harvard.edu/abs/1988CoPhC..48...97B} {48, 97}
 
+\bibitem[\protect\citeauthoryear{{Cen}}{{Cen}}{1992}]{cen92}
+{Cen} R.,  1992, \mn@doi [\apjs] {10.1086/191630}, \href
+  {http://adsabs.harvard.edu/abs/1992ApJS...78..341C} {78, 341}
+
 \bibitem[\protect\citeauthoryear{{Chabrier}}{{Chabrier}}{2003}]{chabrier03}
 {Chabrier} G.,  2003, \mn@doi [\pasp] {10.1086/376392}, \href
   {http://adsabs.harvard.edu/abs/2003PASP..115..763C} {115, 763}
@@ -96,6 +100,18 @@
   \mn@doi [\aap] {10.1051/0004-6361/201014949}, \href
   {http://adsabs.harvard.edu/abs/2011A%26A...529A..27H} {529, A27}
 
+\bibitem[\protect\citeauthoryear{{Iliev} et~al.,}{{Iliev}
+  et~al.}{2006}]{ilievEt06}
+{Iliev} I.~T.,  et~al., 2006, \mn@doi [\mnras]
+  {10.1111/j.1365-2966.2006.10775.x}, \href
+  {http://adsabs.harvard.edu/abs/2006MNRAS.371.1057I} {371, 1057}
+
+\bibitem[\protect\citeauthoryear{{Iliev} et~al.,}{{Iliev}
+  et~al.}{2009}]{ilievEt09}
+{Iliev} I.~T.,  et~al., 2009, \mn@doi [\mnras]
+  {10.1111/j.1365-2966.2009.15558.x}, \href
+  {http://adsabs.harvard.edu/abs/2009MNRAS.400.1283I} {400, 1283}
+
 \bibitem[\protect\citeauthoryear{{Kannan} et~al.,}{{Kannan}
   et~al.}{2014}]{kannanEt14}
 {Kannan} R.,  et~al., 2014, \mn@doi [\mnras] {10.1093/mnras/stt2098}, \href
@@ -118,6 +134,11 @@
   hydrodynamics}.
 Courier Corporation
 
+\bibitem[\protect\citeauthoryear{{Osterbrock} \& {Ferland}}{{Osterbrock} \&
+  {Ferland}}{2006}]{osterbrockFerland2006}
+{Osterbrock} D.~E.,  {Ferland} G.~J.,  2006, {Astrophysics of gaseous nebulae
+  and active galactic nuclei}
+
 \bibitem[\protect\citeauthoryear{{Paardekooper}, {Kruip}  \&
   {Icke}}{{Paardekooper} et~al.}{2010}]{paardekooperEt10}
 {Paardekooper} J.-P.,  {Kruip} C.~J.~H.,   {Icke} V.,  2010, \mn@doi [\aap]
@@ -129,6 +150,24 @@ Courier Corporation
 {Pawlik} A.~H.,  {Schaye} J.,  2008, \mn@doi [\mnras]
   {10.1111/j.1365-2966.2008.13601.x}, \href
   {http://esoads.eso.org/abs/2008MNRAS.389..651P} {389, 651}
+
+\bibitem[\protect\citeauthoryear{{Pawlik} \& {Schaye}}{{Pawlik} \&
+  {Schaye}}{2011}]{pawlikSchaye11}
+{Pawlik} A.~H.,  {Schaye} J.,  2011, \mn@doi [\mnras]
+  {10.1111/j.1365-2966.2010.18032.x}, \href
+  {http://esoads.eso.org/abs/2011MNRAS.412.1943P} {412, 1943}
+
+\bibitem[\protect\citeauthoryear{{Petkova} \& {Springel}}{{Petkova} \&
+  {Springel}}{2009}]{petkovaSpringel09}
+{Petkova} M.,  {Springel} V.,  2009, \mn@doi [\mnras]
+  {10.1111/j.1365-2966.2009.14843.x}, \href
+  {http://adsabs.harvard.edu/abs/2009MNRAS.396.1383P} {396, 1383}
+
+\bibitem[\protect\citeauthoryear{{Petkova} \& {Springel}}{{Petkova} \&
+  {Springel}}{2011}]{petkovaSpringel11}
+{Petkova} M.,  {Springel} V.,  2011, \mn@doi [\mnras]
+  {10.1111/j.1365-2966.2011.18986.x}, \href
+  {http://adsabs.harvard.edu/abs/2011MNRAS.415.3731P} {415, 3731}
 
 \bibitem[\protect\citeauthoryear{{Rosdahl} \& {Teyssier}}{{Rosdahl} \&
   {Teyssier}}{2015}]{rosdahlTeyssier15}
