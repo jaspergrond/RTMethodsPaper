@@ -54,25 +54,20 @@ Department of Physics and Astronomy, McMaster University, Hamilton, Ontario L8S
 % abstract of the paper %
 \begin{abstract}
 We present \acro{} (Tree-based Reverse Ray Tracing), a general algorithm for 
-computing the radiation field in astrophysical simulations. \acro{} 
-prioritizes the ability to handle large numbers of sources and computational 
-speed whilst maintaining a specified level of accuracy via adaptive 
-refinement. \acro{} is based on a \emph{tree} data structure similar to many 
-gravity and hydrodynamics solvers. This allows for computation of the 
+computing the radiation field, including absorption, in astrophysical simulations. \acro{} 
+is designed to handle large numbers of sources and absorbers.
+\acro{} is based on a \emph{tree} data structure and is thus suited to codes
+that use trees for their gravity or hydrodynamics solvers (e.g. AMR).
+It achieves computational speed
+while maintaining a specified accuracy via controlled lowering of resolution of both sources and rays from each source.
+\acro{} computes the
 radiation field in $\mathcal{O}(N \log \NS)$ time without absorption and 
-$\mathcal{O}(N \log \NS \log{N})$ time with absorption. This scaling is made 
-possible by merging sources of radiation according to an opening angle 
-criteria and walking the tree structure to trace a ray. The computational 
-complexity we quote accounts for the use of adaptive refinement, a main 
-feature that is unique to \acro{} among other radiative transfer methods. We 
-provide a suite of tests demonstrating the algorithm's ability to accurately 
-compute fluxes, ionization fronts and shadows. We also analyze the algorithm's 
-computational complexity, in how it scales with the number of sources and 
-sinks. Further examinations of how the aforementioned refinement criterion's 
-value affects computational cost and accuracy are presented. Finally, we 
-discuss strengths and shortcomings of this algorithm, how they constrain the 
-types of problems \acro{} can handle and how these shortcomings can be 
-remedied if possible.
+$\mathcal{O}(N \log \NS \log{N})$ time with absorption.  These scalings arise from
+merging sources of radiation according to an opening angle 
+criterion and walking the tree structure to trace a ray to a depth that gives the chosen
+accuracy for absorption.  The absorption depth refinement criterion is unique to \acro{}.
+We provide a suite of tests demonstrating the algorithm's ability to accurately 
+compute fluxes, ionization fronts and shadows.   
 
 \end{abstract}
 
