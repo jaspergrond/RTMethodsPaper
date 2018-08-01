@@ -667,17 +667,17 @@ introduce \textsc{Gasoline} and the specifics of \acro{}'s implementation in
 
 \textsc{Gasoline} is a parallel smoothed particle hydrodynamics code for 
 computing hydrodynamics and self-gravity in astrophysics simulations. It 
-employs a 
-
-In the current version of \acro{}, a separate tree is built for computing
-radiative transfer. For development this is a convenient choice, but adds
-extra cost and in the future a ``one tree to rule them all'' approach should
-be adopted. The radiation tree inherits it's binary cell splitting from the
-main tree in \textsc{Gasoline}. On of the main differences between these trees
-is that the radiation tree is required to fill all space to enable, whereas
-the main tree ``squeezes'' cell bounds to the furthest extents of an
-particle's influence. This does not work in the context of RT as cell and ray
+employs a spatial binary tree that is built by recursively bisecting the 
+longest axis of each cell. In the current version of \acro{}, a separate tree 
+is built for computing radiative transfer. For development this is a 
+convenient choice, but adds extra cost and in the future a ``one tree to rule 
+them all'' approach should be adopted. On of the main differences between 
+these treesis that the radiation tree is required to fill all space. The main 
+tree ``squeezes'' cell bounds to the furthest extents of a particle's 
+influence. This does not work in the context of RT as cell and ray 
 intersections need to be computed to sum up a correct optical depth.
+
+\comment{Grond: stuck on opening angle stuff...}
 
 \section{Code Tests}\label{sec:tsts}
 \subsection{Sinusoidally Perturbed Glass}
