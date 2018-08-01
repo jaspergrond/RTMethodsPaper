@@ -380,7 +380,17 @@ used directly in an adaptive mesh refinement (AMR) code.
  
 \begin{figure*}
 \includegraphics[width=1\linewidth]{Figures/algorithm.pdf}
-\caption{}
+\caption{A schematic of \acro{} without (left) and with source merging and 
+adaptive refinement (right). Coloured ray segments correspond to tree cells 
+whose average properties are used to compute the optical depth along said ray 
+segment. Dashed and solid lines distinguish consecutive line segments to 
+help associate them with their corresponding tree cell. The grey cloud 
+represents a feature in the medium that requires refinement to be resolve. 
+The smaller stars which are yellow in the left panel and white in the right 
+panel represent individual radiation sources. The larger yellow star in the 
+right panel represents a merged source, as the dashed red cell encapsulating 
+all sources meets the opening angle (grey region in left panel) criteria.} 
+
 \label{fig:algorithm}
 \end{figure*}
 The \acro{} algorithm is based around a tree data structure which partitions 
@@ -527,7 +537,12 @@ unique to \acro{}.
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/refine.pdf}
-\caption{}
+\caption{Schematic of a cell to be refined. A parent cell intersected by a ray 
+contains a feature (grey cloud) to be resolved. The black dotted line 
+partitions the parent cell into it's children. The black intersecting rays 
+represent the hypothetical case where only a child cell is intersected by a 
+ray. The blue outlined sections on each ray correspond to the intersection 
+length, $l$,  used to compute the optical depth through each child cell.}
 \label{fig:refine}
 \end{figure}
 Consider two rays through through a large cell as in Figure \ref{fig:refine}. 

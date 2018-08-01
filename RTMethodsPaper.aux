@@ -71,16 +71,16 @@
 \newlabel{eqn:nssoln}{{15}{4}{Source Merging}{equation.15}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Tracing Rays}{4}{subsubsection.2.2.2}}
 \citation{varosiDwek99,hegmanKegel03}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces }}{5}{figure.2}}
-\newlabel{fig:algorithm}{{2}{5}{}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A schematic of TREVR{} without (left) and with source merging and adaptive refinement (right). Coloured ray segments correspond to tree cells whose average properties are used to compute the optical depth along said ray segment. Dashed and solid lines distinguish consecutive line segments to help associate them with their corresponding tree cell. The grey cloud represents a feature in the medium that requires refinement to be resolve. The smaller stars which are yellow in the left panel and white in the right panel represent individual radiation sources. The larger yellow star in the right panel represents a merged source, as the dashed red cell encapsulating all sources meets the opening angle (grey region in left panel) criteria.}}{5}{figure.2}}
+\newlabel{fig:algorithm}{{2}{5}{A schematic of \acro {} without (left) and with source merging and adaptive refinement (right). Coloured ray segments correspond to tree cells whose average properties are used to compute the optical depth along said ray segment. Dashed and solid lines distinguish consecutive line segments to help associate them with their corresponding tree cell. The grey cloud represents a feature in the medium that requires refinement to be resolve. The smaller stars which are yellow in the left panel and white in the right panel represent individual radiation sources. The larger yellow star in the right panel represents a merged source, as the dashed red cell encapsulating all sources meets the opening angle (grey region in left panel) criteria}{figure.2}{}}
 \newlabel{eqn:taui}{{16}{5}{Tracing Rays}{equation.16}{}}
 \newlabel{eqn:tausum}{{17}{5}{Tracing Rays}{equation.17}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}Adaptive Refinement}{5}{subsubsection.2.2.3}}
 \citation{altayEt08}
 \citation{altayTheuns13}
 \citation{pawlikSchaye08}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces }}{6}{figure.3}}
-\newlabel{fig:refine}{{3}{6}{}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Schematic of a cell to be refined. A parent cell intersected by a ray contains a feature (grey cloud) to be resolved. The black dotted line partitions the parent cell into it's children. The black intersecting rays represent the hypothetical case where only a child cell is intersected by a ray. The blue outlined sections on each ray correspond to the intersection length, $l$, used to compute the optical depth through each child cell.}}{6}{figure.3}}
+\newlabel{fig:refine}{{3}{6}{Schematic of a cell to be refined. A parent cell intersected by a ray contains a feature (grey cloud) to be resolved. The black dotted line partitions the parent cell into it's children. The black intersecting rays represent the hypothetical case where only a child cell is intersected by a ray. The blue outlined sections on each ray correspond to the intersection length, $l$, used to compute the optical depth through each child cell}{figure.3}{}}
 \newlabel{eqn:refcrit}{{18}{6}{Adaptive Refinement}{equation.18}{}}
 \newlabel{eqn:reffrac}{{19}{6}{Adaptive Refinement}{equation.19}{}}
 \newlabel{eqn:nseg}{{20}{6}{Adaptive Refinement}{equation.20}{}}
@@ -94,38 +94,37 @@
 \newlabel{eqn:cosmof}{{24}{7}{Background Radiation}{equation.24}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Implementation Specifics}{7}{subsection.2.3}}
 \newlabel{sec:specs}{{2.3}{7}{Implementation Specifics}{subsection.2.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces }}{7}{figure.5}}
-\newlabel{fig:sine_rho}{{5}{7}{}{figure.5}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Code Tests}{7}{section.3}}
 \newlabel{sec:tsts}{{3}{7}{Code Tests}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Sinusoidally Perturbed Glass}{7}{subsection.3.1}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Initial Conditions}{7}{subsubsection.3.1.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Opening Angle}{7}{subsubsection.3.1.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces }}{8}{figure.5}}
+\newlabel{fig:sine_rho}{{5}{8}{}{figure.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces }}{8}{figure.6}}
 \newlabel{fig:openangle}{{6}{8}{}{figure.6}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Opening Angle}{8}{subsubsection.3.1.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}Refinement Criteria}{8}{subsubsection.3.1.3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces }}{8}{figure.7}}
 \newlabel{fig:refcrit}{{7}{8}{}{figure.7}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.4}Scaling}{8}{subsubsection.3.1.4}}
-\citation{stromgren39}
-\citation{pawlikSchaye08,pawlikSchaye11,petkovaSpringel11}
-\citation{ilievEt06,ilievEt09}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}Refinement Criteria}{8}{subsubsection.3.1.3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces }}{9}{figure.8}}
 \newlabel{fig:pscale}{{8}{9}{}{figure.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.4}Scaling}{9}{subsubsection.3.1.4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Isothermal Spheres}{9}{subsection.3.2}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Initial Conditions}{9}{subsubsection.3.2.1}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Refinement Criteria}{9}{subsubsection.3.2.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Str\"omgren{} Sphere Test}{9}{subsection.3.3}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Str\"omgren{} Sphere Theory}{9}{subsubsection.3.3.1}}
+\citation{stromgren39}
+\citation{pawlikSchaye08,pawlikSchaye11,petkovaSpringel11}
+\citation{ilievEt06,ilievEt09}
 \citation{tielens05}
 \citation{spitzer78}
-\citation{osterbrockFerland2006}
-\citation{ilievEt06}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces }}{10}{figure.9}}
 \newlabel{fig:cellplot}{{9}{10}{}{figure.9}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces }}{10}{figure.10}}
 \newlabel{fig:isosph}{{10}{10}{}{figure.10}{}}
-\newlabel{eqn:hion}{{29}{10}{\strom {} Sphere Theory}{equation.29}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Str\"omgren{} Sphere Test}{10}{subsection.3.3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Str\"omgren{} Sphere Theory}{10}{subsubsection.3.3.1}}
+\citation{osterbrockFerland2006}
+\citation{ilievEt06}
 \citation{ilievEt06}
 \citation{ilievEt06}
 \citation{ilievEt06}
@@ -134,24 +133,23 @@
 \citation{pawlikSchaye11}
 \citation{ilievEt06}
 \citation{ilievEt06}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces }}{11}{figure.11}}
+\newlabel{fig:stromslice}{{11}{11}{}{figure.11}{}}
+\newlabel{eqn:hion}{{29}{11}{\strom {} Sphere Theory}{equation.29}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}The Isothermal Str\"omgren{} Sphere}{11}{subsubsection.3.3.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3}The Non-Isothermal Str\"omgren{} Sphere}{11}{subsubsection.3.3.3}}
 \citation{petkovaSpringel09}
 \citation{cen92}
 \citation{petkovaSpringel09}
 \citation{ilievEt06}
 \citation{ilievEt06}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces }}{11}{figure.11}}
-\newlabel{fig:stromslice}{{11}{11}{}{figure.11}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}The Isothermal Str\"omgren{} Sphere}{11}{subsubsection.3.3.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3}The Non-Isothermal Str\"omgren{} Sphere}{11}{subsubsection.3.3.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces }}{12}{figure.12}}
-\newlabel{fig:stromiso}{{12}{12}{}{figure.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces }}{12}{figure.13}}
-\newlabel{fig:stromtherm}{{13}{12}{}{figure.13}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces }}{12}{figure.14}}
-\newlabel{fig:stromtemp}{{14}{12}{}{figure.14}{}}
 \bibstyle{mnras}
 \bibdata{references}
 \bibcite{altayTheuns13}{{1}{2013}{{{Altay} \& {Theuns}}}{{{Altay} \& {Theuns}}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces }}{12}{figure.12}}
+\newlabel{fig:stromiso}{{12}{12}{}{figure.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Discussion And Conclusions}{12}{section.4}}
+\newlabel{sec:disc}{{4}{12}{Discussion And Conclusions}{section.4}{}}
 \bibcite{altayEt08}{{2}{2008}{{{Altay} et~al.}}{{{Altay}, {Croft} \& {Pelupessy}}}}
 \bibcite{baczynskiEt15}{{3}{2015}{{{Baczynski} et~al.}}{{{Baczynski}, {Glover} \& {Klessen}}}}
 \bibcite{barnesHut86}{{4}{1986}{{{Barnes} \& {Hut}}}{{{Barnes} \& {Hut}}}}
@@ -189,13 +187,15 @@
 \bibcite{wadsleyEt17}{{36}{2017}{{{Wadsley} et~al.}}{{{Wadsley}, {Keller} \& {Quinn}}}}
 \bibcite{walchEt12}{{37}{2012}{{{Walch} et~al.}}{{{Walch}, {Whitworth}, {Bisbas}, {W{\"u}nsch} \& {Hubber}}}}
 \bibcite{wiseAbel11}{{38}{2011}{{{Wise} \& {Abel}}}{{{Wise} \& {Abel}}}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Discussion And Conclusions}{13}{section.4}}
-\newlabel{sec:disc}{{4}{13}{Discussion And Conclusions}{section.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces }}{13}{figure.13}}
+\newlabel{fig:stromtherm}{{13}{13}{}{figure.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces }}{13}{figure.14}}
+\newlabel{fig:stromtemp}{{14}{13}{}{figure.14}{}}
 \newlabel{sec:ackn}{{4}{13}{Acknowledgements}{section.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Test Initial Conditions}{13}{section.A1}}
-\newlabel{sec:icnd}{{A}{13}{Test Initial Conditions}{section.A1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A1}Sinusoidally Perturbed Glass}{13}{subsection.A1.1}}
-\newlabel{eqn:manfft}{{A1}{13}{Sinusoidally Perturbed Glass}{equation.A1.1}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {A1}{\ignorespaces Randomly generated $\mathaccentV {vec}17E{k}$ and $\phi $ values used in generating a gently varying density distribution.}}{14}{table.A1.1}}
 \newlabel{tab:modes}{{A1}{14}{Randomly generated $\vec {k}$ and $\phi $ values used in generating a gently varying density distribution}{table.A1.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Test Initial Conditions}{14}{section.A1}}
+\newlabel{sec:icnd}{{A}{14}{Test Initial Conditions}{section.A1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A1}Sinusoidally Perturbed Glass}{14}{subsection.A1.1}}
+\newlabel{eqn:manfft}{{A1}{14}{Sinusoidally Perturbed Glass}{equation.A1.1}{}}
 \newlabel{lastpage}{{A1}{14}{Sinusoidally Perturbed Glass}{equation.A1.2}{}}
