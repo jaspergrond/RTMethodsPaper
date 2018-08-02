@@ -797,8 +797,8 @@ the radiation field computed with $\tr=1\e{-8}$, the lowest $\tr$ tested.
 number of ray segments computed per resolution element is plotted on the blue,
 left axis with square markers. The RMS error in flux relative to $\tr
 =10^{-8}$ is plotted on the red, right axis with circular markers. Lines of 
-$RMS = \tr$ and $RMS = \tr/10$ are plotted as red solid and dotted lines 
-respectively. The upper line represents in maximum allowable error 
+${\rm RMS} = \tr$ and ${\rm RMS} = \tr/10$ are plotted as red solid and dotted 
+lines respectively. The upper line represents in maximum allowable error 
 \textit{per ray segment}. The RMS relative error lies along or below the lower 
 line, an order of magnitude less that than $\tr$.}
 \label{fig:refcrit}
@@ -825,29 +825,41 @@ $\bigO{N\log^2 N}$.
 \subsubsection{Scaling}
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/particle_scaling.pdf}
-\caption{}
+\caption{Cost, quantified as number of computed ray segments per resolution 
+element, is plotted as a function of $N_{\rm 1D} = \sqrt[3]{N}$. \acro{}'s 
+theoretical upper and lower scaling bounds are plotted as red (solid) and 
+green (dash-dot) lines respectively. The corresponding simulation data 
+points are plotted as red circles and green squares. Simulation data points 
+intermediate to the scaling bounds are plotted as combinations of two 
+parameters - refinement criteria value and the type of scaling. Test's run 
+with a refinement criteria of $\tr=0.1$ are coloured orange and make up the 
+lower two sets of intermediate data. The upper sets of intermediate data, 
+coloured blue, are tests run with $\tr=0.01$. Diamond markers denote weak 
+scaling tests and $\times$ shaped markers denote strong scaling tests.}
 \label{fig:pscale}
 \end{figure}
 To test cost scaling as a function of $N$, we hold $\tO$ constant at 0.75 and
 vary $N$ between $32^3$ and $128^3$ in steps of $N_{\rm 1D} = 16$ for both gas 
 and star particles. To substantiate our best and worst case theoretical 
 scaling claims made in Equations \ref{eqn:nsegint2} and \ref{eqn:nsegint} 
-respectively, the sinusoidally perturbed glass IC was simulated with $\tr=1\e 6$ 
-to insure refinement was never performed and with $\tr=0$ to insure refinement 
-was always performed down to the bucket level. Data from theses tests and 
-fitted theoretical lines were plotted in Figure \ref{fig:pscale} and 
-correspond very closely to each other. Note that the only parameter used to 
-fit the theoretical lines from was a constant factor of $C$ placed in front of 
-Equations \ref{eqn:nsegint} and \ref{eqn:nsegint2}.
+respectively, the sinusoidally perturbed glass IC was simulated with 
+$\tr=1\e 6$ to insure refinement was never performed and with $\tr=0$ to 
+insure refinement was always performed down to the bucket level. Data from 
+theses tests and fitted theoretical lines were plotted in Figure 
+\ref{fig:pscale} and correspond very closely to each other. Note that the only 
+parameter used to fit the theoretical lines from was a constant factor of $C$ 
+placed in front of Equations \ref{eqn:nsegint} and \ref{eqn:nsegint2}.
 
 Scaling behavior between the upper and lower limits was probed in two ways. 
 Firstly, simulations were run with $\tr$ values of 0.1 and 0.01. Secondly, 
 strong and weak scaling cases were simulated. The strong scaling case being 
-where the box size was held constant and particle number increased. This is 
-analogous to increasing the resolution of an isolated galaxy simulation. The 
-weak scaling case is the opposite, where the box size is increased and 
-particle density is held constant. This is analogous to simulating larger and 
-larger cosmological boxes to achieve larger statistical samples. 
+where the simulation volume was held constant and particle number increased. 
+This is analogous to increasing the resolution of an isolated galaxy 
+simulation. The weak scaling case is the opposite, where the box size is 
+increased and particle density is held constant. This is analogous to 
+simulating larger and larger cosmological boxes to achieve larger statistical 
+samples. Note that the previously described tests of the upper and lower 
+scaling bounds were run as strong scaling tests only.
 
 Again, data from these tests was plotted in Figure \ref{fig:pscale} where 
 there are two interesting things to note. Firstly, the strong scaling case, 
@@ -891,7 +903,14 @@ isothermal spheres have a radius of 0.05 and are denoted by the grey circles
 in Figure \ref{fig:cellplot}.  
 \begin{figure*}
 \includegraphics[width=1\linewidth]{Figures/cellplot.pdf}
-\caption{}
+\caption{Right: \acro{}'s adaptive refinement criteria resolving isothermal 
+spheres in a uniform environment. Particles in a slice along the $z$-plane of 
+the isothermal spheres IC are coloured by the logarithm of their flux value 
+(high - low flux, red - purple). The red line represents the ray traced from 
+radiation source (black star) to the receiving cell. Black rectangles 
+represent the spatial boundary of the tree cells used compute the optical 
+depth of the intersecting ray segment. Left: A zoom in of the sphere 
+intersected by the ray to focus on the refinement across the sphere itself.}
 \label{fig:cellplot}
 \end{figure*}
 They are centred on the $x$ and $z$ axis with $y$ coordinates given by
@@ -911,7 +930,18 @@ separately to probe the refinement criteria's performance in the optically
 thick regime.
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/isothermal_spheres.pdf}
-\caption{}
+\caption{A plot of cost and accuracy as a function of refinement criteria. The 
+number of ray segments computed per resolution element is plotted on the blue,
+left axis with square markers. The RMS error in flux relative to $\tr
+=10^{-8}$ is plotted on the red, right axis with circular markers. Lines of 
+${\rm RMS} = \tr$ and ${\rm RMS} = \tr/10$ are plotted as red solid and dotted 
+lines respectively. Solid circular markers represent RMS relative errors 
+computed on all resolution elements and empty markers represent only the 
+resolution elements that fall in the shadow of the isothermal spheres. The 
+in shadow errors match closely with the all particle points on the ${\rm RMS} 
+= \tr$ line until the all particle points begin to diverge back onto the 
+${\rm RMS} = \tr/10$ line (where they lay in Figure \ref{fig:refcrit}) at 
+$\tr=10^{-3}$.}
 \label{fig:isosph}
 \end{figure}
 Again, $\tr=0.1$ achieves an RMS fractional error of 1\% with very 
@@ -964,7 +994,7 @@ where $\dot{N}_\gamma$ is the source luminosity in photons per second,
 $\alpha$ is the recombination rate and $n^2_H$ is the hydrogen number density. 
 One can also solve for the radius as a function of time 
 \citep[e.g.][]{spitzer78},
-\begin{equation}
+\begin{equation}\label{eqn:stromtime}
 R(t) = R_S\left[1-\exp\left(t/t_{\rm rec}\right)\right]^{1/3}
 \end{equation}
 where $t_{\rm rec = 1/{n_H \alpha}}$ is the recombination time of the 
@@ -996,7 +1026,18 @@ mimicking their initial conditions.
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/strom_slice_iso_030.pdf}
 \includegraphics[width=1\linewidth]{Figures/strom_slice_iso_500.pdf}
-\caption{}
+\caption{A slice through the $z$-plane of the isothermal \strom{} sphere
+test at $t=30$ Myr (top row) and $t=500$ Myr (bottom row). Particle 
+resolutions increase from left to right denoted by the $N$ value in the top 
+left corner of each pane. Axis ticks are spaced 2 kpc apart, so note that 
+ionized spheres in the top row are a fraction of the volume and particle 
+resolution of spheres in the bottom row. The colormap represents neutral 
+fraction, $\rm x$ and is similar to that of \protect\cite{pawlikSchaye08} and 
+\protect\cite{pawlikSchaye11} for comparison. Also made identical for 
+comparison are contour levels at $\rm x$ = 0.9, 0.5, $\log \rm x$ = -1, -1.5, 
+-2, -2.5, -3 and -3.5. The white dashed line is a circle of radius given by 
+Equation \ref{eqn:stromtime}, the sharp, time dependent solution to the 
+isothermal \strom{} sphere.}
 \label{fig:stromslice}
 \end{figure}
 In the simplest case, the ionizing source is assumed to emit monochromatic 
@@ -1043,7 +1084,11 @@ the TRAPHIC papers (in this paper these are in the top panels of Figure
 
 \begin{figure*}
 \includegraphics[width=0.95\linewidth]{Figures/strom_iso_fraction.pdf}
-\caption{}
+\caption{Spherically averaged neutral, $\rm x$, and ionized, $\rm 1-x$, 
+fraction profiles for the isothermal \strom sphere test during the fast 
+expansion (left) and equilibrium (right) stages. Radius on the $x$-axis is 
+normalised by a box length of 6.6 kpc for comparison with plotted solutions 
+from the \protect\cite{ilievEt06} comparison paper.}
 \label{fig:stromiso}
 \end{figure*}
 Figure \ref{fig:stromiso} is a plot of neutral/ionization fraction as a 
@@ -1084,12 +1129,15 @@ match \cite{petkovaSpringel09}.
 
 \begin{figure*}
 \includegraphics[width=0.95\linewidth]{Figures/strom_fraction.pdf}
-\caption{}
+\caption{Spherically averaged neutral, $\rm x$, and ionized, $\rm 1-x$, 
+fraction profiles for the non-isothermal \strom sphere test during the fast 
+expansion (left), slowing down (middle) and equilibrium (right) stages.}
 \label{fig:stromtherm}
 \end{figure*}
 \begin{figure*}
 \includegraphics[width=0.95\linewidth]{Figures/strom_temp.pdf}
-\caption{}
+\caption{Spherically averaged temperature profiles for the non-isothermal 
+\strom sphere test.}
 \label{fig:stromtemp}
 \end{figure*}
 Figures \ref{fig:stromtherm} and \ref{fig:stromtemp} show the neutral/ionized 

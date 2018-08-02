@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  2 AUG 2018 14:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  2 AUG 2018 19:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1069,18 +1069,20 @@ Package pdftex.def Info: Figures/particle_scaling.pdf used on input line 827.
 File: Figures/cellplot.pdf Graphic file (type pdf)
 
 <use Figures/cellplot.pdf>
-Package pdftex.def Info: Figures/cellplot.pdf used on input line 893.
+Package pdftex.def Info: Figures/cellplot.pdf used on input line 905.
 (pdftex.def)             Requested size: 504.0pt x 241.9257pt.
 
 <Figures/isothermal_spheres.pdf, id=213, 455.30101pt x 339.66899pt>
 File: Figures/isothermal_spheres.pdf Graphic file (type pdf)
 
 <use Figures/isothermal_spheres.pdf>
-Package pdftex.def Info: Figures/isothermal_spheres.pdf used on input line 913.
+Package pdftex.def Info: Figures/isothermal_spheres.pdf used on input line 932.
 
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
  [9 <./Figures/particle_scaling.pdf>]
-[10 <./Figures/cellplot.pdf> <./Figures/isothermal_spheres.pdf
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [10 <./Figures/cellplot.pdf> <./Figures/isothermal_spheres.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/isothermal_spheres.pdf): PDF inclusion
 : multiple pdfs with page group included in a single page
@@ -1088,55 +1090,63 @@ pdfTeX warning: pdflatex (file ./Figures/isothermal_spheres.pdf): PDF inclusion
 File: Figures/strom_slice_iso_030.pdf Graphic file (type pdf)
 
 <use Figures/strom_slice_iso_030.pdf>
-Package pdftex.def Info: Figures/strom_slice_iso_030.pdf used on input line 997
-.
+Package pdftex.def Info: Figures/strom_slice_iso_030.pdf used on input line 102
+7.
 (pdftex.def)             Requested size: 240.0pt x 78.85559pt.
 
 <Figures/strom_slice_iso_500.pdf, id=295, 455.30101pt x 149.59889pt>
 File: Figures/strom_slice_iso_500.pdf Graphic file (type pdf)
 
 <use Figures/strom_slice_iso_500.pdf>
-Package pdftex.def Info: Figures/strom_slice_iso_500.pdf used on input line 998
-.
+Package pdftex.def Info: Figures/strom_slice_iso_500.pdf used on input line 102
+8.
 (pdftex.def)             Requested size: 240.0pt x 78.85559pt.
 
-<Figures/strom_iso_fraction.pdf, id=296, 939.51pt x 455.30101pt>
-File: Figures/strom_iso_fraction.pdf Graphic file (type pdf)
+Underfull \vbox (badness 2717) has occurred while \output is active []
 
-<use Figures/strom_iso_fraction.pdf>
-Package pdftex.def Info: Figures/strom_iso_fraction.pdf used on input line 1045
-.
-(pdftex.def)             Requested size: 478.79846pt x 232.0337pt.
  [11 <./Figures/strom_slice_iso_030.pdf> <./Figures/strom_slice_iso_500.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/strom_slice_iso_500.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
->] <Figures/strom_fraction.pdf, id=332, 1409.265pt x 455.30101pt>
+>] <Figures/strom_iso_fraction.pdf, id=331, 939.51pt x 455.30101pt>
+File: Figures/strom_iso_fraction.pdf Graphic file (type pdf)
+
+<use Figures/strom_iso_fraction.pdf>
+Package pdftex.def Info: Figures/strom_iso_fraction.pdf used on input line 1086
+.
+(pdftex.def)             Requested size: 478.79846pt x 232.0337pt.
+
+<Figures/strom_fraction.pdf, id=332, 1409.265pt x 455.30101pt>
 File: Figures/strom_fraction.pdf Graphic file (type pdf)
 
 <use Figures/strom_fraction.pdf>
-Package pdftex.def Info: Figures/strom_fraction.pdf used on input line 1086.
+Package pdftex.def Info: Figures/strom_fraction.pdf used on input line 1131.
 (pdftex.def)             Requested size: 478.79846pt x 154.68913pt.
 
 <Figures/strom_temp.pdf, id=333, 1445.4pt x 455.30101pt>
 File: Figures/strom_temp.pdf Graphic file (type pdf)
 
 <use Figures/strom_temp.pdf>
-Package pdftex.def Info: Figures/strom_temp.pdf used on input line 1091.
+Package pdftex.def Info: Figures/strom_temp.pdf used on input line 1138.
 (pdftex.def)             Requested size: 478.79846pt x 150.81947pt.
- [12 <./Figures/strom_iso_fraction.pdf>]
-(./RTMethodsPaper.bbl [13 <./Figures/strom_fraction.pdf> <./Figures/strom_temp.
-pdf
+ (./RTMethodsPaper.bbl [12]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13 <./Figures/strom_iso_fraction.pdf> <./Figures/strom_fraction.pdf
+
+pdfTeX warning: pdflatex (file ./Figures/strom_fraction.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+> <./Figures/strom_temp.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/strom_temp.pdf): PDF inclusion: multip
 le pdfs with page group included in a single page
 >])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1250.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1298.
  [14]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1250.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1298.
  (./RTMethodsPaper.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1250.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1250.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1298.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1298.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1145,16 +1155,16 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1250.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1298.
  ) 
 Here is how much of TeX's memory you used:
- 10038 strings out of 493029
- 140207 string characters out of 6136235
- 241873 words of memory out of 5000000
- 13229 multiletter control sequences out of 15000+600000
+ 10039 strings out of 493029
+ 140222 string characters out of 6136235
+ 247392 words of memory out of 5000000
+ 13230 multiletter control sequences out of 15000+600000
  136377 words of font info for 317 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,15n,35p,972b,558s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,15n,35p,1045b,494s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/sh
 are/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/publ
@@ -1193,10 +1203,10 @@ lic/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/
 txmia.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RTMethodsPaper.pdf (14 pages, 2039223 bytes).
+Output written on RTMethodsPaper.pdf (14 pages, 2043333 bytes).
 PDF statistics:
- 506 PDF objects out of 1000 (max. 8388607)
- 405 compressed objects within 5 object streams
+ 505 PDF objects out of 1000 (max. 8388607)
+ 404 compressed objects within 5 object streams
  0 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
