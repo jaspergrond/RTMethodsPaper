@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  2 AUG 2018 12:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  2 AUG 2018 14:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -946,154 +946,191 @@ File: t1ntxsups.fd 2015/01/17 v1.0
 LaTeX Font Info:    Font shape `T1/ntxsups/m/n' will be
 (Font)              scaled to size 14.4pt on input line 52.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 62.
+(Font)              scaled to size 10.0pt on input line 64.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.3pt on input line 62.
+(Font)              scaled to size 7.3pt on input line 64.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.5pt on input line 62.
+(Font)              scaled to size 5.5pt on input line 64.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
-(Font)              size <5> substituted on input line 62.
+(Font)              size <5> substituted on input line 64.
 
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 83.
+(Font)              scaled to size 8.0pt on input line 78.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.2pt on input line 83.
+(Font)              scaled to size 6.2pt on input line 78.
 <Figures/uvsn.pdf, id=1, 455.30101pt x 339.66899pt>
 File: Figures/uvsn.pdf Graphic file (type pdf)
  <use Figures/uvsn.pdf>
-Package pdftex.def Info: Figures/uvsn.pdf used on input line 117.
+Package pdftex.def Info: Figures/uvsn.pdf used on input line 112.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
+
+Underfull \hbox (badness 2503) in paragraph at lines 98--117
+\T1/aer/m/n/9 mech-a-nisms af-fect star and galaxy for-ma-tion. Stel-lar
+ []
+
+
+Underfull \hbox (badness 1014) in paragraph at lines 98--117
+\T1/aer/m/n/9 feed-back comes in the form of pho-toion-iza-tion by ul-
+ []
+
+
+Underfull \hbox (badness 1067) in paragraph at lines 98--117
+\T1/aer/m/n/9 tra-vi-o-let (UV) ra-di-a-tion, stel-lar winds and su-per-novae
+ []
+
+
+Overfull \hbox (4.0951pt too wide) in paragraph at lines 98--117
+\T1/aer/bx/n/9 http://adsabs.harvard.edu/abs/2013ApJ...770...25A[]\T1/aer/m/n/9
+ .
+ []
+
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 128.
+(Font)              scaled to size 9.0pt on input line 123.
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 126.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 138.
-
-LaTeX Font Info:    No file TS1aer.fd. on input line 138.
-
+LaTeX Font Info:    No file TS1aer.fd. on input line 126.
 
 LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
 (Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `textcopyright' on input line 138.
+(Font)              for symbol `textcopyright' on input line 126.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
-]
+ <./Figures/uvsn.pdf>]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 9.0pt on input line 139.
+(Font)              scaled to size 9.0pt on input line 134.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 7.3pt on input line 139.
+(Font)              scaled to size 7.3pt on input line 134.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 5.5pt on input line 139.
+(Font)              scaled to size 5.5pt on input line 134.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [2 <./Figures/uvsn.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 247--265
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--208
+[]\T1/aer/m/n/9 It is im-por-tant to note that meth-ods that
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--208
+\T1/aer/m/n/9 adap-tively split rays (e.g. Healpix Gorski2005
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--208
+\T1/aer/m/n/9 http://adsabs.harvard.edu/abs/2005ApJ...622..759G used
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 229--232
+[]\T1/aer/m/n/9 Thus a naïve re-verse ray trace still scales
+ []
+
+
+Underfull \hbox (badness 5036) in paragraph at lines 229--232
+\T1/aer/m/n/9 as$\OMS/ntxsy/m/n/9 O []$ \T1/aer/m/n/9 and many sources present 
+the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--252
 []\T1/aer/m/n/9 Photon packet prop-a-ga-tion meth-ods, such as
  []
 
 
-Underfull \hbox (badness 1072) in paragraph at lines 247--265
-\T1/aer/m/n/9 di-rec-tion-al-ity quite well, how-ever Monte Carlo as-pects
- []
-
-
-Underfull \hbox (badness 1270) in paragraph at lines 247--265
-\T1/aer/m/n/9 res-o-lu-tion el-e-ments as men-tioned be-fore, but are also
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 3690) has occurred while \output is active []
 
  [3]
 <Figures/algorithm.pdf, id=87, 569.05513pt x 307.28975pt>
 File: Figures/algorithm.pdf Graphic file (type pdf)
 
 <use Figures/algorithm.pdf>
-Package pdftex.def Info: Figures/algorithm.pdf used on input line 382.
+Package pdftex.def Info: Figures/algorithm.pdf used on input line 381.
 (pdftex.def)             Requested size: 504.0pt x 272.16945pt.
  [4] [5 <./Figures/algorithm.pdf>]
 <Figures/refine.pdf, id=99, 385.44pt x 345.29pt>
 File: Figures/refine.pdf Graphic file (type pdf)
  <use Figures/refine.pdf>
-Package pdftex.def Info: Figures/refine.pdf used on input line 539.
+Package pdftex.def Info: Figures/refine.pdf used on input line 538.
 (pdftex.def)             Requested size: 240.0pt x 214.99959pt.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 545.
+(Font)              scaled to size 8.0pt on input line 544.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.2pt on input line 545.
+(Font)              scaled to size 6.2pt on input line 544.
 
-Overfull \hbox (4.74725pt too wide) detected at line 630
+Overfull \hbox (4.74725pt too wide) detected at line 629
 \OML/ntxmi/m/it/9 N[] \U/ntxmia/m/it/9 = [][] [] [][] [] \OML/ntxmi/m/it/9 dr \
 OMS/ntxsy/m/n/9 ^^X \OML/ntxmi/m/it/9 N [][]\U/ntxmia/m/it/9 }\OT1/ntxtlf/m/n/9
  128\OML/ntxmi/m/it/9 N=N[]\U/ntxmia/m/it/9 ~\OML/ntxmi/m/it/9 :
  []
 
-[6 <./Figures/refine.pdf>]
-<Figures/cosmofield.pdf, id=106, 455.30101pt x 339.66899pt>
+
+Underfull \vbox (badness 1472) has occurred while \output is active []
+
+ [6 <./Figures/refine.pdf>] <Figures/cosmofield.pdf, id=106, 455.30101pt x 339.
+66899pt>
 File: Figures/cosmofield.pdf Graphic file (type pdf)
 
 <use Figures/cosmofield.pdf>
-Package pdftex.def Info: Figures/cosmofield.pdf used on input line 664.
+Package pdftex.def Info: Figures/cosmofield.pdf used on input line 663.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
 
 <Figures/sine_rho.pdf, id=107, 455.30101pt x 339.66899pt>
 File: Figures/sine_rho.pdf Graphic file (type pdf)
 
 <use Figures/sine_rho.pdf>
-Package pdftex.def Info: Figures/sine_rho.pdf used on input line 738.
+Package pdftex.def Info: Figures/sine_rho.pdf used on input line 737.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
-
-<Figures/opening_angle.pdf, id=108, 455.30101pt x 339.66899pt>
+ [7 <./Figures/cosmofield.pdf>]
+<Figures/opening_angle.pdf, id=134, 455.30101pt x 339.66899pt>
 File: Figures/opening_angle.pdf Graphic file (type pdf)
 
 <use Figures/opening_angle.pdf>
-Package pdftex.def Info: Figures/opening_angle.pdf used on input line 759.
+Package pdftex.def Info: Figures/opening_angle.pdf used on input line 758.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
- [7 <./Figures/cosmofield.pdf>]
+
 <Figures/refinement_criteria.pdf, id=135, 455.30101pt x 339.66899pt>
 File: Figures/refinement_criteria.pdf Graphic file (type pdf)
 
 <use Figures/refinement_criteria.pdf>
-Package pdftex.def Info: Figures/refinement_criteria.pdf used on input line 794
+Package pdftex.def Info: Figures/refinement_criteria.pdf used on input line 793
 .
+(pdftex.def)             Requested size: 240.0pt x 179.04413pt.
+
+<Figures/particle_scaling.pdf, id=136, 455.30101pt x 339.66899pt>
+File: Figures/particle_scaling.pdf Graphic file (type pdf)
+
+<use Figures/particle_scaling.pdf>
+Package pdftex.def Info: Figures/particle_scaling.pdf used on input line 825.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
  [8 <./Figures/sine_rho.pdf> <./Figures/opening_angle.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/opening_angle.pdf): PDF inclusion: mul
 tiple pdfs with page group included in a single page
-> <./Figures/refinement_criteria.pdf
-
-pdfTeX warning: pdflatex (file ./Figures/refinement_criteria.pdf): PDF inclusio
-n: multiple pdfs with page group included in a single page
->] <Figures/particle_scaling.pdf, id=211, 455.30101pt x 339.66899pt>
-File: Figures/particle_scaling.pdf Graphic file (type pdf)
-
-<use Figures/particle_scaling.pdf>
-Package pdftex.def Info: Figures/particle_scaling.pdf used on input line 826.
-(pdftex.def)             Requested size: 240.0pt x 179.04413pt.
-
-<Figures/cellplot.pdf, id=212, 903.375pt x 433.62pt>
+>] <Figures/cellplot.pdf, id=188, 903.375pt x 433.62pt>
 File: Figures/cellplot.pdf Graphic file (type pdf)
 
 <use Figures/cellplot.pdf>
-Package pdftex.def Info: Figures/cellplot.pdf used on input line 892.
+Package pdftex.def Info: Figures/cellplot.pdf used on input line 891.
 (pdftex.def)             Requested size: 504.0pt x 241.9257pt.
+ [9 <./Figures/refinement_criteria.pdf> <./Figures/particle_scaling.pdf
 
-<Figures/isothermal_spheres.pdf, id=213, 455.30101pt x 339.66899pt>
+pdfTeX warning: pdflatex (file ./Figures/particle_scaling.pdf): PDF inclusion: 
+multiple pdfs with page group included in a single page
+>] <Figures/isothermal_spheres.pdf, id=243, 455.30101pt x 339.66899pt>
 File: Figures/isothermal_spheres.pdf Graphic file (type pdf)
 
 <use Figures/isothermal_spheres.pdf>
-Package pdftex.def Info: Figures/isothermal_spheres.pdf used on input line 912.
+Package pdftex.def Info: Figures/isothermal_spheres.pdf used on input line 911.
 
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
- [9 <./Figures/particle_scaling.pdf>]
-[10 <./Figures/cellplot.pdf> <./Figures/isothermal_spheres.pdf
+ [10 <./Figures/cellplot.pdf> <./Figures/isothermal_spheres.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/isothermal_spheres.pdf): PDF inclusion
 : multiple pdfs with page group included in a single page
@@ -1101,7 +1138,7 @@ pdfTeX warning: pdflatex (file ./Figures/isothermal_spheres.pdf): PDF inclusion
 File: Figures/strom_slice_iso_030.pdf Graphic file (type pdf)
 
 <use Figures/strom_slice_iso_030.pdf>
-Package pdftex.def Info: Figures/strom_slice_iso_030.pdf used on input line 996
+Package pdftex.def Info: Figures/strom_slice_iso_030.pdf used on input line 995
 .
 (pdftex.def)             Requested size: 240.0pt x 78.85559pt.
 
@@ -1109,7 +1146,7 @@ Package pdftex.def Info: Figures/strom_slice_iso_030.pdf used on input line 996
 File: Figures/strom_slice_iso_500.pdf Graphic file (type pdf)
 
 <use Figures/strom_slice_iso_500.pdf>
-Package pdftex.def Info: Figures/strom_slice_iso_500.pdf used on input line 997
+Package pdftex.def Info: Figures/strom_slice_iso_500.pdf used on input line 996
 .
 (pdftex.def)             Requested size: 240.0pt x 78.85559pt.
 
@@ -1117,12 +1154,9 @@ Package pdftex.def Info: Figures/strom_slice_iso_500.pdf used on input line 997
 File: Figures/strom_iso_fraction.pdf Graphic file (type pdf)
 
 <use Figures/strom_iso_fraction.pdf>
-Package pdftex.def Info: Figures/strom_iso_fraction.pdf used on input line 1044
+Package pdftex.def Info: Figures/strom_iso_fraction.pdf used on input line 1043
 .
 (pdftex.def)             Requested size: 478.79846pt x 232.0337pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [11 <./Figures/strom_slice_iso_030.pdf> <./Figures/strom_slice_iso_500.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/strom_slice_iso_500.pdf): PDF inclusio
@@ -1131,14 +1165,14 @@ n: multiple pdfs with page group included in a single page
 File: Figures/strom_fraction.pdf Graphic file (type pdf)
 
 <use Figures/strom_fraction.pdf>
-Package pdftex.def Info: Figures/strom_fraction.pdf used on input line 1085.
+Package pdftex.def Info: Figures/strom_fraction.pdf used on input line 1084.
 (pdftex.def)             Requested size: 478.79846pt x 154.68913pt.
 
 <Figures/strom_temp.pdf, id=333, 1445.4pt x 455.30101pt>
 File: Figures/strom_temp.pdf Graphic file (type pdf)
 
 <use Figures/strom_temp.pdf>
-Package pdftex.def Info: Figures/strom_temp.pdf used on input line 1090.
+Package pdftex.def Info: Figures/strom_temp.pdf used on input line 1089.
 (pdftex.def)             Requested size: 478.79846pt x 150.81947pt.
  [12 <./Figures/strom_iso_fraction.pdf>]
 (./RTMethodsPaper.bbl [13 <./Figures/strom_fraction.pdf> <./Figures/strom_temp.
@@ -1147,12 +1181,16 @@ pdf
 pdfTeX warning: pdflatex (file ./Figures/strom_temp.pdf): PDF inclusion: multip
 le pdfs with page group included in a single page
 >])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1249.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1248.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [14]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1249.
- (./RTMethodsPaper.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1249.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1249.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1248.
+
+(./RTMethodsPaper.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1248.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1248.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1161,16 +1199,16 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1249.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1248.
  ) 
 Here is how much of TeX's memory you used:
  10029 strings out of 493029
  140015 string characters out of 6136235
- 242610 words of memory out of 5000000
+ 238610 words of memory out of 5000000
  13220 multiletter control sequences out of 15000+600000
  136377 words of font info for 317 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,15n,35p,972b,542s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,15n,35p,972b,536s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/sh
 are/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/publ
@@ -1209,7 +1247,7 @@ lic/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/
 txmia.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RTMethodsPaper.pdf (14 pages, 2039315 bytes).
+Output written on RTMethodsPaper.pdf (14 pages, 2040563 bytes).
 PDF statistics:
  506 PDF objects out of 1000 (max. 8388607)
  405 compressed objects within 5 object streams
