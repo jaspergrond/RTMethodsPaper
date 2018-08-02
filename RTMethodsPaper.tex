@@ -89,20 +89,20 @@ of radiative transfer (RT) is key in interpreting this information, as the
 photons are affected by the medium they travel through on their way to our 
 telescopes and detectors. Interactions between photons and the medium do not 
 only affect the photons themselves but the matter as well. Photons and baryons 
-exchange energy and momentum, affect the excitation and ionization states of 
-said baryons and thus determine the chemical and thermodynamic properties of 
-the bulk medium. This in turn makes radiation a driving factor in many of the 
-astrophysical processes we study.
+exchange energy and momentum, driving both heating and cooling.
+This also affects excitation and ionization states 
+and thus determines the chemical and thermodynamic properties of 
+the gas.  Thus radiation is a key in many of the 
+astrophysical systems and processes we study.
 
-On galaxy scales, the question of how feedback mechanisms affect star and 
-galaxy formation is one of these physical processes we can study. Stellar 
+On galaxy scales, a central question is how feedback mechanisms affect star and 
+galaxy formation. Stellar 
 feedback comes in the form of photoionization by ultraviolet (UV) radiation, 
 stellar winds and supernovae \citep{leithererEt99}, the latter of which has 
-been a main focus in simulations in previous years \comment{Grond: 
-cite a bunch of SN feedback papers?}. It is important to note that even 
+been a main focus in simulations in previous years \comment[e.g. Agertz 2013 http://adsabs.harvard.edu/abs/2013ApJ...770...25A}. It is important to note that even 
 though supernovae might be spectacularly powerful events, ionizing radiative 
-output from stellar populations in the UV regime contributes two orders of 
-magnitude more power at early times and about 50 times more energy over the 
+output from stellar populations contributes two orders of 
+magnitude more energy at early times and about 50 times more energy over the 
 course of a stellar population's lifetime. This is made evident in Figure 
 \ref{fig:uvsn}, a plot of luminosity output per solar mass as a function of 
 time from stellar populations created via output from the stellar evolution 
@@ -125,10 +125,10 @@ a significant effect on star formation rate. Whereas \cite{daleEt12}
 conclude the affects on star formation rate to be small.
 
 With that in mind it may then come as a surprise that RT has been treated 
-rather poorly in most large scale astrophysical simulations, usually as some 
-imposed uniform background. This is not because of carelessness or lack of 
-effort, but because RT is an intrinsically complex and expensive problem. 
-The complexity of this problem is firstly evident in the classical RT equation 
+poorly in most galaxy scale astrophysical simulations, usually as some 
+imposed uniform background. This is because 
+RT is an intrinsically complex and expensive problem. 
+The complexity of this problem is firstly evident from the full RT equation 
 \citep[e.g.][]{mihalasMihalas84},
 \begin{equation} \label{eqn:classicrt}
 \left[ \frac{1}{c} \frac{\partial}{\partial t} + \mathbf{\hat{n} \cdot \nabla}
@@ -143,124 +143,128 @@ unit direction of light propagation $\mathbf{\hat{n}}$, time $t$ and frequency
 $\nu$. Apart from being a seven dimensional problem, RT has the highest 
 possible characteristic speed of $c$, the speed of light. Also, unlike a force 
 at a distance problem such as gravity, RT depends on the properties of the 
-intervening material which is handled by the extinction term, $\alpha$.
+intervening material via the absorption term, $\alpha$.
 
 Because of this complexity, a na\"ive numerical solution to the RT problem 
-scales with the number of resolution elements like $\bigO{N^{7/3}}$ and 
-requires a timestep thousands of times smaller than typical courant times in 
-astrophysics. This costly scaling is simply a result of the three major parts 
-that go into computing the radiation field in a simulation. Firstly, a 
-radiation field is represented by a simulation's $N$ resolution elements, so 
-the field intensity needs to be computed at $N$ points in the simulation 
-volume. Secondly, each resolution element's intensity value is made up of 
-contributions from $\NS$ sources of radiation. This can also be thought of as 
-$\NS$ rays of light being computed per resolution element. This leads to a 
-scaling for the total number of rays computed in a simulation going as 
-$\NR = N \times \NS$, which is $\bigO{N^2}$ assuming the $\NS = N$. This 
-fact alone limits rudimentary RT methods to only small scale problems, such as 
-ionization by a small handful of massive stars \citep{howard16, howard17}, to 
-avoid $\bigO{N^2}$ scaling. Finally, each ray of light interacts with the 
-medium along its path as mentioned earlier. Since the medium is represented by 
-the simulation's $N$ resolution elements and $N$ is proportional to the 
-simulation volume, a one dimensional ray intersects with $\bigO{N^{1/3}}$ 
-resolution elements. Using the total number of resolution elements interacted 
-with as a measure of computational cost we get that the computational cost is 
-proportional to $N \times \NS \times N^{1/3}$, which is $\bigO{N^{7/3}}$. 
+scales with the number of resolution elements, $N$, as $\bigO{N^{7/3}}$ and 
+requires a timestep thousands of times smaller than typical Courant times in 
+astrophysics. This scaling arises due to three contributions. 
+Firstly, a radiation field must be computed at each of the simulation's $N$ resolution elements.
+Secondly, each resolution element's intensity value is made up of 
+contributions from $\NS$ sources of radiation 
+($\NS$ rays of light being computed per resolution element). This leads to a 
+scaling for the total of rays, $\NR = N \times \NS$,
+, or $\bigO{N^2}$ assuming the $\NS \sim N$. This 
+fact alone limits brute-force RT methods to only small scale problems, such as 
+ionization by a small handful of massive stars \citep{howard16, howard17}.
+Finally, each ray of light interacts with the 
+medium along its path, which is resolved with $\bigO{N^{1/3}}$ 
+resolution elements.
+Thus the computational cost is $\bigO{N^{7/3}}$. 
 This poor scaling with resolution elements makes it unfeasible to simulate RT 
-along with gravity and hydrodynamics methods that scale like $\bigO{N\log N}$. 
-After breaking down the source of computational complexity in the RT problem 
-it is evident that something needs to be done about the strong dependence on 
-$\NS$ and the $N^{1/3}$ cost of computing each ray to attain a feasible RT 
-method.
+alongside gravity and hydrodynamics methods that scale as $\bigO{N\log N}$ or better.
+It is evident that much can be gained by reducing the linear dependence on 
+$\NS$, with additional gains from tackling the $N^{1/3}$ cost per ray.
 
-A feasible RT method would have to solve a simplified RT problem. The first 
-one of these simplifications divides RT methods into two different categories 
-based on how they treat $c$ in Eq. \ref{eqn:classicrt}. For methods that use a 
-finite $c$, which is often a reduced speed of light, the partial time 
+A feasible RT method would have to solve a simplified RT problem.
+RT methods can be divided into two different categories 
+based on how they treat $c$ in Eq. \ref{eqn:classicrt}.  {\it Evolutionary} methods use a 
+finite $c$, (which is often reduced from the true speed of light) and thus the partial time 
 derivative remains in Eq. \ref{eqn:classicrt} and the radiation field 
-is advected or ``evolved''. Methods that solve the RT equation in this way, 
-which we will call evolutionary methods, include moment methods like OTVET 
+is advected or evolved thoughout the simulation.  The prototypical evolutionary method
+is flux limited diffusion \citep{levermorepomranging81 http://adsabs.harvard.edu/full/1981ApJ...248..321L}.  Modern evolutionary methods include include moment methods like OTVET 
 \citep{gnedinAbel01} and  RAMESE-RT \citep{rosdahlTeyssier15} as well as 
 photon packet propagation methods like TRAPHIC \citep{pawlikSchaye08}, SPHRAY 
-\citep{altayEt08} and SimpleX2 \citep{paardekooperEt10}. On the other hand, in 
-limit where $c$ is taken to be infinite, the partial time derivative in 
+\citep{altayEt08} and SimpleX2 \citep{paardekooperEt10}.
+
+On the other hand, {\it Instantaneous} Methods take the 
+limit where $c$ is infinite and the partial time derivative in 
 Eq. \ref{eqn:classicrt} goes to zero and the radiation field can be 
-computed instantaneously as a computational geometry problem. Methods that 
-solve the RT equation in this way, which we will refer to as instantaneous 
-methods, include forward ray tracers such as $\rm C^2Ray$ 
+computed instantaneously as a computational geometry problem.  Methods in this category
+include forward ray tracers such as $\rm C^2Ray$ 
 \citep{mellemaEt06a}, Moray \citep{wiseAbel11} and Fervent 
 \citep{baczynskiEt15} as well as reverse ray tracers such as TreeCol 
 \citep{clarkEt12} and URCHIN \citep{altayTheuns13}. 
 
 Instantaneous methods typically take the form of ray tracers. Ray tracers are 
-the most simple, natural way to go about solving the RT problem. Forward ray 
+the most direct way to go about solving the RT problem. Forward ray 
 tracers trace many rays outward from sources of radiation, similarly to the 
-actual phenomena, in hope that they will intersect resolution elements for 
-which the radiation field will be computed. As a result, a number of rays per 
-source comparable to the number of resolution elements is needed to insure 
-accuracy. Thus, na\"ive ray tracers scale with number of resolution elements 
-like $\bigO{N \NS N^{1/3}}$. This scaling limits forward ray tracers to 
-problems with few sources to avoid $\mathcal{O}(N^{7/3})$ like scaling. 
+actual phenomena, in the hope that resolution elements with have sufficiently many rays
+intersecting them to compute a radiation field.
+Na\"ively, the number of rays per 
+source would be comparable to the number of resolution elements, giving a scaling 
+of $\bigO{N \NS N^{1/3}}$, as previously noted.
+However, for forward ray tracing, $\bigO{N^{2/3}}$ rays per source are typically sufficient to hit every resolution element when extended to the edge of the simulation volume (distance $\bigO{N^{1/3}}$), so the scaling typically achieved is $\bigO{N \NS}$.  
+
+It is important to note that methods that adaptively split rays (e.g. Healpix \citep{Gorski2005 http://adsabs.harvard.edu/abs/2005ApJ...622..759G} used in Moray), do not change the overall scaling.  For example, a centrally located source requires $6 N^{2/3}$ rays to strike all elements in the outer faces of a cubical simulation volume, each with a length $\bigO(N^{1/3})$.
+Even with adaptive ray merging near the source, at least $N$ ray segments are required to intersect each of the $N$ resolution elements.
+In additon, ray tracers such as Moray rely upon a Monte-Carlo approach to estimate the radiation field and thus require at lelast 10 rays to intersect each element, a prefactor to the overall cost.
+This scaling usually limits forward ray tracers to 
+problems with few sources to avoid $\mathcal{O}(N^2)$ like scaling. 
 \comment{Wadsley: Note the bit about ray clumping not really saving 
 the day because you still end up with O(N) ray segments and often a large 
 multiplier (e.g. Abel \& Gnedin approach). Grond: Need some clarification on 
 this point.}
 
 Recently there has been some focus on reverse ray tracing methods by
-\cite{clarkEt12} and \cite{altayTheuns13}. These methods are not general, 
-as they specifically compute continuum radiation (from the post ionization UV 
-background) and not from internal sources of radiation. However, the idea of 
+\cite{clarkEt12} and \cite{altayTheuns13}. These particular methods are not general, 
+as they are designed to compute external radiation (e.g. from the post ionization UV 
+background) rather than internal sources of radiation. However, the idea of 
 reverse ray-tracing indroduces many advantages relative to reverse raytracing.
-A main difference between forward and 
+The main difference between forward and 
 reverse ray tracing is that reverse ray tracers trace rays from the resolution 
 elements directly to the sources of radiation. Tracing from the sinks 
 guarantees the density distribution is well sampled near the resolution 
 element as apposed to forward ray tracing where one would have to increase the 
 number of rays per sink to guarantee this type of accuracy. Put simply, 
-radiation is computed exactly where it is needed. This is especially 
+radiation is computed exactly where it is needed.  This is especially 
 advantageous in adaptive mesh and Lagrangian simulations such as smoothed 
 particle hydrodynamics (SPH) simulations, as low density regions are 
 represented by few resolution elements, and thus extra work is not done to 
-resolve said regions. An added benefit to reverse ray tracing that adaptive 
-time steps can be used. However, just performing a na\"ive reverse ray trace 
-does not avoid $\bigO{N \NS N^{1/3}}$ scaling with resolution elements, and 
-so the inability to model many sources remains the most significant barrier 
-current instantaneous methods face when trying to solve the general RT 
-problem. However, on any given substep $N_{\rm sink}$ can be dramatically 
-reduced to be just the active sinks. In simulations with adaptive timesteps 
-the active fraction on a given step is typically less than a percent of the 
-total.
+resolve radiation in said regions.
+
+A key benefit to reverse ray tracing is that adaptive 
+time steps dramatically reduce the radiation work as only active resolution elements, $N_{sink}$, need to be traced to.  This active subset can be 100 times smaller on average than $N$ in high-resolution cosmological simuations.  Scaling work with the active subset is key for computational efficiency for both the gravity and hydro solvers for any simulation with a high dynamic range.
+
+Thus a na\"ive reverse ray trace 
+still scales as$\bigO{N_{\sink} \NS N^{1/3}}$ and 
+many sources present the most significant barrier.
 
 Evolutionary methods are typically based on evolving moments of the radiation 
-field stored at each resolution element. They have no dependence on the number 
-of sources, and scale like $\mathcal{O}(N)$ with the number of resolution 
+field stored at each resolution element. They are insensitive to the number 
+of sources, and scale as $\mathcal{O}(N)$ with the number of resolution 
 elements, allowing them to handle large numbers of sources and scattering. 
 Although evolutionary methods can handle both optically thin and thick 
 regimes, they loose directional accuracy in intermediate regimes and suffer 
-from directional accuracy in general.
+from poor directional accuracy in general.  This is immediately apparent is shadowing type tests.
 
 Photon packet propagation methods, such as TRAPHIC \citep{pawlikSchaye08}, are 
-an evolutionary approach that performs better in the optically thin regime. 
-TRAPHIC introduces virtual particles (ViPs) to propagate their photon packets 
-in less dense, optically thin regions lacking in SPH particles. 
-They also preserve directionality quite well, however Monte Carlo aspects of 
-how they propagate their photon packets introduce significant Poisson noise 
-into their computed radiation field. Monte Carlo resampling is shown to reduce 
+an evolutionary approach where directional accuracy is easier to control, in principle.
+However, the Monte Carlo aspects of 
+photon packets are propagated introduce significant Poisson noise 
+into their computed radiation field.
+Added Monte Carlo resampling is shown to reduce 
 this noise but is quite expensive and deteriorates the initially sharp 
-shadows. Both of these methods scale linearly with resolution elements as 
-mentioned before, but are also forced to operate on every resolution element. 
-In moment methods the radiation field for every grid cell needs to be 
-computed, and in photon packet propagation methods the photon packets hop 
-particle to particle. In the case of TRAPHIC, their $N$ is even greater than 
-the number of SPH particles including the addition of ViPs. \comment{Wadsley: 
-Need to discuss timestepping for evolutionary methods. Grond: Need some 
-clarification.} Regardless, TRAPHIC is arguably the best general RT method due 
-to its ability to handle both the optically thick and thin regimes with 
-feasible scaling.
+shadows and is typically not used in production runs.
+TRAPHIC also adds virtual particles (ViPs) to propagate their photon packets 
+in less dense, optically thin regions lacking in SPH particles. 
+TRAPHIC scales linearly with resolution elements, as mentioned before.
+
+A key limitation for moment methods is that the radiation field for every element needs to be 
+computed every step.  In addition, the speed of light, even when reduced, is substantially larger than the sound speed and thus many radiation substeps are required compared to the hydro solver.
+Thus for photon packet propagation methods every photon packets typically hops
+forward several times for each hydro step.
+A key outcome is that moment methods cannot take
+advantage of adaptive timesteps to limit radiation work.
+Specifically in the case of TRAPHIC, the $N$ is significantly greater than 
+the number of SPH particles including the addition of ViPs.
+These factors dramatically increase the prefactor on the scaling.  None-the-less, moment methods
+such as TRAPHIC represent an viable approach for large simulations that can
+handle a variety of regimes of optical depth.
 
 We hope from this introduction to the state of the art in RT methods it is 
 apparent that there is room for improvement, especially in the area of 
-instantaneous methods. Although promising work has been done with reverse ray 
+instantaneous methods.  Although promising work has been done with reverse ray 
 tracers like TreeCol and URCHIN, a general implementation of one has yet to be 
 developed and published. There is also the problem of scaling with radiation 
 sources in instantaneous methods that reverse ray tracers alone do not solve. 
