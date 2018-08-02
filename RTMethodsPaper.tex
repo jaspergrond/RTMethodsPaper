@@ -565,7 +565,8 @@ chosen value of $\tr$ is
 \lesssim \tr,
 \end{equation}
 for small $\tau$, making the refinement criteria a convenient choice of 
-parameter for controlling error.
+parameter for controlling error. Figure \ref{fig:cellplot} is an example of 
+\acro{}'s adaptive refinement in action.
 
 If the refinement criteria passes at the bucket level, individual particles 
 within a bucket are considered. A straight forward $N^2$ ray tracing scheme 
@@ -610,7 +611,7 @@ from source to resolution element. The number of cells traversed in a tree walk
 is equal to the logarithm of the number of leaf nodes contained within the 
 sub-tree. The number of leaf nodes in the sub-tree is also given by Eq. 
 \ref{eqn:nseg}, so by taking the logarithm of Eq.\ref{eqn:nseg} and adding two 
-for the two buckets on eiter side of the sub-tree we come to
+for the two buckets on either side of the sub-tree we come to
 \begin{equation}
 \label{eqn:nseg2}
 N_{\rm seg} = \log_2\left[\frac{r}{R}\left(
@@ -661,7 +662,13 @@ the function can be seen in Figure \ref{fig:cosmof} where we have plotted the
 flux as a function of radius for a homogeneous, optically thin test volume.
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/cosmofield.pdf}
-\caption{}
+\caption{Flux as a function of radius from an emitting sphere. \acro{}'s 
+solution for background source particles distributed in a spiral on a sphere 
+of radius $R=0.5$ (black dotted line) are plotted as the thick orange line. 
+The analytical solution given by Equation \ref{eqn:cosmof} is plotted as a 
+thinner black line on top of the numerical solution. A constant flux of one is 
+plotted by the black dashed line and is achieved in the inner most region of 
+this simulation at around $R \lesssim 0.05$}
 \label{fig:cosmof}
 \end{figure}
 
@@ -729,7 +736,10 @@ one. A slice of this density distribution is plotted in Figure
 how this IC was created including a table of modes used.
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/sine_rho.pdf}
-\caption{}
+\caption{A $z$-plane slice of the sinusoidally perturbed glass IC. The optical 
+depth along the longest filament in the slice (left, just below $y=0$) is
+$\tau\approx 4$. The optical depth across the largest void (above the 
+aforementioned filament) is $\tau\approx 0.1$.}
 \label{fig:sine_rho}
 \end{figure}
 
@@ -747,7 +757,13 @@ the radiation field computed with $\tO=0$. A refinement criteria
 value of $\tr = 0.1$ and $N=64^3$ for both star and gas particles.
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/opening_angle.pdf}
-\caption{}
+\caption{A plot of cost and accuracy as a function of opening angle. The 
+number of rays computed per resolution element is plotted on the blue, 
+left axis with square markers. The blue dashed line points out 
+$N_{\rm rays}/N = N$ at an opening angle of $\theta_{\rm open}=0$, meaning 
+\acro{} can perform an $\bigO{N^2}$ ray trace if desired (omitting the cost of 
+absorption). The RMS error in flux relative to $\theta_{\rm open}
+=0$ is plotted on the red, right axis with circular markers.}
 \label{fig:openangle}
 \end{figure}
 
@@ -776,7 +792,14 @@ The measure of accuracy is again the RMS fractional error, but now relative to
 the radiation field computed with $\tr=1\e{-8}$, the lowest $\tr$ tested.
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/refinement_criteria.pdf}
-\caption{}
+\caption{A plot of cost and accuracy as a function of refinement criteria. The 
+number of ray segments computed per resolution element is plotted on the blue,
+left axis with square markers. The RMS error in flux relative to $\tr
+=10^{-8}$ is plotted on the red, right axis with circular markers. Lines of 
+$RMS = \tr$ and $RMS = \tr/10$ are plotted as red solid and dotted lines 
+respectively. The upper line represents in maximum allowable error 
+\textit{per ray segment}. The RMS relative error lies along or below the lower 
+line, an order of magnitude less that than $\tr$.}
 \label{fig:refcrit}
 \end{figure}
 
