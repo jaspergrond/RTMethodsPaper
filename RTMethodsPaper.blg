@@ -8,45 +8,45 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--empty publisher in osterbrockFerland2006
 Warning--empty publisher in spitzer78
 Warning--empty publisher in tielens05
-You've used 38 entries,
+You've used 41 entries,
             2881 wiz_defined-function locations,
-            1081 strings with 16410 characters,
-and the built_in function-call counts, 17916 in all, are:
-= -- 1474
-> -- 1254
-< -- 108
-+ -- 566
-- -- 164
-* -- 2238
-:= -- 2795
+            1108 strings with 17242 characters,
+and the built_in function-call counts, 19497 in all, are:
+= -- 1590
+> -- 1393
+< -- 116
++ -- 623
+- -- 190
+* -- 2442
+:= -- 3055
 add.period$ -- 0
-call.type$ -- 38
-change.case$ -- 76
-chr.to.int$ -- 38
-cite$ -- 41
-duplicate$ -- 870
-empty$ -- 877
-format.name$ -- 304
-if$ -- 3063
+call.type$ -- 41
+change.case$ -- 82
+chr.to.int$ -- 41
+cite$ -- 44
+duplicate$ -- 939
+empty$ -- 943
+format.name$ -- 340
+if$ -- 3329
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 42
-newline$ -- 128
-num.names$ -- 276
-pop$ -- 201
+missing$ -- 45
+newline$ -- 137
+num.names$ -- 300
+pop$ -- 214
 preamble$ -- 1
-purify$ -- 152
+purify$ -- 164
 quote$ -- 0
-skip$ -- 511
+skip$ -- 552
 stack$ -- 0
-substring$ -- 1024
-swap$ -- 512
-text.length$ -- 152
+substring$ -- 1100
+swap$ -- 560
+text.length$ -- 164
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 330
+type$ -- 357
 warning$ -- 3
-while$ -- 288
+while$ -- 312
 width$ -- 0
-write$ -- 389
+write$ -- 419
 (There were 3 warnings)

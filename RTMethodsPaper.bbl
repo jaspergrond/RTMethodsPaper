@@ -17,6 +17,12 @@
   {mn@eprint@\@tempb}{\@tempb:\@tempc}{\expandafter \expandafter \csname
   mn@eprint@\@tempb\endcsname \expandafter{\@tempc}}}
 
+\bibitem[\protect\citeauthoryear{{Agertz}, {Kravtsov}, {Leitner}  \&
+  {Gnedin}}{{Agertz} et~al.}{2013}]{agertzEt13}
+{Agertz} O.,  {Kravtsov} A.~V.,  {Leitner} S.~N.,   {Gnedin} N.~Y.,  2013,
+  \mn@doi [\apj] {10.1088/0004-637X/770/1/25}, \href
+  {http://adsabs.harvard.edu/abs/2013ApJ...770...25A} {770, 25}
+
 \bibitem[\protect\citeauthoryear{{Altay} \& {Theuns}}{{Altay} \&
   {Theuns}}{2013}]{altayTheuns13}
 {Altay} G.,  {Theuns} T.,  2013, \mn@doi [\mnras] {10.1093/mnras/stt1067},
@@ -70,6 +76,14 @@
   {10.1016/S1384-1076(01)00068-9}, \href
   {http://adsabs.harvard.edu/abs/2001NewA....6..437G} {6, 437}
 
+\bibitem[\protect\citeauthoryear{{G{\'o}rski}, {Hivon}, {Banday}, {Wandelt},
+  {Hansen}, {Reinecke}  \& {Bartelmann}}{{G{\'o}rski}
+  et~al.}{2005}]{gorskiEt05}
+{G{\'o}rski} K.~M.,  {Hivon} E.,  {Banday} A.~J.,  {Wandelt} B.~D.,  {Hansen}
+  F.~K.,  {Reinecke} M.,   {Bartelmann} M.,  2005, \mn@doi [\apj]
+  {10.1086/427976}, \href {http://esoads.eso.org/abs/2005ApJ...622..759G} {622,
+  759}
+
 \bibitem[\protect\citeauthoryear{{Gritschneder}, {Naab}, {Walch}, {Burkert}  \&
   {Heitsch}}{{Gritschneder} et~al.}{2009}]{gritschnederEt09}
 {Gritschneder} M.,  {Naab} T.,  {Walch} S.,  {Burkert} A.,   {Heitsch} F.,
@@ -121,6 +135,11 @@
   et~al.}{1999}]{leithererEt99}
 {Leitherer} C.,  et~al., 1999, \mn@doi [\apjs] {10.1086/313233}, \href
   {http://adsabs.harvard.edu/abs/1999ApJS..123....3L} {123, 3}
+
+\bibitem[\protect\citeauthoryear{{Levermore} \& {Pomraning}}{{Levermore} \&
+  {Pomraning}}{1981}]{levermorePomraning81}
+{Levermore} C.~D.,  {Pomraning} G.~C.,  1981, \mn@doi [\apj] {10.1086/159157},
+  \href {http://adsabs.harvard.edu/abs/1981ApJ...248..321L} {248, 321}
 
 \bibitem[\protect\citeauthoryear{{Mellema}, {Iliev}, {Alvarez}  \&
   {Shapiro}}{{Mellema} et~al.}{2006}]{mellemaEt06a}
