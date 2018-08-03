@@ -518,7 +518,7 @@ gradients which could significantly alter the optical depth. Thus adaptive
 refinement is needed during the tree walk to accurately resolve the medium 
 along the ray.
 
-\subsubsection{Adaptive Refinement}
+\subsubsection{Adaptive Refinement}\label{sec:adref}
 Consider the right panel in Figure \ref{fig:algorithm}. A dense blob of gas 
 to be resolved resides in the orange highlighted cell at $[(1,1),(2,2)]$. At 
 the point in the tree walk where we reach the orange highlighted cell at 
@@ -700,22 +700,72 @@ is built for computing radiative transfer. For development this is a
 convenient choice, but adds extra cost and in the future a ``one tree to rule 
 them all'' approach should be adopted. One of the main differences between 
 these trees is that the radiation tree is required to fill all space. The main 
-tree ``squeezes'' cell bounds to the furthest extents of a particle's 
-influence. This does not work in the context of RT as cell and ray 
-intersections need to be computed to sum up a correct optical depth along 
-the entire ray.
+tree ``squeezes'' cell bounds to the furthest extents of particles within the 
+cell. This does not work in the context of RT as cell-ray intersections need 
+to be computed to sum up a correct optical depth along the entire ray.
 
 In the regular tree building phase \textsc{Gasoline} assigns an ``opening 
 radius'' about a cells centre of mass to each cell in the tree. The specific 
 definition of this radius is 
-%\begin{equation}
-%r_{\rm open} = \frac{2 B_{\rm max}}{\sqrt{3} \theta},
-%\end{equation}
+\begin{equation}
+r_{\rm open} = \frac{2 B_{\rm max}}{\sqrt{3} \theta_{\rm open}},
+\end{equation}
 where $B_{\rm max}$ is the  distance from the centre of mass of particles 
 within the cell to the furthest particle from the centre of mass. However, 
 since we are using space filling cells for the radiation tree it is necessary 
 to define $B_{\rm max}$ as the distance to the furthest vertex of the cell 
 instead of particle.
+
+The initial method used to compute cell densities during the tree build 
+process was to divide the sum of masses of particles within the cell by the 
+cell volume, 
+\begin{equation}
+\rho_{\rm cell} = \frac{\sum_i m_i}{V_{\rm cell}}.
+\end{equation}
+During testing at high levels of refinement we found that error began to 
+increase slightly with increasing refinement accuracy beyond a certain level. 
+This was because when refining down to the bucket level often enough, 
+$N_{\rm B}=10$ was too small of a statistical sample to compute cell density in
+this manner. This introduced errors of a fraction of a percent into the 
+computed radiation field, noticeable as noise in uniform density 
+distributions. To remedy this for particle based methods we compute cell 
+density using the particle's SPH densities via 
+\begin{equation}
+\rho_{\rm cell} = \frac{\sum_i m_i}{\sum_i{\frac{m_i}{\rho_i}}}.
+\end{equation}
+
+As mentioned earlier in Section \ref{sec:adref}, when sub-leaf level 
+refinement is required an $\bigO{N^2}$ ray trace similar to that of 
+SPHRay is performed. In this method, all particles in a cell are projected 
+down to the ray, and an impact parameter, $b$, is calculated (See Figure
+\ref{fig:raytrace}).
+\begin{figure}
+\includegraphics[width=1\linewidth]{Figures/raytrace.pdf}
+\caption{}
+\label{fig:raytrace}
+\end{figure}
+Since the density field of an SPH particle varies with radius due to the 
+smoothed nature of SPH, an integral over the smoothing kernal, $W$, must be 
+performed. Thus, Equation \ref{eqn:tauint} becomes 
+\begin{equation}
+\tau_i(s) = \left(m_i\int W\right) \kappa_i ds,
+\end{equation}
+where $m_i \int W$ represents the effective density along the particular ray 
+and $ds$ is the section of the ray intersected by the particle's smoothing 
+length (red line segments in Figure \ref{fig:raytrace}). Note that for the 
+receiving particle its density field does not contribute to the optical depth.
+To see why this must be the case, consider the case where a single particle is
+optically thick. If the front half of the particle  contributed to absorption,
+the flux calculated at the centre would be effectively zero, and the particle 
+would incorrectly report no heating or ionization. 
+
+Scenarios can occur where two gas particles have portions of their smoothing 
+length in front of each other. If the normal ray trace was performed, neither 
+would self-consistently receive the photons they had reported to absorb. We 
+thus make an addition to the particle ray trace algorithm that not only does 
+an absorbing particle's smoothing length have to intersect the ray, but the 
+distance from the source to absorbing particle must be smaller than the 
+distance from the source to receiving particle.
 
 \section{Code Tests}\label{sec:tsts}
 \subsection{Sinusoidally Perturbed Glass}
@@ -1239,11 +1289,12 @@ $6N \rightarrow N$
 %%%%%%%%%% APPENDICES %%%%%%%%%%
 
 \appendix
-\section{Test Initial Conditions}\label{sec:icnd}
-\subsection{Sinusoidally Perturbed Glass}
-To create our gently varying density distribution for the sink/source scaling 
-tests, we modify positions of particles in a glass initial condition by adding 
-the sum of 24 sinusoidal modes as in equation \ref{eqn:manfft} below
+\section{Creating the Sinusoidally Perturbed Glass IC}
+\label{sec:icnd}
+To create our gently varying density distribution for the many source tests, 
+we modify positions of particles in a glass initial condition by adding the 
+sum of 24 sinusoidal modes to the initial particle positions as in Equation 
+\ref{eqn:manfft} below
 \begin{equation}\label{eqn:manfft}
 \vec{r} = \vec{r}_{\rm 0} + \sum_{i=1}^{24} \frac{1}{275} \sin 
 \left( k_{x,i} r_x + k_{y,i} r_y + k_{z,i} r_z + \phi_i\right),
