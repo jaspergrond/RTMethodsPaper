@@ -963,9 +963,13 @@ despite only technically being valid for small $\tau$. In most cases we
 believe \acro{} should perform better as Equation \ref{eqn:reffrac} is just a 
 reliable upper bound.
 
-\comment{Wadsley: What about work we did for absolute errors? I'd like at 
-least a comment with quantitative error numbers and preferably a plot too. 
-Grond: I'll make this for my thesis ASAP and put it here after.}
+We chose the isothermal spheres test as it is representative of structure
+commonly found in the universe and because it has an analytic solution to 
+compare to. However, in SPH it is difficult to represent sharp density 
+gradients with discrete resolution elements. This causes in shadow particle 
+errors relative to the analytic solution to be approximately an order of 
+magnitude higher than the errors relative to the $\tr = 10^{-8}$ simulation
+plotted in \ref{fig:isosph}.
 
 \subsection{\strom{} Sphere Test}
 \subsubsection{\strom{} Sphere Theory}
