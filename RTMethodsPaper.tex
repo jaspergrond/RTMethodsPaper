@@ -335,42 +335,38 @@ quantity to be integrated in our method
 \label{eqn:tauint}
 \tau(s) = \int_{s_0}^s \kappa(s) \rho(s) ds.
 \end{equation}
-\comment{Wadsley: This is a bit out of the blue. You just skipped from one 
-source to all of them without saying you did that. Grond: I'm a bit stuck on 
-this.}
 
-We can use the radiation intensity directly in heating, chemistry and 
-ionization functions which are typically a function the total intensity from 
-all radiation sources. We can then take moments of the intensity to obtain 
-useful quantities such as radiation flux 
+If we assume our sources of radiation are point sources, then the intensity
+at the receiver (the sink) is a delta function in angle.
+In this case, there is a one-to-one correspondence between the intensity and flux contributions due to that source.
 \begin{equation}
-\label{eqn:flux}
-\mathbf{F} = \int I cos\theta d\Omega \mathbf{\hat{n}},
+  mathbf{F} = \int I(\Omega) \mathbf{n'}(\Omega) d\Omega = I(s) \mathbf{n},
 \end{equation}
-and radiation pressure
-\begin{equation}
-\label{eqn:pressure}
-\mathbf{p} = \frac{1}{c}\int I cos^2\theta d\Omega \mathbf{\hat{n}}.
-\end{equation}
-\comment{Wadsley: What is dOmega -- where did the integrals come from? Grond: 
-Rybicki and Lightman. Wadsley: It might be clearer if you said, ``for point 
-sources the contribution is I delta(theta)'' or something like that. Grond: 
-Need some clarification here.}
-Because we assume our sources of radiation to be true point sources, 
-$cos\theta = 1$. If the angular size of a resolution element relative to the 
-source of radiation is small enough such that the small angle approximation 
-holds true, it should also hold that there is a one-to-one correspondence 
-between intensity and flux. Thus, flux from a \textit{single} source can be 
-written simply as 
+where $\mathbf{n}$ is the unit vector in the direction from the source to the sink.
+
+For each source, $i$, we have a luminosity, $L_i$, which can be directly converted to a contribution to the flux at the sink,
 \begin{equation}
 \label{eqn:simpflux}
-\mathbf{F} = I(s_0)e^{-\tau(s)} \mathbf{\hat{n}} = \frac{L}{4\pi s^2}
-e^{-\tau(s)} \mathbf{\hat{n}},
+\mathbf{F_i} = \frac{L_i}{4\pi s_i^2} e^{-\tau_i} \mathbf{n_i},
 \end{equation}
-where $L$ is the luminosity of the source of radiation. The total flux is then 
-computed by summing up flux contributions from all sources. For the remainder 
-of paper we represent the radiation field as flux values computed via the 
-above expression. 
+where $\tau_i$ is the accumulated optical depth along the ray between that source and the sink.
+The net flux, $\mathbf{F}$, is then computed by summing up flux contributions from all sources.
+
+The intensity due to a single source is,
+\begin{equation}
+\label{eqn:simpint}
+I_i = \frac{L_i}{4\pi s_i^2} e^{-\tau_i}.
+\end{equation}
+
+Summing the intensity from all sources we get the angle-averaged intensity.
+We can use the averaged intensity directly in heating, chemistry and 
+ionization rate expressions.
+For many applications in astrophysics this is the primary affect of the radiation field on local gas.
+
+The first order moment of the intensity is 
+the net radiation flux.  Higher order moments such as
+the radiation pressure, $\mathbf{p}$, can be easily obtained with simple summations.
+
 
 \subsection{Algorithm}\label{sec:algo}
 Please note that although \acro{} has been initially implemented in the 
