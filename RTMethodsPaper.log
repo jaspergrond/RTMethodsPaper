@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  3 AUG 2018 13:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  6 AUG 2018 16:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -755,52 +755,52 @@ LaTeX Font Info:    Redeclaring math symbol \backepsilon on input line 265.
 (/usr/share/texlive/texmf-dist/tex/latex/doublestroke/dsfont.sty
 Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
 )
-Package hyperref Info: Option `draft' set `true' on input line 46.
+Package hyperref Info: Option `draft' set `true' on input line 47.
 
 (./RTMethodsPaper.aux)
 \openout1 = `RTMethodsPaper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 49.
-LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 49
+LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 50.
+LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 50
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMS/ntxsy/m/n on input line 49.
-LaTeX Font Info:    Try loading font information for OMS+ntxsy on input line 49
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/ntxsy/m/n on input line 50.
+LaTeX Font Info:    Try loading font information for OMS+ntxsy on input line 50
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/omsntxsy.fd
 File: omsntxsy.fd 2012/11/14 Fontinst v1.933 font definitions for OMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 49.
-LaTeX Font Info:    Try loading font information for U+ntxexa on input line 49.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 50.
+LaTeX Font Info:    Try loading font information for U+ntxexa on input line 50.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 49.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 49.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 50.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -840,7 +840,7 @@ LaTeX Font Info:    ... okay on input line 49.
 
 Package hyperref Warning: Draft mode on.
 
-Package hyperref Info: Link coloring ON on input line 49.
+Package hyperref Info: Link coloring ON on input line 50.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -849,9 +849,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count116
 )
-LaTeX Info: Redefining \ref on input line 49.
-LaTeX Info: Redefining \pageref on input line 49.
-LaTeX Info: Redefining \nameref on input line 49.
+LaTeX Info: Redefining \ref on input line 50.
+LaTeX Info: Redefining \pageref on input line 50.
+LaTeX Info: Redefining \nameref on input line 50.
 \c@mv@tabular=\count117
 \c@mv@boldtabular=\count118
 
@@ -884,113 +884,113 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    Try loading font information for OT1+ntxtlf on input line 5
-2.
+3.
 
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/ot1ntxtlf.fd
 File: ot1ntxtlf.fd 2015/01/17 v1.0 font definition file for OT1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 17.28pt on input line 52.
+(Font)              scaled to size 17.28pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.5pt on input line 52.
+(Font)              scaled to size 12.5pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.4pt on input line 52.
+(Font)              scaled to size 9.4pt on input line 53.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <12.5> not available
-(Font)              size <12> substituted on input line 52.
+(Font)              size <12> substituted on input line 53.
 
-LaTeX Font Info:    Try loading font information for U+ntxmia on input line 52.
+LaTeX Font Info:    Try loading font information for U+ntxmia on input line 53.
 
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxmia.
 )
-LaTeX Font Info:    Try loading font information for U+ntxsym on input line 52.
+LaTeX Font Info:    Try loading font information for U+ntxsym on input line 53.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
-LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 52.
+LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 53.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 52.
+LaTeX Font Info:    Try loading font information for U+msa on input line 53.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 52.
+LaTeX Font Info:    Try loading font information for U+msb on input line 53.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 14.4pt on input line 52.
+(Font)              scaled to size 14.4pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.5pt on input line 52.
+(Font)              scaled to size 10.5pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.9pt on input line 52.
+(Font)              scaled to size 7.9pt on input line 53.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <10.5> not available
-(Font)              size <10.95> substituted on input line 52.
+(Font)              size <10.95> substituted on input line 53.
 
 LaTeX Font Info:    Try loading font information for T1+ntxsups on input line 5
-2.
+3.
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/t1ntxsups.fd
 File: t1ntxsups.fd 2015/01/17 v1.0
 )
 LaTeX Font Info:    Font shape `T1/ntxsups/m/n' will be
-(Font)              scaled to size 14.4pt on input line 52.
+(Font)              scaled to size 14.4pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 62.
+(Font)              scaled to size 10.0pt on input line 63.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.3pt on input line 62.
+(Font)              scaled to size 7.3pt on input line 63.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.5pt on input line 62.
+(Font)              scaled to size 5.5pt on input line 63.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
-(Font)              size <5> substituted on input line 62.
+(Font)              size <5> substituted on input line 63.
 
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 77.
+(Font)              scaled to size 8.0pt on input line 78.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.2pt on input line 77.
+(Font)              scaled to size 6.2pt on input line 78.
 <Figures/uvsn.pdf, id=1, 455.30101pt x 339.66899pt>
 File: Figures/uvsn.pdf Graphic file (type pdf)
  <use Figures/uvsn.pdf>
-Package pdftex.def Info: Figures/uvsn.pdf used on input line 110.
+Package pdftex.def Info: Figures/uvsn.pdf used on input line 111.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 121.
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 124.
+(Font)              scaled to size 9.0pt on input line 122.
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 125.
 
-LaTeX Font Info:    No file TS1aer.fd. on input line 124.
+LaTeX Font Info:    No file TS1aer.fd. on input line 125.
 
 
 LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
 (Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `textcopyright' on input line 124.
+(Font)              for symbol `textcopyright' on input line 125.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
  <./Figures/uvsn.pdf>]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 9.0pt on input line 132.
+(Font)              scaled to size 9.0pt on input line 133.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 7.3pt on input line 132.
+(Font)              scaled to size 7.3pt on input line 133.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 5.5pt on input line 132.
+(Font)              scaled to size 5.5pt on input line 133.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 243--253
+Underfull \hbox (badness 10000) in paragraph at lines 244--254
 []\T1/aer/m/n/9 Photon packet prop-a-ga-tion meth-ods, such as
  []
 
@@ -998,24 +998,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 243--253
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3]
-<Figures/algorithm.pdf, id=88, 569.05513pt x 307.28975pt>
+<Figures/algorithm.pdf, id=89, 569.05513pt x 307.28975pt>
 File: Figures/algorithm.pdf Graphic file (type pdf)
 
 <use Figures/algorithm.pdf>
-Package pdftex.def Info: Figures/algorithm.pdf used on input line 383.
+Package pdftex.def Info: Figures/algorithm.pdf used on input line 380.
 (pdftex.def)             Requested size: 504.0pt x 272.16945pt.
- [4] [5 <./Figures/algorithm.pdf>]
-<Figures/refine.pdf, id=99, 385.44pt x 345.29pt>
+ [4]
+<Figures/refine.pdf, id=93, 385.44pt x 345.29pt>
 File: Figures/refine.pdf Graphic file (type pdf)
  <use Figures/refine.pdf>
-Package pdftex.def Info: Figures/refine.pdf used on input line 540.
+Package pdftex.def Info: Figures/refine.pdf used on input line 537.
 (pdftex.def)             Requested size: 240.0pt x 214.99959pt.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 546.
+(Font)              scaled to size 8.0pt on input line 543.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.2pt on input line 546.
+(Font)              scaled to size 6.2pt on input line 543.
 
-Overfull \hbox (4.74725pt too wide) detected at line 631
+[5 <./Figures/algorithm.pdf>]
+Overfull \hbox (4.74725pt too wide) detected at line 628
 \OML/ntxmi/m/it/9 N[] \U/ntxmia/m/it/9 = [][] [] [][] [] \OML/ntxmi/m/it/9 dr \
 OMS/ntxsy/m/n/9 ^^X \OML/ntxmi/m/it/9 N [][]\U/ntxmia/m/it/9 }\OT1/ntxtlf/m/n/9
  128\OML/ntxmi/m/it/9 N=N[]\U/ntxmia/m/it/9 ~\OML/ntxmi/m/it/9 :
@@ -1026,35 +1027,35 @@ OMS/ntxsy/m/n/9 ^^X \OML/ntxmi/m/it/9 N [][]\U/ntxmia/m/it/9 }\OT1/ntxtlf/m/n/9
 File: Figures/cosmofield.pdf Graphic file (type pdf)
 
 <use Figures/cosmofield.pdf>
-Package pdftex.def Info: Figures/cosmofield.pdf used on input line 665.
+Package pdftex.def Info: Figures/cosmofield.pdf used on input line 662.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
 
 <Figures/raytrace.pdf, id=107, 843.15pt x 517.935pt>
 File: Figures/raytrace.pdf Graphic file (type pdf)
 
 <use Figures/raytrace.pdf>
-Package pdftex.def Info: Figures/raytrace.pdf used on input line 743.
+Package pdftex.def Info: Figures/raytrace.pdf used on input line 740.
 (pdftex.def)             Requested size: 240.0pt x 147.42332pt.
  [7 <./Figures/cosmofield.pdf>]
 <Figures/sine_rho.pdf, id=134, 455.30101pt x 339.66899pt>
 File: Figures/sine_rho.pdf Graphic file (type pdf)
 
 <use Figures/sine_rho.pdf>
-Package pdftex.def Info: Figures/sine_rho.pdf used on input line 789.
+Package pdftex.def Info: Figures/sine_rho.pdf used on input line 790.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
 
 <Figures/opening_angle.pdf, id=135, 455.30101pt x 339.66899pt>
 File: Figures/opening_angle.pdf Graphic file (type pdf)
 
 <use Figures/opening_angle.pdf>
-Package pdftex.def Info: Figures/opening_angle.pdf used on input line 810.
+Package pdftex.def Info: Figures/opening_angle.pdf used on input line 811.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
 
 <Figures/refinement_criteria.pdf, id=136, 455.30101pt x 339.66899pt>
 File: Figures/refinement_criteria.pdf Graphic file (type pdf)
 
 <use Figures/refinement_criteria.pdf>
-Package pdftex.def Info: Figures/refinement_criteria.pdf used on input line 845
+Package pdftex.def Info: Figures/refinement_criteria.pdf used on input line 846
 .
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
  [8 <./Figures/raytrace.pdf> <./Figures/sine_rho.pdf
@@ -1065,7 +1066,7 @@ pdfTeX warning: pdflatex (file ./Figures/sine_rho.pdf): PDF inclusion: multiple
 File: Figures/particle_scaling.pdf Graphic file (type pdf)
 
 <use Figures/particle_scaling.pdf>
-Package pdftex.def Info: Figures/particle_scaling.pdf used on input line 877.
+Package pdftex.def Info: Figures/particle_scaling.pdf used on input line 878.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
  [9 <./Figures/opening_angle.pdf> <./Figures/refinement_criteria.pdf
 
@@ -1079,14 +1080,14 @@ multiple pdfs with page group included in a single page
 File: Figures/cellplot.pdf Graphic file (type pdf)
 
 <use Figures/cellplot.pdf>
-Package pdftex.def Info: Figures/cellplot.pdf used on input line 955.
+Package pdftex.def Info: Figures/cellplot.pdf used on input line 956.
 (pdftex.def)             Requested size: 504.0pt x 241.9257pt.
 
 <Figures/isothermal_spheres.pdf, id=265, 455.30101pt x 339.66899pt>
 File: Figures/isothermal_spheres.pdf Graphic file (type pdf)
 
 <use Figures/isothermal_spheres.pdf>
-Package pdftex.def Info: Figures/isothermal_spheres.pdf used on input line 982.
+Package pdftex.def Info: Figures/isothermal_spheres.pdf used on input line 983.
 
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
  [10]
@@ -1101,7 +1102,7 @@ File: Figures/strom_slice_iso_030.pdf Graphic file (type pdf)
 
 <use Figures/strom_slice_iso_030.pdf>
 Package pdftex.def Info: Figures/strom_slice_iso_030.pdf used on input line 108
-1.
+4.
 (pdftex.def)             Requested size: 240.0pt x 78.85559pt.
 
 <Figures/strom_slice_iso_500.pdf, id=321, 455.30101pt x 149.59889pt>
@@ -1109,19 +1110,16 @@ File: Figures/strom_slice_iso_500.pdf Graphic file (type pdf)
 
 <use Figures/strom_slice_iso_500.pdf>
 Package pdftex.def Info: Figures/strom_slice_iso_500.pdf used on input line 108
-2.
+5.
 (pdftex.def)             Requested size: 240.0pt x 78.85559pt.
 
 <Figures/strom_iso_fraction.pdf, id=322, 939.51pt x 455.30101pt>
 File: Figures/strom_iso_fraction.pdf Graphic file (type pdf)
 
 <use Figures/strom_iso_fraction.pdf>
-Package pdftex.def Info: Figures/strom_iso_fraction.pdf used on input line 1140
+Package pdftex.def Info: Figures/strom_iso_fraction.pdf used on input line 1143
 .
 (pdftex.def)             Requested size: 478.79846pt x 232.0337pt.
-
-Underfull \vbox (badness 4181) has occurred while \output is active []
-
  [12 <./Figures/strom_slice_iso_030.pdf> <./Figures/strom_slice_iso_500.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/strom_slice_iso_500.pdf): PDF inclusio
@@ -1130,30 +1128,36 @@ n: multiple pdfs with page group included in a single page
 File: Figures/strom_fraction.pdf Graphic file (type pdf)
 
 <use Figures/strom_fraction.pdf>
-Package pdftex.def Info: Figures/strom_fraction.pdf used on input line 1185.
+Package pdftex.def Info: Figures/strom_fraction.pdf used on input line 1188.
 (pdftex.def)             Requested size: 478.79846pt x 154.68913pt.
 
 <Figures/strom_temp.pdf, id=358, 1445.4pt x 455.30101pt>
 File: Figures/strom_temp.pdf Graphic file (type pdf)
 
 <use Figures/strom_temp.pdf>
-Package pdftex.def Info: Figures/strom_temp.pdf used on input line 1192.
+Package pdftex.def Info: Figures/strom_temp.pdf used on input line 1195.
 (pdftex.def)             Requested size: 478.79846pt x 150.81947pt.
+
+Underfull \vbox (badness 1715) has occurred while \output is active []
+
  [13 <./Figures/strom_iso_fraction.pdf>]
-(./RTMethodsPaper.bbl [14 <./Figures/strom_fraction.pdf> <./Figures/strom_temp.
-pdf
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+(./RTMethodsPaper.bbl
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14 <./Figures/strom_fraction.pdf> <./Figures/strom_temp.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/strom_temp.pdf): PDF inclusion: multip
 le pdfs with page group included in a single page
 >])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1353.
- [15
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1353.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1368.
+ [15]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1368.
  (./RTMethodsPaper.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1353.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1353.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1368.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1368.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1162,16 +1166,16 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1353.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1368.
  ) 
 Here is how much of TeX's memory you used:
- 10046 strings out of 493029
- 140358 string characters out of 6136235
- 244589 words of memory out of 5000000
- 13236 multiletter control sequences out of 15000+600000
+ 10045 strings out of 493029
+ 140339 string characters out of 6136235
+ 245057 words of memory out of 5000000
+ 13235 multiletter control sequences out of 15000+600000
  136377 words of font info for 317 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,15n,35p,1045b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,15n,35p,1045b,486s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/sh
 are/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/publ
@@ -1210,10 +1214,10 @@ lic/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/
 txmia.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RTMethodsPaper.pdf (15 pages, 2051696 bytes).
+Output written on RTMethodsPaper.pdf (15 pages, 2055670 bytes).
 PDF statistics:
- 531 PDF objects out of 1000 (max. 8388607)
- 425 compressed objects within 5 object streams
+ 529 PDF objects out of 1000 (max. 8388607)
+ 423 compressed objects within 5 object streams
  0 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
