@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  6 AUG 2018 16:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  7 AUG 2018 14:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -963,34 +963,34 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 <Figures/uvsn.pdf, id=1, 455.30101pt x 339.66899pt>
 File: Figures/uvsn.pdf Graphic file (type pdf)
  <use Figures/uvsn.pdf>
-Package pdftex.def Info: Figures/uvsn.pdf used on input line 111.
+Package pdftex.def Info: Figures/uvsn.pdf used on input line 110.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 122.
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 125.
+(Font)              scaled to size 9.0pt on input line 121.
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 124.
 
-LaTeX Font Info:    No file TS1aer.fd. on input line 125.
+LaTeX Font Info:    No file TS1aer.fd. on input line 124.
 
 
 LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
 (Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `textcopyright' on input line 125.
+(Font)              for symbol `textcopyright' on input line 124.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
  <./Figures/uvsn.pdf>]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 9.0pt on input line 133.
+(Font)              scaled to size 9.0pt on input line 132.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 7.3pt on input line 133.
+(Font)              scaled to size 7.3pt on input line 132.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 5.5pt on input line 133.
+(Font)              scaled to size 5.5pt on input line 132.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 244--254
+Underfull \hbox (badness 10000) in paragraph at lines 243--253
 []\T1/aer/m/n/9 Photon packet prop-a-ga-tion meth-ods, such as
  []
 
@@ -998,22 +998,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 244--254
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3]
-<Figures/algorithm.pdf, id=89, 569.05513pt x 307.28975pt>
+<Figures/algorithm.pdf, id=88, 569.05513pt x 307.28975pt>
 File: Figures/algorithm.pdf Graphic file (type pdf)
 
 <use Figures/algorithm.pdf>
-Package pdftex.def Info: Figures/algorithm.pdf used on input line 380.
+Package pdftex.def Info: Figures/algorithm.pdf used on input line 383.
 (pdftex.def)             Requested size: 504.0pt x 272.16945pt.
  [4]
 <Figures/refine.pdf, id=93, 385.44pt x 345.29pt>
 File: Figures/refine.pdf Graphic file (type pdf)
  <use Figures/refine.pdf>
-Package pdftex.def Info: Figures/refine.pdf used on input line 537.
+Package pdftex.def Info: Figures/refine.pdf used on input line 538.
 (pdftex.def)             Requested size: 240.0pt x 214.99959pt.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 543.
+(Font)              scaled to size 8.0pt on input line 544.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.2pt on input line 543.
+(Font)              scaled to size 6.2pt on input line 544.
 
 [5 <./Figures/algorithm.pdf>]
 Overfull \hbox (4.74725pt too wide) detected at line 628
@@ -1055,7 +1055,7 @@ Package pdftex.def Info: Figures/opening_angle.pdf used on input line 811.
 File: Figures/refinement_criteria.pdf Graphic file (type pdf)
 
 <use Figures/refinement_criteria.pdf>
-Package pdftex.def Info: Figures/refinement_criteria.pdf used on input line 846
+Package pdftex.def Info: Figures/refinement_criteria.pdf used on input line 845
 .
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
  [8 <./Figures/raytrace.pdf> <./Figures/sine_rho.pdf
@@ -1066,7 +1066,7 @@ pdfTeX warning: pdflatex (file ./Figures/sine_rho.pdf): PDF inclusion: multiple
 File: Figures/particle_scaling.pdf Graphic file (type pdf)
 
 <use Figures/particle_scaling.pdf>
-Package pdftex.def Info: Figures/particle_scaling.pdf used on input line 878.
+Package pdftex.def Info: Figures/particle_scaling.pdf used on input line 877.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
  [9 <./Figures/opening_angle.pdf> <./Figures/refinement_criteria.pdf
 
@@ -1080,14 +1080,14 @@ multiple pdfs with page group included in a single page
 File: Figures/cellplot.pdf Graphic file (type pdf)
 
 <use Figures/cellplot.pdf>
-Package pdftex.def Info: Figures/cellplot.pdf used on input line 956.
+Package pdftex.def Info: Figures/cellplot.pdf used on input line 955.
 (pdftex.def)             Requested size: 504.0pt x 241.9257pt.
 
 <Figures/isothermal_spheres.pdf, id=265, 455.30101pt x 339.66899pt>
 File: Figures/isothermal_spheres.pdf Graphic file (type pdf)
 
 <use Figures/isothermal_spheres.pdf>
-Package pdftex.def Info: Figures/isothermal_spheres.pdf used on input line 983.
+Package pdftex.def Info: Figures/isothermal_spheres.pdf used on input line 982.
 
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
  [10]
@@ -1117,7 +1117,7 @@ Package pdftex.def Info: Figures/strom_slice_iso_500.pdf used on input line 108
 File: Figures/strom_iso_fraction.pdf Graphic file (type pdf)
 
 <use Figures/strom_iso_fraction.pdf>
-Package pdftex.def Info: Figures/strom_iso_fraction.pdf used on input line 1143
+Package pdftex.def Info: Figures/strom_iso_fraction.pdf used on input line 1142
 .
 (pdftex.def)             Requested size: 478.79846pt x 232.0337pt.
  [12 <./Figures/strom_slice_iso_030.pdf> <./Figures/strom_slice_iso_500.pdf
@@ -1128,14 +1128,14 @@ n: multiple pdfs with page group included in a single page
 File: Figures/strom_fraction.pdf Graphic file (type pdf)
 
 <use Figures/strom_fraction.pdf>
-Package pdftex.def Info: Figures/strom_fraction.pdf used on input line 1188.
+Package pdftex.def Info: Figures/strom_fraction.pdf used on input line 1187.
 (pdftex.def)             Requested size: 478.79846pt x 154.68913pt.
 
 <Figures/strom_temp.pdf, id=358, 1445.4pt x 455.30101pt>
 File: Figures/strom_temp.pdf Graphic file (type pdf)
 
 <use Figures/strom_temp.pdf>
-Package pdftex.def Info: Figures/strom_temp.pdf used on input line 1195.
+Package pdftex.def Info: Figures/strom_temp.pdf used on input line 1194.
 (pdftex.def)             Requested size: 478.79846pt x 150.81947pt.
 
 Underfull \vbox (badness 1715) has occurred while \output is active []
@@ -1152,12 +1152,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 pdfTeX warning: pdflatex (file ./Figures/strom_temp.pdf): PDF inclusion: multip
 le pdfs with page group included in a single page
 >])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1368.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1370.
  [15]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1368.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1370.
  (./RTMethodsPaper.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1368.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1368.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1370.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1370.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1166,12 +1166,12 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1368.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1370.
  ) 
 Here is how much of TeX's memory you used:
  10045 strings out of 493029
  140339 string characters out of 6136235
- 245057 words of memory out of 5000000
+ 245217 words of memory out of 5000000
  13235 multiletter control sequences out of 15000+600000
  136377 words of font info for 317 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1214,7 +1214,7 @@ lic/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/
 txmia.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RTMethodsPaper.pdf (15 pages, 2055669 bytes).
+Output written on RTMethodsPaper.pdf (15 pages, 2055436 bytes).
 PDF statistics:
  529 PDF objects out of 1000 (max. 8388607)
  423 compressed objects within 5 object streams

@@ -67,6 +67,6 @@ axs[1].set_ylabel('y')
 
 plt.tight_layout()
 plt.savefig("cellplot.pdf")
-plt.savefig("cellplot.png")
+#plt.savefig("cellplot.png")
 #plt.show()
 plt.close()

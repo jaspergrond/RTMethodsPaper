@@ -70,7 +70,7 @@ for ax, path, res in zip(axes.flat, paths, ress):
 
 fig.subplots_adjust(left = 0.05, right = 0.95, bottom = 0.05, top = 0.95, wspace=0, hspace=0)
 plt.savefig("strom_slice_iso_030.pdf")
-plt.savefig("strom_slice_iso_030.png")
+#plt.savefig("strom_slice_iso_030.png")
 #plt.show()
 plt.close()
 
@@ -121,6 +121,6 @@ for ax, path, res in zip(axes.flat, paths, ress):
 
 fig.subplots_adjust(left = 0.05, right = 0.95, bottom = 0.05, top = 0.95, wspace=0, hspace=0)
 plt.savefig("strom_slice_iso_500.pdf")
-plt.savefig("strom_slice_iso_500.png")
+#plt.savefig("strom_slice_iso_500.png")
 #plt.show()
 plt.close()
