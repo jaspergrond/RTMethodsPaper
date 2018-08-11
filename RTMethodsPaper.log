@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  7 AUG 2018 14:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  10 AUG 2018 22:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -946,77 +946,82 @@ File: t1ntxsups.fd 2015/01/17 v1.0
 LaTeX Font Info:    Font shape `T1/ntxsups/m/n' will be
 (Font)              scaled to size 14.4pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 63.
+(Font)              scaled to size 10.0pt on input line 64.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.3pt on input line 63.
+(Font)              scaled to size 7.3pt on input line 64.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.5pt on input line 63.
+(Font)              scaled to size 5.5pt on input line 64.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
-(Font)              size <5> substituted on input line 63.
+(Font)              size <5> substituted on input line 64.
 
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 78.
+(Font)              scaled to size 8.0pt on input line 79.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.2pt on input line 78.
+(Font)              scaled to size 6.2pt on input line 79.
 <Figures/uvsn.pdf, id=1, 455.30101pt x 339.66899pt>
 File: Figures/uvsn.pdf Graphic file (type pdf)
  <use Figures/uvsn.pdf>
-Package pdftex.def Info: Figures/uvsn.pdf used on input line 110.
+Package pdftex.def Info: Figures/uvsn.pdf used on input line 112.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 121.
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 124.
+(Font)              scaled to size 9.0pt on input line 123.
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 126.
 
-LaTeX Font Info:    No file TS1aer.fd. on input line 124.
+LaTeX Font Info:    No file TS1aer.fd. on input line 126.
 
 
 LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
 (Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `textcopyright' on input line 124.
+(Font)              for symbol `textcopyright' on input line 126.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
  <./Figures/uvsn.pdf>]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 9.0pt on input line 132.
+(Font)              scaled to size 9.0pt on input line 134.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 7.3pt on input line 132.
+(Font)              scaled to size 7.3pt on input line 134.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 5.5pt on input line 132.
+(Font)              scaled to size 5.5pt on input line 134.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 243--253
+Underfull \hbox (badness 10000) in paragraph at lines 248--258
 []\T1/aer/m/n/9 Photon packet prop-a-ga-tion meth-ods, such as
+ []
+
+
+Underfull \hbox (badness 2181) in paragraph at lines 248--258
+\T1/aer/m/n/9 TRAPHIC (Paw-lik & Schaye 2008), em-ployan evo-lu-
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3]
-<Figures/algorithm.pdf, id=88, 569.05513pt x 307.28975pt>
+<Figures/algorithm.pdf, id=89, 569.05513pt x 307.28975pt>
 File: Figures/algorithm.pdf Graphic file (type pdf)
 
 <use Figures/algorithm.pdf>
-Package pdftex.def Info: Figures/algorithm.pdf used on input line 383.
+Package pdftex.def Info: Figures/algorithm.pdf used on input line 399.
 (pdftex.def)             Requested size: 504.0pt x 272.16945pt.
  [4]
 <Figures/refine.pdf, id=93, 385.44pt x 345.29pt>
 File: Figures/refine.pdf Graphic file (type pdf)
  <use Figures/refine.pdf>
-Package pdftex.def Info: Figures/refine.pdf used on input line 538.
+Package pdftex.def Info: Figures/refine.pdf used on input line 545.
 (pdftex.def)             Requested size: 240.0pt x 214.99959pt.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 544.
+(Font)              scaled to size 8.0pt on input line 551.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.2pt on input line 544.
+(Font)              scaled to size 6.2pt on input line 551.
 
 [5 <./Figures/algorithm.pdf>]
-Overfull \hbox (4.74725pt too wide) detected at line 628
+Overfull \hbox (2.9014pt too wide) detected at line 632
 \OML/ntxmi/m/it/9 N[] \U/ntxmia/m/it/9 = [][] [] [][] [] \OML/ntxmi/m/it/9 dr \
 OMS/ntxsy/m/n/9 ^^X \OML/ntxmi/m/it/9 N [][]\U/ntxmia/m/it/9 }\OT1/ntxtlf/m/n/9
  128\OML/ntxmi/m/it/9 N=N[]\U/ntxmia/m/it/9 ~\OML/ntxmi/m/it/9 :
@@ -1027,52 +1032,52 @@ OMS/ntxsy/m/n/9 ^^X \OML/ntxmi/m/it/9 N [][]\U/ntxmia/m/it/9 }\OT1/ntxtlf/m/n/9
 File: Figures/cosmofield.pdf Graphic file (type pdf)
 
 <use Figures/cosmofield.pdf>
-Package pdftex.def Info: Figures/cosmofield.pdf used on input line 662.
+Package pdftex.def Info: Figures/cosmofield.pdf used on input line 667.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
 
 <Figures/raytrace.pdf, id=107, 843.15pt x 517.935pt>
 File: Figures/raytrace.pdf Graphic file (type pdf)
 
 <use Figures/raytrace.pdf>
-Package pdftex.def Info: Figures/raytrace.pdf used on input line 740.
+Package pdftex.def Info: Figures/raytrace.pdf used on input line 745.
 (pdftex.def)             Requested size: 240.0pt x 147.42332pt.
  [7 <./Figures/cosmofield.pdf>]
 <Figures/sine_rho.pdf, id=134, 455.30101pt x 339.66899pt>
 File: Figures/sine_rho.pdf Graphic file (type pdf)
 
 <use Figures/sine_rho.pdf>
-Package pdftex.def Info: Figures/sine_rho.pdf used on input line 790.
+Package pdftex.def Info: Figures/sine_rho.pdf used on input line 795.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
 
 <Figures/opening_angle.pdf, id=135, 455.30101pt x 339.66899pt>
 File: Figures/opening_angle.pdf Graphic file (type pdf)
 
 <use Figures/opening_angle.pdf>
-Package pdftex.def Info: Figures/opening_angle.pdf used on input line 811.
-(pdftex.def)             Requested size: 240.0pt x 179.04413pt.
-
-<Figures/refinement_criteria.pdf, id=136, 455.30101pt x 339.66899pt>
-File: Figures/refinement_criteria.pdf Graphic file (type pdf)
-
-<use Figures/refinement_criteria.pdf>
-Package pdftex.def Info: Figures/refinement_criteria.pdf used on input line 845
-.
+Package pdftex.def Info: Figures/opening_angle.pdf used on input line 816.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
  [8 <./Figures/raytrace.pdf> <./Figures/sine_rho.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/sine_rho.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
->] <Figures/particle_scaling.pdf, id=180, 455.30101pt x 339.66899pt>
+> <./Figures/opening_angle.pdf
+
+pdfTeX warning: pdflatex (file ./Figures/opening_angle.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+>] <Figures/refinement_criteria.pdf, id=208, 455.30101pt x 339.66899pt>
+File: Figures/refinement_criteria.pdf Graphic file (type pdf)
+
+<use Figures/refinement_criteria.pdf>
+Package pdftex.def Info: Figures/refinement_criteria.pdf used on input line 850
+.
+(pdftex.def)             Requested size: 240.0pt x 179.04413pt.
+
+<Figures/particle_scaling.pdf, id=209, 455.30101pt x 339.66899pt>
 File: Figures/particle_scaling.pdf Graphic file (type pdf)
 
 <use Figures/particle_scaling.pdf>
-Package pdftex.def Info: Figures/particle_scaling.pdf used on input line 877.
+Package pdftex.def Info: Figures/particle_scaling.pdf used on input line 882.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
- [9 <./Figures/opening_angle.pdf> <./Figures/refinement_criteria.pdf
-
-pdfTeX warning: pdflatex (file ./Figures/refinement_criteria.pdf): PDF inclusio
-n: multiple pdfs with page group included in a single page
-> <./Figures/particle_scaling.pdf
+ [9 <./Figures/refinement_criteria.pdf> <./Figures/particle_scaling.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/particle_scaling.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
@@ -1080,14 +1085,14 @@ multiple pdfs with page group included in a single page
 File: Figures/cellplot.pdf Graphic file (type pdf)
 
 <use Figures/cellplot.pdf>
-Package pdftex.def Info: Figures/cellplot.pdf used on input line 955.
+Package pdftex.def Info: Figures/cellplot.pdf used on input line 960.
 (pdftex.def)             Requested size: 504.0pt x 241.9257pt.
 
 <Figures/isothermal_spheres.pdf, id=265, 455.30101pt x 339.66899pt>
 File: Figures/isothermal_spheres.pdf Graphic file (type pdf)
 
 <use Figures/isothermal_spheres.pdf>
-Package pdftex.def Info: Figures/isothermal_spheres.pdf used on input line 982.
+Package pdftex.def Info: Figures/isothermal_spheres.pdf used on input line 986.
 
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
  [10]
@@ -1101,23 +1106,23 @@ pdfTeX warning: pdflatex (file ./Figures/isothermal_spheres.pdf): PDF inclusion
 File: Figures/strom_slice_iso_030.pdf Graphic file (type pdf)
 
 <use Figures/strom_slice_iso_030.pdf>
-Package pdftex.def Info: Figures/strom_slice_iso_030.pdf used on input line 108
-4.
+Package pdftex.def Info: Figures/strom_slice_iso_030.pdf used on input line 109
+1.
 (pdftex.def)             Requested size: 240.0pt x 78.85559pt.
 
 <Figures/strom_slice_iso_500.pdf, id=321, 455.30101pt x 149.59889pt>
 File: Figures/strom_slice_iso_500.pdf Graphic file (type pdf)
 
 <use Figures/strom_slice_iso_500.pdf>
-Package pdftex.def Info: Figures/strom_slice_iso_500.pdf used on input line 108
-5.
+Package pdftex.def Info: Figures/strom_slice_iso_500.pdf used on input line 109
+2.
 (pdftex.def)             Requested size: 240.0pt x 78.85559pt.
 
 <Figures/strom_iso_fraction.pdf, id=322, 939.51pt x 455.30101pt>
 File: Figures/strom_iso_fraction.pdf Graphic file (type pdf)
 
 <use Figures/strom_iso_fraction.pdf>
-Package pdftex.def Info: Figures/strom_iso_fraction.pdf used on input line 1142
+Package pdftex.def Info: Figures/strom_iso_fraction.pdf used on input line 1150
 .
 (pdftex.def)             Requested size: 478.79846pt x 232.0337pt.
  [12 <./Figures/strom_slice_iso_030.pdf> <./Figures/strom_slice_iso_500.pdf
@@ -1128,36 +1133,35 @@ n: multiple pdfs with page group included in a single page
 File: Figures/strom_fraction.pdf Graphic file (type pdf)
 
 <use Figures/strom_fraction.pdf>
-Package pdftex.def Info: Figures/strom_fraction.pdf used on input line 1187.
+Package pdftex.def Info: Figures/strom_fraction.pdf used on input line 1195.
 (pdftex.def)             Requested size: 478.79846pt x 154.68913pt.
 
 <Figures/strom_temp.pdf, id=358, 1445.4pt x 455.30101pt>
 File: Figures/strom_temp.pdf Graphic file (type pdf)
 
 <use Figures/strom_temp.pdf>
-Package pdftex.def Info: Figures/strom_temp.pdf used on input line 1194.
+Package pdftex.def Info: Figures/strom_temp.pdf used on input line 1202.
 (pdftex.def)             Requested size: 478.79846pt x 150.81947pt.
 
-Underfull \vbox (badness 1715) has occurred while \output is active []
+Underfull \vbox (badness 1917) has occurred while \output is active []
 
  [13 <./Figures/strom_iso_fraction.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-(./RTMethodsPaper.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [14 <./Figures/strom_fraction.pdf> <./Figures/strom_temp.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/strom_temp.pdf): PDF inclusion: multip
 le pdfs with page group included in a single page
->])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1370.
+>] (./RTMethodsPaper.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1379.
  [15]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1370.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1379.
  (./RTMethodsPaper.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1370.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1370.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1379.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1379.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1166,55 +1170,59 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1370.
- ) 
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1379.
+ )
+(\end occurred inside a group at level 1)
+
+### simple group (level 1) entered at line 246 ({)
+### bottom level 
 Here is how much of TeX's memory you used:
- 10045 strings out of 493029
- 140339 string characters out of 6136235
- 245217 words of memory out of 5000000
+ 10040 strings out of 493029
+ 140290 string characters out of 6136235
+ 244911 words of memory out of 5000000
  13235 multiletter control sequences out of 15000+600000
- 136377 words of font info for 317 fonts, out of 8000000 for 9000
+ 135434 words of font info for 312 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,15n,35p,1045b,486s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/sh
-are/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texlive/texmf-d
-ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
-9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1/public/tex-gyre
-/qtmb.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/newtx/rntxmi.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/newtx/rntxmi5.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/newtx/rntxmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/rtx
-mi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/rtxmi7.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texm
-f/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/newtx/txex-bar.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/
-txmia.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RTMethodsPaper.pdf (15 pages, 2055436 bytes).
+ 36i,15n,35p,1045b,476s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tl
+f.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/t
+exlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1/p
+ublic/tex-gyre/qtmb.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmr.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/newtx/rntxmi.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/newtx/rntxmi5.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/newtx/rntxmi7.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/newtx/rtxmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/r
+txmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></
+usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/newtx/txex-bar.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/txfonts/txmia.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfon
+ts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on RTMethodsPaper.pdf (15 pages, 2055660 bytes).
 PDF statistics:
  529 PDF objects out of 1000 (max. 8388607)
  423 compressed objects within 5 object streams

@@ -10,15 +10,15 @@ Warning--empty publisher in spitzer78
 Warning--empty publisher in tielens05
 You've used 41 entries,
             2881 wiz_defined-function locations,
-            1108 strings with 17242 characters,
-and the built_in function-call counts, 19497 in all, are:
-= -- 1590
-> -- 1393
-< -- 116
-+ -- 623
-- -- 190
-* -- 2442
-:= -- 3055
+            1108 strings with 17261 characters,
+and the built_in function-call counts, 19563 in all, are:
+= -- 1588
+> -- 1411
+< -- 114
++ -- 629
+- -- 196
+* -- 2454
+:= -- 3073
 add.period$ -- 0
 call.type$ -- 41
 change.case$ -- 82
@@ -26,18 +26,18 @@ chr.to.int$ -- 41
 cite$ -- 44
 duplicate$ -- 939
 empty$ -- 943
-format.name$ -- 340
-if$ -- 3329
+format.name$ -- 342
+if$ -- 3337
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 45
 newline$ -- 137
 num.names$ -- 300
-pop$ -- 214
+pop$ -- 216
 preamble$ -- 1
 purify$ -- 164
 quote$ -- 0
-skip$ -- 552
+skip$ -- 550
 stack$ -- 0
 substring$ -- 1100
 swap$ -- 560

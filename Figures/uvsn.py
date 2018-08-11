@@ -60,13 +60,13 @@ for i,j in zip(Band, LS):
 
 sn = np.loadtxt(path+'Chabrier.snr1', skiprows = 7)
 snTot = np.trapz(10**sn[:,2], sn[:,0]*365*24*60*60)
-plt.loglog(sn[:,0], 10**sn[:,2], label = r"SN, " + '$E=' + str(snTot)[0:4] + \
+plt.loglog(sn[:,0], 10**sn[:,2], label = r"SNe, " + '$E=' + str(snTot)[0:4] + \
            r"\times 10^{"+str(snTot)[-2:] + \
            r"}{\rm \frac{erg}{M_\odot}}$", ls = ':') 
 
 wind = np.loadtxt(path+'Chabrier.power1', skiprows = 7)
 windTot = np.trapz(10**wind[:,1], wind[:,0]*365*24*60*60)
-plt.loglog(wind[:,0], 10**wind[:,1], label = r"Wind, " + "$E="+ \
+plt.loglog(wind[:,0], 10**wind[:,1], label = r"Winds, " + "$E="+ \
            str(windTot)[0:4]+r"\times 10^{"+str(windTot)[-2:]+ \
            r"}{\rm \frac{erg}{M_\odot}}$", ls = '-')
 
@@ -77,7 +77,7 @@ plt.ylim(1e30,1e38)
 plt.legend(loc = 'upper right', frameon = 0, fontsize = 11)
 plt.tight_layout()
 plt.savefig('./uvsn.pdf')
-plt.savefig('./uvsn.png', dpi = 300)
+#plt.savefig('./uvsn.png', dpi = 300)
 #plt.show()
 plt.close()
 

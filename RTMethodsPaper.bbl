@@ -188,10 +188,11 @@ Courier Corporation
   {10.1111/j.1365-2966.2011.18986.x}, \href
   {http://adsabs.harvard.edu/abs/2011MNRAS.415.3731P} {415, 3731}
 
-\bibitem[\protect\citeauthoryear{{Rosdahl} \& {Teyssier}}{{Rosdahl} \&
-  {Teyssier}}{2015}]{rosdahlTeyssier15}
-{Rosdahl} J.,  {Teyssier} R.,  2015, \mn@doi [\mnras] {10.1093/mnras/stv567},
-  \href {http://esoads.eso.org/abs/2015MNRAS.449.4380R} {449, 4380}
+\bibitem[\protect\citeauthoryear{{Rosdahl}, {Blaizot}, {Aubert}, {Stranex}  \&
+  {Teyssier}}{{Rosdahl} et~al.}{2013}]{rosdahlEt13}
+{Rosdahl} J.,  {Blaizot} J.,  {Aubert} D.,  {Stranex} T.,   {Teyssier} R.,
+  2013, \mn@doi [\mnras] {10.1093/mnras/stt1722}, \href
+  {http://esoads.eso.org/abs/2013MNRAS.436.2188R} {436, 2188}
 
 \bibitem[\protect\citeauthoryear{{Spitzer}}{{Spitzer}}{1978}]{spitzer78}
 {Spitzer} L.,  1978, {Physical processes in the interstellar medium}
