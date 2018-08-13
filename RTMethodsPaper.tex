@@ -106,8 +106,7 @@ more energy at early times and about 50 times more energy over the course of a
 stellar population's lifetime. This is evident from Figure \ref{fig:uvsn} 
 which is a plot of the luminosity output per solar mass as a function of time 
 from a typical stellar population (computed using the stellar evolution code 
-Starburst99, 
-\cite{leithererEt99}).
+Starburst99, \cite{leithererEt99}).
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/uvsn.pdf}
 \caption{Luminosity per solar mass as a function of time for a stellar 
@@ -120,8 +119,7 @@ and consequently effects the interstellar medium (ISM) is still unclear.
 Attempts at numerically exploring these effects without the use of a full 
 radiative transfer method have produced conflicting results. Simulations done
 by \cite{gritschnederEt09} and \citep{walchEt12} suggest that ionizing feed 
-back from large O-type stars before the first supernovae ($<1-3\rm{Myr}$) have 
-a significant effect on star formation rate. Whereas \cite{daleEt12} 
+back from large O-type stars before the first supernovae ($<1-3\rm{Myr}$) have a significant effect on star formation rate. Whereas \cite{daleEt12} 
 conclude the effects on star formation rate to be small.
 
 With this uncertainty in mind, it may seem surprising that RT has been treated 
@@ -365,7 +363,6 @@ The intensity due to a single source is,
 \label{eqn:simpint}
 I_i = \frac{L_i}{4\pi s_i^2} e^{-\tau_i}.
 \end{equation}
-
 Summing the intensity from all sources we get the angle-averaged intensity. We 
 can use this averaged intensity directly in heating, chemistry and ionization 
 rate expressions. For many applications in astrophysics this is the primary 
@@ -408,7 +405,6 @@ the right panel represent individual radiation sources. The larger yellow star
 in the right panel represents a merged source, as the dashed red cell 
 encapsulating all sources meets the opening angle (grey region in right panel) 
 criterion.} 
-
 \label{fig:algorithm}
 \end{figure*}
 
@@ -928,7 +924,7 @@ distributions, the refinement criterion will operate in a similar way
 now with more particles per cell to average over. The second thing to note is 
 that the strong scaling case at $\tr=0.1$, which achieved an RMS fractional 
 error of 1\% in the $N=64^3$ sinusoidally perturbed glass test, scales 
-similarly to the no refinement data and fits $\bigO(N\log^2{N}$) scaling 
+similarly to the no refinement data and fits $\bigO{N\log^2{N}}$ scaling 
 behaviour. \comment{Hugh: ???} 
 
 \subsection{Isothermal Spheres}
