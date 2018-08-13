@@ -399,7 +399,7 @@ radiation field \acro{} computes.
 
 Note that although \acro{} has been initially implemented in the 
 SPH code \textsc{Gasoline} \citep{wadsleyEt17}, \acro{} is not specific to 
-\textsc{Gasoline} or SPH in general. The method only requires that the 
+SPH.  The method only requires that the 
 simulation volume be hierarchically partitioned in space and so it could be 
 used directly in an adaptive mesh refinement code.   In the case of grid codes,
 the algorithm is simplifed as the final SPH particle ray tracing step is not needed.
@@ -432,20 +432,19 @@ solver which has remained popular in astrophysics
 implemented radiation source merging in a rudimentary version of \acro{} 
 that did not consider extinction of any kind \citep{kannanEt14}.
 
-Sources of 
-radiation are merged together at their centre of luminosity if they meet an 
+For a given sink point, sources of 
+radiation inside a tree cell are merged together at their centre of luminosity if they meet an 
 ``opening angle'' criteria. This criteria is defined as 
 \begin{equation}
 \label{eqn:openangle}
 \tO > l/r,
 \end{equation}
 where $l$ is the distance from the centre of luminosity to the furthest part of
-the tree cell, $r$ is distance to the closest cell edge 
+the tree cell, $r$ is distance from the sink to the closest cell edge 
 and $\tO$ is the opening angle, a fixed accuracy parameter.  This is equivalent to
 the criterion used for gravity in \citet{wadsleyEt04} and ensures parent cells
 of a point are always opened.  
-If a group of sources occupies the biggest tree cell that meets this criteria, all 
-sources in that cell are merged into one, considerably reducing the number of 
+Source merging considerably reduces the number of 
 interactions \acro{} computes. This is illustrated in the left panel of Figure 
 \ref{fig:algorithm}, where the grey angle represents a cell whose angular size 
 meets the opening angle criterion.
@@ -459,15 +458,15 @@ thickness $dr$ along the path from a resolution element $r$, and then dividing
 the sphere volume by the volume of the cell, $V_{\rm cell}(r)$.
 \begin{equation}
 \label{eqn:nsint}
-N_{\rm cell} = \int_{R_0}^R \frac{4\pi r^2}{V_{\rm cell}(r)} dr
+N_{\rm cell} = \int_{R_B}^R \frac{4\pi r^2}{V_{\rm cell}(r)} dr
 \end{equation}
-The bounds of the integral are $R_0$, the size of a bucket 
+The bounds of the integral are $R_B$, the size of a bucket 
 cell, and $R$, the length of the simulation volume. Because the number of 
 particles in a simulation is proportional to the simulation volume, the 
 lower integration limit can be expressed using particle numbers via 
 \begin{equation}
 \label{eqn:ratio}
-\frac{R_0}{R} = \sqrt[3]{\frac{N_B}{N}},
+\frac{R_B}{R} = \sqrt[3]{\frac{N_B}{N}},
 \end{equation} 
 the cube root of the ratio of the average number of particles per bucket, 
 $N_B$, to the total number of simulation particles. Again, note that $N_B$ is 
@@ -492,13 +491,13 @@ We next consider ray tracing in the optically thick regime.
 
 \subsubsection{Tracing Rays}
 In the presence of absorbing material along a ray, the optical depth needs to 
-be computed by computing the optical depth
-in Equation \ref{eqn:tauint}. To solve this integral numerically, we traverse 
+be computed following
+Equation \ref{eqn:tauint}. To solve this integral numerically, we traverse 
 the tree between the source and resolution element to build up the optical 
-depth. This is possible because the tree partitions and fills space, thus all 
+depth. This requires that the tree partitions and fills space, thus all 
 the intervening material is contained in the tree we traverse. Making 
 use of properties computed during the tree build, we can compute the optical 
-depth of the $i$'th piece of the ray, $\tau_i$, using the intersection length 
+depth of the $i$-th piece of the ray, $\tau_i$, using the intersection length 
 of the cell and ray, $s_i$, as well as the average density, $\bar{\rho}_i$, 
 and average opacity, $\bar{\kappa}_i$, in the cell
 \begin{equation}
@@ -536,6 +535,14 @@ significantly alter the optical depth. Thus adaptive refinement is needed
 during the tree walk to accurately resolve the medium along the ray.
 
 \subsubsection{Adaptive Refinement}\label{sec:adref}
+
+\acro{} does not add a new refinement criterion for the simulation elements.
+Instead, for each ray \acro{} decides whether to use the full resolution available or
+if a set of ray segments intersecting lower resolution parent cells would be sufficient.
+In principle, the resolution elements themselves could be subdivided based
+on properties associated with radiative transfer for even higher resolution,
+but that is beyond the scope of the present work.
+
 Consider the right panel in Figure \ref{fig:algorithm}. A dense blob of gas 
 to be resolved resides in the orange highlighted cell at $[(1,1),(2,2)]$. At 
 the point in the tree walk where we reach the orange highlighted cell at 
@@ -546,12 +553,12 @@ using its average properties, we recursively check the cell's children until
 the criterion fails. In this we build a better resolved section of the ray. 
 
 Difficulty comes in choosing a refinement criterion that is both accurate and 
-efficient. Ideally, the criterion should be true when an average optical depth 
+efficient. Ideally, refinement occurs when the average optical depth 
 in a region may not accurately reflect the true distribution, such as a clumpy 
 medium where the average density and opacity is much higher than the 
 ``effective'' density and opacity \citep{varosiDwek99, hegmanKegel03}. For 
-this reason we have chosen an $\tau$-based refinement criterion that is unique 
-to \acro{}.
+this reason, we developed a new, optical depth-based refinement criterion 
+for \acro{}.
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/refine.pdf}
@@ -563,12 +570,31 @@ ray. The blue outlined sections on each ray correspond to the intersection
 length, $l$,  used to compute the optical depth through each child cell.}
 \label{fig:refine}
 \end{figure}
-Consider two rays through a large cell as in Figure \ref{fig:refine}. 
-We can compute the minimum and maximum 
-absorption coefficients, $\alpha_{\rm min}$ and $\alpha_{\rm max}$, for each 
-child cell during the tree build. This multiplied by the intersection length 
-$l$ gives us the minimum and maximum optical depths, $\tau_{\rm min}$ and 
-$\tau_{\rm max}$. We can then test the following refinement criterion
+Our criterion requires minimum and maximum 
+absorption coefficients, $\alpha_{\rm min}$ and $\alpha_{\rm max}$, for each cell.
+These are estimated for the three Cartesian directions ($x,y,z$) separately.
+Leaf cells are assumed to have a single value $\alpha = \kappa \rho$.
+Then, for example,
+we estimate the minimum, $x$-direction optical depth of the parent cell via
+the minimum $x$-direction optical depths of the child cells
+(either by taking the minimum or the sum as appropriate) and then dividing by
+the new total $x$-cell width to recover an $\alpha_{\rm min}$ in the $x$-direction for the
+parent cell.  By proceeding in a bottom-up fashion
+during the tree build, we estimate directional minima and maxima $\alpha$ values for all cells.
+We then take the minima and maxima
+over the three directions and save just one $\alpha_{\rm min}$ and one $\alpha_{\rm max}$
+for each cell.
+
+To use the cell-averaged absorption coefficient, $\alpha$, for a ray segment,
+we require that substructure within the cell cannot change the final flux
+beyond a specified tolerance.
+This is equivalent to showing that two rays through the cell,
+as in Figure \ref{fig:refine}, give sufficently similar results.
+Given $\alpha_{\rm min}$ and $\alpha_{\rm max}$ for that cell we can multiply
+by the ray segment length intersecting the cell, 
+$l$, to estimate the the minimum, $\tau_{\rm min}$, and maximum, $\tau_{\rm max}$,
+possible optical depths that rays might experience.
+We can then test the following refinement criterion
 \begin{equation}
 \label{eqn:refcrit}
 \tr < \tau_{\rm max} - \tau_{\rm min},
@@ -581,15 +607,15 @@ fractional error in flux, per ray segment, for a given value of $\tr$ is
 \lesssim \tr,
 \end{equation}
 for small $\tr$, making the refinement criterion a convenient choice of 
-parameter for controlling error. Figure \ref{fig:cellplot} is an example of 
+parameter for controlling error. Figure \ref{fig:cellplot} in section~\ref{spheretest}
+is an example of 
 \acro{}'s adaptive refinement in action.
 
-If the refinement criterion passes at the bucket level, individual particles 
-within a bucket are considered. A straight forward $N^2$ ray tracing scheme 
-similar to SPHRay \citep{altayEt08} can be performed on bucket particles and 
-their neighbours. In the worst case where the refinement criterion passes the 
-bucket level every time, a cost of $\bigO{C_n N}$ is added to the scaling, 
-where $C_n$ is the constant number of SPH neighbours.
+For a particle code, if refinement is required at the bucket level, individual particles 
+within a bucket must be considered.  A straight forward ray tracing scheme 
+similar to SPHRay \citep{altayEt08} can be performed locally on bucket particles and 
+their neighbours.   This particle-particle step is $\bigO{\NK}$ as each particle element
+interacts with a fixed number of neighbour particles.
 
 Fully characterizing the computational cost of the algorithm, including the 
 addition of adaptive refinement, follows the procedure used earlier. 
@@ -598,15 +624,15 @@ total number of ray segments computed. We will look at two cases, not refining
 at all and fully refining down to the bucket level. This will give us upper 
 and lower bound for the algorithm's scaling.
 
-First let's consider the case where the refinement criterion always passes and 
+First let's consider the case where the refinement criterion always triggers and 
 all rays are resolved down to the bucket level. The number of segments per ray 
 is then just the length of a ray divided by the size of a bucket. We can 
 express this as
 \begin{equation}
 \label{eqn:nseg}
-N_{\rm seg} = \frac{r}{R_0} = \frac{r}{R}\left(\frac{N}{N_B}\right)^\frac{1}{3}
+N_{\rm seg} = \frac{r}{R_B} = \frac{r}{R}\left(\frac{N}{N_B}\right)^\frac{1}{3}
 \end{equation}
-after sunstituting for $R_0$ using Equation \ref{eqn:ratio}. Since $\NS$ is 
+after substituting for $R_B$ using Equation \ref{eqn:ratio}. Since $\NS$ is 
 also the number of rays computed, the total number of ray segments computed is 
 just Equation \ref{eqn:nsint} multiplied by the number of ray segments
 \begin{equation}
@@ -619,7 +645,7 @@ N_{\rm seg} = \int_{\sqrt[3]{N_B/N}}^R
 The result is that the total cost of the algorithm scales as
 $\bigO{N^{4/3}}$ in the worst case.
 
-In the case were the refinement criteria never passes, the ray is split into 
+In the case were the refinement criteria never triggers, the ray is split into 
 segments made up of the cells traversed in the tree walk of the sub-tree going 
 from source to resolution element. The number of cells traversed in a tree walk
 is equal to the logarithm of the number of leaf nodes contained within the 
@@ -634,14 +660,14 @@ N_{\rm seg} = \log_2\left[\frac{r}{R}\left(
 where the logarithm is base two as \textsc{Gasoline} and thus \acro{} is 
 implemented using a binary tree. As before we multiply Equation 
 \ref{eqn:nsint} by the number of ray segments and integrate the following
-\begin{equation}
+\begin{eqnarray}
 \label{eqn:nsegint2}
-N_{\rm seg} = \int_{\sqrt[3]{N_B/N}}^R 
+N_{\rm seg} & = & \int_{\sqrt[3]{N_B/N}}^R 
 \frac{4\pi r^2}{\tO^3}
 \log_2\left[\frac{r}{R}\left(
-\frac{N}{N_B}\right)^\frac{1}{3}\right] dr
-\sim N\log^2(128 N/N_B).
-\end{equation}
+\frac{N}{N_B}\right)^\frac{1}{3}\right] dr \nonumber\\
+& \sim & N\log^2(128 N/N_B).
+\end{eqnarray}
 Thus, in the best case, the total cost of the algorithm scales 
 $\bigO{N\log^2N}$.
 
@@ -943,7 +969,7 @@ error of 1\% in the $N=64^3$ sinusoidally perturbed glass test, scales
 similarly to the no refinement data and fits $\bigO{N\log^2{N}}$ scaling 
 behaviour. \comment{Hugh: ???} 
 
-\subsection{Isothermal Spheres}
+\subsection{Isothermal Spheres}\label{spheretest}
 \subsubsection{Initial Conditions}
 The sinusoidally perturbed glass IC tests a generally optically thin, smooth 
 density distribution. This is a good proxy for many astrophysical cases of 
