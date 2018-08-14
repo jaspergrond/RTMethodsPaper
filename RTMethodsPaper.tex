@@ -916,7 +916,6 @@ the low maximum error. Other implementations, that walk the ray top down or up
 and then back down the tree, would need to rely more, or solely, on the 
 refinement criterion. In principle, such a method could perform better than 
 $\bigO{N\log^2 N}$.
-\comment{a funny place to hide this remark -- make sure it is restated in discussion}
 
 \subsubsection{Scaling}
 \begin{figure}
@@ -1188,8 +1187,7 @@ with their use of monte-carlo resampling. Furthermore, \acro{} outperforms
 TRAPHIC in this aspect even at early times (top panels in Figure 
 \ref{fig:stromslice}). Here the interior of the sphere is represented by 3.3 
 times fewer particles than the late time \strom{} spheres plotted in the 
-TRAPHIC papers. \comment{Hugh: Maybe we should have a colour bar somewhere in 
-the figure?}
+TRAPHIC papers.
 
 \begin{figure*}
 \includegraphics[width=0.95\linewidth]{Figures/strom_iso_fraction.pdf}
@@ -1213,8 +1211,8 @@ scatter of the non-sharp solutions of the codes presented in \cite{ilievEt06}.
 \subsubsection{The Non-Isothermal \strom{} Sphere}
 The above test assumed the hydrogen gas was isothermal and that all incident 
 photons had the same energy. In reality, photons range across many wavelengths 
-with differing cross-sections at each wavelength. Absorption typically causes 
-heating as well, which affects among many gas properties, recombination rate.
+with differing cross-sections at each wavelength. Absorption results in 
+heating as well, which affects many gas properties including the recombination rate.
 
 We reran the \strom{} sphere test, but this time the incident photons are 
 assumed to be from a black body with a temperature of $10^5$ K. The cross 
@@ -1261,8 +1259,8 @@ makes detailed comparisons difficult.
 \section{Discussion And Conclusions}\label{sec:disc}
 In this paper we have presented \acro{}, a practical and efficient, general 
 purpose algorithm for computing radiative transfer in astrophysics 
-simulations. For a RT method to be these things it must be able to scale with 
-arbitrary numbers of resolution elements and radiation sources, compute the 
+simulations. For a RT method to be these things it must remain effificient with 
+large numbers of resolution elements and radiation sources, compute the 
 radiation field to a desired level of accuracy and handle density and opacity 
 distributions representing the optically thick, thin and intermediate regimes.
 
@@ -1271,28 +1269,35 @@ the cost of each of the three components of a ray trace:
 \begin{enumerate}
 \item Reverse ray tracing allows for the use of adaptive timesteps. The 
 initial dependence on $N$ resolution elements is reduced to $\NK$ active 
-radiation sinks. $\NK$ is on average 100 times smaller than $N$.
+radiation sinks. $\NK$ is effectively hundreds of times smaller than $N$ when averaged
+over a large number of substeps.  
 \item Source merging based on an opening angle criteria reduces the linear 
 dependence on $\NS$ to $\log\NS$.
 \item By adaptively reducing the resolution of rays via \acro{}'s novel 
 refinement criteria, the $N^{1/3}$ cost of computing the optical depth along a 
 ray can be reduced, while maintaining a specified level of accuracy, to 
-$\log N$.
+$\log N$.  
 \end{enumerate}
-In Section \ref{sec:algo} we have provided a framework to theoretically 
-predict \acro{}'s $\bigO{\NK \log\NS \log N}$ scaling behaviour. In the 
-general case, represented by the sinusoidally perturbed glass IC run with 
+In Section \ref{sec:algo} we theoretically 
+predicted \acro{}'s $\bigO{\NK \log\NS \log N}$ scaling behaviour. In the 
+general case, represented by the perturbed glass test case with 
 accuracy parameters of $\tr=0.1$ and $\tO=0.75$ (Figures \ref{fig:openangle}, 
-\ref{fig:refcrit} and \ref{fig:pscale}), we have shown that \acro{} does 
-indeed scale as predicted whilst achieving $\sim 1\%$ accuracy. In plots of 
+\ref{fig:refcrit} and \ref{fig:pscale}), we have shown that \acro{} can
+indeed scale as predicted whilst achieving $\sim 1\%$ accuracy.  We also note that
+better than $\log N$ scaling could be achieved for a medium with low optical
+depths via a more aggressive, top-down ray walk with our refinement criterion.
+
+In plots of 
 accuracy as a function of $\tr$ (Figures \ref{fig:refcrit} and 
-\ref{fig:isosph}) we have also shown that \acro{}'s unique refinement criteria 
-is a predictable bound on accuracy in both the optically thick and thin 
+\ref{fig:isosph}) we have also shown that \acro{}'s refinement criteria 
+provides a predictable bound on accuracy in both the optically thick and thin 
 regimes, as we found the RMS relative error is $\propto \tr$ and the RMS 
-errors do not exceed $\tr$.
+errors do not exceed $\tr$.  
 
 This scaling enables \acro{} to reap the benefits inherent in instantaneous 
-ray tracing methods whilst still being practical and general. Directional 
+ray tracing methods whilst still being practical and general.  For example,
+we can use any convenient timestep rather than being limited by the speed of light.
+Directional 
 accuracy is one of these benefits as is apparent in the sharp shadows cast 
 in the isothermal spheres test (Figure \ref{fig:cellplot}). Low levels of 
 noise and isotropy are also benefits compared with evolutionary methods as is 
@@ -1301,47 +1306,60 @@ apparent in the \strom{} sphere test (Figure \ref{fig:stromslice}).
 In the version of \acro{} as currently implemented, there are still some 
 problems not easily handled. First, in any completely optically thick 
 medium where high accuracy is required our method will result in worst 
-case scaling of $\bigO{N^{4/3}}$ (characterized in Section \ref{sec:adref}). 
-This limits \acro{} to solving only post-reionization cosmology problems. 
-However, in such a medium most rays contribute nothing to the radiation field. 
-One could imagine turning off sources or ending ray traces that are found 
-(early in the optical depth sum) or predicted (based on information from prior 
-timesteps) to contribute little to no intensity to the radiation field. These 
-types of optimization could also improve the weak scaling case. The second 
-problem is periodicity. Our method of a sphere of background sources providing 
-a constant central background flux is adequate for isolated objects, but in 
-the context of large cosmological boxes periodic background radiation is 
-required. We do not have a method of computing periodic radiation correctly 
-at the moment. Finally, there is the issue of \textit{complex sources}. 
-Consider a group of sources that meet the opening criteria and are merged, 
-but are also contained within a region that has clumpy, opaque features. 
-Depending on the location of the merged centre of luminosity relative to the 
-opaque feature, the amount of radiation that escapes the merged source cell 
-could vary significantly from that computed by the current algorithm. 
-\comment{Grond: James, maybe add some solution to this problem Tom and you 
-have chatted about.}
+case scaling of $\bigO{\NK\,N^{1/3}}$ (characterized in Section \ref{sec:adref}). 
+At face value this limits \acro{} to solving only post-reionization cosmology or similar problems
+that are largely optically thin.
+However, in such a medium most sources contribute nothing to the local radiation field. 
+In such cases \acro{} could easily terminate ray traces that are found 
+(e.g. early in the optical depth sum when $\tau$ exceeds a threshold)
+or predicted (based on information from prior 
+timesteps) to contribute little to no intensity to the final radiation field. These 
+types of optimizations could also improve the weak scaling case.
 
-Future work includes finding and/or applying solutions to the above problems 
-but also implementing scattering and ameliorating some of the issues the 
-infinite-speed-of-light approximation introduces. We have not yet included 
-scattering, but in principle this should be possible. The process of 
+A second problem is periodicity.  Our method of a sphere of background sources providing 
+a constant central background flux is adequate for isolated objects, but in 
+the context of large cosmological boxes, such as reionization calculations,
+periodic boundaries are required.  In such contexts, light travel times
+and redshifting are also potentially important.  Such factors could be included in principle
+and this is a potential direction for future work.
+
+Finally, there is the issue of \textit{complex sources}. 
+Consider a group of sources that meet the opening criteria and are merged, 
+but are also contained within a region that has clumpy, opaque structures. 
+Depending on the location of the merged centre of luminosity relative to the 
+opaque clumps, the amount of radiation that escaped the merged source cell 
+could vary significantly from that computed by the current algorithm.
+Such cases would require that the opening criterion take the effect of
+nearby absorbers into account, pontentially using the information regarding
+the variance in $\alpha$ already recorded for each cells.   Such extended opening
+and refinement criterion are the subject of ongoing investigations.
+
+In addition to the above, future work could also include
+implementing scattering.  The process of 
 scattering can be recast as an absorption, followed by an immediate remission 
-of photons. Thanks to the $\log(\NS)$ scaling with radiation sources, this 
+of photons.  Thanks to the $\log(\NS)$ scaling with radiation sources, this 
 process can be implemented by considering resolution elements (SPH gas 
 particles in our case) as sources of radiation without changing the scaling of 
-the method. Another result of assuming an infinite speed of light is that 
-radiation sinks will not see light as it was when emitted. This is easy to 
+the method.
+
+A consequence of assuming an infinite speed of light is that 
+radiation sinks will not see light as it was when emitted in the past but as the source appears
+at the current time.  This is easy to 
 remedy, as we have both the age of the source as well as the distance 
 travelled by the photons. We can then \textit{age} the radiation sources with 
 respect to the receiving resolution element, such that the received photons 
-are representative of the luminous source as it was. Currently, \acro{} only 
-computes the radiation field in specific bands. \acro{} can handle many bands 
-of radiation with only a small constant multiplier added to the cost, but it 
-may be advantageous to evolve a spectrum shape over time via a sub-grid 
-method. This would also enable us to incorporate redshifting effects important 
+are representative of the luminous source as it was.
+
+Currently, \acro{} only 
+computes the radiation field in specific bands.  \acro{} can handle many bands 
+of radiation with only a small constant multiplier added to the cost.  However, it 
+may be advantageous to evolve the spectral shape over distance using an opacity as
+a function of wavelength where the absorption is provided by a relatively simple
+or easily characterized set of species.
+This would also enable us to incorporate redshifting effects important 
 for the evolution of large boxes over cosmological time periods.
 
-We would like to thank the referee for their helpful comments and suggestions.
+%We would like to thank the referee for their helpful comments and suggestions.
 J. Wadsley and H. M. P. Couchman would like to acknowledge the support of 
 NSERC. \comment{Grond: fill the rest in later}.
 
