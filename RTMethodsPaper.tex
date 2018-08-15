@@ -805,7 +805,8 @@ to itself.
 To see why this must be the case, consider the case where a single particle is
 optically thick. If the front half of the particle contributed to absorption,
 the flux calculated at the centre would be effectively zero, and the particle 
-would incorrectly report no heating or ionization. 
+would incorrectly report no heating or ionization.  This is essential for correct
+ionization fronts such as in the \strom{} test of Section~\ref{stromgren}.
 
 Scenarios can occur where two gas particles have portions of their smoothing 
 volume in front of each other. If the normal ray trace was performed, neither 
@@ -1074,7 +1075,7 @@ the errors relative to the $\tr = 10^{-8}$ simulation plotted in Figure
 \ref{fig:isosph}.  These errors are associated with the discrete representation
 of the density profile rather than the radiative transfer method.
 
-\subsection{\strom{} Sphere Test}
+\subsection{\strom{} Sphere Test} \label{stromgren}
 \subsubsection{\strom{} Sphere Theory}
 The \strom{} sphere is a theoretical ionized sphere of gas first discussed by 
 Bengt \strom{} in 1938 \citep{stromgren39} as a model of the HII region around 
