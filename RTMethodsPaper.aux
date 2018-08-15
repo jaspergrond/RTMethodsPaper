@@ -42,12 +42,23 @@
 \citation{baczynskiEt15}
 \citation{clarkEt12}
 \citation{altayTheuns13}
+\citation{HaidEt18}
 \citation{gorskiEt05}
 \citation{clarkEt12}
 \citation{altayTheuns13}
+\citation{Woods2015}
+\citation{KannanEt14}
+\citation{HaidEt18}
 \newlabel{eqn:classicrt}{{1}{2}{Introduction}{equation.1}{}}
 \citation{rosdahlEt13}
 \citation{pawlikSchaye08}
+\citation{Woods2015}
+\citation{HaidEt18}
+\citation{HaidEt18}
+\citation{FryxellEt2000}
+\citation{Woods2015}
+\citation{HaidEt18}
+\citation{Woods2015}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Method}{3}{section.2}}
 \newlabel{sec:mthd}{{2}{3}{Method}{section.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Simplifications to the full RT problem}{3}{subsection.2.1}}
@@ -55,14 +66,14 @@
 \newlabel{infcrt}{{2}{3}{Simplifications to the full RT problem}{equation.2}{}}
 \newlabel{eqn:combtransfer}{{3}{3}{Simplifications to the full RT problem}{equation.3}{}}
 \newlabel{eqn:dtau}{{4}{3}{Simplifications to the full RT problem}{equation.4}{}}
-\newlabel{eqn:absorbtransfer}{{5}{3}{Simplifications to the full RT problem}{equation.5}{}}
-\newlabel{eqn:ient}{{6}{3}{Simplifications to the full RT problem}{equation.6}{}}
-\newlabel{eqn:tauint}{{7}{3}{Simplifications to the full RT problem}{equation.7}{}}
 \citation{wadsleyEt17}
 \citation{barnesHut86}
 \citation{benz88,vineSigurdsson98,springelEt01,wadsleyEt04,hubberEt11}
-\citation{kannanEt14}
+\citation{KannanEt14}
 \citation{wadsleyEt04}
+\newlabel{eqn:absorbtransfer}{{5}{4}{Simplifications to the full RT problem}{equation.5}{}}
+\newlabel{eqn:ient}{{6}{4}{Simplifications to the full RT problem}{equation.6}{}}
+\newlabel{eqn:tauint}{{7}{4}{Simplifications to the full RT problem}{equation.7}{}}
 \newlabel{eqn:simpflux}{{9}{4}{Simplifications to the full RT problem}{equation.9}{}}
 \newlabel{eqn:simpint}{{10}{4}{Simplifications to the full RT problem}{equation.10}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Algorithm}{4}{subsection.2.2}}
@@ -72,30 +83,30 @@
 \newlabel{eqn:nsint}{{12}{4}{Source Merging}{equation.12}{}}
 \newlabel{eqn:ratio}{{13}{4}{Source Merging}{equation.13}{}}
 \newlabel{eqn:vcell}{{14}{4}{Source Merging}{equation.14}{}}
-\newlabel{eqn:nssoln}{{15}{4}{Source Merging}{equation.15}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A schematic of TREVR{} without (left) and with source merging and adaptive refinement (right). Coloured ray segments correspond to tree cells whose average properties are used to compute the optical depth along that ray segment. Dashed and solid lines distinguish consecutive line segments to help associate them with their corresponding tree cell. The grey cloud represents a feature in the medium that requires refinement in order to be resolved. The smaller stars which are yellow in the left panel and white in the right panel represent individual radiation sources. The larger yellow star in the right panel represents a merged source, as the dashed red cell encapsulating all sources meets the opening angle (grey region in right panel) criterion.}}{5}{figure.2}}
 \newlabel{fig:algorithm}{{2}{5}{A schematic of \acro {} without (left) and with source merging and adaptive refinement (right). Coloured ray segments correspond to tree cells whose average properties are used to compute the optical depth along that ray segment. Dashed and solid lines distinguish consecutive line segments to help associate them with their corresponding tree cell. The grey cloud represents a feature in the medium that requires refinement in order to be resolved. The smaller stars which are yellow in the left panel and white in the right panel represent individual radiation sources. The larger yellow star in the right panel represents a merged source, as the dashed red cell encapsulating all sources meets the opening angle (grey region in right panel) criterion}{figure.2}{}}
+\newlabel{eqn:nssoln}{{15}{5}{Source Merging}{equation.15}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Tracing Rays}{5}{subsubsection.2.2.2}}
 \newlabel{eqn:taui}{{16}{5}{Tracing Rays}{equation.16}{}}
 \newlabel{eqn:tausum}{{17}{5}{Tracing Rays}{equation.17}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}Adaptive Refinement}{5}{subsubsection.2.2.3}}
-\newlabel{sec:adref}{{2.2.3}{5}{Adaptive Refinement}{subsubsection.2.2.3}{}}
 \citation{varosiDwek99,hegmanKegel03}
 \citation{altayEt08}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}Adaptive Refinement}{6}{subsubsection.2.2.3}}
+\newlabel{sec:adref}{{2.2.3}{6}{Adaptive Refinement}{subsubsection.2.2.3}{}}
+\newlabel{eqn:refcrit}{{18}{6}{Adaptive Refinement}{equation.18}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Schematic of a cell to be refined. A parent cell intersected by a ray contains a feature (grey cloud) to be resolved. The black dotted line partitions the parent cell into it's children. The black intersecting rays represent the hypothetical case where only a child cell is intersected by a ray. The blue outlined sections on each ray correspond to the intersection length, $l$, used to compute the optical depth through each child cell.}}{6}{figure.3}}
 \newlabel{fig:refine}{{3}{6}{Schematic of a cell to be refined. A parent cell intersected by a ray contains a feature (grey cloud) to be resolved. The black dotted line partitions the parent cell into it's children. The black intersecting rays represent the hypothetical case where only a child cell is intersected by a ray. The blue outlined sections on each ray correspond to the intersection length, $l$, used to compute the optical depth through each child cell}{figure.3}{}}
-\newlabel{eqn:refcrit}{{18}{6}{Adaptive Refinement}{equation.18}{}}
 \newlabel{eqn:reffrac}{{19}{6}{Adaptive Refinement}{equation.19}{}}
 \newlabel{eqn:nseg}{{20}{6}{Adaptive Refinement}{equation.20}{}}
-\newlabel{eqn:nsegint}{{21}{6}{Adaptive Refinement}{equation.21}{}}
 \citation{altayTheuns13}
 \citation{pawlikSchaye08}
+\newlabel{eqn:nsegint}{{21}{7}{Adaptive Refinement}{equation.21}{}}
 \newlabel{eqn:nseg2}{{22}{7}{Adaptive Refinement}{equation.22}{}}
 \newlabel{eqn:nsegint2}{{23}{7}{Adaptive Refinement}{equation.23}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.4}Background Radiation}{7}{subsubsection.2.2.4}}
 \newlabel{eqn:cosmof}{{24}{7}{Background Radiation}{equation.24}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Flux as a function of radius from an emitting sphere. TREVR{}'s solution for background source particles distributed in a spiral on a sphere of radius $R=0.5$ (black dotted line) are plotted as the thick orange line. The analytical solution given by Equation \ref  {eqn:cosmof} is plotted as a thinner black line on top of the numerical solution. A constant flux of one is plotted by the black dashed line and is achieved in the inner most region of this simulation at around $R \lesssim 0.05$}}{7}{figure.4}}
-\newlabel{fig:cosmof}{{4}{7}{Flux as a function of radius from an emitting sphere. \acro {}'s solution for background source particles distributed in a spiral on a sphere of radius $R=0.5$ (black dotted line) are plotted as the thick orange line. The analytical solution given by Equation \ref {eqn:cosmof} is plotted as a thinner black line on top of the numerical solution. A constant flux of one is plotted by the black dashed line and is achieved in the inner most region of this simulation at around $R \lesssim 0.05$}{figure.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Flux as a function of radius from an emitting sphere. TREVR{}'s solution for background source particles distributed in a spiral on a sphere of radius $R=0.5$ (black dotted line) are plotted as the thick orange line. The analytical solution given by Equation\nobreakspace  {}\ref  {eqn:cosmof} is plotted as a thinner black line on top of the numerical solution. A constant flux of one is plotted by the black dashed line and is achieved in the inner most region of this simulation at around $R \lesssim 0.05$}}{7}{figure.4}}
+\newlabel{fig:cosmof}{{4}{7}{Flux as a function of radius from an emitting sphere. \acro {}'s solution for background source particles distributed in a spiral on a sphere of radius $R=0.5$ (black dotted line) are plotted as the thick orange line. The analytical solution given by Equation~\ref {eqn:cosmof} is plotted as a thinner black line on top of the numerical solution. A constant flux of one is plotted by the black dashed line and is achieved in the inner most region of this simulation at around $R \lesssim 0.05$}{figure.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Implementation Specifics}{7}{subsection.2.3}}
 \newlabel{sec:specs}{{2.3}{7}{Implementation Specifics}{subsection.2.3}{}}
 \citation{altayEt08}
@@ -103,21 +114,21 @@
 \citation{wadsleyEt17}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The ray tracing scheme employed is similar to that of \cite {altayEt08}. In this scheme, the photons are diminished by the optical depth along each particle's density field. The receiving particle at the termination of the ray does not block photons to itself. Otherwise, the front half of the particle would diminish the incoming photons without actually having absorbed them.}}{8}{figure.5}}
 \newlabel{fig:raytrace}{{5}{8}{The ray tracing scheme employed is similar to that of \protect \cite {altayEt08}. In this scheme, the photons are diminished by the optical depth along each particle's density field. The receiving particle at the termination of the ray does not block photons to itself. Otherwise, the front half of the particle would diminish the incoming photons without actually having absorbed them}{figure.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces A $z$-plane slice of the sinusoidally perturbed glass IC. The optical depth along the longest filament in the slice (left, just below $y=0$) is $\tau \approx 4$. The optical depth across the largest void (above the aforementioned filament) is $\tau \approx 0.1$.}}{8}{figure.6}}
-\newlabel{fig:sine_rho}{{6}{8}{A $z$-plane slice of the sinusoidally perturbed glass IC. The optical depth along the longest filament in the slice (left, just below $y=0$) is $\tau \approx 4$. The optical depth across the largest void (above the aforementioned filament) is $\tau \approx 0.1$}{figure.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Code Tests}{8}{section.3}}
 \newlabel{sec:tsts}{{3}{8}{Code Tests}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Sinusoidally Perturbed Glass}{8}{subsection.3.1}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Initial Conditions}{8}{subsubsection.3.1.1}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Opening Angle}{8}{subsubsection.3.1.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces A $z$-plane slice of the sinusoidally perturbed glass IC. The optical depth along the longest filament in the slice (left, just below $y=0$) is $\tau \approx 4$. The optical depth across the largest void (above the aforementioned filament) is $\tau \approx 0.1$.}}{9}{figure.6}}
+\newlabel{fig:sine_rho}{{6}{9}{A $z$-plane slice of the sinusoidally perturbed glass IC. The optical depth along the longest filament in the slice (left, just below $y=0$) is $\tau \approx 4$. The optical depth across the largest void (above the aforementioned filament) is $\tau \approx 0.1$}{figure.6}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces A plot of cost and accuracy as a function of opening angle. The number of rays computed per resolution element is plotted on the blue, left axis with square markers. The blue dashed line shows $N_{\rm  rays}/N = N$ at an opening angle of $\theta _{\rm  open}=0$, meaning TREVR{} can perform an $\mathcal  {O}\left (N^2\right )$ ray trace if desired (omitting the cost of absorption). The RMS error in flux relative to $\theta _{\rm  open}=0$ is plotted on the red, right axis with circular markers.}}{9}{figure.7}}
 \newlabel{fig:openangle}{{7}{9}{A plot of cost and accuracy as a function of opening angle. The number of rays computed per resolution element is plotted on the blue, left axis with square markers. The blue dashed line shows $N_{\rm rays}/N = N$ at an opening angle of $\tO =0$, meaning \acro {} can perform an $\bigO {N^2}$ ray trace if desired (omitting the cost of absorption). The RMS error in flux relative to $\tO =0$ is plotted on the red, right axis with circular markers}{figure.7}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}Refinement Criteria}{9}{subsubsection.3.1.3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Algorithmic cost and accuracy as a function of refinement criterion. The number of ray segments computed per resolution element is plotted on the blue, left axis with square markers. The RMS error in flux relative to $\tau _{\rm  ref}=10^{-8}$ is plotted on the red, right axis with circular markers. Lines of ${\rm  error} = \tau _{\rm  ref}$ and ${\rm  error} = \tau _{\rm  ref}/10$ are plotted as red solid and dotted lines respectively. The upper line represents maximum allowable error \textit  {per ray segment}. The RMS relative error roughly follows the lower line, an order of magnitude less than $\tau _{\rm  ref}$.}}{9}{figure.8}}
 \newlabel{fig:refcrit}{{8}{9}{Algorithmic cost and accuracy as a function of refinement criterion. The number of ray segments computed per resolution element is plotted on the blue, left axis with square markers. The RMS error in flux relative to $\tr =10^{-8}$ is plotted on the red, right axis with circular markers. Lines of ${\rm error} = \tr $ and ${\rm error} = \tr /10$ are plotted as red solid and dotted lines respectively. The upper line represents maximum allowable error \textit {per ray segment}. The RMS relative error roughly follows the lower line, an order of magnitude less than $\tr $}{figure.8}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.4}Scaling}{9}{subsubsection.3.1.4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Cost, quantified as the number of computed ray segments per resolution element, is plotted as a function of $N_{\rm  1D} = N^{1/3}$. TREVR{}'s theoretical upper and lower scaling bounds are plotted as red (solid) and green (dash-dot) lines respectively. The corresponding simulation data points are plotted as red circles and green squares. Simulation data points intermediate to the scaling bounds are plotted as combinations of two parameters - refinement criteria value and the type of scaling. Tests run with a refinement criterion of $\tau _{\rm  ref}=0.1$ are coloured orange and make up the lower two sets of intermediate data. The upper sets of intermediate data, coloured blue, are tests run with $\tau _{\rm  ref}=0.01$. Diamond markers denote weak scaling tests and $\times $ shaped markers denote strong scaling tests.}}{10}{figure.9}}
 \newlabel{fig:pscale}{{9}{10}{Cost, quantified as the number of computed ray segments per resolution element, is plotted as a function of $N_{\rm 1D} = N^{1/3}$. \acro {}'s theoretical upper and lower scaling bounds are plotted as red (solid) and green (dash-dot) lines respectively. The corresponding simulation data points are plotted as red circles and green squares. Simulation data points intermediate to the scaling bounds are plotted as combinations of two parameters - refinement criteria value and the type of scaling. Tests run with a refinement criterion of $\tr =0.1$ are coloured orange and make up the lower two sets of intermediate data. The upper sets of intermediate data, coloured blue, are tests run with $\tr =0.01$. Diamond markers denote weak scaling tests and $\times $ shaped markers denote strong scaling tests}{figure.9}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.4}Scaling}{10}{subsubsection.3.1.4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Isothermal Spheres}{10}{subsection.3.2}}
 \newlabel{spheretest}{{3.2}{10}{Isothermal Spheres}{subsection.3.2}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Initial Conditions}{10}{subsubsection.3.2.1}}
@@ -130,6 +141,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Left: TREVR{}'s adaptive refinement criteria (at $\tau _{\rm  ref}=0.1$) resolving isothermal spheres in a uniform environment. Particles in a slice along the $z$-plane of the isothermal spheres IC are coloured by the logarithm of their flux value (high - low flux, red - purple). The red line represents the ray traced from radiation source (black star) to the receiving cell. Black rectangles represent the spatial boundary of the tree cells used compute the optical depth of the intersecting ray segment. Right: A zoom in of the sphere intersected by the ray to focus on the refinement across the sphere itself.}}{11}{figure.10}}
 \newlabel{fig:cellplot}{{10}{11}{Left: \acro {}'s adaptive refinement criteria (at $\tr =0.1$) resolving isothermal spheres in a uniform environment. Particles in a slice along the $z$-plane of the isothermal spheres IC are coloured by the logarithm of their flux value (high - low flux, red - purple). The red line represents the ray traced from radiation source (black star) to the receiving cell. Black rectangles represent the spatial boundary of the tree cells used compute the optical depth of the intersecting ray segment. Right: A zoom in of the sphere intersected by the ray to focus on the refinement across the sphere itself}{figure.10}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Str\"omgren{} Sphere Test}{11}{subsection.3.3}}
+\newlabel{stromgren}{{3.3}{11}{\strom {} Sphere Test}{subsection.3.3}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Str\"omgren{} Sphere Theory}{11}{subsubsection.3.3.1}}
 \citation{osterbrockFerland2006}
 \citation{ilievEt06}
@@ -144,12 +156,12 @@
 \citation{ilievEt06}
 \citation{pawlikSchaye08}
 \citation{pawlikSchaye11}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces A plot of cost and accuracy as a function of refinement criterion. The number of ray segments computed per resolution element is plotted on the blue,left axis with square markers. The RMS error in flux relative to $\tau _{\rm  ref}=10^{-8}$ is plotted on the red, right axis with circular markers. Lines of ${\rm  error} = \tau _{\rm  ref}$ and ${\rm  error} = \tau _{\rm  ref}/10$ are plotted as red solid and dotted lines respectively. Solid circular markers represent RMS relative errors computed on all resolution elements and empty markers represent only the resolution elements that fall in the shadow of the isothermal spheres. The in-shadow errors match are larger for looser refinement criteria, continuing to follow the ${\rm  error} = \tau _{\rm  ref}$ line.}}{12}{figure.11}}
-\newlabel{fig:isosph}{{11}{12}{A plot of cost and accuracy as a function of refinement criterion. The number of ray segments computed per resolution element is plotted on the blue,left axis with square markers. The RMS error in flux relative to $\tr =10^{-8}$ is plotted on the red, right axis with circular markers. Lines of ${\rm error} = \tr $ and ${\rm error} = \tr /10$ are plotted as red solid and dotted lines respectively. Solid circular markers represent RMS relative errors computed on all resolution elements and empty markers represent only the resolution elements that fall in the shadow of the isothermal spheres. The in-shadow errors match are larger for looser refinement criteria, continuing to follow the ${\rm error} = \tr $ line}{figure.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces A plot of cost and accuracy as a function of refinement criterion. The number of ray segments computed per resolution element is plotted on the blue, left axis with square markers. The RMS error in flux relative to $\tau _{\rm  ref}=10^{-8}$ is plotted on the red, right axis with circular markers. Lines of ${\rm  error} = \tau _{\rm  ref}$ and ${\rm  error} = \tau _{\rm  ref}/10$ are plotted as red solid and dotted lines respectively. Solid circular markers represent RMS relative errors computed on all resolution elements and empty markers represent only the resolution elements that fall in the shadow of the isothermal spheres. The in-shadow errors match are larger for looser refinement criteria, continuing to follow the ${\rm  error} = \tau _{\rm  ref}$ line. \textbf  {\color  {red}Huh?}}}{12}{figure.11}}
+\newlabel{fig:isosph}{{11}{12}{A plot of cost and accuracy as a function of refinement criterion. The number of ray segments computed per resolution element is plotted on the blue, left axis with square markers. The RMS error in flux relative to $\tr =10^{-8}$ is plotted on the red, right axis with circular markers. Lines of ${\rm error} = \tr $ and ${\rm error} = \tr /10$ are plotted as red solid and dotted lines respectively. Solid circular markers represent RMS relative errors computed on all resolution elements and empty markers represent only the resolution elements that fall in the shadow of the isothermal spheres. The in-shadow errors match are larger for looser refinement criteria, continuing to follow the ${\rm error} = \tr $ line. \comment {Huh?}}{figure.11}{}}
 \newlabel{eqn:stromtime}{{32}{12}{\strom {} Sphere Theory}{equation.32}{}}
 \newlabel{eqn:hion}{{33}{12}{\strom {} Sphere Theory}{equation.33}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces A slice through the $z$-plane of the isothermal Str\"omgren{} sphere test at $t=30$ Myr (top row) and $t=500$ Myr (bottom row). Particle resolutions increase from left to right denoted by the $N$ value in the top left corner of each pane. Axis ticks are spaced 2 kpc apart, so note that ionized spheres in the top row are a fraction of the volume and particle resolution of spheres in the bottom row. The colormap represents neutral fraction, $\rm  x$ and is similar to that of \cite {pawlikSchaye08} and \cite {pawlikSchaye11} to allow for ease of comparison. We use the same contour levels: $\rm  x$ = 0.9, 0.5, $\qopname  \relax o{log}\rm  x$ = -1, -1.5, -2, -2.5, -3 and -3.5. The white dashed line is a circle of radius given by Equation \ref  {eqn:stromtime}, the sharp, time dependent solution to the isothermal Str\"omgren{} sphere.}}{12}{figure.12}}
-\newlabel{fig:stromslice}{{12}{12}{A slice through the $z$-plane of the isothermal \strom {} sphere test at $t=30$ Myr (top row) and $t=500$ Myr (bottom row). Particle resolutions increase from left to right denoted by the $N$ value in the top left corner of each pane. Axis ticks are spaced 2 kpc apart, so note that ionized spheres in the top row are a fraction of the volume and particle resolution of spheres in the bottom row. The colormap represents neutral fraction, $\rm x$ and is similar to that of \protect \cite {pawlikSchaye08} and \protect \cite {pawlikSchaye11} to allow for ease of comparison. We use the same contour levels: $\rm x$ = 0.9, 0.5, $\log \rm x$ = -1, -1.5, -2, -2.5, -3 and -3.5. The white dashed line is a circle of radius given by Equation \ref {eqn:stromtime}, the sharp, time dependent solution to the isothermal \strom {} sphere}{figure.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces A slice through the $z$-plane of the isothermal Str\"omgren{} sphere test at $t=30$ Myr (top row) and $t=500$ Myr (bottom row). Particle resolutions increase from left to right denoted by the $N$ value in the top left corner of each pane. Axis ticks are spaced 2 kpc apart, so note that ionized spheres in the top row are a fraction of the volume and particle resolution of spheres in the bottom row. The colormap represents neutral fraction, $\rm  x$ and is similar to that of \cite {pawlikSchaye08} and \cite {pawlikSchaye11} to allow for ease of comparison. We use the same contour levels: $\rm  x$ = 0.9, 0.5, $\qopname  \relax o{log}\rm  x$ = -1, -1.5, -2, -2.5, -3 and -3.5. The white dashed line is a circle of radius given by Equation\nobreakspace  {}\ref  {eqn:stromtime}, the sharp, time dependent solution to the isothermal Str\"omgren{} sphere.}}{12}{figure.12}}
+\newlabel{fig:stromslice}{{12}{12}{A slice through the $z$-plane of the isothermal \strom {} sphere test at $t=30$ Myr (top row) and $t=500$ Myr (bottom row). Particle resolutions increase from left to right denoted by the $N$ value in the top left corner of each pane. Axis ticks are spaced 2 kpc apart, so note that ionized spheres in the top row are a fraction of the volume and particle resolution of spheres in the bottom row. The colormap represents neutral fraction, $\rm x$ and is similar to that of \protect \cite {pawlikSchaye08} and \protect \cite {pawlikSchaye11} to allow for ease of comparison. We use the same contour levels: $\rm x$ = 0.9, 0.5, $\log \rm x$ = -1, -1.5, -2, -2.5, -3 and -3.5. The white dashed line is a circle of radius given by Equation~\ref {eqn:stromtime}, the sharp, time dependent solution to the isothermal \strom {} sphere}{figure.12}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}The Isothermal Str\"omgren{} Sphere}{12}{subsubsection.3.3.2}}
 \citation{ilievEt06}
 \citation{ilievEt06}
@@ -160,6 +172,7 @@
 \citation{petkovaSpringel09}
 \citation{ilievEt06}
 \citation{ilievEt06}
+\citation{HaidEt18}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3}The Non-Isothermal Str\"omgren{} Sphere}{13}{subsubsection.3.3.3}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Discussion And Conclusions}{13}{section.4}}
 \newlabel{sec:disc}{{4}{13}{Discussion And Conclusions}{section.4}{}}
@@ -181,40 +194,43 @@
 \bibcite{chabrier03}{{8}{2003}{{{Chabrier}}}{{{Chabrier}}}}
 \bibcite{clarkEt12}{{9}{2012}{{{Clark} et~al.}}{{{Clark}, {Glover} \& {Klessen}}}}
 \bibcite{daleEt12}{{10}{2012}{{{Dale} et~al.}}{{{Dale}, {Ercolano} \& {Bonnell}}}}
-\bibcite{gnedinAbel01}{{11}{2001}{{{Gnedin} \& {Abel}}}{{{Gnedin} \& {Abel}}}}
-\bibcite{gorskiEt05}{{12}{2005}{{{G{\'o}rski} et~al.}}{{{G{\'o}rski}, {Hivon}, {Banday}, {Wandelt}, {Hansen}, {Reinecke} \& {Bartelmann}}}}
-\bibcite{gritschnederEt09}{{13}{2009}{{{Gritschneder} et~al.}}{{{Gritschneder}, {Naab}, {Walch}, {Burkert} \& {Heitsch}}}}
-\bibcite{hegmanKegel03}{{14}{2003}{{{Hegmann} \& {Kegel}}}{{{Hegmann} \& {Kegel}}}}
-\bibcite{howard16}{{15}{2016}{{{Howard} et~al.}}{{{Howard}, {Pudritz} \& {Harris}}}}
-\bibcite{howard17}{{16}{2017}{{{Howard} et~al.}}{{{Howard}, {Pudritz} \& {Harris}}}}
-\bibcite{hubberEt11}{{17}{2011}{{{Hubber} et~al.}}{{{Hubber}, {Batty}, {McLeod} \& {Whitworth}}}}
-\bibcite{ilievEt06}{{18}{2006}{{{Iliev} et~al.}}{{{Iliev} et~al.,}}}
-\bibcite{ilievEt09}{{19}{2009}{{{Iliev} et~al.}}{{{Iliev} et~al.,}}}
-\bibcite{kannanEt14}{{20}{2014}{{{Kannan} et~al.}}{{{Kannan} et~al.,}}}
-\bibcite{leithererEt99}{{21}{1999}{{{Leitherer} et~al.}}{{{Leitherer} et~al.,}}}
-\bibcite{levermorePomraning81}{{22}{1981}{{{Levermore} \& {Pomraning}}}{{{Levermore} \& {Pomraning}}}}
-\bibcite{mellemaEt06a}{{23}{2006}{{{Mellema} et~al.}}{{{Mellema}, {Iliev}, {Alvarez} \& {Shapiro}}}}
-\bibcite{mihalasMihalas84}{{24}{1984}{{{Mihalas} \& {Mihalas}}}{{{Mihalas} \& {Mihalas}}}}
-\bibcite{osterbrockFerland2006}{{25}{2006}{{{Osterbrock} \& {Ferland}}}{{{Osterbrock} \& {Ferland}}}}
-\bibcite{paardekooperEt10}{{26}{2010}{{{Paardekooper} et~al.}}{{{Paardekooper}, {Kruip} \& {Icke}}}}
-\bibcite{pawlikSchaye08}{{27}{2008}{{{Pawlik} \& {Schaye}}}{{{Pawlik} \& {Schaye}}}}
-\bibcite{pawlikSchaye11}{{28}{2011}{{{Pawlik} \& {Schaye}}}{{{Pawlik} \& {Schaye}}}}
-\bibcite{petkovaSpringel09}{{29}{2009}{{{Petkova} \& {Springel}}}{{{Petkova} \& {Springel}}}}
-\bibcite{petkovaSpringel11}{{30}{2011}{{{Petkova} \& {Springel}}}{{{Petkova} \& {Springel}}}}
-\bibcite{rosdahlEt13}{{31}{2013}{{{Rosdahl} et~al.}}{{{Rosdahl}, {Blaizot}, {Aubert}, {Stranex} \& {Teyssier}}}}
-\bibcite{spitzer78}{{32}{1978}{{{Spitzer}}}{{{Spitzer}}}}
-\bibcite{springelEt01}{{33}{2001}{{{Springel} et~al.}}{{{Springel}, {Yoshida} \& {White}}}}
-\bibcite{stromgren39}{{34}{1939}{{{Str{\"o}mgren}}}{{{Str{\"o}mgren}}}}
-\bibcite{tielens05}{{35}{2005}{{{Tielens}}}{{{Tielens}}}}
-\bibcite{varosiDwek99}{{36}{1999}{{{V{\'a}rosi} \& {Dwek}}}{{{V{\'a}rosi} \& {Dwek}}}}
-\bibcite{vineSigurdsson98}{{37}{1998}{{{Vine} \& {Sigurdsson}}}{{{Vine} \& {Sigurdsson}}}}
-\bibcite{wadsleyEt04}{{38}{2004}{{{Wadsley} et~al.}}{{{Wadsley}, {Stadel} \& {Quinn}}}}
-\bibcite{wadsleyEt17}{{39}{2017}{{{Wadsley} et~al.}}{{{Wadsley}, {Keller} \& {Quinn}}}}
-\bibcite{walchEt12}{{40}{2012}{{{Walch} et~al.}}{{{Walch}, {Whitworth}, {Bisbas}, {W{\"u}nsch} \& {Hubber}}}}
-\bibcite{wiseAbel11}{{41}{2011}{{{Wise} \& {Abel}}}{{{Wise} \& {Abel}}}}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Creating the Sinusoidally Perturbed Glass IC}{15}{section.A1}}
-\newlabel{sec:icnd}{{A}{15}{Creating the Sinusoidally Perturbed Glass IC}{section.A1}{}}
-\newlabel{eqn:manfft}{{A1}{15}{Creating the Sinusoidally Perturbed Glass IC}{equation.A1.1}{}}
-\newlabel{lastpage}{{A}{15}{Creating the Sinusoidally Perturbed Glass IC}{equation.A1.2}{}}
+\bibcite{FryxellEt2000}{{11}{2000}{{{Fryxell} et~al.}}{{{Fryxell} et~al.,}}}
+\bibcite{gnedinAbel01}{{12}{2001}{{{Gnedin} \& {Abel}}}{{{Gnedin} \& {Abel}}}}
+\bibcite{gorskiEt05}{{13}{2005}{{{G{\'o}rski} et~al.}}{{{G{\'o}rski}, {Hivon}, {Banday}, {Wandelt}, {Hansen}, {Reinecke} \& {Bartelmann}}}}
+\bibcite{gritschnederEt09}{{14}{2009}{{{Gritschneder} et~al.}}{{{Gritschneder}, {Naab}, {Walch}, {Burkert} \& {Heitsch}}}}
+\bibcite{HaidEt18}{{15}{2018}{{{Haid} et~al.}}{{{Haid}, {Walch}, {Seifried}, {W{\"u}nsch}, {Dinnbier} \& {Naab}}}}
+\bibcite{hegmanKegel03}{{16}{2003}{{{Hegmann} \& {Kegel}}}{{{Hegmann} \& {Kegel}}}}
+\bibcite{howard16}{{17}{2016}{{{Howard} et~al.}}{{{Howard}, {Pudritz} \& {Harris}}}}
+\bibcite{howard17}{{18}{2017}{{{Howard} et~al.}}{{{Howard}, {Pudritz} \& {Harris}}}}
+\bibcite{hubberEt11}{{19}{2011}{{{Hubber} et~al.}}{{{Hubber}, {Batty}, {McLeod} \& {Whitworth}}}}
+\bibcite{ilievEt06}{{20}{2006}{{{Iliev} et~al.}}{{{Iliev} et~al.,}}}
+\bibcite{ilievEt09}{{21}{2009}{{{Iliev} et~al.}}{{{Iliev} et~al.,}}}
+\bibcite{KannanEt14}{{22}{2014}{{{Kannan} et~al.}}{{{Kannan} et~al.,}}}
+\bibcite{leithererEt99}{{23}{1999}{{{Leitherer} et~al.}}{{{Leitherer} et~al.,}}}
+\bibcite{levermorePomraning81}{{24}{1981}{{{Levermore} \& {Pomraning}}}{{{Levermore} \& {Pomraning}}}}
+\bibcite{mellemaEt06a}{{25}{2006}{{{Mellema} et~al.}}{{{Mellema}, {Iliev}, {Alvarez} \& {Shapiro}}}}
+\bibcite{mihalasMihalas84}{{26}{1984}{{{Mihalas} \& {Mihalas}}}{{{Mihalas} \& {Mihalas}}}}
+\bibcite{osterbrockFerland2006}{{27}{2006}{{{Osterbrock} \& {Ferland}}}{{{Osterbrock} \& {Ferland}}}}
+\bibcite{paardekooperEt10}{{28}{2010}{{{Paardekooper} et~al.}}{{{Paardekooper}, {Kruip} \& {Icke}}}}
+\bibcite{pawlikSchaye08}{{29}{2008}{{{Pawlik} \& {Schaye}}}{{{Pawlik} \& {Schaye}}}}
+\bibcite{pawlikSchaye11}{{30}{2011}{{{Pawlik} \& {Schaye}}}{{{Pawlik} \& {Schaye}}}}
+\bibcite{petkovaSpringel09}{{31}{2009}{{{Petkova} \& {Springel}}}{{{Petkova} \& {Springel}}}}
+\bibcite{petkovaSpringel11}{{32}{2011}{{{Petkova} \& {Springel}}}{{{Petkova} \& {Springel}}}}
+\bibcite{rosdahlEt13}{{33}{2013}{{{Rosdahl} et~al.}}{{{Rosdahl}, {Blaizot}, {Aubert}, {Stranex} \& {Teyssier}}}}
+\bibcite{spitzer78}{{34}{1978}{{{Spitzer}}}{{{Spitzer}}}}
+\bibcite{springelEt01}{{35}{2001}{{{Springel} et~al.}}{{{Springel}, {Yoshida} \& {White}}}}
+\bibcite{stromgren39}{{36}{1939}{{{Str{\"o}mgren}}}{{{Str{\"o}mgren}}}}
+\bibcite{tielens05}{{37}{2005}{{{Tielens}}}{{{Tielens}}}}
+\bibcite{varosiDwek99}{{38}{1999}{{{V{\'a}rosi} \& {Dwek}}}{{{V{\'a}rosi} \& {Dwek}}}}
+\bibcite{vineSigurdsson98}{{39}{1998}{{{Vine} \& {Sigurdsson}}}{{{Vine} \& {Sigurdsson}}}}
+\bibcite{wadsleyEt04}{{40}{2004}{{{Wadsley} et~al.}}{{{Wadsley}, {Stadel} \& {Quinn}}}}
+\bibcite{wadsleyEt17}{{41}{2017}{{{Wadsley} et~al.}}{{{Wadsley}, {Keller} \& {Quinn}}}}
+\bibcite{walchEt12}{{42}{2012}{{{Walch} et~al.}}{{{Walch}, {Whitworth}, {Bisbas}, {W{\"u}nsch} \& {Hubber}}}}
+\bibcite{wiseAbel11}{{43}{2011}{{{Wise} \& {Abel}}}{{{Wise} \& {Abel}}}}
+\bibcite{Woods2015}{{44}{2015}{{{Woods}}}{{{Woods}}}}
 \@writefile{lot}{\contentsline {table}{\numberline {A1}{\ignorespaces Randomly generated $\mathaccentV {vec}17E{k}$ and $\phi $ values used in generating the sinusoidally perturbed glass initial condition.}}{16}{table.A1.1}}
 \newlabel{tab:modes}{{A1}{16}{Randomly generated $\vec {k}$ and $\phi $ values used in generating the sinusoidally perturbed glass initial condition}{table.A1.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Creating the Sinusoidally Perturbed Glass IC}{16}{section.A1}}
+\newlabel{sec:icnd}{{A}{16}{Creating the Sinusoidally Perturbed Glass IC}{section.A1}{}}
+\newlabel{eqn:manfft}{{A1}{16}{Creating the Sinusoidally Perturbed Glass IC}{equation.A1.1}{}}
+\newlabel{lastpage}{{A}{16}{Creating the Sinusoidally Perturbed Glass IC}{table.A1.1}{}}

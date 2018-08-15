@@ -70,6 +70,11 @@
   {10.1111/j.1365-2966.2012.21205.x}, \href
   {https://ui.adsabs.harvard.edu/#abs/2012MNRAS.424..377D} {424, 377}
 
+\bibitem[\protect\citeauthoryear{{Fryxell} et~al.,}{{Fryxell}
+  et~al.}{2000}]{FryxellEt2000}
+{Fryxell} B.,  et~al., 2000, \mn@doi [\apjs] {10.1086/317361}, \href
+  {http://adsabs.harvard.edu/abs/2000ApJS..131..273F} {131, 273}
+
 \bibitem[\protect\citeauthoryear{{Gnedin} \& {Abel}}{{Gnedin} \&
   {Abel}}{2001}]{gnedinAbel01}
 {Gnedin} N.~Y.,  {Abel} T.,  2001, \mn@doi [\na]
@@ -89,6 +94,12 @@
 {Gritschneder} M.,  {Naab} T.,  {Walch} S.,  {Burkert} A.,   {Heitsch} F.,
   2009, \mn@doi [\apj] {10.1088/0004-637X/694/1/L26}, \href
   {https://ui.adsabs.harvard.edu/#abs/2009ApJ...694L..26G} {694, L26}
+
+\bibitem[\protect\citeauthoryear{{Haid}, {Walch}, {Seifried}, {W{\"u}nsch},
+  {Dinnbier}  \& {Naab}}{{Haid} et~al.}{2018}]{HaidEt18}
+{Haid} S.,  {Walch} S.,  {Seifried} D.,  {W{\"u}nsch} R.,  {Dinnbier} F.,
+  {Naab} T.,  2018, \mn@doi [\mnras] {10.1093/mnras/sty1315}, \href
+  {http://adsabs.harvard.edu/abs/2018MNRAS.478.4799H} {478, 4799}
 
 \bibitem[\protect\citeauthoryear{{Hegmann} \& {Kegel}}{{Hegmann} \&
   {Kegel}}{2003}]{hegmanKegel03}
@@ -127,7 +138,7 @@
   {http://adsabs.harvard.edu/abs/2009MNRAS.400.1283I} {400, 1283}
 
 \bibitem[\protect\citeauthoryear{{Kannan} et~al.,}{{Kannan}
-  et~al.}{2014}]{kannanEt14}
+  et~al.}{2014}]{KannanEt14}
 {Kannan} R.,  et~al., 2014, \mn@doi [\mnras] {10.1093/mnras/stt2098}, \href
   {http://adsabs.harvard.edu/abs/2014MNRAS.437.2882K} {437, 2882}
 
@@ -245,6 +256,9 @@ Courier Corporation
 {Wise} J.~H.,  {Abel} T.,  2011, \mn@doi [\mnras]
   {10.1111/j.1365-2966.2011.18646.x}, \href
   {http://adsabs.harvard.edu/abs/2011MNRAS.414.3458W} {414, 3458}
+
+\bibitem[\protect\citeauthoryear{{Woods}}{{Woods}}{2015}]{Woods2015}
+{Woods} R.~M.,  2015, PhD thesis
 
 \makeatother
 \end{thebibliography}

@@ -1,7 +1,7 @@
 #TeX Makefile
 FILE=RTMethodsPaper
 
-$(FILE).pdf: $(FILE).tex
+$(FILE).pdf: $(FILE).tex *.tex
 	pdflatex $(FILE)
 	pdflatex $(FILE)
 	bibtex $(FILE)

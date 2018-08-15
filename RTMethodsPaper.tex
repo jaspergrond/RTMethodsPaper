@@ -60,7 +60,7 @@ simulations. \acro{} is designed to handle large numbers of sources and
 absorbers; it is based on a \emph{tree} data structure and is thus suited 
 to codes that use trees for their gravity or hydrodynamics solvers (e.g. 
 Adaptive Mesh Refinement). It achieves computational speed while maintaining a 
-specified accuracy via controlled lowering of resolution of both sources and i
+specified accuracy via controlled lowering of resolution of both sources and 
 rays from each source. \acro{} computes the radiation field in $\mathcal{O}(N 
 \log \NS)$ time without absorption and $\mathcal{O}(N \log \NS \log{N})$ time 
 with absorption.  These scalings arise from merging sources of radiation 
@@ -103,7 +103,7 @@ simulations in previous years \citep[e.g.][]{agertzEt13}. It is important to not
 even though supernovae might be spectacularly powerful events, ionizing 
 radiative output from stellar populations contributes two orders of magnitude 
 more energy at early times and about 50 times more energy over the course of a 
-stellar population's lifetime. This is evident from Figure \ref{fig:uvsn},
+stellar population's lifetime. This is evident from Figure~\ref{fig:uvsn},
 which is a plot of the luminosity output per solar mass as a function of time 
 from a typical stellar population (computed using the stellar evolution code 
 Starburst99; \citealt{leithererEt99}).
@@ -165,11 +165,11 @@ per ray.
 
 A practicable RT method would have to solve a simplified RT problem. RT 
 methods can be divided into two different categories based on how they treat 
-$c$ in Equation \ref{eqn:classicrt}.
+$c$ in Equation~\ref{eqn:classicrt}.
 
 \textit{Evolutionary} methods use a 
 finite $c$, (which is often reduced from the true speed of light) and thus the 
-partial time derivative remains in Equation \ref{eqn:classicrt}, and the 
+partial time derivative remains in Equation~\ref{eqn:classicrt}, and the 
 radiation field is advected or evolved thoughout the simulation. The 
 prototypical evolutionary method is flux-limited diffusion 
 \citep{levermorePomraning81}. Modern evolutionary methods include include 
@@ -179,7 +179,7 @@ moment methods like OTVET \citep{gnedinAbel01} and RAMESES-RT
 \citep{paardekooperEt10}.
 
 \textit{Instantaneous} Methods,  on the other hand, take the limit where $c$ 
-is infinite and the partial time derivative in Equation \ref{eqn:classicrt} 
+is infinite and the partial time derivative in Equation~\ref{eqn:classicrt} 
 goes to zero. In this case the radiation field can be computed instantaneously 
 as a geometric problem. Computational methods in this category include forward 
 ray tracers such as $\rm C^2Ray$ \citep{mellemaEt06a}, Moray 
@@ -248,7 +248,7 @@ allowing them to handle large numbers of sources and scattering. Although
 evolutionary methods can handle both optically thin and thick regimes, they 
 lose directional accuracy in intermediate regimes and suffer from poor 
 directional accuracy in general. This is immediately apparent in shadowing 
-tests ({e.g. Figure 16 in \citealt{rosdahlEt13}).
+tests ({e.g. Figure~16 in \citealt{rosdahlEt13}).
 
 Photon packet propagation methods, such as TRAPHIC \citep{pawlikSchaye08}, 
 employ an evolutionary approach in which directional accuracy is easier to 
@@ -293,21 +293,22 @@ This is the focus of the current work.
 
 In this paper we present \acro{} (Tree-based Reverse Ray Tracing),
 an $\bigO{N \log^2 N}$ adaptive reverse raytracer.  
-In Section \ref{sec:mthd} we detail 
-the specific RT equations \acro{} solves (Subsection \ref{sec:rteq}) and the 
-general \acro{} algorithm (Subsection \ref{sec:algo}) including its adaptivity criteria.
+In Section~\ref{sec:mthd} we detail 
+the specific RT equations \acro{} solves (Subsection~\ref{sec:rteq}) and the 
+general \acro{} algorithm (Subsection~\ref{sec:algo}) including its adaptivity criteria.
 \acro{} is not specific
 to any one kind of code (e.g. Adaptive Mesh Refinement (AMR) vs. SPH).
 Here we provide details of 
-our implementation in the \textsc{Gasoline} SPH code (Subsection \ref{sec:specs}).
-\acro{} was developed from method of \cite{Woods2015} which was also implemented in \textsc{Gasoline}.
-In Section \ref{sec:tsts} we present a suite of tests demonstrating the 
+our implementation in the \textsc{Gasoline} SPH code (Subsection~\ref{sec:specs}).
+\acro{} was developed from the method of \cite{Woods2015} which was also 
+implemented in \textsc{Gasoline}.
+In Section~\ref{sec:tsts} we present a suite of tests demonstrating the 
 algorithm's ability to accurately compute fluxes, ionization fronts and 
 shadows in the optically thick and thin regimes. These tests also allow us to 
-explore how \acro{}'s adaptivity criteria control error and affect 
+explore how \acro{}'s adaptivity criteria controls error and affects 
 computational cost. The computational cost is bounded and characterized in the
 general case to substantiate the $\bigO{N \log^2 N}$ claim made earlier. 
-Finally, in Section \ref{sec:disc} we discuss \acro{}'s strengths and 
+Finally, in Section~\ref{sec:disc} we discuss \acro{}'s strengths and 
 shortcomings and conclude how they enable and constrain the types of problems 
 \acro{} can handle, and discuss improvements that can be made in the future.
 
@@ -316,7 +317,7 @@ shortcomings and conclude how they enable and constrain the types of problems
 Before describing \acro{}, we will first define the 
 simplified version of the classical RT equation the method solves. Since 
 \acro{} is an instantaneous method, $c$ is set to infinity eliminating the 
-partial time derivative in Equation \ref{eqn:classicrt} leaving us with the 
+partial time derivative in Equation~\ref{eqn:classicrt} leaving us with the 
 instantaneous RT equation:
 \begin{equation} \label{infcrt}
 \mathbf{n \cdot \nabla} I\left(\mathbf{x}, \mathbf{n}, t, 
@@ -457,9 +458,9 @@ and $\tO$ is the opening angle, a fixed accuracy parameter.  This is equivalent 
 the criterion used for gravity in \citet{wadsleyEt04} and ensures parent cells
 of a point are always opened.  
 Source merging considerably reduces the number of 
-interactions \acro{} computes. This is illustrated in the left panel of Figure 
-\ref{fig:algorithm}, where the grey angle represents a cell whose angular size 
-meets the opening angle criterion.
+interactions \acro{} computes. This is illustrated in the left panel of 
+Figure~\ref{fig:algorithm}, where the grey angle represents a cell whose 
+angular size meets the opening angle criterion.
 
 The cost savings of source merging can be quantified by integrating the number 
 of tree cells that pass the opening angle criteria and whose contents are treated as a single source.
@@ -504,7 +505,7 @@ We next consider ray tracing in the optically thick regime.
 \subsubsection{Tracing Rays}
 In the presence of absorbing material along a ray, the optical depth needs to 
 be computed following
-Equation \ref{eqn:tauint}. To solve this integral numerically, we traverse 
+Equation~\ref{eqn:tauint}. To solve this integral numerically, we traverse 
 the tree between the source and resolution element to build up the optical 
 depth. This requires that the tree partitions and fills space, thus all 
 the intervening material is contained in the tree we traverse. Making 
@@ -521,15 +522,15 @@ The total optical depth is then summed up during the tree walk,
 \label{eqn:tausum}
 \tau = \sum_i \tau_i,
 \end{equation}
-giving us everything needed to evaluate Equation \ref{eqn:simpflux}. 
+giving us everything needed to evaluate Equation~\ref{eqn:simpflux}. 
 
-This process is illustrated in the left panel of Figure 
-\ref{fig:algorithm}. In this figure ray segments and corresponding cells share 
+This process is illustrated in the left panel of Figure~\ref{fig:algorithm}. 
+In this figure ray segments and corresponding cells share 
 the same colour. When referring to specific cell colours, they will also be 
 identified by two sets of points, $[(x,y),(x,y)]$, corresponding to the bottom 
 left and top right vertices of the cell respectively. Dotted lines are used to 
 distinguish consecutive ray segments and help associate ray segments with 
-their corresponding cells. In the left panel of Figure \ref{fig:algorithm} 
+their corresponding cells. In the left panel of Figure~\ref{fig:algorithm} 
 there are two important things to note. First, since we are performing a 
 reverse ray trace, the resolution element denoted by the black circle is 
 intrinsically well resolved at the bucket cell (the blue cell at 
@@ -555,7 +556,7 @@ In principle, the resolution elements themselves could be subdivided based
 on properties associated with radiative transfer for even higher resolution,
 but that is beyond the scope of the present work.
 
-Consider the right panel in Figure \ref{fig:algorithm}. A dense blob of gas 
+Consider the right panel in Figure~\ref{fig:algorithm}. A dense blob of gas 
 to be resolved resides in the orange highlighted cell at $[(1,1),(2,2)]$. At 
 the point in the tree walk where we reach the orange highlighted cell at 
 $[(0,0),(2,2)]$ in the left panel, a decision needs to be made on whether the 
@@ -601,7 +602,7 @@ To use the cell-averaged absorption coefficient, $\alpha$, for a ray segment,
 we require that substructure within the cell cannot change the final flux
 beyond a specified tolerance.
 This is equivalent to showing that two rays through the cell,
-as in Figure \ref{fig:refine}, give sufficently similar results.
+as in Figure~\ref{fig:refine}, give sufficently similar results.
 Given $\alpha_{\rm min}$ and $\alpha_{\rm max}$ for that cell we can multiply
 by the ray segment length intersecting the cell, 
 $l$, to estimate the the minimum, $\tau_{\rm min}$, and maximum, $\tau_{\rm max}$,
@@ -619,7 +620,7 @@ fractional error in flux, per ray segment, for a given value of $\tr$ is
 \lesssim \tr,
 \end{equation}
 for small $\tr$, making the refinement criterion a convenient choice of 
-parameter for controlling error. Figure \ref{fig:cellplot} in section~\ref{spheretest}
+parameter for controlling error. Figure~\ref{fig:cellplot} in Section~\ref{spheretest}
 is an example of 
 \acro{}'s adaptive refinement in action.
 
@@ -644,10 +645,10 @@ express this as,
 \label{eqn:nseg}
 N_{\rm seg} = \frac{r}{R_B} = \frac{r}{R}\left(\frac{N}{N_B}\right)^\frac{1}{3}
 \end{equation}
-after substituting for $R_B$ using Equation \ref{eqn:ratio}. Since $\NS$ is 
+after substituting for $R_B$ using Equation~\ref{eqn:ratio}. Since $\NS$ is 
 also the number of rays computed, to get the total number of ray segments we
-multiple the integrand of 
-Equation \ref{eqn:nsint} by the number of ray segments,
+multiply the integrand of 
+Equation~\ref{eqn:nsint} by the number of ray segments,
 \begin{equation}
 \label{eqn:nsegint}
 N_{\rm seg} = \int_{(N_B/N)^{1/3}}^R 
@@ -662,17 +663,18 @@ In the case were the refinement criteria never triggers, the ray is split into
 segments made up of the cells traversed in the tree walk of the sub-tree going 
 from source to resolution element. The number of cells traversed in a tree walk
 is equal to the logarithm of the number of leaf nodes contained within the 
-sub-tree. The number of leaf nodes in the sub-tree is also given by Equation 
-\ref{eqn:nseg}, so by taking the logarithm of Equation \ref{eqn:nseg} and we 
-arrive at:
+sub-tree. The number of leaf nodes in the sub-tree is also given by 
+Equation~\ref{eqn:nseg}, so by taking the logarithm of Equation~\ref{eqn:nseg} 
+and we arrive at:
 \begin{equation}
 \label{eqn:nseg2}
 N_{\rm seg} = \log_2\left[\frac{r}{R}\left(
 \frac{N}{N_B}\right)^\frac{1}{3}\right],
 \end{equation}
 where the logarithm is base two as \textsc{Gasoline} and thus \acro{} is 
-implemented using a binary tree. As before we multiply Equation 
-\ref{eqn:nsint} by the number of ray segments and integrate the following
+implemented using a binary tree. As before we multiply 
+Equation~\ref{eqn:nsint} by the number of ray segments and integrate the 
+following
 \begin{eqnarray}
 \label{eqn:nsegint2}
 N_{\rm seg} & = & \int_{(N_B/N)^{1/3}}^R 
@@ -710,7 +712,7 @@ F(r) = \frac{L}{8\pi R} \ln \left(\frac{R+r}{R-r}\right),
 \end{equation}
 where $L$ is the total luminosity of the emitting shell, $R$ is the radius of 
 the sphere and $r$ is the radius at which the flux is being computed. The 
-shape of the function can be seen in Figure \ref{fig:cosmof} where we have 
+shape of the function can be seen in Figure~\ref{fig:cosmof} where we have 
 plotted the flux as a function of radius for a homogeneous, optically thin 
 test volume.
 \begin{figure}
@@ -718,14 +720,14 @@ test volume.
 \caption{Flux as a function of radius from an emitting sphere. \acro{}'s 
 solution for background source particles distributed in a spiral on a sphere 
 of radius $R=0.5$ (black dotted line) are plotted as the thick orange line. 
-The analytical solution given by Equation \ref{eqn:cosmof} is plotted as a 
+The analytical solution given by Equation~\ref{eqn:cosmof} is plotted as a 
 thinner black line on top of the numerical solution. A constant flux of one is 
 plotted by the black dashed line and is achieved in the inner most region of 
 this simulation at around $R \lesssim 0.05$}
 \label{fig:cosmof}
 \end{figure}
 
-Note that due to the logarithm in Equation \ref{eqn:cosmof}, the flux is 
+Note that due to the logarithm in Equation~\ref{eqn:cosmof}, the flux is 
 nearly constant at small radii. Since most cosmological zoom in simulations 
 only consider gas at a fairly small radius, this setup of background sources 
 is an acceptable method of imposing a background flux. A benefit of this 
@@ -754,7 +756,7 @@ should be adopted, particularly as tree building becomes a significant cost
 with adaptive timestepping.
 A special requirement for the radiation tree
 is that it fill all space to correctly estimate absorption due to ray intersections.
-Both the gravity and hydrodynamicsd trees 
+Both the gravity and hydrodynamics trees 
 squeeze cell bounds to the furthest
 extents of particles within the cell to optimize intersection tests which creates
 gaps between cells.
@@ -779,8 +781,8 @@ cell volume,
 During testing at high levels of refinement, however, we found that the error 
 began to increase slightly with increasing refinement accuracy beyond a 
 certain level. This was because when refining down to the bucket level often 
-enough, $N_{\rm B}=10$ was small enough to introduce Poisson noise in the density
-estimate.  This propagated as errors
+enough, $N_{\rm B}=10$ was small enough to introduce Poisson noise in the 
+density estimate.  This propagated as errors
 in the computed radiation field, noticeable as noise in otherwise uniform 
 density distributions.  To remedy this for particle based methods, we compute a 
 cell density using particle SPH densities via 
@@ -788,11 +790,11 @@ cell density using particle SPH densities via
 \rho_{\rm cell} = \frac{\sum_i m_i}{\sum_i{\frac{m_i}{\rho_i}}}.
 \end{equation}
 
-As noted in Section \ref{sec:adref}, when sub-leaf level 
+As noted in Section~\ref{sec:adref}, when sub-leaf level 
 refinement is required a ray trace similar to that of 
 SPHRay is performed. In this method, all particles in a cell are projected 
-down to the ray, and an impact parameter, $b$, is calculated (See Figure
-\ref{fig:raytrace}).
+down to the ray, and an impact parameter, $b$, is calculated (See 
+Figure~\ref{fig:raytrace}).
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/raytrace.pdf}
 \caption{The ray tracing scheme employed is similar to that of 
@@ -805,13 +807,13 @@ absorbed them.}
 \end{figure}
 Since the density field of an SPH particle varies with radius due to the 
 smoothed nature of SPH, an integral over the smoothing kernel, $W$, must be 
-performed. Thus, Equation \ref{eqn:tauint} becomes 
+performed. Thus, Equation~\ref{eqn:tauint} becomes 
 \begin{equation}
 \tau_i(s) = \left(m_i\int W\right) \kappa_i ds,
 \end{equation}
 where $m_i \int W$ represents the effective density along the particular ray 
 and $ds$ is the section of the ray intersected by the particle's smoothing 
-length (red line segments in Figure \ref{fig:raytrace}). Note that for the 
+length (red line segments in Figure~\ref{fig:raytrace}). Note that for the 
 receiving particle its density field does not contribute to the optical depth
 to itself.  
 To see why this must be the case, consider the case where a single particle is
@@ -842,9 +844,9 @@ of each particle is also one. This results in an optical depth across the
 width of the box of $\sim$1, making the simulation volume marginally  optically thin 
 overall with dense, optically thick filamentary structure and underdense voids 
 qualitatively similar to the cosmic web. Each star particle is assigned a 
-luminosity of one. A slice of this density distribution is plotted in Figure 
-\ref{fig:sine_rho}. Appendix \ref{sec:icnd} contains a detailed explanation of 
-how this IC was created including a table of modes used.
+luminosity of one. A slice of this density distribution is plotted in 
+Figure~\ref{fig:sine_rho}. Appendix \ref{sec:icnd} contains a detailed 
+explanation of how this IC was created including a table of modes used.
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/sine_rho.pdf}
 \caption{A $z$-plane slice of the sinusoidally perturbed glass IC. The optical 
@@ -857,9 +859,9 @@ aforementioned filament) is $\tau\approx 0.1$.}
 \subsubsection{Opening Angle}
 The opening angle criterion's affect on accuracy and cost was tested by 
 ray tracing the optically thin, sinusoidally perturbed glass IC with $\tO$ 
-varying between 0 and 1. The results of this test are plotted in Figure 
-\ref{fig:openangle}. The measure of cost is plotted as the total number of 
-rays, $N_{\rm rays}$, computed per resolution element on the left $y$-axis. 
+varying between 0 and 1. The results of this test are plotted in 
+Figure~\ref{fig:openangle}. The measure of cost is plotted as the total number 
+of rays, $N_{\rm rays}$, computed per resolution element on the left $y$-axis. 
 The number of rays is equivalent to the number of radiation sink-source 
 interactions computed in a simulation timestep. Using rays as a measure of 
 cost allows us to isolate the effects of the opening criterion on cost. On 
@@ -889,10 +891,10 @@ resolution element, which is still much less than interacting with all $64^3$
 \subsubsection{Refinement Criteria}
 Testing the refinement criteria is similar to testing the opening angle 
 criteria. Again, the sinusoidally perturbed glass IC was simulated but now 
-with a varying $\tr$ value. The results of this test are plotted in Figure 
-\ref{fig:refcrit}. The min and max values for $\tr$ were chosen such that the 
-cost curve flattens out on either side: the left hand side being where 
-refinement has occurred down to the bucket level and the right hand side 
+with a varying $\tr$ value. The results of this test are plotted in 
+Figure~\ref{fig:refcrit}. The min and max values for $\tr$ were chosen such 
+that the cost curve flattens out on either side: the left hand side being 
+where refinement has occurred down to the bucket level and the right hand side 
 being where refinement is never done. A opening angle of 0.75 was used and 
 $N=64^3$ for both star and gas particles. Cost is plotted on the left $y$-axis 
 and RMS fractional error on the right $y$-axis. The measure of cost is now 
@@ -918,7 +920,7 @@ approximately 850 ray segments computed per resolution element (including all ra
 the cost of refining all the way to the bucket level. Note also that RMS 
 fractional error as a function of $\tr$ behaves predictably, lying below the 
 error = $\tr$ line and roughly following the error = $\tr/10$ line plotted in 
-Figure \ref{fig:refcrit}. This shows that the error per ray segment is well
+Figure~\ref{fig:refcrit}. This shows that the error per ray segment is well
 controlled by our refinement criterion and considerably lower than $\tr$ on average.
 
 The RMS fractional error plateaus at 2-3\% in this test. In this particular 
@@ -949,14 +951,14 @@ scaling tests and $\times$ shaped markers denote strong scaling tests.}
 To test cost scaling as a function of $N$, we hold $\tO$ constant at 0.75 and
 vary $N$ between $32^3$ and $128^3$ in steps of $N_{\rm 1D} = 16$ for both gas 
 and star particles. To substantiate the best and worst case theoretical 
-scaling claims made in Equations \ref{eqn:nsegint2} and \ref{eqn:nsegint} 
+scaling claims made in Equations~\ref{eqn:nsegint2} and~\ref{eqn:nsegint} 
 respectively, the sinusoidally perturbed glass IC was simulated with 
 $\tr=1\e 6$ to ensure refinement was never performed and with $\tr=0$ to 
 ensure refinement was always performed down to the bucket level. Data from 
-these tests and the fitted theoretical lines are plotted in Figure 
-\ref{fig:pscale} and correspond very closely to each other. Note that the only 
-parameter used to fit the theoretical lines is a constant factor multiplying 
-Equations \ref{eqn:nsegint} and \ref{eqn:nsegint2}.
+these tests and the fitted theoretical lines are plotted in 
+Figure~\ref{fig:pscale} and correspond very closely to each other. Note that 
+the only parameter used to fit the theoretical lines is a constant factor 
+multiplying Equations~\ref{eqn:nsegint} and~\ref{eqn:nsegint2}.
 
 Scaling behavior between the upper and lower limits was probed in two ways. 
 Firstly, simulations were run with $\tr$ values of 0.1 and 0.01. Secondly, 
@@ -969,7 +971,7 @@ to simulating larger and larger cosmological boxes to achieve larger
 statistical samples. Note that the previously described tests of the upper and 
 lower scaling bounds were run as strong scaling tests only.
 
-Data from these tests was plotted in Figure \ref{fig:pscale}. 
+Data from these tests was plotted in Figure~\ref{fig:pscale}. 
 There are two interesting things to note: first, the strong scaling case, 
 which is typically the harder case to scale effectively in other respects (e.g. parallelism),
 scales better than 
@@ -986,7 +988,7 @@ interest, such as late stage galaxy evolution.  We now show how well \acro{}'s
 refinement criteria can handle compact, optically thick features.   We created 
 an IC featuring a single radiation source positioned in the top left corner 
 and four spheres with $1/r^2$ density profiles (mimicking self-gravitating dense objects)
-embedded in a uniform density region. \comment{What is this uniform density value?  What is the opacity?}
+embedded in a uniform region of opacity and density, both equal to one.
 The four isothermal spheres have a 
 density distribution given by
 \begin{equation}
@@ -1008,7 +1010,7 @@ The chosen parameters set the maximum optical depth through a sphere to
 $\tau_{\rm max}=4$ (a 98\% reduction in flux) and the density at the edge of 
 the spheres to one, matching the unit density of the uniform background. The 
 isothermal spheres have a radius of 0.05 of the box length and are shown as 
-grey circles in Figure \ref{fig:cellplot}.  
+grey circles in Figure~\ref{fig:cellplot}.  
 \begin{figure*}
 \includegraphics[width=1\linewidth]{Figures/cellplot.pdf}
 \caption{Left: \acro{}'s adaptive refinement criteria (at $\tr =0.1$) 
@@ -1026,7 +1028,7 @@ The spheres are centred on the $x$ and $z$ axis with $y$ coordinates given by
 y_i = 0.75 - 1.3^{-(4-i)},
 \end{equation}
 where $i$ runs from zero to three. The radiation source, denoted by the black 
-star in Figure \ref{fig:cellplot}, is located at $x=0.49$, $y=y_0$ and $z=0$. 
+star in Figure~\ref{fig:cellplot}, is located at $x=0.49$, $y=y_0$ and $z=0$. 
 The total number of particles in the IC is $N=4,111,624$.
 
 The spheres produce shadows away from the source. Accurate shadows can only be 
@@ -1036,22 +1038,22 @@ isolated by looking at particles in shadow.
 
 \subsubsection{Refinement Criterion}
 The effects of the refinement criterion on accuracy and cost in this test were 
-analyzed similarly to the previous test. The main addition in Figure 
-\ref{fig:isosph} is that the subset of particles in shadow has its RMS 
+analyzed similarly to the previous test. The main addition in 
+Figure~\ref{fig:isosph} is that the subset of particles in shadow has its RMS 
 fractional error plotted separately to highlight the refinement criterion's 
 performance in the optically thick regime.
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/isothermal_spheres.pdf}
 \caption{A plot of cost and accuracy as a function of refinement criterion. 
 The number of ray segments computed per resolution element is plotted on the 
-blue,left axis with square markers. The RMS error in flux relative to $\tr
+blue, left axis with square markers. The RMS error in flux relative to $\tr
 =10^{-8}$ is plotted on the red, right axis with circular markers. Lines of 
 ${\rm error} = \tr$ and ${\rm error} = \tr/10$ are plotted as red solid and dotted 
 lines respectively. Solid circular markers represent RMS relative errors 
 computed on all resolution elements and empty markers represent only the 
 resolution elements that fall in the shadow of the isothermal spheres. The 
 in-shadow errors match are larger for looser refinement criteria,
-continuing to follow the ${\rm error} = \tr$ line.}
+continuing to follow the ${\rm error} = \tr$ line. \comment{Huh?}}
 \label{fig:isosph}
 \end{figure}
 As before, $\tr=0.1$ achieves an overall RMS fractional error of 1\% with very 
@@ -1059,32 +1061,32 @@ little cost. However, when restricting focus only to those particles in
 shadow, the same refinement criterion produces almost an order of magnitude 
 more error at about 8\%. Decreasing the refinement parameter by an order of 
 magnitude to $\tr=0.01$ predictably decreases the RMS fractional error on 
-particles in the shadows to 1\% with a negligible increase in the cost from 
+particles in the shadows to 1\%, with a negligible increase in the cost from 
 that at $\tr=0.1$ as most of the volume is fairly optically thin and does
 not need to refine in either case.
 
-The $\rm{error}=\tr$ and $\rm{error}=\tr/10$ lines are again plotted in Figure 
-\ref{fig:isosph}. For the most part the RMS fractional error is contained 
-between these lines, with only two of the in-shadow points at $\tr=1\e{-5}$ 
-and $1\e{-4}$,  and one of the all-particle points at  $\tr=1\e{-4}$ sitting 
-marginally above the $\rm{RMS}=\tr$ line.  The error bound represented by
-equation 
-\ref{eqn:reffrac} is tighter for this test, with the overall error
-closer to $\tr$.
+The $\rm{error}=\tr$ and $\rm{error}=\tr/10$ lines are again plotted in 
+Figure~\ref{fig:isosph}. For the most part the RMS fractional error is 
+contained between these lines, with only two of the in-shadow points at 
+$\tr=1\e{-5}$ and $1\e{-4}$,  and one of the all-particle points at  
+$\tr=1\e{-4}$ sitting marginally above the $\rm{RMS}=\tr$ line. The error 
+bound represented by Equation~\ref{eqn:reffrac} is tighter for this test, with 
+the overall error closer to $\tr$.
 
 The isothermal spheres test is an especially difficult test as there 
 is only one source, and the errors are more systematic and thus less likely
 to cancel the way random errors might, particulary with many sources.
 In most cases we expect the net errors for \acro{} should perform better than the bound
-given by Equation \ref{eqn:reffrac}.
+given by Equation~\ref{eqn:reffrac}.
 
 The isothermal spheres test is useful as it is representative of structure
 commonly found in astrophysics and because it has an analytic solution. 
 However, in SPH it is difficult to represent sharp density gradients with 
 discrete resolution elements. This causes in-shadow particle flux errors relative 
 to the analytic solution to be up to an order of magnitude higher than 
-the errors relative to the $\tr = 10^{-8}$ simulation plotted in Figure 
-\ref{fig:isosph}.  These errors are associated with the discrete representation
+the errors relative to the $\tr = 10^{-8}$ simulation plotted in 
+Figure~\ref{fig:isosph}. These errors are associated with the discrete 
+representation
 of the density profile rather than the radiative transfer method.
 
 \subsection{\strom{} Sphere Test} \label{stromgren}
@@ -1131,11 +1133,11 @@ hydrogen ionization equation
 \end{equation}
 where $n_x$ is the number density of species $x$, HI and HII label neutral 
 and ionized hydrogen respectively, $\gamma$ denote photons, $\sigma$ is the 
-ionization cross section, $c$ is the speed of light and $\alpha$ is the 
+ionization cross-section, $c$ is the speed of light and $\alpha$ is the 
 recombination rate. Note that we have omitted collisional ionization in 
-Equation \ref{eqn:hion}, which is customary for this test, however it 
+Equation~\ref{eqn:hion}, which is customary for this test, however it 
 should be included in general. By integrating the ionization equation and the 
-flux equation with absorption (Equation \ref{eqn:simpflux}), we get a solution 
+flux equation with absorption (Equation~\ref{eqn:simpflux}), we get a solution 
 for the relative abundance of HI and HII as a function of radius and as a 
 function of time \citep{osterbrockFerland2006}. In the following tests, we 
 include both the theoretical sharp front solution and non-sharp front 
@@ -1157,7 +1159,7 @@ fraction, $\rm x$ and is similar to that of \protect\cite{pawlikSchaye08} and
 \protect\cite{pawlikSchaye11} to allow for ease of comparison.  We use the same
 contour levels: $\rm x$ = 0.9, 0.5, $\log \rm x$ = -1, -1.5, 
 -2, -2.5, -3 and -3.5. The white dashed line is a circle of radius given by 
-Equation \ref{eqn:stromtime}, the sharp, time dependent solution to the 
+Equation~\ref{eqn:stromtime}, the sharp, time dependent solution to the 
 isothermal \strom{} sphere.}
 \label{fig:stromslice}
 \end{figure}
@@ -1166,7 +1168,7 @@ photons at 13.6 eV and the gas is held at fixed temperature of $T=10^4$ K.
 We refer to this case as the isothermal \strom{} sphere.  The medium is initially 
 neutral with a uniform density of $n_{\rm HI} = 
 10^{-3}$ $\rm cm^{-3}$. We use an 
-ionization cross section of $\sigma = 6.3 \times 10^{-18}$ $\rm cm^{-2}$ and a 
+ionization cross-section of $\sigma = 6.3 \times 10^{-18}$ $\rm cm^{-2}$ and a 
 recombination rate of $\alpha = 2.59 \times 10^{-13}$ $\rm cm^{-3}$ $\rm 
 s^{-1}$, typical of $10^4$ K gas.
 An ionizing source is turned on at $t=0$ and emits at 
@@ -1189,18 +1191,18 @@ at how \acro{} converges with resolution. We have run our \strom{} sphere
 tests with fixed accuracy parameters of $\tO = 0.75$, 
 $\tau_{\rm ref} = 0.1$.
 
-Figure \ref{fig:stromslice} is a slice through the $z$-plane of the 
+Figure~\ref{fig:stromslice} is a slice through the $z$-plane of the 
 simulation. The colour map shows the neutral fraction. The contour 
-levels and colour map have been chosen to closely mimic Figure 6 in both 
+levels and colour map have been chosen to closely mimic Figure~6 in both 
 \cite{pawlikSchaye08} and \cite{pawlikSchaye11}. We have done this to 
 highlight a key benefit ray tracing codes such as \acro{} have over photon 
 packet propagation methods such as TRAPHIC: isotropy. At the same $N=64^3$ 
 particle resolution \acro{} is more isotropically symmetric than TRAPHIC, even 
 with their use of monte-carlo resampling. Furthermore, \acro{} outperforms 
-TRAPHIC in this aspect even at early times (top panels in Figure 
-\ref{fig:stromslice}). Here the interior of the sphere is represented by 3.3 
-times fewer particles than the late time \strom{} spheres plotted in the 
-TRAPHIC papers.
+TRAPHIC in this aspect even at early times (top panels in 
+Figure~\ref{fig:stromslice}). Here the interior of the sphere is represented 
+by 3.3 times fewer particles than the late time \strom{} spheres plotted in 
+the TRAPHIC papers.
 
 \begin{figure*}
 \includegraphics[width=0.95\linewidth]{Figures/strom_iso_fraction.pdf}
@@ -1211,9 +1213,9 @@ normalised by a box length of 6.6 kpc for comparison with plotted solutions
 from the \protect\cite{ilievEt06} comparison paper.}
 \label{fig:stromiso}
 \end{figure*}
-Figure \ref{fig:stromiso} is a plot of neutral/ionization fraction as a 
+Figure~\ref{fig:stromiso} is a plot of neutral/ionization fraction as a 
 function radius from the \strom{} sphere centre. The sharp \strom{} radius is 
-plotted as well as non-sharp solutions from all codes presented in Figure 8 
+plotted as well as non-sharp solutions from all codes presented in Figure~8 
 of \cite{ilievEt06}. \acro{} tends to over-ionize at lower resolutions, but 
 recreates the ionization profile quite well overall. At 30 Myr we converge 
 with resolution to the sharp solution. At 500 Myr we converge to the non-sharp 
@@ -1228,8 +1230,8 @@ with differing cross-sections at each wavelength. Absorption results in
 heating as well, which affects many gas properties including the recombination rate.
 
 We reran the \strom{} sphere test, but this time the incident photons are 
-assumed to be from a black body with a temperature of $10^5$ K. The cross 
-section is now photon weighted, giving 
+assumed to be from a black body with a temperature of $10^5$ K. The 
+cross-section is now photon weighted, giving 
 $\sigma = 1.63 \times 10^{-18}$ $\rm cm^{-2}$. The gas has an initial 
 temperature of 100 K and the recombination rate is a function of temperature 
 set by
@@ -1256,11 +1258,11 @@ expansion (left), slowing down (middle) and equilibrium (right) stages.}
 \strom{} sphere test.}
 \label{fig:stromtemp}
 \end{figure*}
-Figures \ref{fig:stromtherm} and \ref{fig:stromtemp} show the neutral/ionized 
+Figures~\ref{fig:stromtherm} and~\ref{fig:stromtemp} show the neutral/ionized 
 fraction and temperature respectively as a function of radius at $t=$ 10, 100
 and 500 Myr. These times represent the fast expansion stage, slowing down 
 stage and final equilibrium \strom{} sphere respectively. We have plotted 
-numerical solutions from Figures 16 and 17 in \cite{ilievEt06} for comparison. 
+numerical solutions from Figures~16 and~17 in \cite{ilievEt06} for comparison. 
 Again, \acro{} recreates these profiles quite well.
 \acro{} gives a relatively large sphere radius which is 
 due in part to the ionization code rather than the radiation method.  
@@ -1292,11 +1294,11 @@ ray can be reduced, while maintaining a specified level of accuracy, to
 $\log N$.  
 \end{enumerate}
 
-In Section \ref{sec:algo} we theoretically 
+In Section~\ref{sec:algo} we theoretically 
 predicted \acro{}'s $\bigO{\NK \log\NS \log N}$ scaling behaviour. In the 
 general case, represented by the perturbed glass test case with 
-accuracy parameters of $\tr=0.1$ and $\tO=0.75$ (Figures \ref{fig:openangle}, 
-\ref{fig:refcrit} and \ref{fig:pscale}), we have shown that \acro{} can
+accuracy parameters of $\tr=0.1$ and $\tO=0.75$ (Figures~\ref{fig:openangle}, 
+\ref{fig:refcrit} and~\ref{fig:pscale}), we have shown that \acro{} can
 indeed scale as predicted whilst achieving $\sim 1\%$ accuracy.  We also note that
 better than $\log N$ scaling (i.e. closer to $\bigO{\NK \log\NS}$)
 could be achieved for a medium with low optical
@@ -1312,25 +1314,23 @@ advantage of the large speed-ups reverse raytracing can achieve via adapative ti
 However, this is not a limitation intrinsic to the TREERAY method itself.   
 
 In plots of 
-accuracy as a function of $\tr$ (Figures \ref{fig:refcrit} and 
-\ref{fig:isosph}) we have also shown that \acro{}'s refinement criteria 
+accuracy as a function of $\tr$ (Figures~\ref{fig:refcrit} 
+and~\ref{fig:isosph}) we have also shown that \acro{}'s refinement criteria 
 provides a predictable bound on accuracy in both the optically thick and thin 
 regimes, as we found the RMS relative error is $\propto \tr$ and the RMS 
 errors do not exceed $\tr$.  
 
 This scaling enables \acro{} to reap the benefits inherent in instantaneous 
 ray tracing methods whilst still being practical and general.  For example,
-we can use any convenient timestep rather than being limited by the speed of light.
-Directional 
-accuracy is one of these benefits as is apparent in the sharp shadows cast 
-in the isothermal spheres test (Figure \ref{fig:cellplot}). Low levels of 
-noise and isotropy are also benefits compared with evolutionary methods as is 
-apparent in the \strom{} sphere test (Figure \ref{fig:stromslice}).
+we can use any convenient timestep rather than being limited by the speed of light. Directional accuracy is another one of these benefits as is apparent in the sharp shadows cast in the isothermal spheres test (Figure~\ref{fig:cellplot}). 
+Low levels of noise and isotropy are also benefits compared with evolutionary 
+methods as is apparent in the \strom{} sphere test 
+(Figure~\ref{fig:stromslice}).
 
 In the version of \acro{} as currently implemented, there are still some 
 problems not easily handled. First, in any completely optically thick 
 medium where high accuracy is required our method will result in worst 
-case scaling of $\bigO{\NK\,N^{1/3}}$ (characterized in Section \ref{sec:adref}). 
+case scaling of $\bigO{\NK\,N^{1/3}}$ (characterized in Section~\ref{sec:adref}). 
 At face value this limits \acro{} to solving only post-reionization cosmology or similar problems
 that are largely optically thin.
 However, in such a medium most sources contribute nothing to the local radiation field. 
@@ -1385,7 +1385,7 @@ for the evolution of large boxes over cosmological time periods.
 
 %We would like to thank the referee for their helpful comments and suggestions.
 J. Wadsley and H. M. P. Couchman would like to acknowledge the support of 
-NSERC. \comment{Grond: fill the rest in later}.
+NSERC.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1402,15 +1402,24 @@ NSERC. \comment{Grond: fill the rest in later}.
 \label{sec:icnd}
 To create our gently varying density distribution for the many source tests, 
 we modify positions of particles in a glass initial condition by adding the 
-sum of 24 sinusoidal modes to the initial particle positions as in Equation 
-\ref{eqn:manfft} below
+sum of 24 sinusoidal modes to the initial particle positions as in 
+Equation~\ref{eqn:manfft} below
 \begin{equation}\label{eqn:manfft}
 \vec{r} = \vec{r}_{\rm 0} + \sum_{i=1}^{24} \frac{1}{275} \sin 
 \left( k_{x,i} r_x + k_{y,i} r_y + k_{z,i} r_z + \phi_i\right),
 \end{equation}
 where $\vec{r_0}$ is the particles initial position in the glass and $\vec{r}$ 
 is its perturbed position in the final distribution. The $\vec{k_i}$ and 
-$\phi_i$ values are listed in table \ref{tab:modes} in order to facilitate reproduction of the scaling tests.  
+$\phi_i$ values are listed in Table~\ref{tab:modes} in order to facilitate 
+reproduction of the scaling tests. Both gas and star particles have the same 
+density distribution. However, the initial glass was flipped for the star 
+particles by reassigning $x$,$y$ and $z$ coordinates via
+ \begin{equation}
+ x_{\rm star} = y_{\rm gas}, \hspace{5pt} y_{\rm star} = z_{\rm gas}, 
+ \hspace{5pt} z_{\rm star} = x_{\rm gas},
+ \end{equation}
+to prevent the particles from occupying the same position in space.
+
 \begin{table}
 	\centering
 	\caption{Randomly generated $\vec{k}$ and $\phi$ values used in generating 
@@ -1446,14 +1455,6 @@ $\phi_i$ values are listed in table \ref{tab:modes} in order to facilitate repro
 		\hline
 	\end{tabular}
 \end{table}
-Both gas and star particles have the same density distribution. However, 
-the initial glass was flipped for the star particles by reassigning $x$,$y$ 
-and $z$ coordinates via
- \begin{equation}
- x_{\rm star} = y_{\rm gas}, \hspace{5pt} y_{\rm star} = z_{\rm gas}, 
- \hspace{5pt} z_{\rm star} = x_{\rm gas},
- \end{equation}
-to prevent the particles from occupying the same position in space.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \bsp
