@@ -60,7 +60,7 @@ simulations. \acro{} is designed to handle large numbers of sources and
 absorbers; it is based on a \emph{tree} data structure and is thus suited 
 to codes that use trees for their gravity or hydrodynamics solvers (e.g. 
 Adaptive Mesh Refinement). It achieves computational speed while maintaining a 
-specified accuracy via controlled lowering of resolution of both sources and 
+specified accuracy via controlled lowering of the resolution of both sources and 
 rays from each source. \acro{} computes the radiation field in $\mathcal{O}(N 
 \log \NS)$ time without absorption and $\mathcal{O}(N \log \NS \log{N})$ time 
 with absorption.  These scalings arise from merging sources of radiation 
@@ -115,7 +115,7 @@ population having a Chabrier initial mass function \citep{chabrier03}.}
 \end{figure}
 
 However, the way in which this massive output of UV radiation is deposited 
-and consequently effects the interstellar medium (ISM) is still unclear. 
+and consequently affects the interstellar medium (ISM) is still unclear. 
 Attempts at numerically exploring these effects without the use of a full 
 radiative transfer method have produced conflicting results. Simulations done
 by \cite{gritschnederEt09} and \cite{walchEt12} suggest that ionizing feed 
@@ -153,7 +153,7 @@ contributions from $\NS$ sources of radiation ($\NS$ rays of light being
 computed per resolution element). This leads to a scaling for the total number 
 of rays of $\NR = N \times \NS$, or $\bigO{N^2}$ assuming that $\NS \sim N$. 
 This fact alone limits brute-force RT methods to only small-scale problems, 
-such as ionization by a few massive stars \citep{howard16, 
+such as ionization by a few massive stars \citep[e.g.][]{howard16, 
 howard17}. Finally, each ray of light interacts with the medium along its 
 path, which is resolved with $\bigO{N^{1/3}}$ resolution elements. Thus the 
 computational cost is $\bigO{N^{7/3}}$. This poor scaling with number of 
@@ -172,19 +172,16 @@ finite $c$, (which is often reduced from the true speed of light) and thus the
 partial time derivative remains in Equation~\ref{eqn:classicrt}, and the 
 radiation field is advected or evolved thoughout the simulation. The 
 prototypical evolutionary method is flux-limited diffusion 
-\citep{levermorePomraning81}. Modern evolutionary methods include include 
+\citep{levermorePomraning81}. Modern evolutionary methods include 
 moment methods like OTVET \citep{gnedinAbel01} and RAMESES-RT 
 \citep{rosdahlEt13} as well as photon packet propagation methods like TRAPHIC 
 \citep{pawlikSchaye08}, SPHRAY \citep{altayEt08} and SimpleX2 
 \citep{paardekooperEt10}.
 
-\textit{Instantaneous} Methods,  on the other hand, take the limit where $c$ 
+\textit{Instantaneous} methods,  on the other hand, take the limit where $c$ 
 is infinite and the partial time derivative in Equation~\ref{eqn:classicrt} 
 goes to zero. In this case the radiation field can be computed instantaneously 
-as a geometric problem. Computational methods in this category include forward 
-ray tracers such as $\rm C^2Ray$ \citep{mellemaEt06a}, Moray 
-\citep{wiseAbel11} and Fervent \citep{baczynskiEt15} as well as reverse 
-raytracers such as TreeCol \citep{clarkEt12}, URCHIN \citep{altayTheuns13} and TREERAY \citep{HaidEt18}. 
+as a geometric problem.
 
 Instantaneous methods typically take the form of raytracers. Raytracers are 
 the most direct way to solve the RT problem. Forward raytracers 
@@ -198,12 +195,17 @@ to hit every resolution element when extended to the edge of the simulation
 volume (distance $\bigO{N^{1/3}}$), so the scaling typically achieved is 
 $\bigO{N \NS}$.  
 
+Computational methods in this category include forward 
+ray tracers such as $\rm C^2Ray$ \citep{mellemaEt06a}, Moray 
+\citep{wiseAbel11} and Fervent \citep{baczynskiEt15} as well as reverse 
+raytracers such as TreeCol \citep{clarkEt12}, URCHIN \citep{altayTheuns13} and TREERAY \citep{HaidEt18}. 
+
 It is important to note when methods adaptively split rays (e.g. using Healpix 
 \citealt{gorskiEt05} as in Moray, URCHIN and TreeCol), it does not change the 
 overall scaling.  For example, a centrally located source requires $6\, N^{2/3}$ 
 rays to strike all elements in the outer faces of a cubical simulation volume, 
-each with a length $\bigO{N^{1/3}}$. Even with adaptive ray merging near the 
-source, at least $N$ ray segments are required to intersect each of the $N$ 
+each with a length $\bigO{N^{1/3}}$ and thus costs $\bigO{N}$ per source. Even with adaptive ray merging near the 
+source, at least $N$ ray segments will always be required to intersect each of the $N$ 
 resolution elements. In additon, raytracers such as Moray rely upon a 
 Monte-Carlo approach to estimate the radiation field and thus require at least 
 10 rays to intersect each element, a constant but significant prefactor to the 
@@ -236,7 +238,7 @@ reduce the radiation work as only active resolution elements, $\NK$, need
 to be traced to. This active subset can be a million times smaller than 
 $N$ in, for example, high-resolution cosmological simulations.
 Typical hydro and gravity codes achieve a factor of 100 speed-up by taking advantage of this
-so it is important the radiation has the same capability or radiation will overwhelm the computation.
+so it is important the radiation has the same capability or it will overwhelm the computation.
 Thus a na\"ive reverse 
 ray trace still scales as $\bigO{\NK \NS N^{1/3}}$, with the presence of many 
 sources presenting the most significant computational barrier.
@@ -255,7 +257,7 @@ employ an evolutionary approach in which directional accuracy is easier to
 control, in principle. However, the Monte Carlo aspects of how photon packets 
 are propagated introduce significant Poisson noise into their computed 
 radiation field. Added Monte Carlo resampling is shown to reduce this noise 
-but is quite expensive and degrades the initially sharp shadows: it is 
+but it is quite expensive and degrades the initially sharp shadows: it is 
 typically not used in production runs. TRAPHIC also adds virtual particles 
 (ViPs) to propagate their photon packets in less dense, optically thin regions 
 lacking in SPH particles. TRAPHIC scales linearly with resolution elements, as 
