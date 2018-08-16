@@ -139,8 +139,8 @@ Here, $I$, $\epsilon$ and $\alpha$ are the intensity, emissivity and
 extinction coefficients respectively and all depend on position $\mathbf{x}$, 
 unit direction of light propagation $\mathbf{n}$, time $t$ and frequency 
 $\nu$. Apart from being a seven dimensional problem, RT involves the highest 
-possible characteristic speed, $c$, the speed of light. Also, unlike a 
-potential problem such as gravity, RT depends on the properties of the 
+possible characteristic speed, $c$, the speed of light. Also, unlike a similar
+problem such as gravity, RT depends on the properties of the 
 intervening material via the absorption term, $\alpha$.
 
 Because of this complexity, a na\"ive numerical solution to the RT problem 
@@ -173,7 +173,7 @@ partial time derivative remains in Equation~\ref{eqn:classicrt}, and the
 radiation field is advected or evolved thoughout the simulation. The 
 prototypical evolutionary method is flux-limited diffusion 
 \citep{levermorePomraning81}. Modern evolutionary methods include 
-moment methods like OTVET \citep{gnedinAbel01} and RAMESES-RT 
+moment methods like OTVET \citep{gnedinAbel01} and RAMSES-RT 
 \citep{rosdahlEt13} as well as photon packet propagation methods like TRAPHIC 
 \citep{pawlikSchaye08}, SPHRAY \citep{altayEt08} and SimpleX2 
 \citep{paardekooperEt10}.
@@ -226,7 +226,7 @@ Algorithmically, this is equivalent to tracing in reverse, from the sinks to the
 This makes it easy to ensure that the source and absorber angular distributions
 are well sampled near the resolution element as opposed to 
 forward ray tracing where one would have to increase the number of rays per 
-sink to guarantee this type of accuracy. Put simply, radiation is computed 
+source to guarantee this type of accuracy. Put simply, radiation is computed 
 exactly where it is needed.  This is especially advantageous in adaptive mesh 
 and Lagrangian simulations such as smoothed particle hydrodynamics (SPH) 
 simulations, as low density regions are represented by few resolution 
