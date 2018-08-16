@@ -1052,8 +1052,8 @@ ${\rm error} = \tr$ and ${\rm error} = \tr/10$ are plotted as red solid and dott
 lines respectively. Solid circular markers represent RMS relative errors 
 computed on all resolution elements and empty markers represent only the 
 resolution elements that fall in the shadow of the isothermal spheres. The 
-in-shadow errors match are larger for looser refinement criteria,
-continuing to follow the ${\rm error} = \tr$ line. \comment{Huh?}}
+in-shadow errors are larger for looser refinement criteria,
+continuing to follow the ${\rm error} = \tr$ line. 
 \label{fig:isosph}
 \end{figure}
 As before, $\tr=0.1$ achieves an overall RMS fractional error of 1\% with very 
@@ -1274,16 +1274,16 @@ makes detailed comparisons difficult.
 \section{Discussion And Conclusions}\label{sec:disc}
 In this paper we have presented \acro{}, a practical and efficient, general 
 purpose algorithm for computing radiative transfer in astrophysics 
-simulations. For a RT method to be these things it must remain effificient with 
+simulations. For a RT method to be these things it must remain efficient with 
 large numbers of resolution elements and radiation sources, compute the 
 radiation field to a desired level of accuracy and handle density and opacity 
 distributions representing the optically thick, thin and intermediate regimes.
 
 \acro{}'s ability to scale feasibly with $N$ and $\NS$ is achieved by reducing 
-the cost of each of the three components of a ray trace:
+all three of the cost multipliers of an $\bigO{\NK \NS N^{1/3}}$ naive ray trace:
 \begin{enumerate}
 \item Reverse ray tracing allows for the use of adaptive timesteps. The 
-initial dependence on $N$ resolution elements is reduced to $\NK$ active 
+initial dependence on $\NK \sim N$ resolution elements is reduced to just the active 
 radiation sinks. $\NK$ is effectively hundreds of times smaller than $N$ when averaged
 over a large number of substeps.  
 \item Source merging based on an opening angle criteria reduces the linear 
@@ -1304,12 +1304,12 @@ better than $\log N$ scaling (i.e. closer to $\bigO{\NK \log\NS}$)
 could be achieved for a medium with low optical
 depths via a more aggressive, top-down ray walk with our refinement criterion.
 
-The only ray-tracing code we are aware with similar scaling is TREERAY \citep{HaidEt18}.  TREERAY
+The only general ray-tracing code we are aware with similar scaling is TREERAY \citep{HaidEt18}.  TREERAY
 does not use an adaptivity criterion and has a fixed number of rays.
 This rather rigid approach has a benefit which is that the source and absorption walks can
 be combined to given an overall $\bigO{N log N}$ scaling, albeit without error controls and
 limited directional accuracy (e.g. for shadowing).
-TREERAY as currently implemented in FLASH uses a global timestep and is thus unable to take
+TREERAY, as currently implemented in FLASH, uses a global timestep and is thus unable to take
 advantage of the large speed-ups reverse raytracing can achieve via adapative timestepping.
 However, this is not a limitation intrinsic to the TREERAY method itself.   
 
@@ -1333,7 +1333,7 @@ medium where high accuracy is required our method will result in worst
 case scaling of $\bigO{\NK\,N^{1/3}}$ (characterized in Section~\ref{sec:adref}). 
 At face value this limits \acro{} to solving only post-reionization cosmology or similar problems
 that are largely optically thin.
-However, in such a medium most sources contribute nothing to the local radiation field. 
+However, in optically thick media most sources contribute nothing to the local radiation field. 
 In such cases \acro{} could easily terminate ray traces that are found 
 (e.g. early in the optical depth sum when $\tau$ exceeds a threshold)
 or predicted (based on information from prior 
@@ -1360,7 +1360,7 @@ and refinement criterion are the subject of ongoing investigations.
 
 In addition to the above, future work could also include
 implementing scattering.  The process of 
-scattering can be recast as an absorption, followed by an immediate remission 
+scattering can be recast as an absorption, followed by an immediate re-emission 
 of photons.  Thanks to the $\log(\NS)$ scaling with radiation sources, this 
 process can be implemented by considering resolution elements (SPH gas 
 particles in our case) as sources of radiation without changing the scaling of 
@@ -1376,7 +1376,7 @@ are representative of the luminous source as it was.
 
 Currently, \acro{} only 
 computes the radiation field in specific bands.  \acro{} can handle many bands 
-of radiation with only a small constant multiplier added to the cost.  However, it 
+of radiation with a small constant multiplier added to the cost.  However, it 
 may be advantageous to evolve the spectral shape over distance using an opacity as
 a function of wavelength where the absorption is provided by a relatively simple
 or easily characterized set of species.
