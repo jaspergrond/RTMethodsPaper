@@ -44,7 +44,7 @@ Department of Physics and Astronomy, McMaster University, Hamilton, Ontario L8S
 \pubyear{2018}
 
 %%%%%%% avoid hyperlink spanning multiple pages error in draft %%%%%%%
-\hypersetup{draft}
+%\hypersetup{draft}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -57,13 +57,13 @@ Department of Physics and Astronomy, McMaster University, Hamilton, Ontario L8S
 We present \acro{} (Tree-based Reverse Ray Tracing), a general algorithm for 
 computing the radiation field, including absorption, in astrophysical 
 simulations. \acro{} is designed to handle large numbers of sources and 
-absorbers; it is based on a \emph{tree} data structure and is thus suited 
-to codes that use trees for their gravity or hydrodynamics solvers (e.g. 
-Adaptive Mesh Refinement). It achieves computational speed while maintaining a 
+absorbers; it is based on a \emph{tree} data structure and is thus suited to 
+codes that use trees for their gravity or hydrodynamics solvers (e.g. Adaptive 
+Mesh Refinement). It achieves computational speed while maintaining a 
 specified accuracy via controlled lowering the resolution of both sources and 
-rays from each source. \acro{} computes the radiation field in $\mathcal{O}(N 
-\log \NS)$ time without absorption and $\mathcal{O}(N \log \NS \log{N})$ time 
-with absorption.  These scalings arise from merging sources of radiation 
+rays from each source. \acro{} computes the radiation field in 
+$\bigO{N\log\NS}$ time without absorption and $\bigO{N \log \NS \log{N}}$ time 
+with absorption. These scalings arise from merging sources of radiation 
 according to an opening angle criterion and walking the tree structure to 
 trace a ray to a depth that gives the chosen accuracy for absorption. The 
 absorption-depth refinement criterion is unique to \acro{}. We provide a suite 
@@ -92,7 +92,7 @@ detectors. Interactions between photons and these media not only affect the
 photons themselves but the matter as well. Photons and baryons exchange energy 
 and momentum, driving both heating and cooling. This also affects excitation 
 and ionization states and thus determines the chemical and thermodynamic 
-properties of the gas. Thus radiation is key player in many of the 
+properties of the gas. Thus radiation is a key player in many of the 
 astrophysical systems and processes we study.
 
 On galaxy scales, a central question is how feedback mechanisms affect star 
@@ -149,12 +149,12 @@ scales with the number of resolution elements, $N$, as $\bigO{N^{7/3}}$ and
 requires a timestep thousands of times smaller than typical Courant times in 
 astrophysics. This scaling arises due to three contributions. Firstly, a 
 radiation field must be computed at each of the simulation's $N$ resolution 
-elements. Secondly, each resolution element's intensity value is made up of 
-contributions from $\NS$ sources of radiation ($\NS$ rays of light being 
-computed per resolution element). This leads to a scaling for the total number 
-of rays of $\NR = N \times \NS$, or $\bigO{N^2}$ assuming that $\NS \sim N$. 
-This fact alone limits brute-force RT methods to only small-scale problems, 
-such as ionization by a few massive stars \citep[e.g.][]{howard16, 
+elements. Secondly, each one of the resolution element's intensity values is 
+made up of contributions from $\NS$ sources of radiation ($\NS$ rays of light 
+being computed per resolution element). This leads to a scaling for the total 
+number of rays of $\NR = N \times \NS$, or $\bigO{N^2}$ assuming that $\NS 
+\sim N$. This fact alone limits brute-force RT methods to only small-scale 
+problems, such as ionization by a few massive stars \citep[e.g.][]{howard16, 
 howard17}. Finally, each ray of light interacts with the medium along its 
 path, which is resolved with $\bigO{N^{1/3}}$ resolution elements. Thus the 
 computational cost is $\bigO{N^{7/3}}$. This poor scaling with number of 
@@ -173,59 +173,44 @@ finite $c$, (which is often reduced from the true speed of light) and thus the
 partial time derivative remains in Equation~\ref{eqn:classicrt}, and the 
 radiation field is advected or evolved thoughout the simulation. The 
 prototypical evolutionary method is flux-limited diffusion 
-\citep{levermorePomraning81}. Modern evolutionary methods include 
-moment methods like OTVET \citep{gnedinAbel01} and RAMSES-RT 
-\citep{rosdahlEt13} as well as photon packet propagation methods like TRAPHIC 
-\citep{pawlikSchaye08}, SPHRAY \citep{altayEt08} and SimpleX2 
-\citep{paardekooperEt10}.
+\citep{levermorePomraning81}. Modern evolutionary methods include moment 
+methods like OTVET \citep{gnedinAbel01} and RAMSES-RT \citep{rosdahlEt13} as 
+well as photon packet propagation methods like TRAPHIC \citep{pawlikSchaye08}, 
+SPHRAY \citep{altayEt08} and SimpleX2 \citep{paardekooperEt10}.
 
-\textit{Instantaneous} methods,  on the other hand, take the limit where $c$ 
+\textit{Instantaneous} methods, on the other hand, take the limit where $c$ 
 is infinite and the partial time derivative in Equation~\ref{eqn:classicrt} 
 goes to zero. In this case the radiation field can be computed instantaneously 
-<<<<<<< HEAD
 as a geometric problem. Computational methods in this category include forward 
-ray tracers such as $\rm C^2Ray$ \citep{mellemaEt06a}, Moray 
+raytracers such as $\rm C^2Ray$ \citep{mellemaEt06a}, Moray 
 \citep{wiseAbel11} and Fervent \citep{baczynskiEt15} as well as reverse 
 raytracers such as TreeCol \citep{clarkEt12}, URCHIN \citep{altayTheuns13} 
 and TREERAY \citep{HaidEt18}. 
-=======
-as a geometric problem.
->>>>>>> 5f34f802dfb4292faaccbab6bf88a5a1f5015007
 
 Instantaneous methods typically take the form of raytracers. Raytracers are 
-the most direct way to solve the RT problem. Forward raytracers 
-trace many rays outward from sources of radiation, similarly to the actual 
-phenomena, in the hope that resolution elements will have sufficiently many 
-rays intersecting them to compute a radiation field. Na\"ively, the number of 
-rays per source would be comparable to the number of resolution elements, 
-giving a scaling of $\bigO{N \NS N^{1/3}}$, as previously noted. However, for 
-forward ray tracing, $\bigO{N^{2/3}}$ rays per source are typically sufficient 
-to hit every resolution element when extended to the edge of the simulation 
-volume (distance $\bigO{N^{1/3}}$), so the scaling typically achieved is 
+the most direct way to solve the RT problem. Forward raytracers trace many 
+rays outward from sources of radiation, similarly to the actual phenomena, in 
+the hope that resolution elements will have sufficiently many rays 
+intersecting them to compute a radiation field. Na\"ively, the number of rays 
+per source would be comparable to the number of resolution elements, giving a 
+scaling of $\bigO{N \NS N^{1/3}}$, as previously noted. However, for forward 
+ray tracing, $\bigO{N^{2/3}}$ rays per source are typically sufficient to hit 
+every resolution element when extended to the edge of the simulation volume 
+(distance $\bigO{N^{1/3}}$), so the scaling typically achieved is 
 $\bigO{N \NS}$.  
 
-Computational methods in this category include forward 
-ray tracers such as $\rm C^2Ray$ \citep{mellemaEt06a}, Moray 
-\citep{wiseAbel11} and Fervent \citep{baczynskiEt15} as well as reverse 
-raytracers such as TreeCol \citep{clarkEt12}, URCHIN \citep{altayTheuns13} and TREERAY \citep{HaidEt18}. 
-
-It is important to note when methods adaptively split rays (e.g. using Healpix 
-\citealt{gorskiEt05} as in Moray, URCHIN and TreeCol), it does not change the 
-overall scaling.  For example, a centrally located source requires $6\, N^{2/3}$ 
-rays to strike all elements in the outer faces of a cubical simulation volume, 
-<<<<<<< HEAD
-each with a length $\bigO{N^{1/3}}$. Even with adaptive ray merging near the 
-source, at least $N$ ray segments are required to intersect each of the $N$ 
-resolution elements. In addition, raytracers such as Moray rely upon a 
-=======
-each with a length $\bigO{N^{1/3}}$ and thus costs $\bigO{N}$ per source. Even with adaptive ray merging near the 
-source, at least $N$ ray segments will always be required to intersect each of the $N$ 
-resolution elements. In additon, raytracers such as Moray rely upon a 
->>>>>>> 5f34f802dfb4292faaccbab6bf88a5a1f5015007
-Monte-Carlo approach to estimate the radiation field and thus require at least 
-10 rays to intersect each element, a constant but significant prefactor to the 
-overall cost. This scaling usually limits forward raytracers to problems with 
-few sources to avoid $\mathcal{O}(N^2)$-like scaling. 
+It is important to note when methods adaptively split rays (e.g. using 
+Healpix \citealt{gorskiEt05} as in Moray, URCHIN and TreeCol), it does not 
+change the overall scaling. For example, a centrally located source requires 
+$6\, N^{2/3}$ rays to strike all elements in the outer faces of a cubical 
+simulation volume, each with a length $\bigO{N^{1/3}}$. Even with adaptive ray 
+merging near the source, at least $N$ ray segments are required to intersect 
+each of the $N$ resolution elements. In addition, raytracers such as Moray 
+rely upon a Monte-Carlo approach to estimate the radiation field and thus 
+require at least 10 rays to intersect each element, a constant but 
+significant prefactor to the overall cost. This scaling usually limits 
+forward raytracers to problems with few sources to avoid 
+$\mathcal{O}(N^2)$-like scaling. 
 
 Recently there has been some focus on reverse ray tracing methods by
 \cite{clarkEt12}, \cite{altayTheuns13}, \cite{Woods2015} (applied in 
@@ -235,11 +220,11 @@ post-ionization UV background) rather than internal sources of radiation.
 The latter two methods are more general and can handle internal sources.
 
 The idea of reverse ray tracing introduces some advantages relative 
-to forward ray tracing.  Reverse raytracers trace all the rays that strike
-a specific resolution element before moving to the next element.
+to forward ray tracing. Reverse raytracers trace all the rays that strike
+a specific resolution element before moving to the next element. 
 Algorithmically, this is equivalent to tracing in reverse, from the sinks to 
 the sources. This makes it easy to ensure that the source and absorber angular 
-distributions are well sampled near the resolution element as opposed to 
+distributions are well-sampled near the resolution element as opposed to 
 forward ray tracing where one would have to increase the number of rays per 
 source to guarantee this type of accuracy. Put simply, radiation is computed 
 exactly where it is needed.  This is especially advantageous in adaptive mesh 
@@ -248,27 +233,15 @@ simulations, as low density regions are represented by few resolution
 elements, and thus extra work is not done to resolve radiation in those 
 regions.
 
-<<<<<<< HEAD
 A key benefit to reverse ray tracing is the potential for adaptive timesteps 
 to dramatically reduce the radiation work as only active resolution elements, 
 $\NK$, need to be traced to. This active subset can be a million times smaller 
 than $N$ in, for example, high-resolution cosmological simulations. Typical 
 hydro and gravity codes achieve a factor of 100 speed-up by taking advantage 
-of this so it is important the radiation code has the same capability or 
+of this so it is important that the radiation code has the same capability or 
 radiation will overwhelm the computation. Thus a na\"ive reverse ray trace 
 still scales as $\bigO{\NK \NS N^{1/3}}$, with the presence of many sources 
 presenting the most significant computational barrier.
-=======
-A key benefit to reverse ray tracing is the potential for adaptive timesteps to dramatically 
-reduce the radiation work as only active resolution elements, $\NK$, need 
-to be traced to. This active subset can be a million times smaller than 
-$N$ in, for example, high-resolution cosmological simulations.
-Typical hydro and gravity codes achieve a factor of 100 speed-up by taking advantage of this
-so it is important the radiation has the same capability or it will overwhelm the computation.
-Thus a na\"ive reverse 
-ray trace still scales as $\bigO{\NK \NS N^{1/3}}$, with the presence of many 
-sources presenting the most significant computational barrier.
->>>>>>> 5f34f802dfb4292faaccbab6bf88a5a1f5015007
 
 Evolutionary methods are typically based on evolving moments of the radiation 
 field stored at each resolution element. They are insensitive to the number of 
@@ -281,9 +254,9 @@ tests ({e.g. Figure~16 in \citealt{rosdahlEt13}).
 
 Photon packet propagation methods, such as TRAPHIC \citep{pawlikSchaye08}, 
 employ an evolutionary approach in which directional accuracy is easier to 
-control, in principle. However, the Monte Carlo aspects of how photon packets 
+control, in principle. However, the Monte-Carlo aspects of how photon packets 
 are propagated introduce significant Poisson noise into their computed 
-radiation field. Added Monte Carlo resampling is shown to reduce this noise 
+radiation field. Added Monte-Carlo re-sampling is shown to reduce this noise 
 but it is quite expensive and degrades the initially sharp shadows: it is 
 typically not used in production runs. TRAPHIC also adds virtual particles 
 (ViPs) to propagate their photon packets in less dense, optically thin regions 
@@ -306,10 +279,10 @@ Nonetheless, methods such as TRAPHIC represent an effective approach for large
 simulations that can handle a variety of regimes of optical depth.
 
 Until now the poor scaling with source number, as $\bigO{\NS N}$, has severely 
-limited the applicability and competitiveness of instantaneous ray-tracing 
+limited the applicability and competitiveness of instantaneous ray tracing 
 relative to evolutionary methods such as TRAPHIC. Recently however, 
 \cite{Woods2015} and \cite{HaidEt18} developed promising generalizations of 
-reverse raytracing based on merging of sources that can handle large numbers 
+reverse ray tracing based on merging of sources that can handle large numbers 
 of internal sources. The basic idea is to use a tree to combine distant 
 sources and reduce the cost to $\bigO{N \log N}$. \cite{HaidEt18} implemented 
 their TREERAY reverse raytracer in the FLASH AMR code \citep{FryxellEt2000}.
@@ -334,10 +307,7 @@ demonstrating the algorithm's ability to accurately compute fluxes, ionization
 fronts and shadows in the optically thick and thin regimes. These tests also 
 allow us to explore how \acro{}'s adaptivity criteria controls error and 
 affects computational cost. The computational cost is bounded and 
-characterized in ent \acro{} (Tree-based Reverse Ray Tracinne could 
-potentially use a series expansion to approximate what the sum of 
-contributions 
-the general case to substantiate the $\bigO{N \log^2 N}$ 
+characterized in the general case to substantiate the $\bigO{N \log^2 N}$ 
 claim made earlier. Finally, in Section~\ref{sec:disc} we discuss \acro{}'s 
 strengths and shortcomings and conclude how they enable and constrain the 
 types of problems \acro{} can handle, and discuss improvements that can be 
@@ -346,7 +316,7 @@ made in the future.
 \section{Method}\label{sec:mthd}
 \subsection{Simplifications to the full RT problem}\label{sec:rteq}
 Before describing \acro{}, we will first define the simplified version of the 
-classical RT equation the method solves. Since \acro{} is an instantaneous 
+classical RT equation that the method solves. Since \acro{} is an instantaneous 
 method, $c$ is set to infinity eliminating the partial time derivative in 
 Equation~\ref{eqn:classicrt} leaving us with the instantaneous RT equation:
 \begin{equation} \label{infcrt}
@@ -417,15 +387,14 @@ The intensity due to a single source is,
 \label{eqn:simpint}
 I_i = \frac{L_i}{4\pi s_i^2} e^{-\tau_i}.
 \end{equation}
-Summing the intensity from all sources we can get the angle-averaged intensity. We 
-can use this averaged intensity directly in heating, chemistry and ionization 
-rate expressions. For many applications in astrophysics this is the primary 
-effect of the radiation field on local gas.
+By summing the intensity from all sources we can get the angle-averaged 
+intensity. We can use this averaged intensity directly in heating, chemistry 
+and ionization rate expressions. For many applications in astrophysics this is 
+the primary effect of the radiation field on local gas.
 
 The first order moment of the intensity is the net radiation flux.  Higher 
 order moments such as the radiation pressure, $\mathbf{p}$, can be easily 
 obtained with simple summations.
-
 
 \subsection{Algorithm}\label{sec:algo}
 The \acro{} algorithm is based around a tree data structure which partitions 
@@ -438,14 +407,12 @@ methods the bucket is the smallest grid cell itself, so $N_B$ is effectively
 one. $N$ resolution elements hold radiation intensity values and represent the 
 radiation field \acro{} computes. 
 
-
-
-Note that although \acro{} has been initially implemented in the 
-SPH code \textsc{Gasoline} \citep{wadsleyEt17}, \acro{} is not specific to 
-SPH.  The method only requires that the 
-simulation volume be hierarchically partitioned in space and so it could be 
-used directly in an adaptive mesh refinement code.   In the case of grid codes,
-the algorithm is simplifed as the final SPH particle ray tracing step is not needed.
+Note that although \acro{} has been initially implemented in the SPH code 
+\textsc{Gasoline} \citep{wadsleyEt17}, \acro{} is not specific to SPH. The 
+method only requires that the simulation volume be hierarchically partitioned 
+in space and so it could be used directly in an adaptive mesh refinement code. 
+In the case of grid codes, the algorithm is simplified as the final SPH 
+particle ray tracing step is not needed.
  
 \begin{figure*}
 \includegraphics[width=1\linewidth]{Figures/algorithm.pdf}
@@ -536,7 +503,7 @@ We next consider ray tracing in the optically thick regime.
 In the presence of absorbing material along a ray, the optical depth needs to 
 be computed following
 Equation~\ref{eqn:tauint}. To solve this integral numerically, we traverse 
-the tree between the source and resolution element to build up the optical 
+the tree between the source and resolution element to sum the optical 
 depth. This requires that the tree partitions and fills space, thus all 
 the intervening material is contained in the tree we traverse. Making 
 use of properties computed during the tree build, we can compute the optical 
@@ -580,11 +547,11 @@ during the tree walk to accurately resolve the medium along the ray.
 \subsubsection{Adaptive Refinement}\label{sec:adref}
 
 \acro{} does not add a new refinement criterion for the simulation elements.
-Instead, for each ray \acro{} decides whether to use the full resolution available or
-if a set of ray segments intersecting lower resolution parent cells would be sufficient.
-In principle, the resolution elements themselves could be subdivided based
-on properties associated with radiative transfer for even higher resolution,
-but that is beyond the scope of the present work.
+Instead, for each ray \acro{} decides whether to use the full resolution 
+available or if a set of ray segments intersecting lower resolution parent 
+cells would be sufficient. In principle, the resolution elements themselves 
+could be subdivided based on properties associated with RT for even higher 
+resolution, but that is beyond the scope of the present work.
 
 Consider the right panel in Figure~\ref{fig:algorithm}. A dense blob of gas 
 to be resolved resides in the orange highlighted cell at $[(1,1),(2,2)]$. At 
@@ -630,14 +597,13 @@ for each cell.
 
 To use the cell-averaged absorption coefficient, $\alpha$, for a ray segment,
 we require that substructure within the cell cannot change the final flux
-beyond a specified tolerance.
-This is equivalent to showing that two rays through the cell,
-as in Figure~\ref{fig:refine}, give sufficiently similar results.
-Given $\alpha_{\rm min}$ and $\alpha_{\rm max}$ for that cell we can multiply
-by the ray segment length intersecting the cell, 
-$l$, to estimate the minimum, $\tau_{\rm min}$, and maximum, $\tau_{\rm max}$,
-possible optical depths that rays might experience.
-We can then test the following refinement criterion
+beyond a specified tolerance. This is equivalent to showing that two rays 
+intersecting the cell, as in Figure~\ref{fig:refine}, give sufficiently 
+similar results. Given $\alpha_{\rm min}$ and $\alpha_{\rm max}$ for that cell 
+we can multiply by the ray segment length intersecting the cell, $l$, to 
+estimate the minimum, $\tau_{\rm min}$, and maximum, $\tau_{\rm max}$, 
+possible optical depths that rays might experience. We can then test the 
+following refinement criterion
 \begin{equation}
 \label{eqn:refcrit}
 \tr < \tau_{\rm max} - \tau_{\rm min},
@@ -654,22 +620,22 @@ parameter for controlling error. Figure~\ref{fig:cellplot} in Section~\ref{spher
 is an example of 
 \acro{}'s adaptive refinement in action.
 
-For a particle code, if refinement is required at the bucket level, individual particles 
-within a bucket must be considered.  A straight forward ray tracing scheme 
-similar to SPHRay \citep{altayEt08} can be performed locally on bucket particles and 
-their neighbours.   This particle-particle step is $\bigO{\NK}$ as each particle element
-interacts with a fixed number of neighbour particles.
+For a particle code, if refinement is required at the bucket level, individual 
+particles within a bucket must be considered.  A straight forward ray tracing 
+scheme similar to SPHRay \citep{altayEt08} can be performed locally on bucket 
+particles and their neighbours. This particle-particle step is $\bigO{\NK}$ as 
+each particle element interacts with a fixed number of neighbour particles.
 
 Fully characterizing the computational cost of the algorithm, including the 
-addition of adaptive refinement, follows the procedure used earlier. 
-Now, however, instead of integrating the number of sources we integrate the 
-total number of ray segments computed. We will look at two cases, not refining 
-at all and fully refining down to the bucket level. This will give us upper 
-and lower bound for the algorithm's scaling.
+addition of adaptive refinement, follows the procedure used earlier. Now, 
+however, instead of integrating the number of sources we integrate the total 
+number of ray segments computed. We will look at two cases, not refining at 
+all and fully refining down to the bucket level. This will give us upper and 
+lower bound for the algorithm's scaling.
 
-First let's consider the case where the refinement criterion always triggers and 
-all rays are resolved down to the bucket level. The number of segments per ray 
-is then just the length of a ray divided by the size of a bucket. We can 
+First let's consider the case where the refinement criterion always triggers 
+and all rays are resolved down to the bucket level. The number of segments per 
+ray is then just the length of a ray divided by the size of a bucket. We can 
 express this as,
 \begin{equation}
 \label{eqn:nseg}
@@ -677,8 +643,8 @@ N_{\rm seg} = \frac{r}{R_B} = \frac{r}{R}\left(\frac{N}{N_B}\right)^\frac{1}{3}
 \end{equation}
 after substituting for $R_B$ using Equation~\ref{eqn:ratio}. Since $\NS$ is 
 also the number of rays computed, to get the total number of ray segments we
-multiply the integrand of 
-Equation~\ref{eqn:nsint} by the number of ray segments,
+multiply the integrand of Equation~\ref{eqn:nsint} by the number of ray 
+segments,
 \begin{equation}
 \label{eqn:nsegint}
 N_{\rm seg} = \int_{(N_B/N)^{1/3}}^R 
@@ -687,24 +653,24 @@ N_{\rm seg} = \int_{(N_B/N)^{1/3}}^R
 \sim (N/N_B)^\frac{1}{3}.
 \end{equation}
 The result is that the total cost of the algorithm scales as
-$\bigO{\NK N^{1/3}}$ in the worst case.
+$\bigO{\NK N^{1/3}}$ in the worst-case.
 
-In the case were the refinement criteria never triggers, the ray is split into 
+In the case where the refinement criteria never triggers, the ray is split into 
 segments made up of the cells traversed in the tree walk of the sub-tree going 
 from source to resolution element. The number of cells traversed in a tree walk
 is equal to the logarithm of the number of leaf nodes contained within the 
 sub-tree. The number of leaf nodes in the sub-tree is also given by 
-Equation~\ref{eqn:nseg}, so by taking the logarithm of Equation~\ref{eqn:nseg} 
-and we arrive at:
+Equation~\ref{eqn:nseg}, so by taking the logarithm of 
+Equation~\ref{eqn:nseg}, we arrive at:
 \begin{equation}
 \label{eqn:nseg2}
 N_{\rm seg} = \log_2\left[\frac{r}{R}\left(
 \frac{N}{N_B}\right)^\frac{1}{3}\right],
 \end{equation}
-where the logarithm is base two as \textsc{Gasoline} and thus \acro{} is 
-implemented using a binary tree. As before we multiply 
+where the logarithm is base two, as \textsc{Gasoline} and thus \acro{} is 
+implemented using a binary tree. As before, we multiply 
 Equation~\ref{eqn:nsint} by the number of ray segments and integrate the 
-following
+following:
 \begin{eqnarray}
 \label{eqn:nsegint2}
 N_{\rm seg} & = & \int_{(N_B/N)^{1/3}}^R 
@@ -713,20 +679,20 @@ N_{\rm seg} & = & \int_{(N_B/N)^{1/3}}^R
 \frac{N}{N_B}\right)^\frac{1}{3}\right] dr \nonumber\\
 & \sim & \log^2(128 N/N_B).
 \end{eqnarray}
-Thus, in the best case, the total cost of the algorithm scales 
+Thus, in the best-case, the total cost of the algorithm scales as  
 $\bigO{\NK \log^2N}$.
 
 \subsubsection{Background Radiation}
-In order to treat simulations properly we must account for the radiation 
+In order to treat simulations properly, we must account for the radiation 
 coming from the rest of the universe outside the simulation volume. Most 
 current codes apply a constant UV field to the entire box, essentially the 
 lowest order approximation possible. Some specialized codes like URCHIN 
 \citep{altayTheuns13} do a reverse ray trace to the edge of the box, from 
 where the background flux is assumed to originate. Others, such as TRAPHIC 
 \citep{pawlikSchaye08} allow their ray trace to be periodic.
-The cosmic UV radiation field 
-originates from very large distances on the order of 100's of Mpc.  So for smaller
-simulation boxes the radiation field may be too local.
+The cosmic UV radiation field originates from very large distances on the 
+order of 100's of Mpc. Thus, for smaller simulation boxes the radiation field 
+may be too local.
 
 Instead, we have implemented a method involving tracing ``background sources'' 
 similar to URCHIN. ``Background'' particles are distributed in a spiral 
@@ -734,7 +700,7 @@ pattern on the surface of a sphere at the very edge of the simulation volume
 and the number of sources can be varied 
 to match the required angular resolution of the background. Finding the flux 
 at the centre of a sphere of sources is a problem akin to Newton's Shell 
-Theorem. However, because the intensity does not cancel like force, the 
+Theorem. However, because the intensity does not cancel like force the 
 solution differs and is as follows:
 \begin{equation}
 \label{eqn:cosmof}
@@ -780,16 +746,14 @@ introduce \textsc{Gasoline} and the specifics of \acro{}'s implementation in
 computing hydrodynamics and self-gravity in astrophysics simulations. It 
 employs a spatial binary tree that is built by recursively bisecting the 
 longest axis of each cell. In the current version of \acro{}, a separate tree 
-is built for computing radiative transfer. For development this is a 
+is built for computing radiative transfer. For development purposes, this is a 
 convenient choice, but adds extra cost and in the future a single tree
 should be adopted, particularly as tree building becomes a significant cost
-with adaptive timestepping.
-A special requirement for the radiation tree
-is that it fills all space to correctly estimate absorption due to ray intersections.
-Both the gravity and hydrodynamics trees 
-squeeze cell bounds to the furthest
-extents of particles within the cell to optimize intersection tests which creates
-gaps between cells.
+with adaptive timestepping. A special requirement for the radiation tree is 
+that it fills all space to correctly estimate absorption due to ray 
+intersections. Both the gravity and hydrodynamics trees squeeze cell bounds to 
+the furthest extents of particles within the cell to optimize intersection 
+tests which creates gaps between cells.
 
 In the regular tree building phase, \textsc{Gasoline} assigns an ``opening 
 radius'' about a cell's centre of mass to each cell in the tree. This radius is
@@ -798,7 +762,7 @@ r_{\rm open} = \frac{2 B_{\rm max}}{\sqrt{3}\, \tO},
 \end{equation}
 where $B_{\rm max}$ is the  distance from the centre of mass of particles 
 within the cell to the furthest particle from the centre of mass. However, 
-since we are using space filling cells for the radiation tree it is necessary 
+since we are using space-filling cells for the radiation tree, it is necessary 
 to define $B_{\rm max}$ instead as the distance to the furthest vertex of the 
 cell.
 
@@ -808,14 +772,14 @@ cell volume,
 \begin{equation}
 \rho_{\rm cell} = \frac{\sum_i m_i}{V_{\rm cell}}.
 \end{equation}
-During testing at high levels of refinement, however, we found that the error 
+However, during testing at high levels of refinement we found that the error 
 began to increase slightly with increasing refinement accuracy beyond a 
 certain level. This was because when refining down to the bucket level often 
 enough, $N_{\rm B}=10$ was small enough to introduce Poisson noise in the 
-density estimate.  This propagated as errors
-in the computed radiation field, noticeable as noise in otherwise uniform 
-density distributions.  To remedy this for particle based methods, we compute a 
-cell density using particle SPH densities via 
+density estimate.  This propagated as errors in the computed radiation field, 
+noticeable as noise in otherwise uniform density distributions. To remedy this 
+for particle-based methods, we compute a cell density using particle SPH 
+densities via 
 \begin{equation}
 \rho_{\rm cell} = \frac{\sum_i m_i}{\sum_i{\frac{m_i}{\rho_i}}}.
 \end{equation}
@@ -830,9 +794,9 @@ Figure~\ref{fig:raytrace}).
 \caption{The ray tracing scheme employed is similar to that of 
 \protect\cite{altayEt08}. In this scheme, the photons are diminished by the 
 optical depth along each particle's density field. The receiving particle at 
-the termination of the ray does not block photons to itself. Otherwise, the front half 
-of the particle would diminish the incoming photons without actually having 
-absorbed them.} 
+the termination of the ray does not block photons to itself. Otherwise, the 
+front half of the particle would diminish the incoming photons without 
+actually having absorbed them.} 
 \label{fig:raytrace}
 \end{figure}
 Since the density field of an SPH particle varies with radius due to the 
@@ -849,8 +813,9 @@ to itself.
 To see why this must be the case, consider the case where a single particle is
 optically thick. If the front half of the particle contributed to absorption,
 the flux calculated at the centre would be effectively zero, and the particle 
-would incorrectly report no heating or ionization.  This is essential for correct
-ionization fronts such as in the \strom{} test of Section~\ref{stromgren}.
+would incorrectly report no heating or ionization.  This is essential for 
+correct ionization fronts such as in the \strom{} test of 
+Section~\ref{stromgren}.
 
 Scenarios can occur where two gas particles have portions of their smoothing 
 volume in front of each other. If the normal ray trace was performed, neither 
@@ -868,7 +833,7 @@ initial condition (IC) that is representative of a typical use case. For this
 we have created a novel IC comprised of a unit length glass cube of $N$ SPH gas and 
 $N$ star particles whose positions have been perturbed by 24 random sinusoidal 
 modes. The initial glass of particles is built from copies of the $16^3$ glass 
-used to create initial conditions for other tests of \textsc{Gasoline} 
+used to create ICs for other tests of \textsc{Gasoline} 
 \citep{wadsleyEt17}. The total mass of gas particles is one, and the opacity 
 of each particle is also one. This results in an optical depth across the 
 width of the box of $\sim$1, making the simulation volume marginally  optically thin 
@@ -901,22 +866,22 @@ with $\tr = 0.1$ and $N=64^3$ star and gas particles.
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/opening_angle.pdf}
 \caption{A plot of cost and accuracy as a function of opening angle. The 
-number of rays computed per resolution element is plotted on the blue, 
-left axis with square markers. The blue dashed line shows $N_{\rm rays}/N 
+number of rays computed per resolution element is plotted in blue, on the left 
+$y$-axis with square markers. The blue dashed line shows $N_{\rm rays}/N 
 = N$ at an opening angle of $\tO=0$, meaning \acro{} can perform an 
 $\bigO{N^2}$ ray trace if desired (omitting the cost of absorption). The RMS 
-error in flux relative to $\tO=0$ is plotted on the red, right axis with 
-circular markers.}
+error in flux relative to $\tO=0$ is plotted in red, on the right $y$-axis 
+with circular markers.}
 \label{fig:openangle}
 \end{figure}
 
 At $\tO=0.75$, the value used in all other tests and the 
 default value for $\tO$ in many gravity solvers, 200 rays are 
 computed per resolution element with an RMS fractional error of 3\%. To 
-achieve a RMS fractional error of about 1\%, we suggest a lower opening angle 
-of approximately $\tO=0.45$ should be used. $\tO=0.45$ costs only 500 rays per 
-resolution element, which is still much less than interacting with all $64^3$ 
-($2.6\e{5}$) sources.
+achieve a RMS fractional error of about 1\%, we suggest that a lower opening 
+angle of approximately $\tO=0.45$ should be used. $\tO=0.45$ costs only 500 
+rays per resolution element, which is still much less than interacting with 
+all $64^3$ ($2.6\e{5}$) sources.
 
 \subsubsection{Refinement Criteria}
 Testing the refinement criteria is similar to testing the opening angle 
@@ -935,23 +900,24 @@ the radiation field computed with $\tr=1\e{-8}$, the lowest $\tr$ tested.
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/refinement_criteria.pdf}
 \caption{Algorithmic cost and accuracy as a function of refinement criterion. 
-The number of ray segments computed per resolution element is plotted on the 
-blue, left axis with square markers. The RMS error in flux relative to $\tr
-=10^{-8}$ is plotted on the red, right axis with circular markers. Lines of 
-${\rm error} = \tr$ and ${\rm error} = \tr/10$ are plotted as red solid and dotted 
-lines respectively. The upper line represents maximum allowable error 
-\textit{per ray segment}. The RMS relative error roughly follows the lower 
-line, an order of magnitude less than $\tr$.}
+The number of ray segments computed per resolution element is plotted in blue, 
+on the left $y$-axis with square markers. The RMS error in flux relative to 
+$\tr=10^{-8}$ is plotted in red, on the right $y$-axis with circular markers. 
+Lines of ${\rm error} = \tr$ and ${\rm error} = \tr/10$ are plotted as red 
+solid and dotted lines respectively. The upper line represents maximum 
+allowable error \textit{per ray segment}. The RMS relative error roughly 
+follows the lower line, an order of magnitude less than $\tr$.}
 \label{fig:refcrit}
 \end{figure}
 
 At $\tr=0.1$, 1\% RMS fractional error is achieved with a cost of 
-approximately 850 ray segments computed per resolution element (including all rays), less than half 
-the cost of refining all the way to the bucket level. Note also that RMS 
-fractional error as a function of $\tr$ behaves predictably, lying below the 
-error = $\tr$ line and roughly following the error = $\tr/10$ line plotted in 
-Figure~\ref{fig:refcrit}. This shows that the error per ray segment is well
-controlled by our refinement criterion and considerably lower than $\tr$ on average.
+approximately 850 ray segments computed per resolution element (including all 
+rays), less than half the cost of refining all the way to the bucket level. 
+Note also that RMS fractional error as a function of $\tr$ behaves 
+predictably, lying below the error = $\tr$ line and roughly following the 
+error = $\tr/10$ line plotted in Figure~\ref{fig:refcrit}. This shows that the 
+error per ray segment is well controlled by our refinement criterion and 
+considerably lower than $\tr$ on average.
 
 The RMS fractional error plateaus at 2-3\% in this test. In this particular 
 implementation of \acro{}, the walk along the ray goes up from both the bucket 
@@ -980,7 +946,7 @@ scaling tests and $\times$ shaped markers denote strong scaling tests.}
 \end{figure}
 To test cost scaling as a function of $N$, we hold $\tO$ constant at 0.75 and
 vary $N$ between $32^3$ and $128^3$ in steps of $N_{\rm 1D} = 16$ for both gas 
-and star particles. To substantiate the best and worst case theoretical 
+and star particles. To substantiate the best and worst-case theoretical 
 scaling claims made in Equations~\ref{eqn:nsegint2} and~\ref{eqn:nsegint} 
 respectively, the sinusoidally perturbed glass IC was simulated with 
 $\tr=1\e 6$ to ensure refinement was never performed and with $\tr=0$ to 
@@ -990,7 +956,7 @@ Figure~\ref{fig:pscale} and correspond very closely to each other. Note that
 the only parameter used to fit the theoretical lines is a constant factor 
 multiplying Equations~\ref{eqn:nsegint} and~\ref{eqn:nsegint2}.
 
-Scaling behavior between the upper and lower limits was probed in two ways. 
+Scaling behaviour between the upper and lower limits was probed in two ways. 
 Firstly, simulations were run with $\tr$ values of 0.1 and 0.01. Secondly, 
 strong and weak scaling cases were simulated. The strong scaling case being 
 where the simulation volume was held constant and particle number increased. 
@@ -999,42 +965,41 @@ simulation. The weak scaling case is the opposite, in which the simulation
 volume is increased and particle density is held constant. This is analogous 
 to simulating larger and larger cosmological boxes to achieve larger 
 statistical samples. Note that the previously described tests of the upper and 
-lower scaling bounds were run as strong scaling tests only.
+lower scaling bounds were only run as strong scaling tests only.
 
 Data from these tests was plotted in Figure~\ref{fig:pscale}. 
 There are two interesting things to note: first, the strong scaling case, 
-which is typically the harder case to scale effectively in other respects (e.g. parallelism),
-scales better than 
-the weak scaling case.  The strong scaling data is closer to
-$N\log^2{N}$ and costs less than the weak scaling case for the same $N$. This is 
-because the larger boxes in the weak scaling case have larger total
-optical depths and thus require more ray segments to achieve the same flux accuracy.
+which is typically the harder case to scale effectively in other respects 
+(e.g. parallelism), scales better than the weak scaling case. The strong 
+scaling data is closer to $N\log^2{N}$ and costs less than the weak scaling 
+case for the same $N$. This is because the larger boxes in the weak scaling 
+case have larger total optical depths and thus require more ray segments to 
+achieve the same flux accuracy.
 
 \subsection{Isothermal Spheres}\label{spheretest}
 \subsubsection{Initial Conditions}
 The sinusoidally perturbed glass IC tests a generally optically thin, smooth 
 density distribution. This is a good proxy for many astrophysical cases of 
-interest, such as late stage galaxy evolution.  We now show how well \acro{}'s 
-refinement criteria can handle compact, optically thick features.   We created 
+interest, such as late stage galaxy evolution. We now show how well \acro{}'s 
+refinement criteria can handle compact, optically thick features. We created 
 an IC featuring a single radiation source positioned in the top left corner 
-and four spheres with $1/r^2$ density profiles (mimicking self-gravitating dense objects)
-embedded in a uniform region of opacity and density, both equal to one.
-The four isothermal spheres have a 
-density distribution given by
+and four spheres with $1/r^2$ density profiles (mimicking self-gravitating 
+dense objects) embedded in a uniform region of opacity and density, both equal 
+to one. The four isothermal spheres have a density distribution given by
 \begin{equation}
 \rho(r) = \frac{\rho_0 \epsilon^2}{r^2 + \epsilon^2},
 \end{equation}
 where the softening length is $\epsilon=0.002$ and the central density, 
-$\rho_0=626$.  The IC was made starting with a uniform density glass of fixed mass particles.
-SPH gas particles were added inside the sphere radii.
-To do this the uniform glass was duplicated and associated with negative radii for a given sphere.
-A mapping from this initial space (including both negative and positive radii) to positive
-radii in the final space was calculated analytically
-that gave the desired isothermal density profile for that sphere
-while maintaining a glass-like distribution.
-Any duplicated particles that did not map to positive radii were then deleted.
-This technique is able to embed arbitrariy large non-linear density
-perturbations in any uniform density glass.
+$\rho_0=626$. The IC was made starting with a uniform density glass of fixed 
+mass particles. SPH gas particles were added inside the sphere radii. To do 
+this the uniform glass was duplicated and associated with negative radii for a 
+given sphere. A mapping from this initial space (including both negative and 
+positive radii) to positive radii in the final space was calculated 
+analytically that gave the desired isothermal density profile for that sphere
+while maintaining a glass-like distribution. Any duplicated particles that did 
+not map to positive radii were then deleted. This technique is able to embed 
+arbitrarily large non-linear density perturbations in any uniform density 
+glass.
 
 The chosen parameters set the maximum optical depth through a sphere to 
 $\tau_{\rm max}=4$ (a 98\% reduction in flux) and the density at the edge of 
@@ -1047,10 +1012,11 @@ grey circles in Figure~\ref{fig:cellplot}.
 resolving isothermal spheres in a uniform environment. Particles in a slice 
 along the $z$-plane of the isothermal spheres IC are coloured by the logarithm 
 of their flux value (high - low flux, red - purple). The red line represents 
-the ray traced from radiation source (black star) to the receiving cell. Black 
-rectangles represent the spatial boundary of the tree cells used compute the 
-optical depth of the intersecting ray segment. Right: A zoom in of the sphere 
-intersected by the ray to focus on the refinement across the sphere itself.}
+the ray traced from the radiation source (black star) to the receiving cell. 
+Black rectangles represent the spatial boundary of the tree cells used compute 
+the optical depth of the intersecting ray segment. Right: A zoom-in of the 
+sphere intersected by the ray to focus on the refinement across the sphere 
+itself.}
 \label{fig:cellplot}
 \end{figure*}
 The spheres are centred on the $x$ and $z$ axis with $y$ coordinates given by
@@ -1075,25 +1041,25 @@ performance in the optically thick regime.
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/isothermal_spheres.pdf}
 \caption{A plot of cost and accuracy as a function of refinement criterion. 
-The number of ray segments computed per resolution element is plotted on the 
-blue, left axis with square markers. The RMS error in flux relative to $\tr
-=10^{-8}$ is plotted on the red, right axis with circular markers. Lines of 
-${\rm error} = \tr$ and ${\rm error} = \tr/10$ are plotted as red solid and dotted 
-lines respectively. Solid circular markers represent RMS relative errors 
-computed on all resolution elements and empty markers represent only the 
-resolution elements that fall in the shadow of the isothermal spheres. The 
-in-shadow errors are larger for looser refinement criteria,
-continuing to follow the ${\rm error} = \tr$ line.} 
+The number of ray segments computed per resolution element is plotted in blue, 
+on the left $y$-axis with square markers. The RMS error in flux relative to 
+$\tr=10^{-8}$ is plotted in red, on the right $y$-axis with circular markers. 
+Lines of ${\rm error} = \tr$ and ${\rm error} = \tr/10$ are plotted as red 
+solid and dotted lines respectively. Solid circular markers represent RMS 
+relative errors computed on all resolution elements and empty markers 
+represent only the resolution elements that fall in shadow. The in-shadow 
+errors are larger for looser refinement criteria, continuing to follow the 
+${\rm error} = \tr$ line.} 
 \label{fig:isosph}
 \end{figure}
 As before, $\tr=0.1$ achieves an overall RMS fractional error of 1\% with very 
 little cost. However, when restricting focus only to those particles in 
-shadow, the same refinement criterion produces almost an order of magnitude 
-more error at about 8\%. Decreasing the refinement parameter by an order of 
-magnitude to $\tr=0.01$ predictably decreases the RMS fractional error on 
-particles in the shadows to 1\%, with a negligible increase in the cost from 
-that at $\tr=0.1$ as most of the volume is fairly optically thin and does
-not need to be refined in either case.
+shadow, the same refinement parameter produces errors higher by and order of 
+magnitude ($\sim$8\%) almost an order of magnitude. Decreasing the refinement 
+parameter by an order of magnitude to $\tr=0.01$ predictably decreases the RMS 
+fractional error on particles in shadow to 1\%, with a negligible 
+increase in the cost from that at $\tr=0.1$ as most of the volume is fairly 
+optically thin and does not need to be refined in either case.
 
 The $\rm{error}=\tr$ and $\rm{error}=\tr/10$ lines are again plotted in 
 Figure~\ref{fig:isosph}. For the most part the RMS fractional error is 
@@ -1103,39 +1069,38 @@ $\tr=1\e{-4}$ sitting marginally above the $\rm{error}=\tr$ line. The error
 bound represented by Equation~\ref{eqn:reffrac} is tighter for this test, with 
 the overall error closer to $\tr$.
 
-The isothermal spheres test is an especially difficult test as there 
-is only one source, and the errors are more systematic and thus less likely
-to cancel the way random errors might, particulary with many sources.
-In most cases we expect the net errors for \acro{} should perform better than the bound
-given by Equation~\ref{eqn:reffrac}.
+The isothermal spheres test is an especially difficult test as there is only 
+one source, and the errors are more systematic. Thus, the errors are less 
+likely to cancel the way random errors might, particularly with many sources. 
+In most cases we expect that the net errors for \acro{} should perform better 
+than the bound given by Equation~\ref{eqn:reffrac}.
 
 The isothermal spheres test is useful as it is representative of structure
 commonly found in astrophysics and because it has an analytic solution. 
 However, in SPH it is difficult to represent sharp density gradients with 
-discrete resolution elements. This causes in-shadow particle flux errors relative 
-to the analytic solution to be up to an order of magnitude higher than 
-the errors relative to the $\tr = 10^{-8}$ simulation plotted in 
+discrete resolution elements. This causes in-shadow particle flux errors 
+relative to the analytic solution to be up to an order of magnitude higher 
+than the errors relative to the $\tr = 10^{-8}$ simulation plotted in 
 Figure~\ref{fig:isosph}. These errors are associated with the discrete 
-representation
-of the density profile rather than the radiative transfer method.
+representation of the density profile rather than the radiative transfer 
+method.
 
 \subsection{\strom{} Sphere Test} \label{stromgren}
 \subsubsection{\strom{} Sphere Theory}
 The \strom{} sphere is a theoretical ionized sphere of gas first discussed by 
 Bengt \strom{} in 1938 \citep{stromgren39} as a model of the HII region around 
-a hot, young star. The theoretical initial conditions consist of a uniform 
+a hot, young star. The theoretical ICs consist of a uniform 
 density cloud of neutral hydrogen gas with an ionizing source of radiation at 
 its centre. As photons from the source ionize the hydrogen, the optical depth 
 of the gas decreases and so the ionizing photons are able to travel further 
 and further from the source creating a moving ionization front.  Eventually,
-a radius is reached such that the total ionization 
-rate equals the recombination rate.  At this point, the front reaches an 
-equilibrium, creating a stable sphere of ionized hydrogen. The \strom{} sphere 
-test has become a common code test in RT methods papers \citep{pawlikSchaye08,
-pawlikSchaye11, petkovaSpringel11} and comparison papers \citep{ilievEt06, 
-ilievEt09}, as it it is a simple test of a method's ability to resolve 
-ionization fronts and achieve equilibrium behaviour that may be compared with 
-analytic results.
+a radius is reached such that the total ionization rate equals the 
+recombination rate.  At this point, the front reaches an equilibrium, creating 
+a stable sphere of ionized hydrogen. The \strom{} sphere test has become a 
+common code test in RT methods papers \citep{pawlikSchaye08, pawlikSchaye11, 
+petkovaSpringel11} and comparison papers \citep{ilievEt06, ilievEt09}, as it 
+is a simple test of a method's ability to resolve ionization fronts and 
+achieve equilibrium behaviour that may be compared with analytic results.
 
 The equilibrium radius or \strom{} radius, $R_S$, is the radius at which the 
 ionization and recombination rates are equal \citep[e.g.][]{tielens05},
@@ -1151,9 +1116,9 @@ R(t) = R_S\left[1-\exp\left(t/t_{\rm rec}\right)\right]^{1/3}
 \end{equation}
 where $t_{\rm rec = 1/{n_H \alpha}}$ is the recombination time of the 
 gas. The above derivation assumes a ``sharp'' ionization front, meaning the 
-transition from ionized to neutral hydrogen occurs across an infinitesimally thin 
-region. In practice, the transition region is small compared to the size of 
-the ionized region, but there is structure interior to the \strom{} radius 
+transition from ionized to neutral hydrogen occurs across an infinitesimally 
+thin region. In practice, the transition region is small compared to the size 
+of the ionized region, but there is structure interior to the \strom{} radius 
 that is not accounted for by simply solving for the equilibrium radius. In 
 order to solve for the non-sharp ionization front we must consider the 
 hydrogen ionization equation
@@ -1172,7 +1137,7 @@ for the relative abundance of HI and HII as a function of radius and as a
 function of time \citep{osterbrockFerland2006}. In the following tests, we 
 include both the theoretical sharp front solution and non-sharp front 
 solutions from the \cite{ilievEt06} comparison paper to compare to our 
-results. We also attempt to duplicate the initial conditions of 
+results. We also attempt to duplicate the ICs of 
 \cite{ilievEt06} as closely as possible.
 
 \subsubsection{The Isothermal \strom{} Sphere}
@@ -1195,14 +1160,13 @@ isothermal \strom{} sphere.}
 \end{figure}
 In the simplest case, the ionizing source is assumed to emit monochromatic 
 photons at 13.6 eV and the gas is held at fixed temperature of $T=10^4$ K.
-We refer to this case as the isothermal \strom{} sphere.  The medium is initially 
-neutral with a uniform density of $n_{\rm HI} = 
-10^{-3}$ $\rm cm^{-3}$. We use an 
-ionization cross-section of $\sigma = 6.3 \times 10^{-18}$ $\rm cm^{-2}$ and a 
-recombination rate of $\alpha = 2.59 \times 10^{-13}$ $\rm cm^{-3}$ $\rm 
-s^{-1}$, typical of $10^4$ K gas.
-An ionizing source is turned on at $t=0$ and emits at 
-a rate of $\dot{N}_\gamma = 5 \times 10^{48}$ photons $s^{-1}$.  These values yield a \strom{} radius of 
+We refer to this case as the isothermal \strom{} sphere.  The medium is 
+initially neutral with a uniform density of $n_{\rm HI} = 10^{-3}$ 
+$\rm cm^{-3}$. We use an ionization cross-section of $\sigma = 6.3 \times 
+10^{-18}$ $\rm cm^{-2}$ and a recombination rate of $\alpha = 2.59 \times 
+10^{-13}$ $\rm cm^{-3}$ $\rm s^{-1}$, typical of $10^4$ K gas. An ionizing 
+source is turned on at $t=0$ and emits at a rate of $\dot{N}_\gamma = 5 
+\times 10^{48}$ photons $s^{-1}$.  These values yield a \strom{} radius of 
 $R_S = 5.38$ kpc and a recombination time of $t_{\rm rec} \approx  125$ Myr. 
 
 We note that \cite{ilievEt06} use a 6.6 kpc cube which only contains a single
@@ -1225,27 +1189,27 @@ Figure~\ref{fig:stromslice} is a slice through the $z$-plane of the
 simulation. The colour map shows the neutral fraction. The contour 
 levels and colour map have been chosen to closely mimic Figure~6 in both 
 \cite{pawlikSchaye08} and \cite{pawlikSchaye11}. We have done this to 
-highlight a key benefit ray tracing codes such as \acro{} have over photon 
-packet propagation methods such as TRAPHIC: isotropy. At the same $N=64^3$ 
-particle resolution \acro{} is more isotropically symmetric than TRAPHIC, even 
-with their use of monte-carlo resampling. Furthermore, \acro{} outperforms 
-TRAPHIC in this aspect even at early times (top panels in 
+highlight a key benefit that ray tracing codes such as \acro{} have over 
+photon packet propagation methods such as TRAPHIC: isotropy. At the same 
+$N=64^3$ particle resolution \acro{} is more isotropically symmetric than 
+TRAPHIC, even with their use of Monte-Carlo re-sampling. Furthermore, \acro{} 
+outperforms TRAPHIC in this aspect even at early times (top panels in 
 Figure~\ref{fig:stromslice}). Here the interior of the sphere is represented 
 by 3.3 times fewer particles than the late time \strom{} spheres plotted in 
 the TRAPHIC papers.
 
 \begin{figure*}
 \includegraphics[width=0.95\linewidth]{Figures/strom_iso_fraction.pdf}
-\caption{Spherically averaged neutral, $\rm x$, and ionized, $\rm 1-x$, 
-fraction profiles for the isothermal \strom{} sphere test during the fast 
-expansion (left) and equilibrium (right) stages. Radius on the $x$-axis is 
-normalised by a box length of 6.6 kpc for comparison with plotted solutions 
-from the \protect\cite{ilievEt06} comparison paper.}
+\caption{Spherically averaged neutral and ionized fraction 
+($\rm x$ and $\rm 1-x$) profiles for the isothermal \strom{} sphere test 
+during the fast expansion (left) and equilibrium (right) stages. Radius on the 
+$x$-axis is normalised by a box length of 6.6 kpc for comparison with plotted 
+solutions from the \protect\cite{ilievEt06} comparison paper.}
 \label{fig:stromiso}
 \end{figure*}
 Figure~\ref{fig:stromiso} is a plot of neutral/ionization fraction as a 
-function radius from the \strom{} sphere centre. The sharp \strom{} radius is 
-plotted as well as non-sharp solutions from all codes presented in Figure~8 
+function of radius from the \strom{} sphere centre. The sharp \strom{} radius 
+is plotted as well as non-sharp solutions from all codes presented in Figure~8 
 of \cite{ilievEt06}. \acro{} tends to over-ionize at lower resolutions, but 
 recreates the ionization profile quite well overall. At 30 Myr we converge 
 with resolution to the sharp solution. At 500 Myr we converge to the non-sharp 
@@ -1277,9 +1241,10 @@ match \cite{petkovaSpringel09}.
 
 \begin{figure*}
 \includegraphics[width=0.95\linewidth]{Figures/strom_fraction.pdf}
-\caption{Spherically averaged neutral, $\rm x$, and ionized, $\rm 1-x$, 
-fraction profiles for the non-isothermal \strom{} sphere test during the fast 
-expansion (left), slowing down (middle) and equilibrium (right) stages.}
+\caption{Spherically averaged neutral and ionized fraction 
+($\rm x$ and $\rm 1-x$) profiles for the non-isothermal \strom{} sphere test 
+during the fast expansion (left), slowing down (middle) and equilibrium 
+(right) stages.}
 \label{fig:stromtherm}
 \end{figure*}
 \begin{figure*}
@@ -1303,19 +1268,20 @@ makes detailed comparisons difficult.
 
 \section{Discussion And Conclusions}\label{sec:disc}
 In this paper we have presented \acro{}, a practical and efficient, general 
-purpose algorithm for computing radiative transfer in astrophysics 
-simulations. For a RT method to be these things it must remain efficient with 
-large numbers of resolution elements and radiation sources, compute the 
-radiation field to a desired level of accuracy and handle density and opacity 
-distributions representing the optically thick, thin and intermediate regimes.
+purpose algorithm for computing RT in astrophysics simulations. For a RT 
+method to be these things it must remain efficient with large numbers of 
+resolution elements and radiation sources, compute the radiation field to a 
+desired level of accuracy and handle density and opacity distributions 
+representing the optically thick, thin and intermediate regimes.
 
 \acro{}'s ability to scale feasibly with $N$ and $\NS$ is achieved by reducing 
-all three of the cost multipliers of an $\bigO{\NK \NS N^{1/3}}$ naive ray trace:
+all three of the cost multipliers of an $\bigO{\NK \NS N^{1/3}}$ naive ray 
+trace:
 \begin{enumerate}
 \item Reverse ray tracing allows for the use of adaptive timesteps. The 
-initial dependence on $\NK \sim N$ resolution elements is reduced to just the active 
-radiation sinks. $\NK$ is effectively hundreds of times smaller than $N$ when averaged
-over a large number of substeps.  
+initial dependence on $\NK \sim N$ resolution elements is reduced to just the 
+active radiation sinks. $\NK$ is effectively hundreds of times smaller than 
+$N$ when averaged over a large number of substeps.  
 \item Source merging based on an opening angle criteria reduces the linear 
 dependence on $\NS$ to $\log\NS$.
 \item By adaptively reducing the resolution of rays via \acro{}'s novel 
@@ -1324,27 +1290,27 @@ ray can be reduced, while maintaining a specified level of accuracy, to
 $\log N$.  
 \end{enumerate}
 
-In Section~\ref{sec:algo} we theoretically 
-predicted \acro{}'s $\bigO{\NK \log\NS \log N}$ scaling behaviour. In the 
-general case, represented by the perturbed glass test case with 
-accuracy parameters of $\tr=0.1$ and $\tO=0.75$ (Figures~\ref{fig:openangle}, 
-\ref{fig:refcrit} and~\ref{fig:pscale}), we have shown that \acro{} can
-indeed scale as predicted whilst achieving $\sim 1\%$ accuracy.  We also note that
-better than $\log N$ scaling (i.e. closer to $\bigO{\NK \log\NS}$)
-could be achieved for a medium with low optical
-depths via a more aggressive, top-down ray walk with our refinement criterion.
+In Section~\ref{sec:algo} we theoretically predicted \acro{}'s 
+$\bigO{\NK \log\NS \log N}$ scaling behaviour. In the general case, 
+represented by the perturbed glass test case with accuracy parameters of 
+$\tr=0.1$ and $\tO=0.75$ (Figures~\ref{fig:openangle}, \ref{fig:refcrit} 
+and~\ref{fig:pscale}), we have shown that \acro{} can indeed scale as 
+predicted whilst achieving $\sim 1\%$ accuracy. We also note that better than 
+$\bigO{\NK\log\NS\log N}$ scaling (i.e. closer to $\bigO{\NK \log\NS}$) could 
+be achieved for a medium with low optical depths via a more aggressive, 
+top-down ray walk with our refinement criterion. 
 
-The only general ray-tracing code we are aware with similar scaling is TREERAY \citep{HaidEt18}.  TREERAY
-does not use an adaptivity criterion and has a fixed number of rays.
-This rather rigid approach has a benefit which is that the source and absorption walks can
-be combined to given an overall $\bigO{N log N}$ scaling, albeit without error controls and
-limited directional accuracy (e.g. for shadowing).
-TREERAY, as currently implemented in FLASH, uses a global timestep and is thus unable to take
-advantage of the large speed-ups reverse raytracing can achieve via adapative timestepping.
+The only general ray-tracing code we are aware of with similar scaling is 
+TREERAY \citep{HaidEt18}. TREERAY does not use an adaptivity criterion and has 
+a fixed number of rays. This rather rigid approach has a benefit which is that 
+the source and absorption walks can be combined to given an overall 
+$\bigO{N log N}$ scaling, albeit without error controls and limited 
+directional accuracy (e.g. for shadowing). TREERAY, as currently implemented 
+in FLASH, uses a global timestep and is thus unable to take advantage of the 
+large speed-ups reverse ray tracing can achieve via adapative timestepping.
 However, this is not a limitation intrinsic to the TREERAY method itself.   
 
-In plots of 
-accuracy as a function of $\tr$ (Figures~\ref{fig:refcrit} 
+In plots of accuracy as a function of $\tr$ (Figures~\ref{fig:refcrit} 
 and~\ref{fig:isosph}) we have also shown that \acro{}'s refinement criteria 
 provides a predictable bound on accuracy in both the optically thick and thin 
 regimes, as we found the RMS relative error is $\propto \tr$ and the RMS 
@@ -1360,26 +1326,26 @@ benefits compared with evolutionary methods as is apparent in the \strom{}
 sphere test (Figure~\ref{fig:stromslice}).
 
 In the version of \acro{} as currently implemented, there are still some 
-problems not easily handled. First, in any completely optically thick 
-medium where high accuracy is required our method will result in worst 
-case scaling of $\bigO{\NK\,N^{1/3}}$ (characterized in Section~\ref{sec:adref}). 
-At face value this limits \acro{} to solving only post-reionization cosmology or similar problems
-that are largely optically thin.
-However, in optically thick media most sources contribute nothing to the local radiation field. 
-In such cases \acro{} could easily terminate ray traces that are found 
-(e.g. early in the optical depth sum when $\tau$ exceeds a threshold)
-or predicted (based on information from prior 
-timesteps) to contribute little to no intensity to the final radiation field. These 
-types of optimizations could also improve the weak scaling case.
+problems not easily handled. First, in any completely optically thick medium 
+where high accuracy is required our method will result in worst case scaling 
+of $\bigO{\NK\,N^{1/3}}$ (characterized in Section~\ref{sec:adref}). At face 
+value this limits \acro{} to solving only post-reionization cosmology or 
+similar problems that are largely optically thin. However, in optically thick 
+media most sources contribute nothing to the local radiation field. In such 
+cases \acro{} could easily terminate ray traces that are found (e.g. early in 
+the optical depth sum when $\tau$ exceeds a threshold) or predicted (based on 
+information from prior timesteps) to contribute little to no intensity to the 
+final radiation field. These types of optimizations could also improve the 
+weak scaling case.
 
-A second problem is periodicity.  Our method of a sphere of background sources providing 
-a constant central background flux is adequate for isolated objects, but in 
-the context of large cosmological boxes, such as reionization calculations,
-periodic boundaries are required.  In such contexts, light travel times
-and redshifting are also potentially important.  Such factors could be included in principle
-and this is a potential direction for future work.
+A second problem is periodicity. Our method of a sphere of background sources 
+providing a constant central background flux is adequate for isolated objects, 
+but in the context of large cosmological boxes, such as reionization 
+calculations, periodic boundaries are required. In such contexts, light travel 
+times and redshifting are also potentially important. Such factors could be 
+included in principle and this is a potential direction for future work.
 
-Finally, there is the issue of \textit{complex sources}. 
+Finally, there is the important issue of \textit{complex sources}. 
 Consider a group of sources that meet the opening criteria and are merged, 
 but are also contained within a region that has clumpy, opaque structures. 
 Depending on the location of the merged centre of luminosity relative to the 
@@ -1387,33 +1353,31 @@ opaque clumps, the amount of radiation that escaped the merged source cell
 could vary significantly from that computed by the current algorithm.
 Such cases would require that the opening criterion take the effect of
 nearby absorbers into account, pontentially using the information regarding
-the variance in $\alpha$ already recorded for each cells.   Such extended opening
+the variance in $\alpha$ already recorded for each cells. Such extended opening
 and refinement criterion are the subject of ongoing investigations.
 
-In addition to the above, future work could also include
-implementing scattering.  The process of 
-scattering can be recast as an absorption, followed by an immediate re-emission 
-of photons.  Thanks to the $\log(\NS)$ scaling with radiation sources, this 
-process can be implemented by considering resolution elements (SPH gas 
-particles in our case) as sources of radiation without changing the scaling of 
-the method.
+In addition to the above, future work could also include implementing 
+scattering.  The process of scattering can be recast as an absorption, 
+followed by an immediate re-emission of photons. Thanks to the $\log(\NS)$ 
+scaling with radiation sources, this process can be implemented by considering 
+resolution elements (SPH gas particles in our case) as sources of radiation 
+without changing the scaling of the method.
 
-A consequence of assuming an infinite speed of light is that 
-radiation sinks will not see light as it was when emitted in the past but as the source appears
-at the current time.  This is easy to 
-remedy, as we have both the age of the source as well as the distance 
-travelled by the photons. We can then \textit{age} the radiation sources with 
-respect to the receiving resolution element, such that the received photons 
-are representative of the luminous source as it was.
+A consequence of assuming an infinite speed of light is that radiation sinks 
+will not see light as it was when emitted in the past but as the source appears
+at the current time.  This is easy to remedy, as we have both the age of the 
+source as well as the distance travelled by the photons. We can then 
+\textit{age} the radiation sources with respect to the receiving resolution 
+element, such that the received photons are representative of the luminous 
+source as it was.
 
-Currently, \acro{} only 
-computes the radiation field in specific bands.  \acro{} can handle many bands 
-of radiation with a small constant multiplier added to the cost.  However, it 
-may be advantageous to evolve the spectral shape over distance using an opacity as
-a function of wavelength where the absorption is provided by a relatively simple
-or easily characterized set of species.
-This would also enable us to incorporate redshifting effects important 
-for the evolution of large boxes over cosmological time periods.
+Currently, \acro{} only computes the radiation field in specific bands. 
+\acro{} can handle many bands of radiation with a small constant multiplier 
+added to the cost.  However, it may be advantageous to evolve the spectral 
+shape over distance using an opacity asa function of wavelength where the 
+absorption is provided by a relatively simpleor easily characterized set of 
+species. This would also enable us to incorporate redshifting effects 
+important for the evolution of large boxes over cosmological time periods.
 
 %We would like to thank the referee for their helpful comments and suggestions.
 J. Wadsley and H. M. P. Couchman would like to acknowledge the support of 
@@ -1433,7 +1397,7 @@ NSERC.
 \section{Creating the Sinusoidally Perturbed Glass IC}
 \label{sec:icnd}
 To create our gently varying density distribution for the many source tests, 
-we modify positions of particles in a glass initial condition by adding the 
+we modify positions of particles in a glass IC by adding the 
 sum of 24 sinusoidal modes to the initial particle positions as in 
 Equation~\ref{eqn:manfft} below
 \begin{equation}\label{eqn:manfft}
@@ -1455,7 +1419,7 @@ to prevent the particles from occupying the same position in space.
 \begin{table}
 	\centering
 	\caption{Randomly generated $\vec{k}$ and $\phi$ values used in generating 
-             the sinusoidally perturbed glass initial condition.}
+             the sinusoidally perturbed glass IC.}
 	\label{tab:modes}
 	\begin{tabular}{llllllll} % four columns, alignment for each
 		\hline
