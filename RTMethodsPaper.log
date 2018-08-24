@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  15 AUG 2018 16:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  16 AUG 2018 10:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -967,25 +967,25 @@ Package pdftex.def Info: Figures/uvsn.pdf used on input line 111.
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 (Font)              scaled to size 9.0pt on input line 122.
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 124.
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 125.
 
-LaTeX Font Info:    No file TS1aer.fd. on input line 124.
+LaTeX Font Info:    No file TS1aer.fd. on input line 125.
 
 
 LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
 (Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `textcopyright' on input line 124.
+(Font)              for symbol `textcopyright' on input line 125.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
  <./Figures/uvsn.pdf>]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 9.0pt on input line 132.
+(Font)              scaled to size 9.0pt on input line 133.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 7.3pt on input line 132.
+(Font)              scaled to size 7.3pt on input line 133.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 5.5pt on input line 132.
+(Font)              scaled to size 5.5pt on input line 133.
 
 Underfull \vbox (badness 4913) has occurred while \output is active []
 
@@ -993,7 +993,7 @@ Underfull \vbox (badness 4913) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 253--263
+Underfull \hbox (badness 10000) in paragraph at lines 255--266
 []\T1/aer/m/n/9 Photon packet prop-a-ga-tion meth-ods, such as
  []
 
@@ -1152,15 +1152,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1462.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1464.
 
 [16
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1462.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1464.
  (./RTMethodsPaper.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1462.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1462.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1464.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1464.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1169,16 +1169,16 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1462.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1464.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 251 ({)
+### simple group (level 1) entered at line 253 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
  10051 strings out of 493029
  140475 string characters out of 6136235
- 244063 words of memory out of 5000000
+ 244130 words of memory out of 5000000
  13246 multiletter control sequences out of 15000+600000
  135434 words of font info for 312 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1221,7 +1221,7 @@ onts/type1/public/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/txfonts/txmia.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfon
 ts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RTMethodsPaper.pdf (16 pages, 2058539 bytes).
+Output written on RTMethodsPaper.pdf (16 pages, 2058356 bytes).
 PDF statistics:
  532 PDF objects out of 1000 (max. 8388607)
  425 compressed objects within 5 object streams

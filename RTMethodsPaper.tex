@@ -99,14 +99,14 @@ On galaxy scales, a central question is how feedback mechanisms affect star
 and galaxy formation. Stellar feedback comes in the form of photoionization by 
 ultraviolet (UV) radiation, stellar winds and supernovae 
 \citep{leithererEt99}, the latter of which has been a main focus in 
-simulations in previous years \citep[e.g.][]{agertzEt13}. It is important to note that 
-even though supernovae might be spectacularly powerful events, ionizing 
-radiative output from stellar populations contributes two orders of magnitude 
-more energy at early times and about 50 times more energy over the course of a 
-stellar population's lifetime. This is evident from Figure~\ref{fig:uvsn},
-which is a plot of the luminosity output per solar mass as a function of time 
-from a typical stellar population (computed using the stellar evolution code 
-Starburst99; \citealt{leithererEt99}).
+simulations in previous years \citep[e.g.][]{agertzEt13}. It is important to 
+note that even though supernovae might be spectacularly powerful events, 
+ionizing radiative output from stellar populations contributes two orders of 
+magnitude more energy at early times and about 50 times more energy over the 
+course of a stellar population's lifetime. This is evident from 
+Figure~\ref{fig:uvsn}, which is a plot of the luminosity output per solar mass 
+as a function of time from a typical stellar population (computed using the 
+stellar evolution code Starburst99; \citealt{leithererEt99}).
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/uvsn.pdf}
 \caption{Luminosity per solar mass as a function of time for a stellar 
@@ -115,15 +115,16 @@ population having a Chabrier initial mass function \citep{chabrier03}.}
 \end{figure}
 
 However, the way in which this massive output of UV radiation is deposited 
-and consequently effects the interstellar medium (ISM) is still unclear. 
+and consequently affects the interstellar medium (ISM) is still unclear. 
 Attempts at numerically exploring these effects without the use of a full 
 radiative transfer method have produced conflicting results. Simulations done
 by \cite{gritschnederEt09} and \cite{walchEt12} suggest that ionizing feed 
-back from large O-type stars before the first supernovae ($\sim 1-3\rm{Myr}$) have a significant effect on star formation rate. Whereas \cite{daleEt12} 
+back from large O-type stars before the first supernovae ($\sim 1-3\rm{Myr}$) 
+have a significant effect on star formation rate. Whereas \cite{daleEt12} 
 conclude the effects on star formation rate to be small.
 
-With this potential impact in mind, it may seem surprising that RT has been treated 
-poorly in most galaxy-scale astrophysical simulations, often as an 
+With this potential impact in mind, it may seem surprising that RT has been 
+treated poorly in most galaxy-scale astrophysical simulations, often as an 
 imposed uniform background. This is because RT is an intrinsically complex and 
 expensive problem. The complexity is immediately evident from the 
 full RT equation 
@@ -184,7 +185,8 @@ goes to zero. In this case the radiation field can be computed instantaneously
 as a geometric problem. Computational methods in this category include forward 
 ray tracers such as $\rm C^2Ray$ \citep{mellemaEt06a}, Moray 
 \citep{wiseAbel11} and Fervent \citep{baczynskiEt15} as well as reverse 
-raytracers such as TreeCol \citep{clarkEt12}, URCHIN \citep{altayTheuns13} and TREERAY \citep{HaidEt18}. 
+raytracers such as TreeCol \citep{clarkEt12}, URCHIN \citep{altayTheuns13} 
+and TREERAY \citep{HaidEt18}. 
 
 Instantaneous methods typically take the form of raytracers. Raytracers are 
 the most direct way to solve the RT problem. Forward raytracers 
@@ -204,25 +206,25 @@ overall scaling.  For example, a centrally located source requires $6\, N^{2/3}$
 rays to strike all elements in the outer faces of a cubical simulation volume, 
 each with a length $\bigO{N^{1/3}}$. Even with adaptive ray merging near the 
 source, at least $N$ ray segments are required to intersect each of the $N$ 
-resolution elements. In additon, raytracers such as Moray rely upon a 
+resolution elements. In addition, raytracers such as Moray rely upon a 
 Monte-Carlo approach to estimate the radiation field and thus require at least 
 10 rays to intersect each element, a constant but significant prefactor to the 
 overall cost. This scaling usually limits forward raytracers to problems with 
 few sources to avoid $\mathcal{O}(N^2)$-like scaling. 
 
 Recently there has been some focus on reverse ray tracing methods by
-\cite{clarkEt12}, \cite{altayTheuns13}, \cite{Woods2015} (applied in \citealt{KannanEt14}) and \cite{HaidEt18}.
-The first two methods listed are not 
-general, as they are designed to compute external radiation (e.g. from the 
+\cite{clarkEt12}, \cite{altayTheuns13}, \cite{Woods2015} (applied in 
+\citealt{KannanEt14}) and \cite{HaidEt18}. The first two methods listed are 
+not general, as they are designed to compute external radiation (e.g. from the 
 post-ionization UV background) rather than internal sources of radiation.
 The latter two methods are more general and can handle internal sources.
 
 The idea of reverse ray tracing introduces some advantages relative 
 to forward ray tracing.  Reverse raytracers trace all the rays that strike
 a specific resolution element before moving to the next element.
-Algorithmically, this is equivalent to tracing in reverse, from the sinks to the sources.
-This makes it easy to ensure that the source and absorber angular distributions
-are well sampled near the resolution element as opposed to 
+Algorithmically, this is equivalent to tracing in reverse, from the sinks to 
+the sources. This makes it easy to ensure that the source and absorber angular 
+distributions are well sampled near the resolution element as opposed to 
 forward ray tracing where one would have to increase the number of rays per 
 sink to guarantee this type of accuracy. Put simply, radiation is computed 
 exactly where it is needed.  This is especially advantageous in adaptive mesh 
@@ -231,15 +233,15 @@ simulations, as low density regions are represented by few resolution
 elements, and thus extra work is not done to resolve radiation in those 
 regions.
 
-A key benefit to reverse ray tracing is the potential for adaptive timesteps to dramatically 
-reduce the radiation work as only active resolution elements, $\NK$, need 
-to be traced to. This active subset can be a million times smaller than 
-$N$ in, for example, high-resolution cosmological simulations.
-Typical hydro and gravity codes achieve a factor of 100 speed-up by taking advantage of this
-so it is important the radiation has the same capability or radiation will overwhelm the computation.
-Thus a na\"ive reverse 
-ray trace still scales as $\bigO{\NK \NS N^{1/3}}$, with the presence of many 
-sources presenting the most significant computational barrier.
+A key benefit to reverse ray tracing is the potential for adaptive timesteps 
+to dramatically reduce the radiation work as only active resolution elements, 
+$\NK$, need to be traced to. This active subset can be a million times smaller 
+than $N$ in, for example, high-resolution cosmological simulations. Typical 
+hydro and gravity codes achieve a factor of 100 speed-up by taking advantage 
+of this so it is important the radiation code has the same capability or 
+radiation will overwhelm the computation. Thus a na\"ive reverse ray trace 
+still scales as $\bigO{\NK \NS N^{1/3}}$, with the presence of many sources 
+presenting the most significant computational barrier.
 
 Evolutionary methods are typically based on evolving moments of the radiation 
 field stored at each resolution element. They are insensitive to the number of 
@@ -259,66 +261,67 @@ but is quite expensive and degrades the initially sharp shadows: it is
 typically not used in production runs. TRAPHIC also adds virtual particles 
 (ViPs) to propagate their photon packets in less dense, optically thin regions 
 lacking in SPH particles. TRAPHIC scales linearly with resolution elements, as 
-mentioned before, multiplied by the number of packets per element (typically 32-64).
+mentioned before, multiplied by the number of packets per element (typically 
+32-64).
 
-A key limitation for evolutionary methods, whether they are moment or packet-tracing methods,
-is that the radiation field for every 
-element needs to be computed every timestep. In addition, the speed of light, 
-even when reduced, is substantially larger than the sound speed and thus many 
-radiation substeps are required compared to the hydro solver. Thus for photon 
-packet propagation methods every photon packet typically hops forward several 
-times for each hydro step even if most elements are not active.
-A key outcome is that moment methods cannot take
-advantage of adaptive timesteps to limit radiation work.  Another issue, specific
-to TRAPHIC, is that $N$ is significantly greater than the number of SPH 
-particles due to the addition of ViPs. These factors dramatically increase 
-the prefactor on the scaling.  Nonetheless, methods such as TRAPHIC 
-represent an effective approach for large simulations that can handle a variety 
-of regimes of optical depth.
+A key limitation for evolutionary methods, whether they are moment or 
+packet-tracing methods, is that the radiation field for every element needs to 
+be computed every timestep. In addition, the speed of light, even when 
+reduced, is substantially larger than the sound speed and thus many radiation 
+substeps are required compared to the hydro solver. Thus for photon packet 
+propagation methods every photon packet typically hops forward several times 
+for each hydro step even if most elements are not active. A key outcome is 
+that moment methods cannot take advantage of adaptive timesteps to limit 
+radiation work.  Another issue, specific to TRAPHIC, is that $N$ is 
+significantly greater than the number of SPH particles due to the addition of 
+ViPs. These factors dramatically increase the prefactor on the scaling.  
+Nonetheless, methods such as TRAPHIC represent an effective approach for large 
+simulations that can handle a variety of regimes of optical depth.
 
-Until now the poor scaling with source number, as $\bigO{\NS N}$,
-has severely limited the applicability and competitiveness
-of instantaneous ray-tracing relative to evolutionary methods such as TRAPHIC.
-Recently however, \cite{Woods2015} and \cite{HaidEt18} developed promising generalizations
-of reverse raytracing based on merging of sources that can handle large numbers of internal sources.
-The basic idea is to
-use a tree to combine distant sources and reduce the cost to $\bigO{N \log N}$.
-\cite{HaidEt18} implemented their TREERAY reverse raytracer in the FLASH AMR code \citep{FryxellEt2000}.
-They employ an Oct-tree, a fixed number of rays (48) per source and calculate absorption on
-the fly during the tree-walk.  The primary weakness of the \cite{Woods2015} and \cite{HaidEt18}
-methods is that they lower the resolution along rays in a preset manner.  This prevents
-them from maintaining the accuracy of the received flux at higher optical depths.
-Doing so requires an additional adaptivity criterion beyond the open angle used in tree codes.
+Until now the poor scaling with source number, as $\bigO{\NS N}$, has severely 
+limited the applicability and competitiveness of instantaneous ray-tracing 
+relative to evolutionary methods such as TRAPHIC. Recently however, 
+\cite{Woods2015} and \cite{HaidEt18} developed promising generalizations of 
+reverse raytracing based on merging of sources that can handle large numbers 
+of internal sources. The basic idea is to use a tree to combine distant 
+sources and reduce the cost to $\bigO{N \log N}$. \cite{HaidEt18} implemented 
+their TREERAY reverse raytracer in the FLASH AMR code \citep{FryxellEt2000}.
+They employ an Oct-tree, a fixed number of rays (48) per source and calculate 
+absorption on the fly during the tree-walk.  The primary weakness of the 
+\cite{Woods2015} and \cite{HaidEt18} methods is that they lower the resolution 
+along rays in a preset manner.  This prevents them from maintaining the 
+accuracy of the received flux at higher optical depths. Doing so requires an 
+additional adaptivity criterion beyond the open angle used in tree codes.
 This is the focus of the current work.
 
-In this paper we present \acro{} (Tree-based Reverse Ray Tracing),
-an $\bigO{N \log^2 N}$ adaptive reverse raytracer.  
-In Section~\ref{sec:mthd} we detail 
+In this paper we present \acro{} (Tree-based Reverse Ray Tracing), an $\bigO{N 
+\log^2 N}$ adaptive reverse raytracer. In Section~\ref{sec:mthd} we detail 
 the specific RT equations \acro{} solves (Subsection~\ref{sec:rteq}) and the 
-general \acro{} algorithm (Subsection~\ref{sec:algo}) including its adaptivity criteria.
-\acro{} is not specific
-to any one kind of code (e.g. Adaptive Mesh Refinement (AMR) vs. SPH).
-Here we provide details of 
-our implementation in the \textsc{Gasoline} SPH code (Subsection~\ref{sec:specs}).
-\acro{} was developed from the method of \cite{Woods2015} which was also 
-implemented in \textsc{Gasoline}.
-In Section~\ref{sec:tsts} we present a suite of tests demonstrating the 
-algorithm's ability to accurately compute fluxes, ionization fronts and 
-shadows in the optically thick and thin regimes. These tests also allow us to 
-explore how \acro{}'s adaptivity criteria controls error and affects 
-computational cost. The computational cost is bounded and characterized in the
-general case to substantiate the $\bigO{N \log^2 N}$ claim made earlier. 
-Finally, in Section~\ref{sec:disc} we discuss \acro{}'s strengths and 
-shortcomings and conclude how they enable and constrain the types of problems 
-\acro{} can handle, and discuss improvements that can be made in the future.
+general \acro{} algorithm (Subsection~\ref{sec:algo}) including its adaptivity 
+criteria. \acro{} is not specific to any one kind of code (e.g. Adaptive Mesh 
+Refinement (AMR) vs. SPH). Here we provide details of our implementation in 
+the \textsc{Gasoline} SPH code (Subsection~\ref{sec:specs}). \acro{} was 
+developed from the method of \cite{Woods2015} which was also implemented in 
+\textsc{Gasoline}. In Section~\ref{sec:tsts} we present a suite of tests 
+demonstrating the algorithm's ability to accurately compute fluxes, ionization 
+fronts and shadows in the optically thick and thin regimes. These tests also 
+allow us to explore how \acro{}'s adaptivity criteria controls error and 
+affects computational cost. The computational cost is bounded and 
+characterized in ent \acro{} (Tree-based Reverse Ray Tracinne could 
+potentially use a series expansion to approximate what the sum of 
+contributions 
+the general case to substantiate the $\bigO{N \log^2 N}$ 
+claim made earlier. Finally, in Section~\ref{sec:disc} we discuss \acro{}'s 
+strengths and shortcomings and conclude how they enable and constrain the 
+types of problems \acro{} can handle, and discuss improvements that can be 
+made in the future.
 
 \section{Method}\label{sec:mthd}
 \subsection{Simplifications to the full RT problem}\label{sec:rteq}
-Before describing \acro{}, we will first define the 
-simplified version of the classical RT equation the method solves. Since 
-\acro{} is an instantaneous method, $c$ is set to infinity eliminating the 
-partial time derivative in Equation~\ref{eqn:classicrt} leaving us with the 
-instantaneous RT equation:
+Before describing \acro{}, we will first define the simplified version of the 
+classical RT equation the method solves. Since \acro{} is an instantaneous 
+method, $c$ is set to infinity eliminating the partial time derivative in 
+Equation~\ref{eqn:classicrt} leaving us with the instantaneous RT equation:
 \begin{equation} \label{infcrt}
 \mathbf{n \cdot \nabla} I\left(\mathbf{x}, \mathbf{n}, t, 
 \nu\right) = \epsilon\left(\mathbf{x}, \mathbf{n}, t, \nu\right) - 
@@ -602,10 +605,10 @@ To use the cell-averaged absorption coefficient, $\alpha$, for a ray segment,
 we require that substructure within the cell cannot change the final flux
 beyond a specified tolerance.
 This is equivalent to showing that two rays through the cell,
-as in Figure~\ref{fig:refine}, give sufficently similar results.
+as in Figure~\ref{fig:refine}, give sufficiently similar results.
 Given $\alpha_{\rm min}$ and $\alpha_{\rm max}$ for that cell we can multiply
 by the ray segment length intersecting the cell, 
-$l$, to estimate the the minimum, $\tau_{\rm min}$, and maximum, $\tau_{\rm max}$,
+$l$, to estimate the minimum, $\tau_{\rm min}$, and maximum, $\tau_{\rm max}$,
 possible optical depths that rays might experience.
 We can then test the following refinement criterion
 \begin{equation}
@@ -751,11 +754,11 @@ computing hydrodynamics and self-gravity in astrophysics simulations. It
 employs a spatial binary tree that is built by recursively bisecting the 
 longest axis of each cell. In the current version of \acro{}, a separate tree 
 is built for computing radiative transfer. For development this is a 
-convenient choice, but adds extra cost and in the future a one tree
+convenient choice, but adds extra cost and in the future a single tree
 should be adopted, particularly as tree building becomes a significant cost
 with adaptive timestepping.
 A special requirement for the radiation tree
-is that it fill all space to correctly estimate absorption due to ray intersections.
+is that it fills all space to correctly estimate absorption due to ray intersections.
 Both the gravity and hydrodynamics trees 
 squeeze cell bounds to the furthest
 extents of particles within the cell to optimize intersection tests which creates
@@ -994,7 +997,7 @@ density distribution given by
 \begin{equation}
 \rho(r) = \frac{\rho_0 \epsilon^2}{r^2 + \epsilon^2},
 \end{equation}
-where the softening length, $\epsilon=0.002$ and the central density, 
+where the softening length is $\epsilon=0.002$ and the central density, 
 $\rho_0=626$.  The IC was made starting with a uniform density glass of fixed mass particles.
 SPH gas particles were added inside the sphere radii.
 To do this the uniform glass was duplicated and associated with negative radii for a given sphere.
@@ -1063,13 +1066,13 @@ more error at about 8\%. Decreasing the refinement parameter by an order of
 magnitude to $\tr=0.01$ predictably decreases the RMS fractional error on 
 particles in the shadows to 1\%, with a negligible increase in the cost from 
 that at $\tr=0.1$ as most of the volume is fairly optically thin and does
-not need to refine in either case.
+not need to be refined in either case.
 
 The $\rm{error}=\tr$ and $\rm{error}=\tr/10$ lines are again plotted in 
 Figure~\ref{fig:isosph}. For the most part the RMS fractional error is 
 contained between these lines, with only two of the in-shadow points at 
 $\tr=1\e{-5}$ and $1\e{-4}$,  and one of the all-particle points at  
-$\tr=1\e{-4}$ sitting marginally above the $\rm{RMS}=\tr$ line. The error 
+$\tr=1\e{-4}$ sitting marginally above the $\rm{error}=\tr$ line. The error 
 bound represented by Equation~\ref{eqn:reffrac} is tighter for this test, with 
 the overall error closer to $\tr$.
 
@@ -1322,10 +1325,12 @@ errors do not exceed $\tr$.
 
 This scaling enables \acro{} to reap the benefits inherent in instantaneous 
 ray tracing methods whilst still being practical and general.  For example,
-we can use any convenient timestep rather than being limited by the speed of light. Directional accuracy is another one of these benefits as is apparent in the sharp shadows cast in the isothermal spheres test (Figure~\ref{fig:cellplot}). 
-Low levels of noise and isotropy are also benefits compared with evolutionary 
-methods as is apparent in the \strom{} sphere test 
-(Figure~\ref{fig:stromslice}).
+we can use any convenient timestep rather than being limited by the speed of 
+light. Directional accuracy is another one of these benefits as is apparent in 
+the sharp shadows cast in the isothermal spheres test 
+(Figure~\ref{fig:cellplot}). Low levels of noise and isotropy are also 
+benefits compared with evolutionary methods as is apparent in the \strom{} 
+sphere test (Figure~\ref{fig:stromslice}).
 
 In the version of \acro{} as currently implemented, there are still some 
 problems not easily handled. First, in any completely optically thick 
