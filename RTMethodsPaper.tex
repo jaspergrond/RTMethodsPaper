@@ -54,7 +54,7 @@ Department of Physics and Astronomy, McMaster University, Hamilton, Ontario L8S
 
 % abstract of the paper %
 \begin{abstract}
-We present \acro{} (Tree-based Reverse Ray Tracing), a general algorithm for 
+We present \acro{} (Tree-based REVerse Ray Tracing), a general algorithm for 
 computing the radiation field, including absorption, in astrophysical 
 simulations. \acro{} is designed to handle large numbers of sources and 
 absorbers; it is based on a \emph{tree} data structure and is thus suited to 
@@ -86,7 +86,7 @@ radiative transfer -- methods: numerical
 Radiation, arguably, plays the determining role in the field of astrophysics. 
 Almost all of the information we receive from the cosmos comes in the form of 
 photons we detect on or around earth. Understanding the process of radiative 
-transfer (RT) is key in interpreting this information, as the photons are 
+transfer (RT) is required to interpret this information, as the photons are 
 affected by the media they travel through on their way to our telescopes and 
 detectors. Interactions between photons and these media not only affect the 
 photons themselves but the matter as well. Photons and baryons exchange energy 
@@ -98,7 +98,7 @@ astrophysical systems and processes we study.
 On galaxy scales, a central question is how feedback mechanisms affect star 
 and galaxy formation. Stellar feedback comes in the form of photoionization by 
 ultraviolet (UV) radiation, stellar winds and supernovae 
-\citep{leithererEt99}, the latter of which has been a main focus in 
+\citep[e.g.][]{leithererEt99}, the latter of which has been a main focus in 
 simulations in previous years \citep[e.g.][]{agertzEt13}. It is important to 
 note that even though supernovae might be spectacularly powerful events, 
 ionizing radiative output from stellar populations contributes two orders of 
@@ -126,9 +126,8 @@ conclude the effects on star formation rate to be small.
 With this potential impact in mind, it may seem surprising that RT has been 
 treated poorly in most galaxy-scale astrophysical simulations, often as an 
 imposed uniform background. This is because RT is an intrinsically complex and 
-expensive problem. The complexity is immediately evident from the 
-full RT equation 
-\citep[e.g.][]{mihalasMihalas84},
+computationally expensive problem. The complexity is immediately evident from 
+the full RT equation \citep[e.g.][]{mihalasMihalas84},
 \begin{eqnarray} \label{eqn:classicrt}
 \left[ \frac{1}{c} \frac{\partial}{\partial t} + \mathbf{n \cdot \nabla}
  \right] I\left(\mathbf{x}, \mathbf{n}, t, \nu\right) = \nonumber \\
@@ -172,7 +171,7 @@ $c$ in Equation~\ref{eqn:classicrt}.
 finite $c$, (which is often reduced from the true speed of light) and thus the 
 partial time derivative remains in Equation~\ref{eqn:classicrt}, and the 
 radiation field is advected or evolved thoughout the simulation. The 
-prototypical evolutionary method is flux-limited diffusion 
+prototypical evolutionary method is flux-limited diffusion (FLD) 
 \citep{levermorePomraning81}. Modern evolutionary methods include moment 
 methods like OTVET \citep{gnedinAbel01} and RAMSES-RT \citep{rosdahlEt13} as 
 well as photon packet propagation methods like TRAPHIC \citep{pawlikSchaye08}, 
@@ -228,10 +227,9 @@ distributions are well-sampled near the resolution element as opposed to
 forward ray tracing where one would have to increase the number of rays per 
 source to guarantee this type of accuracy. Put simply, radiation is computed 
 exactly where it is needed.  This is especially advantageous in adaptive mesh 
-and Lagrangian simulations such as smoothed particle hydrodynamics (SPH) 
-simulations, as low density regions are represented by few resolution 
-elements, and thus extra work is not done to resolve radiation in those 
-regions.
+and Lagrangian simulations such as smoothed particle hydrodynamics (SPH), as 
+low density regions are represented by few resolution elements, and thus extra 
+work is not done to resolve radiation in those regions.
 
 A key benefit to reverse ray tracing is the potential for adaptive timesteps 
 to dramatically reduce the radiation work as only active resolution elements, 
@@ -243,26 +241,26 @@ radiation will overwhelm the computation. Thus a na\"ive reverse ray trace
 still scales as $\bigO{\NK \NS N^{1/3}}$, with the presence of many sources 
 presenting the most significant computational barrier.
 
-Evolutionary methods are typically based on evolving moments of the radiation 
-field stored at each resolution element. They are insensitive to the number of 
-sources, and scale as $\mathcal{O}(N)$ with the number of resolution elements, 
-allowing them to handle large numbers of sources and scattering. Although 
-evolutionary methods can handle both optically thin and thick regimes, they 
-lose directional accuracy in intermediate regimes and suffer from poor 
-directional accuracy in general. This is immediately apparent in shadowing 
-tests ({e.g. Figure~16 in \citealt{rosdahlEt13}).
+In contrast, Evolutionary methods are typically based on evolving moments of 
+the radiation field stored at each resolution element. They are insensitive to 
+the number of sources, and scale as $\mathcal{O}(N)$ with the number of 
+resolution elements, allowing them to handle large numbers of sources and 
+scattering. Although evolutionary methods can handle both optically thin and 
+thick regimes, they lose directional accuracy in intermediate regimes and 
+suffer from poor directional accuracy in general. This is immediately apparent 
+in shadowing tests ({e.g. Figure~16 in \citealt{rosdahlEt13}).
 
 Photon packet propagation methods, such as TRAPHIC \citep{pawlikSchaye08}, 
 employ an evolutionary approach in which directional accuracy is easier to 
 control, in principle. However, the Monte-Carlo aspects of how photon packets 
 are propagated introduce significant Poisson noise into their computed 
 radiation field. Added Monte-Carlo re-sampling is shown to reduce this noise 
-but it is quite expensive and degrades the initially sharp shadows: it is 
-typically not used in production runs. TRAPHIC also adds virtual particles 
-(ViPs) to propagate their photon packets in less dense, optically thin regions 
-lacking in SPH particles. TRAPHIC scales linearly with resolution elements, as 
-mentioned before, multiplied by the number of packets per element (typically 
-32-64).
+but it is quite expensive and degrades the initially sharp shadows. For this 
+reason  it is typically not used in production runs. TRAPHIC also adds virtual 
+particles (ViPs) to propagate their photon packets in less dense, optically 
+thin regions lacking in SPH particles. TRAPHIC scales linearly with resolution 
+elements, as mentioned before, multiplied by the number of packets per element 
+(typically 32-64).
 
 A key limitation for evolutionary methods, whether they are moment or 
 packet-tracing methods, is that the radiation field for every element needs to 
@@ -341,7 +339,7 @@ We can then combine the path length and extinction coefficient to solve for
 intensity by integrating 
 \begin{equation}
 \label{eqn:dtau}
-d\tau = \kappa \rho ds, 
+d\tau = \alpha ds = \kappa \rho ds, 
 \end{equation}
 for $\tau$, the optical depth, where $\kappa$ is opacity and $\rho$ is 
 density. This leads to
@@ -524,15 +522,15 @@ giving us everything needed to evaluate Equation~\ref{eqn:simpflux}.
 This process is illustrated in the left panel of Figure~\ref{fig:algorithm}. 
 In this figure ray segments and corresponding cells share 
 the same colour. When referring to specific cell colours, they will also be 
-identified by two sets of points, $[(x,y),(x,y)]$, corresponding to the bottom 
-left and top right vertices of the cell respectively. Dotted lines are used to 
-distinguish consecutive ray segments and help associate ray segments with 
-their corresponding cells. In the left panel of Figure~\ref{fig:algorithm} 
-there are two important things to note. First, since we are performing a 
-reverse ray trace, the resolution element denoted by the black circle is 
-intrinsically well resolved at the bucket cell (the blue cell at 
-$[(0,0),(1,1)]$) level. However, the second point is that as the tree is 
-walked upwards space becomes less resolved. It should be apparent that the 
+identified by two sets of points, in the form $[(x,y),(x,y)]$, corresponding 
+to the bottom left and top right vertices of the cell respectively. Dotted 
+lines are used to distinguish consecutive ray segments and help associate ray 
+segments with their corresponding cells. In the left panel of 
+Figure~\ref{fig:algorithm} there are two important things to note. First, 
+since we are performing a reverse ray trace, the resolution element denoted by 
+the black circle is intrinsically well resolved at the bucket cell (the blue 
+cell at $[(0,0),(1,1)]$) level. However, the second point is that as the tree 
+is walked upwards space becomes less resolved. It should be apparent that the 
 central parts of the ray are less resolved (the green cell at $[(0,2),(4,4)]$) 
 and as one moves towards the source or resolution element the ray becomes more 
 resolved (the red cell at $[(2,2),(4,4)]$ and the orange cell 
@@ -560,7 +558,8 @@ $[(0,0),(2,2)]$ in the left panel, a decision needs to be made on whether the
 current cell sufficiently represents the medium. This decision is made by a 
 refinement criterion. If the cell passes the criterion to refine, rather than 
 using its average properties, we recursively check the cell's children until 
-the criterion fails. In this we build a better resolved section of the ray. 
+the criterion fails. This process ensures we compute a better resolved section 
+of the ray. 
 
 Difficulty comes in choosing a refinement criterion that is both accurate and 
 efficient. Ideally, refinement occurs when the average optical depth 
@@ -642,7 +641,7 @@ express this as,
 N_{\rm seg} = \frac{r}{R_B} = \frac{r}{R}\left(\frac{N}{N_B}\right)^\frac{1}{3}
 \end{equation}
 after substituting for $R_B$ using Equation~\ref{eqn:ratio}. Since $\NS$ is 
-also the number of rays computed, to get the total number of ray segments we
+also the number of rays computed per resolution element, to get the total number of ray segments we
 multiply the integrand of Equation~\ref{eqn:nsint} by the number of ray 
 segments,
 \begin{equation}
@@ -1235,7 +1234,7 @@ set by
 \end{equation}
 to match \cite{petkovaSpringel09}. This test includes heating due to 
 absorption and cooling due to recombination $\Delta_r$, collisional 
-ionization $\Delta_{ci}$, line cooling $\delta_l$ and Bremsstrahlung 
+ionization $\Delta_{ci}$, line cooling $\delta_l$, and Bremsstrahlung 
 radiation $\Delta_B$. The rates are taken from \cite{cen92} in order to
 match \cite{petkovaSpringel09}.
 
@@ -1295,7 +1294,7 @@ $\bigO{\NK \log\NS \log N}$ scaling behaviour. In the general case,
 represented by the perturbed glass test case with accuracy parameters of 
 $\tr=0.1$ and $\tO=0.75$ (Figures~\ref{fig:openangle}, \ref{fig:refcrit} 
 and~\ref{fig:pscale}), we have shown that \acro{} can indeed scale as 
-predicted whilst achieving $\sim 1\%$ accuracy. We also note that better than 
+predicted whilst achieving $\sim 1\%$ error. We also note that better than 
 $\bigO{\NK\log\NS\log N}$ scaling (i.e. closer to $\bigO{\NK \log\NS}$) could 
 be achieved for a medium with low optical depths via a more aggressive, 
 top-down ray walk with our refinement criterion. 
