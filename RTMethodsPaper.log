@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  5 SEP 2018 14:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  6 SEP 2018 19:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1072,8 +1072,8 @@ Package pdftex.def Info: Figures/opening_angle.pdf used on input line 866.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.876 
-       <./Figures/raytrace.pdf>]
+l.885 \subsubsection
+                    {Refinement Criteria} <./Figures/raytrace.pdf>]
 <Figures/refinement_criteria.pdf, id=466, 455.30101pt x 339.66899pt>
 File: Figures/refinement_criteria.pdf Graphic file (type pdf)
 
@@ -1081,24 +1081,31 @@ File: Figures/refinement_criteria.pdf Graphic file (type pdf)
 Package pdftex.def Info: Figures/refinement_criteria.pdf used on input line 900
 .
 (pdftex.def)             Requested size: 240.0pt x 179.04413pt.
+
+<Figures/particle_scaling.pdf, id=468, 455.30101pt x 339.66899pt>
+File: Figures/particle_scaling.pdf Graphic file (type pdf)
+
+<use Figures/particle_scaling.pdf>
+Package pdftex.def Info: Figures/particle_scaling.pdf used on input line 932.
+(pdftex.def)             Requested size: 240.0pt x 179.04413pt.
  [9pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.929 
+l.957 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.929 
+l.957 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.929 
+l.957 
        <./Figures/sine_rho.pdf> <./Figures/opening_angle.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/opening_angle.pdf): PDF inclusion: mul
@@ -1107,21 +1114,18 @@ tiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./Figures/refinement_criteria.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
->] <Figures/particle_scaling.pdf, id=548, 455.30101pt x 339.66899pt>
-File: Figures/particle_scaling.pdf Graphic file (type pdf)
+>]
+Underfull \vbox (badness 1859) has occurred while \output is active []
 
-<use Figures/particle_scaling.pdf>
-Package pdftex.def Info: Figures/particle_scaling.pdf used on input line 932.
-(pdftex.def)             Requested size: 240.0pt x 179.04413pt.
 
-<Figures/cellplot.pdf, id=556, 903.375pt x 433.62pt>
+<Figures/cellplot.pdf, id=557, 903.375pt x 433.62pt>
 File: Figures/cellplot.pdf Graphic file (type pdf)
 
 <use Figures/cellplot.pdf>
 Package pdftex.def Info: Figures/cellplot.pdf used on input line 1009.
 (pdftex.def)             Requested size: 504.0pt x 241.9257pt.
 
-<Figures/isothermal_spheres.pdf, id=559, 455.30101pt x 339.66899pt>
+<Figures/isothermal_spheres.pdf, id=560, 455.30101pt x 339.66899pt>
 File: Figures/isothermal_spheres.pdf Graphic file (type pdf)
 
 <use Figures/isothermal_spheres.pdf>
@@ -1142,10 +1146,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1104 T
-        he equilibrium radius or \strom{} radius, $R_S$, is the radius at wh...
- <./Figures/cellplot.pdf>]
-<Figures/strom_slice_iso_030.pdf, id=660, 455.30101pt x 149.59889pt>
+l.1113 \begin{equation}
+                       \label{eqn:stromtime} <./Figures/cellplot.pdf>]
+<Figures/strom_slice_iso_030.pdf, id=662, 455.30101pt x 149.59889pt>
 File: Figures/strom_slice_iso_030.pdf Graphic file (type pdf)
 
 <use Figures/strom_slice_iso_030.pdf>
@@ -1153,7 +1156,7 @@ Package pdftex.def Info: Figures/strom_slice_iso_030.pdf used on input line 114
 4.
 (pdftex.def)             Requested size: 240.0pt x 78.85559pt.
 
-<Figures/strom_slice_iso_500.pdf, id=661, 455.30101pt x 149.59889pt>
+<Figures/strom_slice_iso_500.pdf, id=663, 455.30101pt x 149.59889pt>
 File: Figures/strom_slice_iso_500.pdf Graphic file (type pdf)
 
 <use Figures/strom_slice_iso_500.pdf>
@@ -1165,13 +1168,13 @@ Package pdftex.def Info: Figures/strom_slice_iso_500.pdf used on input line 114
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1186 
+l.1199 
        pdfTeX warning (ext4): destination with the same identifier (name{figure
 .12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1186 
+l.1199 
         <./Figures/isothermal_spheres.pdf> <./Figures/strom_slice_iso_030.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/strom_slice_iso_030.pdf): PDF inclusio
@@ -1209,23 +1212,20 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1318 T
-        his scaling enables \acro{} to reap the benefits inherent in instant...
-pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) h
-as been already used, duplicate ignored
+l.1339 
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.14}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1318 T
-        his scaling enables \acro{} to reap the benefits inherent in instant...
-pdfTeX warning (ext4): destination with the same identifier (name{figure.15}) h
-as been already used, duplicate ignored
+l.1339 
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.15}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1318 T
-        his scaling enables \acro{} to reap the benefits inherent in instant...
- <./Figures/strom_iso_fraction.pdf> <./Figures/strom_fraction.pdf
+l.1339 
+        <./Figures/strom_iso_fraction.pdf> <./Figures/strom_fraction.pdf
 
 pdfTeX warning: pdflatex (file ./Figures/strom_fraction.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
@@ -1233,14 +1233,17 @@ ltiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./Figures/strom_temp.pdf): PDF inclusion: multip
 le pdfs with page group included in a single page
->]
-Underfull \vbox (badness 2326) has occurred while \output is active []
+>] (./RTMethodsPaper.bbl
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-(./RTMethodsPaper.bbl [15])
+ [15]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1457.
- [16pdfTeX warning (ext4): destination with the same identifier (name{table.A1.
-1}) has been already used, duplicate ignored
+
+[16pdfTeX warning (ext4): destination with the same identifier (name{table.A1.1
+}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -1272,11 +1275,11 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1457.
 Here is how much of TeX's memory you used:
  10205 strings out of 493029
  142467 string characters out of 6136235
- 251871 words of memory out of 5000000
+ 250711 words of memory out of 5000000
  13259 multiletter control sequences out of 15000+600000
  133110 words of font info for 307 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,15n,35p,984b,614s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,15n,35p,984b,482s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced bu
 t does not exist, replaced by a fixed one
 
@@ -1318,7 +1321,7 @@ c/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tx
 mia.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RTMethodsPaper.pdf (16 pages, 2084755 bytes).
+Output written on RTMethodsPaper.pdf (16 pages, 2084332 bytes).
 PDF statistics:
  1109 PDF objects out of 1200 (max. 8388607)
  985 compressed objects within 10 object streams

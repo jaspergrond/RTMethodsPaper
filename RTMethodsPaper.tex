@@ -816,13 +816,13 @@ would incorrectly report no heating or ionization.  This is essential for
 correct ionization fronts such as in the \strom{} test of 
 Section~\ref{stromgren}.
 
-Scenarios can occur where two gas particles have portions of their smoothing 
-volume in front of each other. If the normal ray trace was performed, neither 
-would self-consistently receive the photons they had reported absorbing. We 
-thus make an addition to the particle ray trace algorithm that not only does 
-an absorbing particle's smoothing length have to intersect the ray, but the 
-distance from the source to absorbing particle must be smaller than the 
-distance from the source to the receiving particle.
+%Scenarios can occur where two gas particles have portions of their smoothing 
+%volume in front of each other. If the normal ray trace was performed, neither 
+%would self-consistently receive the photons they had reported absorbing. We 
+%thus make an addition to the particle ray trace algorithm that not only does 
+%an absorbing particle's smoothing length have to intersect the ray, but the 
+%distance from the source to absorbing particle must be smaller than the 
+%distance from the source to the receiving particle.
 
 \section{Code Tests}\label{sec:tsts}
 \subsection{Sinusoidally Perturbed Glass}
