@@ -60,8 +60,8 @@ simulations. \acro{} is designed to handle large numbers of sources and
 absorbers; it is based on a \emph{tree} data structure and is thus suited to 
 codes that use trees for their gravity or hydrodynamics solvers (e.g. Adaptive 
 Mesh Refinement). It achieves computational speed while maintaining a 
-specified accuracy via controlled lowering the resolution of both sources and 
-rays from each source. \acro{} computes the radiation field in 
+specified accuracy via controlled lowering of the resolution of both sources 
+and rays from each source. \acro{} computes the radiation field in 
 $\bigO{N\log\NS}$ time without absorption and $\bigO{N \log \NS \log{N}}$ time 
 with absorption. These scalings arise from merging sources of radiation 
 according to an opening angle criterion and walking the tree structure to 
@@ -615,8 +615,7 @@ fractional error in flux, per ray segment, for a given value of $\tr$ is
 \lesssim \tr,
 \end{equation}
 for small $\tr$, making the refinement criterion a convenient choice of 
-parameter for controlling error. Figure~\ref{fig:cellplot} in Section~\ref{spheretest}
-is an example of 
+parameter for controlling error. Figure~\ref{fig:cellplot} is an example of 
 \acro{}'s adaptive refinement in action.
 
 For a particle code, if refinement is required at the bucket level, individual 
@@ -682,7 +681,8 @@ Thus, in the best-case, the total cost of the algorithm scales as
 $\bigO{\NK \log^2N}$.
 
 \subsubsection{Background Radiation}
-In order to treat simulations properly, we must account for the radiation 
+In order to treat cosmological simulations properly, we must account for the 
+radiation 
 coming from the rest of the universe outside the simulation volume. Most 
 current codes apply a constant UV field to the entire box, essentially the 
 lowest order approximation possible. Some specialized codes like URCHIN 
@@ -695,12 +695,12 @@ may be too local.
 
 Instead, we have implemented a method involving tracing ``background sources'' 
 similar to URCHIN. ``Background'' particles are distributed in a spiral 
-pattern on the surface of a sphere at the very edge of the simulation volume 
-and the number of sources can be varied 
-to match the required angular resolution of the background. Finding the flux 
-at the centre of a sphere of sources is a problem akin to Newton's Shell 
-Theorem. However, because the intensity does not cancel like force the 
-solution differs and is as follows:
+pattern on the surface of a sphere, according to the Healpix algorithm 
+\citep{gorskiEt05}, at the very edge of the simulation volume. The number of 
+sources can be varied to match the required angular resolution of the 
+background. Finding the flux at the centre of a sphere of sources is a problem 
+akin to Newton's Shell Theorem. However, because the intensity does not cancel 
+like force the solution differs and is as follows:
 \begin{equation}
 \label{eqn:cosmof}
 F(r) = \frac{L}{8\pi R} \ln \left(\frac{R+r}{R-r}\right),
@@ -807,14 +807,13 @@ performed. Thus, Equation~\ref{eqn:tauint} becomes
 where $m_i \int W$ represents the effective density along the particular ray 
 and $ds$ is the section of the ray intersected by the particle's smoothing 
 length (red line segments in Figure~\ref{fig:raytrace}). Note that for the 
-receiving particle its density field does not contribute to the optical depth
-to itself.  
-To see why this must be the case, consider the case where a single particle is
-optically thick. If the front half of the particle contributed to absorption,
-the flux calculated at the centre would be effectively zero, and the particle 
-would incorrectly report no heating or ionization.  This is essential for 
-correct ionization fronts such as in the \strom{} test of 
-Section~\ref{stromgren}.
+receiving particle, its own density field does not contribute to the overall 
+optical depth. To see why this must be the case, consider the case where a 
+single particle is optically thick. If the front half of the particle 
+contributed to absorption, the flux calculated at the centre would be 
+effectively zero, and the particle would incorrectly report no heating or 
+ionization.  This is essential for correct ionization fronts such as in the 
+\strom{} test of Section~\ref{stromgren}.
 
 %Scenarios can occur where two gas particles have portions of their smoothing 
 %volume in front of each other. If the normal ray trace was performed, neither 
