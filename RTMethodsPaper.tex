@@ -28,7 +28,7 @@
 
 %%%%%%%%%% TITLE PAGE %%%%%%%%%%
 
-\title[]{\acro{}: A general $\bigO{N\log^2N}$ radiative transfer algorithm}
+\title[]{\acro{}: A general $N\log^2N$ radiative transfer algorithm}
 
 \author[J. J. Grond et al.]{
 J. J. Grond,
@@ -57,12 +57,12 @@ Department of Physics and Astronomy, McMaster University, Hamilton, Ontario L8S
 We present \acro{} (Tree-based REVerse Ray Tracing), a general algorithm for 
 computing the radiation field, including absorption, in astrophysical 
 simulations. \acro{} is designed to handle large numbers of sources and 
-absorbers; it is based on a \emph{tree} data structure and is thus suited to 
+absorbers; it is based on a tree data structure and is thus suited to 
 codes that use trees for their gravity or hydrodynamics solvers (e.g. Adaptive 
 Mesh Refinement). It achieves computational speed while maintaining a 
 specified accuracy via controlled lowering of the resolution of both sources 
-and rays from each source. \acro{} computes the radiation field in 
-$\bigO{N\log\NS}$ time without absorption and $\bigO{N \log \NS \log{N}}$ time 
+and rays from each source. \acro{} computes the radiation field in order
+${N\log\NS}$ time without absorption and order ${N \log \NS \log{N}}$ time 
 with absorption. These scalings arise from merging sources of radiation 
 according to an opening angle criterion and walking the tree structure to 
 trace a ray to a depth that gives the chosen accuracy for absorption. The 

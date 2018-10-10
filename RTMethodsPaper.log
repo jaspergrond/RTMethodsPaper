@@ -1,33 +1,33 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  6 SEP 2018 19:17
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Mageia) (format=latex 2017.5.31)  10 OCT 2018 16:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **RTMethodsPaper
 (./RTMethodsPaper.tex
-LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+LaTeX2e <2011/06/27>
+Babel <3.9f> and hyphenation patterns for 78 languages loaded.
 (./mnras.cls
 Document Class: mnras 2015/05/22\ v3.0\ LaTeX2e MNRAS document class
 MNRAS document style v3.0, released 2015/05/22
 
 Package mnras Warning: Unknown option `fleq' on input line 113.
 
-(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package ifpdf Info: pdfTeX in PDF mode is not detected.
 )
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+(/usr/share/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count79
@@ -43,22 +43,18 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen109
 \Gm@dimlist=\toks15
 )
-(/usr/share/texlive/texmf-dist/tex/latex/base/fixltx2e.sty
-Package: fixltx2e 2015/06/22 v2.0b fixes to LaTeX (obsolete)
-
-
-Package fixltx2e Warning: fixltx2e is not required with releases after 2015
-(fixltx2e)                All fixes are now in the LaTeX kernel.
-(fixltx2e)                See the latexrelease package for details.
-
-) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texmf-dist/tex/latex/base/fixltx2e.sty
+Package: fixltx2e 2006/09/13 v1.1m fixes to LaTeX
+LaTeX Info: Redefining \em on input line 420.
+)
+(/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/share/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
 Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+(/usr/share/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
 Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
@@ -80,7 +76,7 @@ Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
+Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
 Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
 )
@@ -97,22 +93,22 @@ Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
 Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
 Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
+(/usr/share/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen110
 \Hy@linkcounter=\count82
 \Hy@pagecounter=\count83
 
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+(/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 )
 \Hy@SavedSpaceFactor=\count84
 
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+(/usr/share/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4443.
@@ -124,9 +120,9 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
 \c@Hy@tempcnt=\count85
 
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+(/usr/share/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
-Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
 \XeTeXLinkMargin=\dimen111
@@ -151,386 +147,306 @@ Package hyperref Warning: Option `pdfpagelabels' is turned off
 \c@Hfootnote=\count88
 )
 
-Package hyperref Message: Driver (autodetected): hpdftex.
+Package hyperref Message: Driver (default): hdvips.
 
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
-\Fld@listcount=\count89
-\c@bookmark@seq@number=\count90
+(/usr/share/texmf-dist/tex/latex/hyperref/hdvips.def
+File: hdvips.def 2012/11/06 v6.83m Hyperref driver for dvips
 
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+(/usr/share/texmf-dist/tex/latex/hyperref/pdfmark.def
+File: pdfmark.def 2012/11/06 v6.83m Hyperref definitions for pdfmark specials
+\pdf@docset=\toks16
+\pdf@box=\box26
+\pdf@toks=\toks17
+\pdf@defaulttoks=\toks18
+\HyField@AnnotCount=\count89
+\Fld@listcount=\count90
+\c@bookmark@seq@number=\count91
+
+(/usr/share/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip41
-)
+))
 Package hyperref Info: Option `colorlinks' set `true' on input line 123.
-\math@groups=\toks16
+\math@groups=\toks19
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/cmsy/b/n --> OMS/cmsy/b/n on input line 276.
 \symbmisymbols=\mathgroup4
 \SFB@measure=\dimen114
 \realparindent=\skip42
-\c@part=\count91
-\c@section=\count92
-\c@subsection=\count93
-\c@subsubsection=\count94
-\c@paragraph=\count95
-\c@subparagraph=\count96
+\c@part=\count92
+\c@section=\count93
+\c@subsection=\count94
+\c@subsubsection=\count95
+\c@paragraph=\count96
+\c@subparagraph=\count97
 \@indentskip=\skip43
 \smallindent=\skip44
 \@footindent=\skip45
 \@leftskip=\skip46
 
-(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+(/usr/share/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip47
 \bibsep=\skip48
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count97
+\c@NAT@ctr=\count98
 )
-\c@table=\count98
-\c@figure=\count99
+\c@table=\count99
+\c@figure=\count100
 )
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/newtxtext.sty
-Package: newtxtext 2016/01/31 v1.465
+(/usr/share/texmf-dist/tex/latex/newtx/newtxtext.sty
+Package: newtxtext 2013/05/19 v1.10
 
-`newtxtext' v1.465, 2016/01/31 Text macros taking advantage of TeX-Gyre Termes 
-fonts (msharpe) (/usr/share/texlive/texmf-dist/tex/latex/fontaxes/fontaxes.sty
-Package: fontaxes 2014/03/23 v1.0d Font selection axes
+`newtxtext' v1.10, 2013/05/19 Text macros based on txfonts (msharpe)
+(/usr/share/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+Package: fontaxes 2011/12/16 v1.0c Font selection axes
 LaTeX Info: Redefining \upshape on input line 29.
 LaTeX Info: Redefining \itshape on input line 31.
 LaTeX Info: Redefining \slshape on input line 33.
 LaTeX Info: Redefining \scshape on input line 37.
 )
-\ntx@fs=\dimen115
-(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+(/usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2012/10/14 v2.6b package option processing (HA)
 
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks17
-\XKV@tempa@toks=\toks18
-)
-\XKV@depth=\count100
-File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+(/usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+\XKV@toks=\toks20
+\XKV@tempa@toks=\toks21
+\XKV@depth=\count101
+File: xkeyval.tex 2012/10/14 v2.6b key=value parser (HA)
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count101
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+(/usr/share/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
-))
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
-Package textcomp Info: Sub-encoding information:
-(textcomp)               5 = only ISO-Adobe without \textcurrency
-(textcomp)               4 = 5 + \texteuro
-(textcomp)               3 = 4 + \textohm
-(textcomp)               2 = 3 + \textestimated + \textcurrency
-(textcomp)               1 = TS1 - \textcircled - \t
-(textcomp)               0 = TS1 (full)
-(textcomp)             Font families with sub-encoding setting implement
-(textcomp)             only a restricted character set as indicated.
-(textcomp)             Family '?' is the default used for unknown fonts.
-(textcomp)             See the documentation for details.
-Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
-Package textcomp Info: Changing ? sub-encoding to TS1/0 on input line 80.
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+)))
+(/usr/share/texmf-dist/tex/latex/newtx/newtxmath.sty
+Package: newtxmath 2013/05/25 v1.11
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
-File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-)
-LaTeX Info: Redefining \oldstylenums on input line 334.
-Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
-Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
-Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
-Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
-Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
-Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
-Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
-Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
-Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
-Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
-Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
-Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
-Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
-Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
-Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
-Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
-Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
-Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
-Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
-Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
-Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
-Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
-Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
-Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
-
-Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
-Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
-Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
-Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
-Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
-Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
-Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
-Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
-Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
-Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
-Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
-Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
-Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
-Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
-Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
-Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
-Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
-Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
-Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
-Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
-Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
-Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
-Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
-Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
-Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
-Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
-Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
-Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
-Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
-Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
-Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
-Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
-Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
-Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
-Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
-Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
-Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
-) 
-Babel
-LaTeX Font Info:    Try loading font information for T1+ntxtlf on input line 25
-0.
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/t1ntxtlf.fd
-File: t1ntxtlf.fd 2015/01/17 v1.0 font definition file for T1/ntx/tlf
-)
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 250.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/newtxmath.sty
-Package: newtxmath 2016/01/31 v1.465
-
-`newtxmath' v1.465, 2016/01/31 Math macros based on txfonts (msharpe)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2016/03/03 v2.15a AMS math features
+`newtxmath' v1.11, 2013/05/25 Math macros based on txfonts (msharpe)
+(/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip49
 
 For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2000/06/29 v2.01 AMS text
+(/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
-File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks19
-\ex@=\dimen116
+(/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks22
+\ex@=\dimen115
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
-Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen117
+(/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen116
 )
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+(/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count102
-LaTeX Info: Redefining \frac on input line 199.
+LaTeX Info: Redefining \frac on input line 210.
 \uproot@=\count103
 \leftroot@=\count104
-LaTeX Info: Redefining \overline on input line 297.
+LaTeX Info: Redefining \overline on input line 306.
 \classnum@=\count105
 \DOTSCASE@=\count106
-LaTeX Info: Redefining \ldots on input line 394.
-LaTeX Info: Redefining \dots on input line 397.
-LaTeX Info: Redefining \cdots on input line 518.
-\Mathstrutbox@=\box26
-\strutbox@=\box27
-\big@size=\dimen118
-LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
+\big@size=\dimen117
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \macc@depth=\count107
 \c@MaxMatrixCols=\count108
 \dotsspace@=\muskip11
 \c@parentequation=\count109
 \dspbrk@lvl=\count110
-\tag@help=\toks20
+\tag@help=\toks23
 \row@=\count111
 \column@=\count112
 \maxfields@=\count113
-\andhelp@=\toks21
-\eqnshift@=\dimen119
-\alignsep@=\dimen120
-\tagshift@=\dimen121
-\tagwidth@=\dimen122
-\totwidth@=\dimen123
-\lineht@=\dimen124
-\@envbody=\toks22
+\andhelp@=\toks24
+\eqnshift@=\dimen118
+\alignsep@=\dimen119
+\tagshift@=\dimen120
+\tagwidth@=\dimen121
+\totwidth@=\dimen122
+\lineht@=\dimen123
+\@envbody=\toks25
 \multlinegap=\skip50
 \multlinetaggap=\skip51
-\mathdisplay@stack=\toks23
-LaTeX Info: Redefining \[ on input line 2735.
-LaTeX Info: Redefining \] on input line 2736.
+\mathdisplay@stack=\toks26
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
 )
-(/usr/share/texlive/texmf-dist/tex/generic/kastrup/binhex.tex)
+(/usr/share/texmf-dist/tex/generic/kastrup/binhex.tex)
 \tx@Isdigit=\count114
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 137.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 68.
+LaTeX Font Info:    Encoding `OT1' has changed to `T1' for symbol font
+(Font)              `operators' in the math version `normal' on input line 68.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/ntxtlf/m/n on input line 137.
+(Font)                  OT1/cmr/m/n --> T1/ntxrx/m/n on input line 68.
+LaTeX Font Info:    Encoding `OT1' has changed to `T1' for symbol font
+(Font)              `operators' in the math version `bold' on input line 68.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/ntxtlf/m/n on input line 137.
+(Font)                  OT1/cmr/bx/n --> T1/ntxrx/m/n on input line 68.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/ntxtlf/m/n --> OT1/ntxtlf/b/n on input line 138.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 144.
+(Font)                  T1/ntxrx/m/n --> T1/ntxrx/b/n on input line 72.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 76.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/qhv/m/n on input line 144.
+(Font)                  OT1/cmss/m/n --> T1/ntxss/m/n on input line 76.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/qhv/m/n on input line 144.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 145.
+(Font)                  OT1/cmss/bx/n --> T1/ntxss/m/n on input line 76.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/ntxtlf/m/it on input line 145.
+(Font)                  OT1/cmr/m/it --> T1/ntxrx/m/it on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/ntxtlf/m/it on input line 145.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 146.
+(Font)                  OT1/cmr/bx/it --> T1/ntxrx/m/it on input line 77.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 78.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> T1/ntxtt/m/n on input line 146.
+(Font)                  OT1/cmtt/m/n --> T1/ntxtt/m/n on input line 78.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> T1/ntxtt/m/n on input line 146.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 148.
+(Font)                  OT1/cmtt/m/n --> T1/ntxtt/m/n on input line 78.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 84.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/ntxtlf/b/n on input line 148.
+(Font)                  OT1/cmr/bx/n --> T1/ntxrx/b/n on input line 84.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/ntxtlf/b/n on input line 148.
+(Font)                  OT1/cmr/bx/n --> T1/ntxrx/b/n on input line 84.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/ntxtlf/m/it --> OT1/ntxtlf/b/it on input line 149.
+(Font)                  T1/ntxrx/m/it --> T1/ntxrx/b/it on input line 85.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/qhv/m/n --> T1/qhv/b/n on input line 150.
+(Font)                  T1/ntxss/m/n --> T1/ntxss/b/n on input line 87.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/ntxtt/m/n --> T1/ntxtt/b/n on input line 151.
-LaTeX Font Info:    Redeclaring symbol font `letters' on input line 197.
+(Font)                  T1/ntxtt/m/n --> T1/ntxtt/b/n on input line 88.
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 109.
 LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
-(Font)                  OML/cmm/m/it --> OML/ntxmi/m/it on input line 197.
+(Font)                  OML/cmm/m/it --> OML/ntxmi/m/it on input line 109.
 LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
-(Font)                  OML/cmm/b/it --> OML/ntxmi/m/it on input line 197.
+(Font)                  OML/cmm/b/it --> OML/ntxmi/m/it on input line 109.
 LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
-(Font)                  OML/ntxmi/m/it --> OML/ntxmi/b/it on input line 198.
+(Font)                  OML/ntxmi/m/it --> OML/ntxmi/b/it on input line 110.
 \symlettersA=\mathgroup5
 LaTeX Font Info:    Overwriting symbol font `lettersA' in version `bold'
-(Font)                  U/ntxmia/m/it --> U/ntxmia/b/it on input line 213.
-LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 221.
+(Font)                  U/ntxmia/m/it --> U/ntxmia/b/it on input line 121.
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 129.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/cmsy/m/n --> OMS/ntxsy/m/n on input line 221.
+(Font)                  OMS/cmsy/m/n --> OMS/ntxsy/m/n on input line 129.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/cmsy/b/n --> OMS/ntxsy/m/n on input line 221.
+(Font)                  OMS/cmsy/b/n --> OMS/ntxsy/m/n on input line 129.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/ntxsy/m/n --> OMS/ntxsy/b/n on input line 222.
-\symAMSm=\mathgroup6
-LaTeX Font Info:    Overwriting symbol font `AMSm' in version `bold'
-(Font)                  U/ntxsym/m/n --> U/ntxsym/b/n on input line 242.
-\symsymbolsC=\mathgroup7
+(Font)                  OMS/ntxsy/m/n --> OMS/ntxsy/b/n on input line 130.
+\symAMSa=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `AMSa' in version `bold'
+(Font)                  U/ntxsya/m/n --> U/ntxsya/b/n on input line 146.
+\symAMSb=\mathgroup7
+LaTeX Font Info:    Overwriting symbol font `AMSb' in version `bold'
+(Font)                  U/ntxsyb/m/n --> U/ntxsyb/b/n on input line 155.
+\symsymbolsC=\mathgroup8
 LaTeX Font Info:    Overwriting symbol font `symbolsC' in version `bold'
-(Font)                  U/ntxsyc/m/n --> U/ntxsyc/b/n on input line 263.
-LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 276.
-LaTeX Font Info:    Encoding `OMX' has changed to `LMX' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 2
-76.
+(Font)                  U/ntxsyc/m/n --> U/ntxsyc/b/n on input line 166.
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 178.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/cmex/m/n --> LMX/ntxexx/m/n on input line 276.
-LaTeX Font Info:    Encoding `OMX' has changed to `LMX' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 276
-.
+(Font)                  OMX/cmex/m/n --> OMX/ntxex/m/n on input line 178.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/cmex/m/n --> LMX/ntxexx/m/n on input line 276.
+(Font)                  OMX/cmex/m/n --> OMX/ntxex/m/n on input line 178.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  LMX/ntxexx/m/n --> LMX/ntxexx/b/n on input line 277.
-\symlargesymbolsTXA=\mathgroup8
+(Font)                  OMX/ntxex/m/n --> OMX/ntxex/b/n on input line 179.
+\symlargesymbolsTXA=\mathgroup9
 LaTeX Font Info:    Overwriting symbol font `largesymbolsTXA' in version `bold'
 
-(Font)                  U/ntxexa/m/n --> U/ntxexa/b/n on input line 291.
-LaTeX Info: Redefining \not on input line 1749.
+(Font)                  U/ntxexa/m/n --> U/ntxexa/b/n on input line 187.
+LaTeX Info: Redefining \not on input line 1359.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+(/usr/share/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/ae/ae.sty
+(/usr/share/texmf-dist/tex/latex/ae/ae.sty
 Package: ae 2001/02/12 1.3 Almost European Computer Modern
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+(/usr/share/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 )
-LaTeX Font Info:    Try loading font information for T1+aer on input line 105.
+LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
 
-(/usr/share/texlive/texmf-dist/tex/latex/ae/t1aer.fd
+(/usr/share/texmf-dist/tex/latex/ae/t1aer.fd
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
 )))
-(/usr/share/texlive/texmf-dist/tex/latex/ae/aecompl.sty
+(/usr/share/texmf-dist/tex/latex/ae/aecompl.sty
 Package: aecompl 1998/07/23 0.9 T1 Complements for AE fonts (D. Roegel)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2016/01/03 v1.1b Standard LaTeX Color (DPC)
+(/usr/share/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+(/usr/share/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: pdftex.def on input line 143.
+Package color Info: Driver file: dvips.def on input line 130.
 
-(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-\Gread@gobject=\count115
+(/usr/share/texmf-dist/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+)
+(/usr/share/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/soul/soul.sty
+(/usr/share/texmf-dist/tex/latex/soul/soul.sty
 Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
-\SOUL@word=\toks24
-\SOUL@lasttoken=\toks25
-\SOUL@cmds=\toks26
-\SOUL@buffer=\toks27
-\SOUL@token=\toks28
+\SOUL@word=\toks27
+\SOUL@lasttoken=\toks28
+\SOUL@cmds=\toks29
+\SOUL@buffer=\toks30
+\SOUL@token=\toks31
 \SOUL@spaceskip=\skip52
-\SOUL@ttwidth=\dimen125
-\SOUL@uldp=\dimen126
-\SOUL@ulht=\dimen127
+\SOUL@ttwidth=\dimen124
+\SOUL@uldp=\dimen125
+\SOUL@ulht=\dimen126
 )
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+(/usr/share/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+(/usr/share/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 95.
+Package graphics Info: Driver file: dvips.def on input line 91.
 )
-\Gin@req@height=\dimen128
-\Gin@req@width=\dimen129
+\Gin@req@height=\dimen127
+\Gin@req@width=\dimen128
 )
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\symAMSa=\mathgroup9
-\symAMSb=\mathgroup10
+LaTeX Font Info:    Redeclaring symbol font `AMSa' on input line 59.
+LaTeX Font Info:    Overwriting symbol font `AMSa' in version `normal'
+(Font)                  U/ntxsya/m/n --> U/msa/m/n on input line 59.
+LaTeX Font Info:    Overwriting symbol font `AMSa' in version `bold'
+(Font)                  U/ntxsya/b/n --> U/msa/m/n on input line 59.
+LaTeX Font Info:    Redeclaring symbol font `AMSb' on input line 60.
+LaTeX Font Info:    Overwriting symbol font `AMSb' in version `normal'
+(Font)                  U/ntxsyb/m/n --> U/msb/m/n on input line 60.
+LaTeX Font Info:    Overwriting symbol font `AMSb' in version `bold'
+(Font)                  U/ntxsyb/b/n --> U/msb/m/n on input line 60.
 LaTeX Font Info:    Redeclaring math delimiter \ulcorner on input line 74.
 LaTeX Font Info:    Redeclaring math delimiter \urcorner on input line 75.
 LaTeX Font Info:    Redeclaring math delimiter \llcorner on input line 76.
@@ -752,18 +668,21 @@ LaTeX Font Info:    Redeclaring math symbol \Bbbk on input line 261.
 LaTeX Font Info:    Redeclaring math symbol \hslash on input line 262.
 LaTeX Font Info:    Redeclaring math symbol \backepsilon on input line 265.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/doublestroke/dsfont.sty
-Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
-)
+
+! LaTeX Error: File `dsfont.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
 (./RTMethodsPaper.aux)
 \openout1 = `RTMethodsPaper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 50.
 LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 50
 .
-
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/omlntxmi.fd
-File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
+ (/usr/share/texmf-dist/tex/latex/newtx/omlntxmi.fd
+File: omlntxmi.fd 2012/03/22 Fontinst v1.933 font definitions for OML/ntxmi.
 )
 LaTeX Font Info:    ... okay on input line 50.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
@@ -774,36 +693,33 @@ LaTeX Font Info:    Checking defaults for OMS/ntxsy/m/n on input line 50.
 LaTeX Font Info:    Try loading font information for OMS+ntxsy on input line 50
 .
 
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/omsntxsy.fd
+(/usr/share/texmf-dist/tex/latex/newtx/omsntxsy.fd
 File: omsntxsy.fd 2012/11/14 Fontinst v1.933 font definitions for OMS/ntxsy.
 )
 LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/ntxex/m/n on input line 50.
+LaTeX Font Info:    Try loading font information for OMX+ntxex on input line 50
+.
+
+(/usr/share/texmf-dist/tex/latex/newtx/omxntxex.fd
+File: omxntxex.fd 2012/04/18 Fontinst v1.933 font definitions for OMX/ntxex.
+)
 LaTeX Font Info:    ... okay on input line 50.
 LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 50.
 LaTeX Font Info:    Try loading font information for U+ntxexa on input line 50.
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxexa.fd
+(/usr/share/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
 LaTeX Font Info:    ... okay on input line 50.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
 LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 50.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
-File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
 
 *geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
+*geometry* detected driver: dvips
 *geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
+* driver: dvips
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -834,15 +750,15 @@ LaTeX Font Info:    ... okay on input line 50.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box28
+\AtBeginShipoutBox=\box29
 Package hyperref Info: Link coloring ON on input line 50.
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+(/usr/share/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count116
+\c@section@level=\count115
 )
 LaTeX Info: Redefining \ref on input line 50.
 LaTeX Info: Redefining \pageref on input line 50.
@@ -852,147 +768,91 @@ LaTeX Info: Redefining \nameref on input line 50.
 \@outlinefile=\write3
 \openout3 = `RTMethodsPaper.out'.
 
-\c@mv@tabular=\count117
-\c@mv@boldtabular=\count118
+\c@mv@tabular=\count116
+\c@mv@boldtabular=\count117
+LaTeX Font Info:    Try loading font information for T1+ntxrx on input line 53.
 
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count119
-\scratchdimen=\dimen130
-\scratchbox=\box29
-\nofMPsegments=\count120
-\nofMParguments=\count121
-\everyMPshowfont=\toks29
-\MPscratchCnt=\count122
-\MPscratchDim=\dimen131
-\MPnumerator=\count123
-\makeMPintoPDFobject=\count124
-\everyMPtoPDFconversion=\toks30
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+(/usr/share/texmf-dist/tex/latex/newtx/t1ntxrx.fd
+File: t1ntxrx.fd 2012/12/25 v1.0
 )
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
-LaTeX Font Info:    Try loading font information for OT1+ntxtlf on input line 5
-3.
-
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/ot1ntxtlf.fd
-File: ot1ntxtlf.fd 2015/01/17 v1.0 font definition file for OT1/ntx/tlf
-)
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 17.28pt on input line 53.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.5pt on input line 53.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.4pt on input line 53.
-
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <12.5> not available
 (Font)              size <12> substituted on input line 53.
 
 LaTeX Font Info:    Try loading font information for U+ntxmia on input line 53.
 
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxmia.fd
+(/usr/share/texmf-dist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxmia.
-)
-LaTeX Font Info:    Try loading font information for U+ntxsym on input line 53.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsym.fd
-File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
-)
-LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 53.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyc.fd
-File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
 LaTeX Font Info:    Try loading font information for U+msa on input line 53.
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 53.
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 14.4pt on input line 53.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.5pt on input line 53.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.9pt on input line 53.
+LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 53.
 
+
+(/usr/share/texmf-dist/tex/latex/newtx/untxsyc.fd
+File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
+)
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <10.5> not available
 (Font)              size <10.95> substituted on input line 53.
 
-LaTeX Font Info:    Try loading font information for T1+ntxsups on input line 5
-3.
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/t1ntxsups.fd
-File: t1ntxsups.fd 2015/01/17 v1.0
-)
-LaTeX Font Info:    Font shape `T1/ntxsups/m/n' will be
-(Font)              scaled to size 14.4pt on input line 53.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 65.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.3pt on input line 65.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.5pt on input line 65.
+LaTeX Font Info:    Try loading font information for T1+ntxr1 on input line 53.
 
+(/usr/share/texmf-dist/tex/latex/newtx/t1ntxr1.fd
+File: t1ntxr1.fd 2012/07/29 v1.0
+)
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
 (Font)              size <5> substituted on input line 65.
 
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 79.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.2pt on input line 79.
-<Figures/uvsn.pdf, id=56, 455.30101pt x 339.66899pt>
-File: Figures/uvsn.pdf Graphic file (type pdf)
- <use Figures/uvsn.pdf>
-Package pdftex.def Info: Figures/uvsn.pdf used on input line 111.
-(pdftex.def)             Requested size: 240.0pt x 179.04413pt.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 122.
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 125.
 
-LaTeX Font Info:    No file TS1aer.fd. on input line 125.
+! LaTeX Error: Cannot determine size of graphic in Figures/uvsn.pdf (no Boundin
+gBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.111 ...hics[width=1\linewidth]{Figures/uvsn.pdf}
+                                                  
+? 
+File: Figures/uvsn.pdf Graphic file (type eps)
+<Figures/uvsn.pdf>
+LaTeX Font Info:    Font shape `T1/ntxrx/b/n' in size <9> not available
+(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 132.
+
+LaTeX Font Info:    Font shape `T1/ntxrx/b/n' in size <7.3> not available
+(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 132.
+
+LaTeX Font Info:    Font shape `T1/ntxrx/b/n' in size <5.5> not available
+(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 132.
+
+LaTeX Font Info:    Font shape `T1/ntxrx/b/n' in size <8> not available
+(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 145.
+
+LaTeX Font Info:    Font shape `T1/ntxrx/b/n' in size <6.2> not available
+(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 145.
+
+LaTeX Font Info:    Try loading font information for OMS+aer on input line 145.
+
+ (/usr/share/texmf-dist/tex/latex/ae/omsaer.fd
+File: omsaer.fd 1999/12/27
+)
+LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 145.
+ [1
 
 
-LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
-(Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `textcopyright' on input line 125.
-
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
-s been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.125 
-       <./Figures/uvsn.pdf>]
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 9.0pt on input line 132.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 7.3pt on input line 132.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 5.5pt on input line 132.
-
+]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
@@ -1001,260 +861,255 @@ Underfull \hbox (badness 10000) in paragraph at lines 253--264
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 2486) in paragraph at lines 253--264
+\T1/aer/m/n/9 TRAPHIC ([] []), em-ploy an evo-lu-
+ []
+
+
+Underfull \vbox (badness 6380) has occurred while \output is active []
 
  [3]
-<Figures/algorithm.pdf, id=267, 569.05513pt x 307.28975pt>
-File: Figures/algorithm.pdf Graphic file (type pdf)
 
-<use Figures/algorithm.pdf>
-Package pdftex.def Info: Figures/algorithm.pdf used on input line 416.
-(pdftex.def)             Requested size: 504.0pt x 272.16945pt.
- [4] [5pdfTeX warning (ext4): destination with the same identifier (name{figure
-.2}) has been already used, duplicate ignored
+! LaTeX Error: Cannot determine size of graphic in Figures/algorithm.pdf (no Bo
+undingBox).
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.544 
-       <./Figures/algorithm.pdf>]
-<Figures/refine.pdf, id=338, 361.35pt x 323.70938pt>
-File: Figures/refine.pdf Graphic file (type pdf)
- <use Figures/refine.pdf>
-Package pdftex.def Info: Figures/refine.pdf used on input line 573.
-(pdftex.def)             Requested size: 240.0pt x 215.00224pt.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 579.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.2pt on input line 579.
-
-[6pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) 
-has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.646 \begin{equation}
-                       <./Figures/refine.pdf>]
-<Figures/cosmofield.pdf, id=372, 455.30101pt x 339.66899pt>
-File: Figures/cosmofield.pdf Graphic file (type pdf)
-
-<use Figures/cosmofield.pdf>
-Package pdftex.def Info: Figures/cosmofield.pdf used on input line 714.
-(pdftex.def)             Requested size: 240.0pt x 179.04413pt.
- [7pdfTeX warning (ext4): destination with the same identifier (name{figure.4})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.756 
-       <./Figures/cosmofield.pdf>]
-<Figures/raytrace.pdf, id=414, 843.15pt x 517.935pt>
-File: Figures/raytrace.pdf Graphic file (type pdf)
-
-<use Figures/raytrace.pdf>
-Package pdftex.def Info: Figures/raytrace.pdf used on input line 792.
-(pdftex.def)             Requested size: 240.0pt x 147.42332pt.
-
-<Figures/sine_rho.pdf, id=426, 455.30101pt x 339.66899pt>
-File: Figures/sine_rho.pdf Graphic file (type pdf)
-
-<use Figures/sine_rho.pdf>
-Package pdftex.def Info: Figures/sine_rho.pdf used on input line 844.
-(pdftex.def)             Requested size: 240.0pt x 179.04413pt.
-
-<Figures/opening_angle.pdf, id=428, 455.30101pt x 339.66899pt>
-File: Figures/opening_angle.pdf Graphic file (type pdf)
-
-<use Figures/opening_angle.pdf>
-Package pdftex.def Info: Figures/opening_angle.pdf used on input line 865.
-(pdftex.def)             Requested size: 240.0pt x 179.04413pt.
- [8pdfTeX warning (ext4): destination with the same identifier (name{figure.5})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.884 \subsubsection
-                    {Refinement Criteria} <./Figures/raytrace.pdf>]
-<Figures/refinement_criteria.pdf, id=468, 455.30101pt x 339.66899pt>
-File: Figures/refinement_criteria.pdf Graphic file (type pdf)
-
-<use Figures/refinement_criteria.pdf>
-Package pdftex.def Info: Figures/refinement_criteria.pdf used on input line 899
-.
-(pdftex.def)             Requested size: 240.0pt x 179.04413pt.
-
-<Figures/particle_scaling.pdf, id=470, 455.30101pt x 339.66899pt>
-File: Figures/particle_scaling.pdf Graphic file (type pdf)
-
-<use Figures/particle_scaling.pdf>
-Package pdftex.def Info: Figures/particle_scaling.pdf used on input line 931.
-(pdftex.def)             Requested size: 240.0pt x 179.04413pt.
- [9pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.956 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-7}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.956 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-8}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.956 
-       <./Figures/sine_rho.pdf> <./Figures/opening_angle.pdf
-
-pdfTeX warning: pdflatex (file ./Figures/opening_angle.pdf): PDF inclusion: mul
-tiple pdfs with page group included in a single page
-> <./Figures/refinement_criteria.pdf
-
-pdfTeX warning: pdflatex (file ./Figures/refinement_criteria.pdf): PDF inclusio
-n: multiple pdfs with page group included in a single page
->]
-Underfull \vbox (badness 1859) has occurred while \output is active []
-
-
-<Figures/cellplot.pdf, id=559, 903.375pt x 433.62pt>
-File: Figures/cellplot.pdf Graphic file (type pdf)
-
-<use Figures/cellplot.pdf>
-Package pdftex.def Info: Figures/cellplot.pdf used on input line 1008.
-(pdftex.def)             Requested size: 504.0pt x 241.9257pt.
-
-<Figures/isothermal_spheres.pdf, id=562, 455.30101pt x 339.66899pt>
-File: Figures/isothermal_spheres.pdf Graphic file (type pdf)
-
-<use Figures/isothermal_spheres.pdf>
-Package pdftex.def Info: Figures/isothermal_spheres.pdf used on input line 1040
-.
-(pdftex.def)             Requested size: 240.0pt x 179.04413pt.
- [10pdfTeX warning (ext4): destination with the same identifier (name{figure.9}
-) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1061 
-        <./Figures/particle_scaling.pdf>]
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.416 ...width=1\linewidth]{Figures/algorithm.pdf}
+                                                  
+? 
+File: Figures/algorithm.pdf Graphic file (type eps)
+<Figures/algorithm.pdf> [4]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [11pdfTeX warning (ext4): destination with the same identifier (name{figure.10
-}) has been already used, duplicate ignored
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1112 \begin{equation}
-                       \label{eqn:stromtime} <./Figures/cellplot.pdf>]
-<Figures/strom_slice_iso_030.pdf, id=664, 455.30101pt x 149.59889pt>
-File: Figures/strom_slice_iso_030.pdf Graphic file (type pdf)
+Underfull \vbox (badness 1681) has occurred while \output is active []
 
-<use Figures/strom_slice_iso_030.pdf>
-Package pdftex.def Info: Figures/strom_slice_iso_030.pdf used on input line 114
-3.
-(pdftex.def)             Requested size: 240.0pt x 78.85559pt.
+ [5]
 
-<Figures/strom_slice_iso_500.pdf, id=665, 455.30101pt x 149.59889pt>
-File: Figures/strom_slice_iso_500.pdf Graphic file (type pdf)
+! LaTeX Error: Cannot determine size of graphic in Figures/refine.pdf (no Bound
+ingBox).
 
-<use Figures/strom_slice_iso_500.pdf>
-Package pdftex.def Info: Figures/strom_slice_iso_500.pdf used on input line 114
-4.
-(pdftex.def)             Requested size: 240.0pt x 78.85559pt.
- [12pdfTeX warning (ext4): destination with the same identifier (name{figure.11
-}) has been already used, duplicate ignored
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.573 ...cs[width=1\linewidth]{Figures/refine.pdf}
+                                                  
+? 
+File: Figures/refine.pdf Graphic file (type eps)
+<Figures/refine.pdf> [6]
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1198 
-       pdfTeX warning (ext4): destination with the same identifier (name{figure
-.12}) has been already used, duplicate ignored
+! LaTeX Error: Cannot determine size of graphic in Figures/cosmofield.pdf (no B
+oundingBox).
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1198 
-        <./Figures/isothermal_spheres.pdf> <./Figures/strom_slice_iso_030.pdf
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.714 ...idth=1\linewidth]{Figures/cosmofield.pdf}
+                                                  
+? 
+File: Figures/cosmofield.pdf Graphic file (type eps)
+<Figures/cosmofield.pdf> [7]
 
-pdfTeX warning: pdflatex (file ./Figures/strom_slice_iso_030.pdf): PDF inclusio
-n: multiple pdfs with page group included in a single page
-> <./Figures/strom_slice_iso_500.pdf
+! LaTeX Error: Cannot determine size of graphic in Figures/raytrace.pdf (no Bou
+ndingBox).
 
-pdfTeX warning: pdflatex (file ./Figures/strom_slice_iso_500.pdf): PDF inclusio
-n: multiple pdfs with page group included in a single page
->] <Figures/strom_iso_fraction.pdf, id=760, 939.51pt x 455.30101pt>
-File: Figures/strom_iso_fraction.pdf Graphic file (type pdf)
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.792 ...[width=1\linewidth]{Figures/raytrace.pdf}
+                                                  
+? 
+File: Figures/raytrace.pdf Graphic file (type eps)
+<Figures/raytrace.pdf>
 
-<use Figures/strom_iso_fraction.pdf>
-Package pdftex.def Info: Figures/strom_iso_fraction.pdf used on input line 1200
-.
-(pdftex.def)             Requested size: 478.79846pt x 232.0337pt.
+! LaTeX Error: Cannot determine size of graphic in Figures/sine_rho.pdf (no Bou
+ndingBox).
 
-<Figures/strom_fraction.pdf, id=776, 1409.265pt x 455.30101pt>
-File: Figures/strom_fraction.pdf Graphic file (type pdf)
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.844 ...[width=1\linewidth]{Figures/sine_rho.pdf}
+                                                  
+? 
+File: Figures/sine_rho.pdf Graphic file (type eps)
+<Figures/sine_rho.pdf> [8]
 
-<use Figures/strom_fraction.pdf>
-Package pdftex.def Info: Figures/strom_fraction.pdf used on input line 1241.
-(pdftex.def)             Requested size: 478.79846pt x 154.68913pt.
+! LaTeX Error: Cannot determine size of graphic in Figures/opening_angle.pdf (n
+o BoundingBox).
 
-<Figures/strom_temp.pdf, id=777, 1445.4pt x 455.30101pt>
-File: Figures/strom_temp.pdf Graphic file (type pdf)
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.865 ...h=1\linewidth]{Figures/opening_angle.pdf}
+                                                  
+? 
+File: Figures/opening_angle.pdf Graphic file (type eps)
+<Figures/opening_angle.pdf> [9]
 
-<use Figures/strom_temp.pdf>
-Package pdftex.def Info: Figures/strom_temp.pdf used on input line 1249.
-(pdftex.def)             Requested size: 478.79846pt x 150.81947pt.
- [13]
+! LaTeX Error: Cannot determine size of graphic in Figures/refinement_criteria.
+pdf (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.899 ...newidth]{Figures/refinement_criteria.pdf}
+                                                  
+? 
+File: Figures/refinement_criteria.pdf Graphic file (type eps)
+<Figures/refinement_criteria.pdf>
+
+! LaTeX Error: Cannot determine size of graphic in Figures/particle_scaling.pdf
+ (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.931 ...\linewidth]{Figures/particle_scaling.pdf}
+                                                  
+? 
+File: Figures/particle_scaling.pdf Graphic file (type eps)
+<Figures/particle_scaling.pdf> [10]
+
+! LaTeX Error: Cannot determine size of graphic in Figures/cellplot.pdf (no Bou
+ndingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1008 ...width=1\linewidth]{Figures/cellplot.pdf}
+                                                  
+? 
+File: Figures/cellplot.pdf Graphic file (type eps)
+<Figures/cellplot.pdf>
+
+! LaTeX Error: Cannot determine size of graphic in Figures/isothermal_spheres.p
+df (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1040 ...newidth]{Figures/isothermal_spheres.pdf}
+                                                  
+? 
+File: Figures/isothermal_spheres.pdf Graphic file (type eps)
+<Figures/isothermal_spheres.pdf> [11]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [14pdfTeX warning (ext4): destination with the same identifier (name{figure.13
-}) has been already used, duplicate ignored
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1338 
-       pdfTeX warning (ext4): destination with the same identifier (name{figure
-.14}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1338 
-       pdfTeX warning (ext4): destination with the same identifier (name{figure
-.15}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1338 
-        <./Figures/strom_iso_fraction.pdf> <./Figures/strom_fraction.pdf
-
-pdfTeX warning: pdflatex (file ./Figures/strom_fraction.pdf): PDF inclusion: mu
-ltiple pdfs with page group included in a single page
-> <./Figures/strom_temp.pdf
-
-pdfTeX warning: pdflatex (file ./Figures/strom_temp.pdf): PDF inclusion: multip
-le pdfs with page group included in a single page
->] (./RTMethodsPaper.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-)
+ [12]
+
+! LaTeX Error: Cannot determine size of graphic in Figures/strom_slice_iso_030.
+pdf (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1142 ...ewidth]{Figures/strom_slice_iso_030.pdf}
+                                                  
+? 
+File: Figures/strom_slice_iso_030.pdf Graphic file (type eps)
+<Figures/strom_slice_iso_030.pdf>
+
+! LaTeX Error: Cannot determine size of graphic in Figures/strom_slice_iso_500.
+pdf (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1143 ...ewidth]{Figures/strom_slice_iso_500.pdf}
+                                                  
+? 
+File: Figures/strom_slice_iso_500.pdf Graphic file (type eps)
+<Figures/strom_slice_iso_500.pdf>
+
+! LaTeX Error: Cannot determine size of graphic in Figures/strom_iso_fraction.p
+df (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1199 ...newidth]{Figures/strom_iso_fraction.pdf}
+                                                  
+? 
+File: Figures/strom_iso_fraction.pdf Graphic file (type eps)
+<Figures/strom_iso_fraction.pdf> [13]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+! LaTeX Error: Cannot determine size of graphic in Figures/strom_fraction.pdf (
+no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1240 ...5\linewidth]{Figures/strom_fraction.pdf}
+                                                  
+? 
+File: Figures/strom_fraction.pdf Graphic file (type eps)
+<Figures/strom_fraction.pdf>
+
+! LaTeX Error: Cannot determine size of graphic in Figures/strom_temp.pdf (no B
+oundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1248 ...=0.95\linewidth]{Figures/strom_temp.pdf}
+                                                  
+? 
+File: Figures/strom_temp.pdf Graphic file (type eps)
+<Figures/strom_temp.pdf> [14]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1456.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[16pdfTeX warning (ext4): destination with the same identifier (name{table.A1.1
-}) has been already used, duplicate ignored
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1456 \end{document}
-                     
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [16]
+Underfull \vbox (badness 1735) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [17]
+(./RTMethodsPaper.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1455.
+ [18]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1456.
- (./RTMethodsPaper.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1456.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1456.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1455.
+
+(./RTMethodsPaper.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1455.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1455.
 
 Package rerunfilecheck Info: File `RTMethodsPaper.out' has not changed.
 (rerunfilecheck)             Checksum: 691443C236051361E968F074B8ABE602;711.
@@ -1263,68 +1118,19 @@ Package rerunfilecheck Info: File `RTMethodsPaper.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1456.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1455.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 251 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 10205 strings out of 493029
- 142467 string characters out of 6136235
- 250737 words of memory out of 5000000
- 13259 multiletter control sequences out of 15000+600000
- 133110 words of font info for 307 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 36i,15n,35p,984b,482s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Hfootnote.1} has been referenced bu
-t does not exist, replaced by a fixed one
+ 8532 strings out of 493316
+ 118361 string characters out of 6143701
+ 257079 words of memory out of 5000000
+ 11812 multiletter control sequences out of 15000+600000
+ 94729 words of font info for 159 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 36i,16n,34p,1522b,468s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/
-texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/share/texmf/fonts/enc/dv
-ips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/q
-tmb.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/newtx/rntxmi.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/newtx/rntxmi5.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/newtx/rntxmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/rtxmi
-5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/rtxmi7.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texmf/
-fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/newtx/txex-bar.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tx
-mia.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RTMethodsPaper.pdf (16 pages, 2084505 bytes).
-PDF statistics:
- 1111 PDF objects out of 1200 (max. 8388607)
- 987 compressed objects within 10 object streams
- 141 named destinations out of 1000 (max. 500000)
- 169 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+Output written on RTMethodsPaper.dvi (19 pages, 237748 bytes).
