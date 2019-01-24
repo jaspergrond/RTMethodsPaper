@@ -118,7 +118,7 @@ and consequently affects the interstellar medium (ISM) is still unclear.
 Attempts at numerically exploring these effects without the use of a full 
 radiative transfer method have produced conflicting results. Simulations done
 by \cite{gritschnederEt09} and \cite{walchEt12} suggest that ionizing feed 
-back from large O-type stars before the first supernovae ($\sim 1-3\rm{Myr}$) 
+back from large O-type stars before the first supernovae ($\sim 1-3\ \rm{Myr}$) 
 have a significant effect on star formation rate. Whereas \cite{daleEt12} 
 conclude the effects on star formation rate to be small.
 
@@ -183,7 +183,7 @@ as a geometric problem. Computational methods in this category include forward
 raytracers such as $\rm C^2Ray$ \citep{mellemaEt06a}, Moray 
 \citep{wiseAbel11} and Fervent \citep{baczynskiEt15} as well as reverse 
 raytracers such as TreeCol \citep{clarkEt12}, URCHIN \citep{altayTheuns13} 
-and TREERAY \citep{HaidEt18}. 
+and TREERAY \citep{Wunsch2018, HaidEt18}. 
 
 Instantaneous methods typically take the form of raytracers. Raytracers are 
 the most direct way to solve the RT problem. Forward raytracers trace many 
@@ -240,7 +240,7 @@ radiation will overwhelm the computation. Thus a na\"ive reverse ray trace
 still scales as $\bigO{\NK \NS N^{1/3}}$, with the presence of many sources 
 presenting the most significant computational barrier.
 
-In contrast, Evolutionary methods are typically based on evolving moments of 
+In contrast, evolutionary methods are typically based on evolving moments of 
 the radiation field stored at each resolution element. They are insensitive to 
 the number of sources, and scale as $\mathcal{O}(N)$ with the number of 
 resolution elements, allowing them to handle large numbers of sources and 
@@ -281,8 +281,8 @@ relative to evolutionary methods such as TRAPHIC. Recently however,
 \cite{Woods2015} and \cite{HaidEt18} developed promising generalizations of 
 reverse ray tracing based on merging of sources that can handle large numbers 
 of internal sources. The basic idea is to use a tree to combine distant 
-sources and reduce the cost to $\bigO{N \log N}$. \cite{HaidEt18} implemented 
-their TREERAY reverse raytracer in the FLASH AMR code \citep{FryxellEt2000}.
+sources and reduce the cost to $\bigO{N \log N}$. \cite{Wunsch2018} implemented 
+the TREERAY reverse raytracer in the FLASH AMR code \citep{FryxellEt2000}.
 They employ an Oct-tree, a fixed number of rays (48) per source and calculate 
 absorption on the fly during the tree-walk.  The primary weakness of the 
 \cite{Woods2015} and \cite{HaidEt18} methods is that they lower the resolution 
@@ -302,7 +302,7 @@ developed from the method of \cite{Woods2015} which was also implemented in
 \textsc{Gasoline}. In Section~\ref{sec:tsts} we present a suite of tests 
 demonstrating the algorithm's ability to accurately compute fluxes, ionization 
 fronts and shadows in the optically thick and thin regimes. These tests also 
-allow us to explore how \acro{}'s adaptivity criteria controls error and 
+allow us to explore how \acro{}'s adaptivity criteria control error and 
 affects computational cost. The computational cost is bounded and 
 characterized in the general case to substantiate the $\bigO{N \log^2 N}$ 
 claim made earlier. Finally, in Section~\ref{sec:disc} we discuss \acro{}'s 
@@ -387,7 +387,10 @@ I_i = \frac{L_i}{4\pi s_i^2} e^{-\tau_i}.
 By summing the intensity from all sources we can get the angle-averaged 
 intensity. We can use this averaged intensity directly in heating, chemistry 
 and ionization rate expressions. For many applications in astrophysics this is 
-the primary effect of the radiation field on local gas.
+the primary effect of the radiation field on local gas. We note that it is important
+to apply timestep limits to correctly follow the progress of ionization fronts as they change
+the absorption properties of the gas.  This approach
+relies on the ionization front speed as the rate limiting step, rather than the speed of light.
 
 The first order moment of the intensity is the net radiation flux.  Higher 
 order moments such as the radiation pressure, $\mathbf{p}$, can be easily 
@@ -441,7 +444,7 @@ that did not consider extinction of any kind \citep{KannanEt14}.
 
 For a given sink point, sources of 
 radiation inside a tree cell are merged together at their centre of luminosity if they meet an 
-``opening angle'' criteria. This criteria is defined as 
+``opening angle'' criterion. This criterion is defined as 
 \begin{equation}
 \label{eqn:openangle}
 \tO > l/r,
@@ -457,7 +460,7 @@ Figure~\ref{fig:algorithm}, where the grey angle represents a cell whose
 angular size meets the opening angle criterion.
 
 The cost savings of source merging can be quantified by integrating the number 
-of tree cells that pass the opening angle criteria and whose contents are treated as a single source.
+of tree cells that pass the opening angle criterion and whose contents are treated as a single source.
 We will call the total count of the cells used $N_{\rm cell}$. We can
 % Note opened cells are the ones that are NOT used -- open means test the children 
 estimate $N_{\rm cell}$ by integrating spherical shells of 
@@ -478,7 +481,7 @@ lower integration limit can be expressed using particle numbers via,
 the cube root of the ratio of the average number of particles per bucket, 
 $N_B$, to the total number of simulation particles. Again, note that $N_B$ is 
 only needed for particle methods and is one otherwise. The cell volume 
-can also be rewritten by cubing the opening angle criteria
+can also be rewritten by cubing the opening angle parameter
 \begin{equation}
 \label{eqn:vcell}
 V_{\rm cell}(r) = l^3 = \tO^3 r^3.
@@ -584,14 +587,21 @@ These are estimated for the three Cartesian directions ($x,y,z$) separately.
 Leaf cells are assumed to have a single value $\alpha = \kappa \rho$.
 Then, for example,
 we estimate the minimum, $x$-direction optical depth of the parent cell via
-the minimum $x$-direction optical depths of the child cells
-(either by taking the minimum or the sum as appropriate) and then dividing by
+the minimum $x$-direction optical depths of the child cells.  This requires
+taking the minimum for cases where the ray would intersect
+one child cell or the other or a sum for cases where the ray passes
+through both child cells.  With axis-aligned cells and using 
+Cartesian ray directions we know which case applies. We then divide by
 the new total $x$-cell width to recover an $\alpha_{\rm min}$ in the $x$-direction for the
-parent cell.  By proceeding in a bottom-up fashion
+parent cell.  The use of maxima and minima effectively takes into account diagonal
+rays with similar directions to the Cartesian direction 
+(albeit in a conservative fashion because it assumes that two straight rays
+corresponding to minimal and maximal optical depth values always actually
+exist).  Proceeding in a bottom-up fashion 
 during the tree build, we estimate directional minima and maxima $\alpha$ values for all cells.
-We then take the minima and maxima
+ We then take the minima and maxima
 over the three directions and save just one $\alpha_{\rm min}$ and one $\alpha_{\rm max}$
-for each cell.
+for each cell.  
 
 To use the cell-averaged absorption coefficient, $\alpha$, for a ray segment,
 we require that substructure within the cell cannot change the final flux
@@ -616,6 +626,16 @@ fractional error in flux, per ray segment, for a given value of $\tr$ is
 for small $\tr$, making the refinement criterion a convenient choice of 
 parameter for controlling error. Figure~\ref{fig:cellplot} is an example of 
 \acro{}'s adaptive refinement in action.
+
+It should be noted that if the three Cartesian direction approach were
+applied directly to a large cell in isolation, pathological configurations such
+as thin planes or filaments not aligned with the axes might be missed.
+However, because the maxima and minima are built up from the maxima
+and minima of the child cells all the way down to the resolution
+scale, any variations on the resolution scale are 
+correctly detected by the criterion.  Thus the effective thickness of 
+structures is set by the smallest cell size.  In this implementation
+that size is comparable to or smaller than the SPH smoothing length.
 
 For a particle code, if refinement is required at the bucket level, individual 
 particles within a bucket must be considered.  A straight forward ray tracing 
@@ -652,7 +672,7 @@ N_{\rm seg} = \int_{(N_B/N)^{1/3}}^R
 The result is that the total cost of the algorithm scales as
 $\bigO{\NK N^{1/3}}$ in the worst-case.
 
-In the case where the refinement criteria never triggers, the ray is split into 
+In the case where the refinement criterion never triggers, the ray is split into 
 segments made up of the cells traversed in the tree walk of the sub-tree going 
 from source to resolution element. The number of cells traversed in a tree walk
 is equal to the logarithm of the number of leaf nodes contained within the 
@@ -814,6 +834,10 @@ effectively zero, and the particle would incorrectly report no heating or
 ionization.  This is essential for correct ionization fronts such as in the 
 \strom{} test of Section~\ref{stromgren}.
 
+The implementation operates in parallel in exactly the same way
+as the gravity solver, as described in the original \textsc{Gasoline} paper by locally
+caching copies of remote tree cells and particles.
+
 %Scenarios can occur where two gas particles have portions of their smoothing 
 %volume in front of each other. If the normal ray trace was performed, neither 
 %would self-consistently receive the photons they had reported absorbing. We 
@@ -823,7 +847,7 @@ ionization.  This is essential for correct ionization fronts such as in the
 %distance from the source to the receiving particle.
 
 \section{Code Tests}\label{sec:tsts}
-\subsection{Sinusoidally Perturbed Glass}
+\subsection{Sinusoidally Perturbed Glass}\label{sinusoidtest}
 \subsubsection{Initial Conditions}
 To test the accuracy and general scaling of the algorithm we require an 
 initial condition (IC) that is representative of a typical use case. For this 
@@ -849,7 +873,7 @@ aforementioned filament) is $\tau\approx 0.1$.}
 \end{figure}
 
 \subsubsection{Opening Angle}
-The opening angle criterion's affect on accuracy and cost was tested by 
+The opening angle criterion's effect on accuracy and cost was tested by 
 ray tracing the optically thin, sinusoidally perturbed glass IC with $\tO$ 
 varying between 0 and 1. The results of this test are plotted in 
 Figure~\ref{fig:openangle}. The measure of cost is plotted as the total number 
@@ -880,9 +904,9 @@ angle of approximately $\tO=0.45$ should be used. $\tO=0.45$ costs only 500
 rays per resolution element, which is still much less than interacting with 
 all $64^3$ ($2.6\e{5}$) sources.
 
-\subsubsection{Refinement Criteria}
-Testing the refinement criteria is similar to testing the opening angle 
-criteria. Again, the sinusoidally perturbed glass IC was simulated but now 
+\subsubsection{Refinement Criterion}
+Testing the refinement criterion is similar to testing the opening angle 
+criterion. Again, the sinusoidally perturbed glass IC was simulated but now 
 with a varying $\tr$ value. The results of this test are plotted in 
 Figure~\ref{fig:refcrit}. The min and max values for $\tr$ were chosen such 
 that the cost curve flattens out on either side: the left hand side being 
@@ -925,7 +949,7 @@ and then back down the tree, would need to rely more, or solely, on the
 refinement criterion. In principle, such a method could perform better than 
 $\bigO{N\log^2 N}$.
 
-\subsubsection{Scaling}
+\subsubsection{Scaling}\label{scalingtest}
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/particle_scaling.pdf}
 \caption{Cost, quantified as the number of computed ray segments per 
@@ -934,7 +958,7 @@ resolution element, is plotted as a function of $N_{\rm 1D} = N^{1/3}$.
 (solid) and green (dash-dot) lines respectively. The corresponding simulation 
 data points are plotted as red circles and green squares. Simulation data 
 points intermediate to the scaling bounds are plotted as combinations of two 
-parameters - refinement criteria value and the type of scaling. Tests run 
+parameters - refinement criterion parameter value and the type of scaling. Tests run 
 with a refinement criterion of $\tr=0.1$ are coloured orange and make up the 
 lower two sets of intermediate data. The upper sets of intermediate data, 
 coloured blue, are tests run with $\tr=0.01$. Diamond markers denote weak 
@@ -971,7 +995,7 @@ which is typically the harder case to scale effectively in other respects
 scaling data is closer to $N\log^2{N}$ and costs less than the weak scaling 
 case for the same $N$. This is because the larger boxes in the weak scaling 
 case have larger total optical depths and thus require more ray segments to 
-achieve the same flux accuracy.
+achieve the same flux accuracy.  
 
 \subsection{Isothermal Spheres}\label{spheretest}
 \subsubsection{Initial Conditions}
@@ -1005,7 +1029,7 @@ isothermal spheres have a radius of 0.05 of the box length and are shown as
 grey circles in Figure~\ref{fig:cellplot}.  
 \begin{figure*}
 \includegraphics[width=1\linewidth]{Figures/cellplot.pdf}
-\caption{Left: \acro{}'s adaptive refinement criteria (at $\tr =0.1$) 
+\caption{Left: \acro{}'s adaptive refinement criterion (at $\tr =0.1$) 
 resolving isothermal spheres in a uniform environment. Particles in a slice 
 along the $z$-plane of the isothermal spheres IC are coloured by the logarithm 
 of their flux value (high - low flux, red - purple). The red line represents 
@@ -1045,14 +1069,15 @@ Lines of ${\rm error} = \tr$ and ${\rm error} = \tr/10$ are plotted as red
 solid and dotted lines respectively. Solid circular markers represent RMS 
 relative errors computed on all resolution elements and empty markers 
 represent only the resolution elements that fall in shadow. The in-shadow 
-errors are larger for looser refinement criteria, continuing to follow the 
+errors are larger for looser refinement criterion, continuing to follow the 
 ${\rm error} = \tr$ line.} 
 \label{fig:isosph}
 \end{figure}
 As before, $\tr=0.1$ achieves an overall RMS fractional error of 1\% with very 
-little cost. However, when restricting focus only to those particles in 
-shadow, the same refinement parameter produces errors higher by and order of 
-magnitude ($\sim$8\%) almost an order of magnitude. Decreasing the refinement 
+little cost. However, when restricting the focus only to those particles in 
+shadow, the same refinement parameter produces much higher errors
+($\sim$ 8\%). 
+Decreasing the refinement 
 parameter by an order of magnitude to $\tr=0.01$ predictably decreases the RMS 
 fractional error on particles in shadow to 1\%, with a negligible 
 increase in the cost from that at $\tr=0.1$ as most of the volume is fairly 
@@ -1134,7 +1159,11 @@ function of time \citep{osterbrockFerland2006}. In the following tests, we
 include both the theoretical sharp front solution and non-sharp front 
 solutions from the \cite{ilievEt06} comparison paper to compare to our 
 results. We also attempt to duplicate the ICs of 
-\cite{ilievEt06} as closely as possible.
+\cite{ilievEt06} as closely as possible.  It should be noted that a time-step
+limit associated with ionization and temperature changes is required to correctly
+follow ionization fronts.  We employed the pre-exisiting ionization, heating
+and cooling integrator in \textsc{Gasoline} with no changes other than
+using the standard coefficient values for these tests described below.
 
 \subsubsection{The Isothermal \strom{} Sphere}
 \begin{figure}
@@ -1278,10 +1307,10 @@ trace:
 initial dependence on $\NK \sim N$ resolution elements is reduced to just the 
 active radiation sinks. $\NK$ is effectively hundreds of times smaller than 
 $N$ when averaged over a large number of substeps.  
-\item Source merging based on an opening angle criteria reduces the linear 
+\item Source merging based on an opening angle criterion reduces the linear 
 dependence on $\NS$ to $\log\NS$.
 \item By adaptively reducing the resolution of rays via \acro{}'s novel 
-refinement criteria, the $N^{1/3}$ cost of computing the optical depth along a 
+refinement criterion, the $N^{1/3}$ cost of computing the optical depth along a 
 ray can be reduced, while maintaining a specified level of accuracy, to 
 $\log N$.  
 \end{enumerate}
@@ -1297,7 +1326,7 @@ be achieved for a medium with low optical depths via a more aggressive,
 top-down ray walk with our refinement criterion. 
 
 The only general ray-tracing code we are aware of with similar scaling is 
-TREERAY \citep{HaidEt18}. TREERAY does not use an adaptivity criterion and has 
+TREERAY \citep{Wunsch2018}. TREERAY does not use an adaptivity criterion and has 
 a fixed number of rays. This rather rigid approach has a benefit which is that 
 the source and absorption walks can be combined to given an overall 
 $\bigO{N log N}$ scaling, albeit without error controls and limited 
@@ -1306,18 +1335,30 @@ in FLASH, uses a global timestep and is thus unable to take advantage of the
 large speed-ups reverse ray tracing can achieve via adapative timestepping.
 However, this is not a limitation intrinsic to the TREERAY method itself.   
 
+We note that the opening angle criterion is guaranteed to limit
+errors in the low optical depth regime.  However, with absorption, it
+sets an effective angular resolution below which shadows from distinct
+sources would merge.  As shown in the tests (see particularly
+sections~\ref{sinusoidtest}), this does not adversely effect the RMS
+errors with absorption in cases with many sources.  However, it can adjust the
+location of shadow edges (which is where most of the error resides).  
+In the case of a few strong sources, the
+user could employ a stricter merging criterion (or one based on
+brightness) and have arbitrarily good angular resolution with
+relatively little cost as demonstrated in section~\ref{spheretest}.
+
 In plots of accuracy as a function of $\tr$ (Figures~\ref{fig:refcrit} 
-and~\ref{fig:isosph}) we have also shown that \acro{}'s refinement criteria 
-provides a predictable bound on accuracy in both the optically thick and thin 
-regimes, as we found the RMS relative error is $\propto \tr$ and the RMS 
+and~\ref{fig:isosph}) we have also shown that \acro{}'s refinement criterion 
+provides a predictable bound on accuracy, as we found the 
+RMS relative error is $\propto \tr$ and the RMS 
 errors do not exceed $\tr$.  
 
-This scaling enables \acro{} to reap the benefits inherent in instantaneous 
+This behaviour enables \acro{} to reap the benefits inherent in instantaneous 
 ray tracing methods whilst still being practical and general.  For example,
 we can use any convenient timestep rather than being limited by the speed of 
 light. Directional accuracy is another one of these benefits as is apparent in 
 the sharp shadows cast in the isothermal spheres test 
-(Figure~\ref{fig:cellplot}). Low levels of noise and isotropy are also 
+(Figure~\ref{fig:cellplot}). Low levels of noise and anisotropy are also 
 benefits compared with evolutionary methods as is apparent in the \strom{} 
 sphere test (Figure~\ref{fig:stromslice}).
 
@@ -1342,7 +1383,7 @@ times and redshifting are also potentially important. Such factors could be
 included in principle and this is a potential direction for future work.
 
 Finally, there is the important issue of \textit{complex sources}. 
-Consider a group of sources that meet the opening criteria and are merged, 
+Consider a group of sources that meet the opening criterion and are merged, 
 but are also contained within a region that has clumpy, opaque structures. 
 Depending on the location of the merged centre of luminosity relative to the 
 opaque clumps, the amount of radiation that escaped the merged source cell 
@@ -1370,8 +1411,8 @@ source as it was.
 Currently, \acro{} only computes the radiation field in specific bands. 
 \acro{} can handle many bands of radiation with a small constant multiplier 
 added to the cost.  However, it may be advantageous to evolve the spectral 
-shape over distance using an opacity asa function of wavelength where the 
-absorption is provided by a relatively simpleor easily characterized set of 
+shape over distance using an opacity which is a function of wavelength where the 
+absorption is provided by a relatively simple or easily characterized set of 
 species. This would also enable us to incorporate redshifting effects 
 important for the evolution of large boxes over cosmological time periods.
 
