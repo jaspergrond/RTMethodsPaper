@@ -103,7 +103,7 @@ note that even though supernovae might be spectacularly powerful events,
 ionizing radiative output from stellar populations contributes two orders of 
 magnitude more energy at early times and about 50 times more energy over the 
 course of a stellar population's lifetime. This is evident from 
-Figure~\ref{fig:uvsn}, which is a plot of the luminosity output per solar mass 
+Figure~\ref{fig:uvsn}, which is a plot of the luminous output per solar mass 
 as a function of time from a typical stellar population (computed using the 
 stellar evolution code Starburst99; \citealt{leithererEt99}).
 \begin{figure}
@@ -187,7 +187,7 @@ and TREERAY \citep{Wunsch2018, HaidEt18}.
 
 Instantaneous methods typically take the form of raytracers. Raytracers are 
 the most direct way to solve the RT problem. Forward raytracers trace many 
-rays outward from sources of radiation, similarly to the actual phenomena, in 
+rays outward from sources of radiation, similarly to the actual phenomenon, in 
 the hope that resolution elements will have sufficiently many rays 
 intersecting them to compute a radiation field. Na\"ively, the number of rays 
 per source would be comparable to the number of resolution elements, giving a 
@@ -278,17 +278,17 @@ simulations that can handle a variety of regimes of optical depth.
 Until now the poor scaling with source number, as $\bigO{\NS N}$, has severely 
 limited the applicability and competitiveness of instantaneous ray tracing 
 relative to evolutionary methods such as TRAPHIC. Recently however, 
-\cite{Woods2015} and \cite{HaidEt18} developed promising generalizations of 
+\cite{Woods2015} and \cite{Wunsch2018} developed promising generalizations of 
 reverse ray tracing based on merging of sources that can handle large numbers 
 of internal sources. The basic idea is to use a tree to combine distant 
 sources and reduce the cost to $\bigO{N \log N}$. \cite{Wunsch2018} implemented 
 the TREERAY reverse raytracer in the FLASH AMR code \citep{FryxellEt2000}.
 They employ an Oct-tree, a fixed number of rays (48) per source and calculate 
 absorption on the fly during the tree-walk.  The primary weakness of the 
-\cite{Woods2015} and \cite{HaidEt18} methods is that they lower the resolution 
+\cite{Woods2015} and \cite{Wunsch2018} methods is that they lower the resolution 
 along rays in a preset manner.  This prevents them from maintaining the 
-accuracy of the received flux at higher optical depths. Doing so requires an 
-additional adaptivity criterion beyond the open angle used in tree codes.
+accuracy of the received flux at higher optical depths. Doing so requires multiple 
+adaptivity criteria.  This mean going beyond the open angle used in tree codes.
 This is the focus of the current work.
 
 In this paper we present \acro{} (Tree-based Reverse Ray Tracing), an $\bigO{N 
@@ -439,7 +439,7 @@ $\bigO{N^2}$. To mitigate this $N^2$ scaling \acro{} employs source merging
 similar to particle merging in the \cite{barnesHut86} tree-based gravity 
 solver which has remained popular in astrophysics 
 \citep{benz88,vineSigurdsson98,springelEt01,wadsleyEt04,hubberEt11}. We first
-implemented radiation source merging in a rudimentary version of \acro{} 
+applied radiation source merging in a rudimentary version of \acro{} 
 that did not consider extinction of any kind \citep{KannanEt14}.
 
 For a given sink point, sources of 
@@ -532,7 +532,7 @@ Figure~\ref{fig:algorithm} there are two important things to note. First,
 since we are performing a reverse ray trace, the resolution element denoted by 
 the black circle is intrinsically well resolved at the bucket cell (the blue 
 cell at $[(0,0),(1,1)]$) level. However, the second point is that as the tree 
-is walked upwards space becomes less resolved. It should be apparent that the 
+is walked upwards, space becomes less resolved. It should be apparent that the 
 central parts of the ray are less resolved (the green cell at $[(0,2),(4,4)]$) 
 and as one moves towards the source or resolution element the ray becomes more 
 resolved (the red cell at $[(2,2),(4,4)]$ and the orange cell 
@@ -542,13 +542,12 @@ resolve a sharp feature in the radiation field such as an ionization front.
 However, if the medium is highly irregular along the ray the algorithm will 
 not be able to resolve sharp density and opacity gradients which could 
 significantly alter the optical depth. Thus adaptive refinement is needed 
-during the tree walk to accurately resolve the medium along the ray.
+during the tree walk to accurately resolve calculate the optical depth along the ray.
 
 \subsubsection{Adaptive Refinement}\label{sec:adref}
 
-\acro{} does not add a new refinement criterion for the simulation elements.
-Instead, for each ray \acro{} decides whether to use the full resolution 
-available or if a set of ray segments intersecting lower resolution parent 
+For each ray, \acro{} decides whether to use the full resolution 
+available or if a set of longer ray segments intersecting lower resolution parent 
 cells would be sufficient. In principle, the resolution elements themselves 
 could be subdivided based on properties associated with RT for even higher 
 resolution, but that is beyond the scope of the present work.
@@ -557,7 +556,7 @@ Consider the right panel in Figure~\ref{fig:algorithm}. A dense blob of gas
 to be resolved resides in the orange highlighted cell at $[(1,1),(2,2)]$. At 
 the point in the tree walk where we reach the orange highlighted cell at 
 $[(0,0),(2,2)]$ in the left panel, a decision needs to be made on whether the 
-current cell sufficiently represents the medium. This decision is made by a 
+current cell sufficiently represents the medium. This decision is based on a 
 refinement criterion. If the cell passes the criterion to refine, rather than 
 using its average properties, we recursively check the cell's children until 
 the criterion fails. This process ensures we compute a better resolved section 
@@ -597,7 +596,9 @@ parent cell.  The use of maxima and minima effectively takes into account diagon
 rays with similar directions to the Cartesian direction 
 (albeit in a conservative fashion because it assumes that two straight rays
 corresponding to minimal and maximal optical depth values always actually
-exist).  Proceeding in a bottom-up fashion 
+exist).  
+
+Proceeding in a bottom-up fashion 
 during the tree build, we estimate directional minima and maxima $\alpha$ values for all cells.
  We then take the minima and maxima
 over the three directions and save just one $\alpha_{\rm min}$ and one $\alpha_{\rm max}$
@@ -635,7 +636,7 @@ and minima of the child cells all the way down to the resolution
 scale, any variations on the resolution scale are 
 correctly detected by the criterion.  Thus the effective thickness of 
 structures is set by the smallest cell size.  In this implementation
-that size is comparable to or smaller than the SPH smoothing length.
+that size is comparable to the SPH smoothing length.
 
 For a particle code, if refinement is required at the bucket level, individual 
 particles within a bucket must be considered.  A straight forward ray tracing 
@@ -714,8 +715,7 @@ may be too local.
 
 Instead, we have implemented a method involving tracing ``background sources'' 
 similar to URCHIN. ``Background'' particles are distributed in a spiral 
-pattern on the surface of a sphere, according to the Healpix algorithm 
-\citep{gorskiEt05}, at the very edge of the simulation volume. The number of 
+pattern on the surface of a sphere, at the edge of the simulation volume. The number of 
 sources can be varied to match the required angular resolution of the 
 background. Finding the flux at the centre of a sphere of sources is a problem 
 akin to Newton's Shell Theorem. However, because the intensity does not cancel 
@@ -792,8 +792,8 @@ cell volume,
 \end{equation}
 However, during testing at high levels of refinement we found that the error 
 began to increase slightly with increasing refinement accuracy beyond a 
-certain level. This was because when refining down to the bucket level often 
-enough, $N_{\rm B}=10$ was small enough to introduce Poisson noise in the 
+certain level. This was because when refining down to the bucket level, 
+$N_{\rm B}=10$ was small enough to introduce Poisson noise in the 
 density estimate.  This propagated as errors in the computed radiation field, 
 noticeable as noise in otherwise uniform density distributions. To remedy this 
 for particle-based methods, each cell uses a volume-weighted average of the particle  
@@ -802,7 +802,7 @@ densities,
 \rho_{\rm cell} = \frac{\sum_i m_i}{\sum_i{\frac{m_i}{\rho_i}}}.
 \end{equation}
 
-As noted in Section~\ref{sec:adref}, when sub-leaf level 
+As noted in Section~\ref{sec:adref}, when sub-bucket level 
 refinement is required a ray trace similar to that of 
 SPHRay is performed. In this method, all particles in a cell are projected 
 down to the ray, and an impact parameter, $b$, is calculated (See 
@@ -818,8 +818,8 @@ actually having absorbed them.}
 \label{fig:raytrace}
 \end{figure}
 Since the density field of an SPH particle varies with radius due to the 
-smoothed nature of SPH, an integral over the smoothing kernel, $W$, must be 
-performed. Thus, Equation~\ref{eqn:tauint} becomes 
+smoothed nature of SPH, an (pre-calculated) integral over the smoothing kernel, $W$, must be 
+used. Thus, Equation~\ref{eqn:tauint} becomes 
 \begin{equation}
 \tau_i(s) = \left(m_i\int W\right) \kappa_i ds,
 \end{equation}
@@ -908,16 +908,17 @@ all $64^3$ ($2.6\e{5}$) sources.
 Testing the refinement criterion is similar to testing the opening angle 
 criterion. Again, the sinusoidally perturbed glass IC was simulated but now 
 with a varying $\tr$ value. The results of this test are plotted in 
-Figure~\ref{fig:refcrit}. The min and max values for $\tr$ were chosen such 
-that the cost curve flattens out on either side: the left hand side being 
+Figure~\ref{fig:refcrit}. The min and max values for $\tr$ were chosen
+to show how the cost curve flattens out on either side: the left hand side being 
 where refinement has occurred down to the bucket level and the right hand side 
-being where refinement is never done. A opening angle of 0.75 was used and 
+being where refinement is never done. An opening angle of 0.75 was used and 
 $N=64^3$ for both star and gas particles. Cost is plotted on the left $y$-axis 
 and RMS fractional error on the right $y$-axis. The measure of cost is now 
 the number of ray segments per resolution element, since the refinement 
 criterion controls the number of ray segments a single ray is broken up into. 
 The measure of accuracy is again the RMS fractional error, but now relative to 
-the radiation field computed with $\tr=1\e{-8}$, the lowest $\tr$ tested.
+the radiation field computed with $\tr=1\e{-8}$, which ensures maximum
+resolution everywhere.
 \begin{figure}
 \includegraphics[width=1\linewidth]{Figures/refinement_criteria.pdf}
 \caption{Algorithmic cost and accuracy as a function of refinement criterion. 
@@ -927,7 +928,7 @@ $\tr=10^{-8}$ is plotted in red, on the right $y$-axis with circular markers.
 Lines of ${\rm error} = \tr$ and ${\rm error} = \tr/10$ are plotted as red 
 solid and dotted lines respectively. The upper line represents maximum 
 allowable error \textit{per ray segment}. The RMS relative error roughly 
-follows the lower line, an order of magnitude less than $\tr$.}
+follows the lower line, an order of magnitude lower.}
 \label{fig:refcrit}
 \end{figure}
 
@@ -986,10 +987,12 @@ simulation. The weak scaling case is the opposite, in which the simulation
 volume is increased and particle density is held constant. This is analogous 
 to simulating larger and larger cosmological boxes to achieve larger 
 statistical samples. Note that the previously described tests of the upper and 
-lower scaling bounds were only run as strong scaling tests only.
+lower scaling bounds were only run as strong scaling tests.
 
-Data from these tests was plotted in Figure~\ref{fig:pscale}. 
-There are two interesting things to note: first, the strong scaling case, 
+Data from these tests was plotted in Figure~\ref{fig:pscale}.  There
+are two interesting things to note.  Firstly, with refinement we can
+maintain a scaling quite similar to the best case of $N \log^2{N}$ in
+this representative test.  Secondly, the strong scaling case, 
 which is typically the harder case to scale effectively in other respects 
 (e.g. parallelism), scales better than the weak scaling case. The strong 
 scaling data is closer to $N\log^2{N}$ and costs less than the weak scaling 
@@ -1005,7 +1008,7 @@ interest, such as late stage galaxy evolution. We now show how well \acro{}'s
 refinement criteria can handle compact, optically thick features. We created 
 an IC featuring a single radiation source positioned in the top left corner 
 and four spheres with $1/r^2$ density profiles (mimicking self-gravitating 
-dense objects) embedded in a uniform region of opacity and density, both equal 
+dense objects) embedded in a uniform region, with opacity and density both set 
 to one. The four isothermal spheres have a density distribution given by
 \begin{equation}
 \rho(r) = \frac{\rho_0 \epsilon^2}{r^2 + \epsilon^2},
@@ -1093,15 +1096,15 @@ the overall error closer to $\tr$.
 
 The isothermal spheres test is an especially difficult test as there is only 
 one source, and the errors are more systematic. Thus, the errors are less 
-likely to cancel the way random errors might, particularly with many sources. 
-In most cases we expect that the net errors for \acro{} should perform better 
-than the bound given by Equation~\ref{eqn:reffrac}.
+likely to cancel the way random errors often do, for example, with many sources. 
+Such random cancellations mean that overall errors for \acro{}
+typically perform better than the bound given by Equation~\ref{eqn:reffrac}.
 
 The isothermal spheres test is useful as it is representative of structure
 commonly found in astrophysics and because it has an analytic solution. 
 However, in SPH it is difficult to represent sharp density gradients with 
 discrete resolution elements. This causes in-shadow particle flux errors 
-relative to the analytic solution to be up to an order of magnitude higher 
+relative to the analytic solution (not shown) to be up to an order of magnitude higher 
 than the errors relative to the $\tr = 10^{-8}$ simulation plotted in 
 Figure~\ref{fig:isosph}. These errors are associated with the discrete 
 representation of the density profile rather than the radiative transfer 
@@ -1195,7 +1198,7 @@ source is turned on at $t=0$ and emits at a rate of $\dot{N}_\gamma = 5
 $R_S = 5.38$ kpc and a recombination time of $t_{\rm rec} \approx  125$ Myr. 
 
 We note that \cite{ilievEt06} use a 6.6 kpc cube which only contains a single
-quadrant of the \strom{} sphere for their testing. We have opted to use an 16 
+octant of the \strom{} sphere for their testing. We have opted to use an 16 
 kpc cube, increasing the maximum front radius to 8 kpc to avoid any edge 
 effects (the sphere gets close to the edge of the box for some codes in 
 the above paper). In order to aid comparison, we still normalize radius values 
@@ -1204,7 +1207,7 @@ floor on the HII fraction of 0.001, as was done in their paper. Because the
 resolution used in the \cite{ilievEt06} comparison paper was never 
 specifically given, we have opted to run the test with $N = 64^3$, $128^3$ and 
 $256^3$ particles to represent the \textit{entire} sphere. These resolutions 
-correspond to single quadrant resolutions of $N=32^3$, $64^3$ and $128^3$ in 
+correspond to single octant resolutions of $N=32^3$, $64^3$ and $128^3$ in 
 \cite{ilievEt06}. Varying the number of particles also allows us to invesitgate
 at how \acro{} converges with resolution. We have run our \strom{} sphere 
 tests with fixed accuracy parameters of $\tO = 0.75$, 
@@ -1216,7 +1219,7 @@ levels and colour map have been chosen to closely mimic Figure~6 in both
 \cite{pawlikSchaye08} and \cite{pawlikSchaye11}. We have done this to 
 highlight a key benefit that ray tracing codes such as \acro{} have over 
 photon packet propagation methods such as TRAPHIC: isotropy. At the same 
-$N=64^3$ particle resolution \acro{} is more isotropically symmetric than 
+$N=64^3$ particle resolution \acro{} is more spherically symmetric than 
 TRAPHIC, even with their use of Monte-Carlo re-sampling. Furthermore, \acro{} 
 outperforms TRAPHIC in this aspect even at early times (top panels in 
 Figure~\ref{fig:stromslice}). Here the interior of the sphere is represented 
@@ -1250,7 +1253,7 @@ heating as well, which affects many gas properties including the recombination r
 
 We reran the \strom{} sphere test, but this time the incident photons are 
 assumed to be from a black body with a temperature of $10^5$ K. The 
-cross-section is now photon weighted, giving 
+cross-section is now photon energy weighted, giving 
 $\sigma = 1.63 \times 10^{-18}$ $\rm cm^{-2}$. The gas has an initial 
 temperature of 100 K and the recombination rate is a function of temperature 
 set by
@@ -1284,7 +1287,7 @@ and 500 Myr. These times represent the fast expansion stage, slowing down
 stage and final equilibrium \strom{} sphere respectively. We have plotted 
 numerical solutions from Figures~16 and~17 in \cite{ilievEt06} for comparison. 
 Again, \acro{} recreates these profiles quite well.
-\acro{} gives a relatively large sphere radius which is 
+\acro{} gives a somewhat large sphere radius which is 
 due in part to the ionization code rather than the radiation method.  
 The temperature profile lies in the middle of the scatter of the 
 \cite{ilievEt06} solutions.  We note that for this test different codes employed
@@ -1305,14 +1308,13 @@ trace:
 \begin{enumerate}
 \item Reverse ray tracing allows for the use of adaptive timesteps. The 
 initial dependence on $\NK \sim N$ resolution elements is reduced to just the 
-active radiation sinks. $\NK$ is effectively hundreds of times smaller than 
+active radiation sinks (i.e. gas). $\NK$ is effectively hundreds of times smaller than 
 $N$ when averaged over a large number of substeps.  
 \item Source merging based on an opening angle criterion reduces the linear 
 dependence on $\NS$ to $\log\NS$.
 \item By adaptively reducing the resolution of rays via \acro{}'s novel 
 refinement criterion, the $N^{1/3}$ cost of computing the optical depth along a 
-ray can be reduced, while maintaining a specified level of accuracy, to 
-$\log N$.  
+ray can be reduced to $\log N$, while maintaining a specified level of accuracy.  
 \end{enumerate}
 
 In Section~\ref{sec:algo} we theoretically predicted \acro{}'s 
@@ -1389,7 +1391,7 @@ Depending on the location of the merged centre of luminosity relative to the
 opaque clumps, the amount of radiation that escaped the merged source cell 
 could vary significantly from that computed by the current algorithm.
 Such cases would require that the opening criterion take the effect of
-nearby absorbers into account, pontentially using the information regarding
+nearby absorbers into account, potentially using the information regarding
 the variance in $\alpha$ already recorded for each cells. Such extended opening
 and refinement criterion are the subject of ongoing investigations.
 
