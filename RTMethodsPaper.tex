@@ -120,7 +120,7 @@ radiative transfer method have produced conflicting results. Simulations done
 by \cite{gritschnederEt09} and \cite{walchEt12} suggest that ionizing feed 
 back from large O-type stars before the first supernovae ($\sim 1-3\ \rm{Myr}$) 
 have a significant effect on star formation rate. Whereas \cite{daleEt12} 
-conclude the effects on star formation rate to be small.
+conclude the effect on the star formation rate to be small.
 
 With this potential impact in mind, it may seem surprising that RT has been 
 treated poorly in most galaxy-scale astrophysical simulations, often as an 
@@ -288,7 +288,7 @@ absorption on the fly during the tree-walk.  The primary weakness of the
 \cite{Woods2015} and \cite{Wunsch2018} methods is that they lower the resolution 
 along rays in a preset manner.  This prevents them from maintaining the 
 accuracy of the received flux at higher optical depths. Doing so requires multiple 
-adaptivity criteria.  This mean going beyond the open angle used in tree codes.
+adaptivity criteria.  This means going beyond the open angle used in tree codes.
 This is the focus of the current work.
 
 In this paper we present \acro{} (Tree-based Reverse Ray Tracing), an $\bigO{N 
@@ -542,7 +542,7 @@ resolve a sharp feature in the radiation field such as an ionization front.
 However, if the medium is highly irregular along the ray the algorithm will 
 not be able to resolve sharp density and opacity gradients which could 
 significantly alter the optical depth. Thus adaptive refinement is needed 
-during the tree walk to accurately resolve calculate the optical depth along the ray.
+during the tree walk to accurately calculate the optical depth along the ray.
 
 \subsubsection{Adaptive Refinement}\label{sec:adref}
 
@@ -737,7 +737,7 @@ of radius $R=0.5$ (black dotted line) are plotted as the thick orange line.
 The analytical solution given by Equation~\ref{eqn:cosmof} is plotted as a 
 thinner black line on top of the numerical solution. A constant flux of one is 
 plotted by the black dashed line and is achieved in the inner most region of 
-this simulation at around $R \lesssim 0.05$}
+this simulation at around $R \lesssim 0.05$.}
 \label{fig:cosmof}
 \end{figure}
 
@@ -989,7 +989,7 @@ to simulating larger and larger cosmological boxes to achieve larger
 statistical samples. Note that the previously described tests of the upper and 
 lower scaling bounds were only run as strong scaling tests.
 
-Data from these tests was plotted in Figure~\ref{fig:pscale}.  There
+Results from these tests are shown in Figure~\ref{fig:pscale}.  There
 are two interesting things to note.  Firstly, with refinement we can
 maintain a scaling quite similar to the best case of $N \log^2{N}$ in
 this representative test.  Secondly, the strong scaling case, 
@@ -1178,7 +1178,7 @@ resolutions increase from left to right denoted by the $N$ value in the top
 left corner of each pane. Axis ticks are spaced 2 kpc apart, so note that 
 ionized spheres in the top row are a fraction of the volume and particle 
 resolution of spheres in the bottom row. The colormap represents neutral 
-fraction, $\rm x$ and is similar to that of \protect\cite{pawlikSchaye08} and 
+fraction, $\rm x$, and is similar to that of \protect\cite{pawlikSchaye08} and 
 \protect\cite{pawlikSchaye11} to allow for ease of comparison.  We use the same
 contour levels: $\rm x$ = 0.9, 0.5, $\log \rm x$ = -1, -1.5, 
 -2, -2.5, -3 and -3.5. The white dashed line is a circle of radius given by 
