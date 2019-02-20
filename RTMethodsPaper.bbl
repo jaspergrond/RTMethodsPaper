@@ -260,5 +260,10 @@ Courier Corporation
 \bibitem[\protect\citeauthoryear{{Woods}}{{Woods}}{2015}]{Woods2015}
 {Woods} R.~M.,  2015, PhD thesis
 
+\bibitem[\protect\citeauthoryear{{W{\"u}nsch}, {Walch}, {Dinnbier}  \&
+  {Whitworth}}{{W{\"u}nsch} et~al.}{2018}]{Wunsch2018}
+{W{\"u}nsch} R.,  {Walch} S.,  {Dinnbier} F.,   {Whitworth} A.,  2018, \mn@doi
+  [\mnras] {10.1093/mnras/sty015}, 475, 3393
+
 \makeatother
 \end{thebibliography}

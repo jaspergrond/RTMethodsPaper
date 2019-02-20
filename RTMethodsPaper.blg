@@ -1,5 +1,5 @@
-This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: RTMethodsPaper.aux
 The style file: mnras.bst
 Database file #1: references.bib
@@ -9,45 +9,45 @@ Warning--empty publisher in osterbrockFerland2006
 Warning--empty publisher in spitzer78
 Warning--empty publisher in tielens05
 Warning--empty school in Woods2015
-You've used 44 entries,
+You've used 45 entries,
             2881 wiz_defined-function locations,
-            1131 strings with 18016 characters,
-and the built_in function-call counts, 20898 in all, are:
-= -- 1689
-> -- 1513
-< -- 120
-+ -- 677
-- -- 210
-* -- 2627
-:= -- 3287
+            1138 strings with 18238 characters,
+and the built_in function-call counts, 21427 in all, are:
+= -- 1733
+> -- 1556
+< -- 122
++ -- 694
+- -- 218
+* -- 2691
+:= -- 3373
 add.period$ -- 0
-call.type$ -- 44
-change.case$ -- 88
-chr.to.int$ -- 44
-cite$ -- 48
-duplicate$ -- 1005
-empty$ -- 1011
-format.name$ -- 364
-if$ -- 3557
+call.type$ -- 45
+change.case$ -- 90
+chr.to.int$ -- 45
+cite$ -- 49
+duplicate$ -- 1028
+empty$ -- 1033
+format.name$ -- 374
+if$ -- 3649
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 47
-newline$ -- 146
-num.names$ -- 318
-pop$ -- 237
+missing$ -- 48
+newline$ -- 149
+num.names$ -- 326
+pop$ -- 242
 preamble$ -- 1
-purify$ -- 176
+purify$ -- 180
 quote$ -- 0
-skip$ -- 586
+skip$ -- 599
 stack$ -- 0
-substring$ -- 1170
-swap$ -- 588
-text.length$ -- 176
+substring$ -- 1204
+swap$ -- 602
+text.length$ -- 180
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 384
+type$ -- 393
 warning$ -- 4
-while$ -- 332
+while$ -- 340
 width$ -- 0
-write$ -- 448
+write$ -- 458
 (There were 4 warnings)
